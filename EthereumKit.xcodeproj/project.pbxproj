@@ -179,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				AE299DFD2018A63E002769F9 /* SMP.swift */,
+				AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */,
 			);
 			path = BigInt;
 			sourceTree = "<group>";
@@ -259,7 +260,6 @@
 		AEBA91131FFA615A003EA2BA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */,
 				AEBA90E41FFA23C6003EA2BA /* String+Extension.swift */,
 				AEBA91111FFA5E6D003EA2BA /* UInt8+Extension.swift */,
 				AE8291A72018AEBF0047E0F0 /* UInt32.swift */,

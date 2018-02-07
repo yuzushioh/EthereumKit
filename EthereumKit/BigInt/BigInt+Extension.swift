@@ -9,7 +9,7 @@
 import Foundation
 
 extension BInt {
-    var toData: Data {
+    var data: Data {
         let count = limbs.count
         var data = Data(count: count * 8)
         data.withUnsafeMutableBytes { (pointer: UnsafeMutablePointer<UInt8>) -> Void in

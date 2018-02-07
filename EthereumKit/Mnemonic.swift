@@ -6,10 +6,9 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import CryptoSwift
+import Foundation
 
 public final class Mnemonic {
-    
     public static func create(entropy: String, language: WordList = .english) -> String {
         let initialEntropy = entropy.mnemonicData
         
@@ -46,22 +45,14 @@ public final class Mnemonic {
     }
     
     public static func createSeed(mnemonic: String, withPassphrase passphrase: String = "") -> Data {
-        func normalize(string: String) -> Data? {
-            return string.data(using: .utf8, allowLossyConversion: true)
-        }
-        
-        guard let password = normalize(string: mnemonic)?.bytes else {
+        guard let password = mnemonic.data(using: .utf8, allowLossyConversion: true)?.bytes else {
             fatalError("Nomalizing password failed in \(self)")
         }
         
-        guard let salt = normalize(string: "mnemonic" + passphrase)?.bytes else {
+        guard let salt = ("mnemonic" + passphrase).data(using: .utf8, allowLossyConversion: true)?.bytes else {
             fatalError("Nomalizing salt failed in \(self)")
         }
         
-        do {
-            return Data(try PKCS5.PBKDF2(password: password, salt: salt, iterations: 2048, variant: .sha512).calculate())
-        } catch let error {
-            fatalError("PKCS5.PBKDF2 faild: \(error.localizedDescription)")
-        }
+        return Crypto.PBKDF2SHA512(password: password, salt: salt)
     }
 }

@@ -18,6 +18,16 @@ final class Crypto {
         }
         return Data(output)
     }
+    
+    static func PBKDF2SHA512(password: [UInt8], salt: [UInt8]) -> Data {
+        let output: [UInt8]
+        do {
+            output = try PKCS5.PBKDF2(password: password, salt: salt, iterations: 2048, variant: .sha512).calculate()
+        } catch let error {
+            fatalError("PKCS5.PBKDF2 faild: \(error.localizedDescription)")
+        }
+        return Data(output)
+    }
 }
 
 // MARK: SHA256 of SHA256
