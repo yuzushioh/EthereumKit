@@ -19,3 +19,10 @@ final class Crypto {
         return Data(output)
     }
 }
+
+// MARK: SHA256 of SHA256
+extension Data {
+    var doubleSHA256: Data {
+        return sha256().sha256()
+    }
+}
