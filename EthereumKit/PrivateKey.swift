@@ -23,7 +23,7 @@ public struct PrivateKey {
         self.index = 0
         self.network = network
         
-        let output = Crypto.HMACSHA512(key: "Bitcoin seed", data: seed)
+        let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
         self.raw = output[0..<32]
         self.chainCode = output[32..<64]
     }
