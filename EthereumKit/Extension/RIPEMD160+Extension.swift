@@ -3,7 +3,7 @@
 //  EthereumKit
 //
 //  Created by yuzushioh on 2018/02/04.
-//  Copyright © 2018 yuzushioh. All rights reserved.
+//  Copyright © 2018 yuzushioh.
 //
 
 import Foundation
