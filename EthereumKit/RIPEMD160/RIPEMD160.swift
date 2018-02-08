@@ -8,13 +8,19 @@
 
 import Foundation
 
+extension Data {
+    var hash160: Data {
+        return RIPEMD160.hash(message: self.sha256())
+    }
+}
+
 struct RIPEMD160 {
     
     private var MDbuf: (UInt32, UInt32, UInt32, UInt32, UInt32)
     private var buffer: Data
     private var count: Int64 // Total # of bytes processed.
     
-    init() {
+    private init() {
         MDbuf = (0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0)
         buffer = Data()
         count = 0
@@ -307,7 +313,7 @@ struct RIPEMD160 {
                  MDbuf.0 &+ bb &+ ccc)
     }
     
-    mutating func update(data: Data) {
+    mutating private func update(data: Data) {
         data.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
             var ptr = ptr
             var length = data.count
@@ -335,7 +341,7 @@ struct RIPEMD160 {
         count += Int64(data.count)
     }
     
-    mutating func finalize() -> Data {
+    mutating private func finalize() -> Data {
         var X = [UInt32](repeating: 0, count: 16)
         /* append the bit m_n == 1 */
         buffer.append(0x80)
@@ -366,5 +372,13 @@ struct RIPEMD160 {
         buffer = Data()
         
         return data
+    }
+}
+
+extension RIPEMD160 {
+    static func hash(message: Data) -> Data {
+        var md = RIPEMD160()
+        md.update(data: message)
+        return md.finalize()
     }
 }

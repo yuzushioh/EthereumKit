@@ -6,62 +6,55 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import CryptoSwift
+import Foundation
 
 public final class Mnemonic {
+    public enum Strength: Int {
+        case normal = 128
+        case hight = 256
+    }
     
-    public static func create(entropy: String, language: WordList = .english) -> String {
-        let initialEntropy = entropy.mnemonicData
+    public static func create(strength: Strength = .normal, language: WordList = .english) -> String {
+        let byteCount = strength.rawValue / 8
+        var bytes = Data(count: byteCount)
+        _ = bytes.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault, byteCount, $0) }
+        return create(entropy: bytes, language: language)
+    }
+    
+    public static func create(entropy: Data, language: WordList = .english) -> String {
+        var bin = String(entropy.flatMap { ("00000000" + String($0, radix:2)).suffix(8) })
         
-        let acceptableEntropyLengthList = [16, 20, 24, 28, 32]
-        guard acceptableEntropyLengthList.contains(initialEntropy.count) else {
-            fatalError("Initial entropy data length should be one of the following: \(acceptableEntropyLengthList). It is \(initialEntropy.count)")
-        }
+        let hash = entropy.sha256()
+        let hashBits = String(hash.flatMap { ("00000000" + String($0, radix: 2).suffix(8) )})
         
-        let initialEntropyBits = initialEntropy.toBits
-        let checkSumDistance = 0..<(initialEntropyBits.count / 32)
-        let checkSum = initialEntropy.sha256().toBits[checkSumDistance]
+        let cs = (entropy.count * 8) / 32
+        let checkSum = String(hashBits.prefix(cs))
+        bin += checkSum
         
-        let entropyBits = initialEntropyBits + checkSum
-        let splittingInterval = 11
-        guard entropyBits.count % splittingInterval == 0 else {
-            fatalError("Entropy data length mush be in a multiple of \(splittingInterval).")
-        }
-        
+        let interval = 11
         let words = language.words
-        let estimatedWordCount = entropyBits.count / splittingInterval
         
         var mnemonic: [String] = []
-        for index in 0..<estimatedWordCount {
-            let startIndex = index * splittingInterval
-            let endIndex = startIndex + splittingInterval
-            let subArray = entropyBits[startIndex..<endIndex]
-            let subString = subArray.joined(separator: "")
+        for index in 0..<(bin.count / interval) {
+            let startIndex = bin.index(bin.startIndex, offsetBy: index * interval)
+            let endIndex = bin.index(bin.startIndex, offsetBy: (index + 1) * interval)
             
-            let wordIndex = Int(strtoul(subString, nil, 2))
-            mnemonic.append(words[wordIndex])
+            let wordIndex = Int(bin[startIndex..<endIndex], radix: 2)!
+            mnemonic.append(String(words[wordIndex]))
         }
         
         return mnemonic.joined(separator: " ")
     }
     
     public static func createSeed(mnemonic: String, withPassphrase passphrase: String = "") -> Data {
-        func normalize(string: String) -> Data? {
-            return string.data(using: .utf8, allowLossyConversion: true)
-        }
-        
-        guard let password = normalize(string: mnemonic)?.bytes else {
+        guard let password = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8) else {
             fatalError("Nomalizing password failed in \(self)")
         }
         
-        guard let salt = normalize(string: "mnemonic" + passphrase)?.bytes else {
+        guard let salt = ("mnemonic" + passphrase).decomposedStringWithCompatibilityMapping.data(using: .utf8) else {
             fatalError("Nomalizing salt failed in \(self)")
         }
         
-        do {
-            return Data(try PKCS5.PBKDF2(password: password, salt: salt, iterations: 2048, variant: .sha512).calculate())
-        } catch let error {
-            fatalError("PKCS5.PBKDF2 faild: \(error.localizedDescription)")
-        }
+        return Crypto.PBKDF2SHA512(password: password.bytes, salt: salt.bytes)
     }
 }

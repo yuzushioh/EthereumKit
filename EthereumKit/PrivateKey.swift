@@ -23,7 +23,7 @@ public struct PrivateKey {
         self.index = 0
         self.network = network
         
-        let output = Crypto.HMACSHA512(key: "Bitcoin seed", data: seed)
+        let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
         self.raw = output[0..<32]
         self.chainCode = output[32..<64]
     }
@@ -47,23 +47,23 @@ public struct PrivateKey {
         
         var data = Data()
         if hardens {
-            data += UInt8(0).toHexData
+            data += UInt8(0)
             data += raw
         } else {
             data += publicKey.raw
         }
         
         let derivingIndex = hardens ? (edge + index) : index
-        data += derivingIndex.toHexData
+        data += derivingIndex
         
         let digest = Crypto.HMACSHA512(key: chainCode, data: data)
         let factor = BInt(data: digest[0..<32])
         
         let curveOrder = BInt(hex: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")!
-        let derivedPrivateKey = ((BInt(data: raw) + factor) % curveOrder).toData
+        let derivedPrivateKey = ((BInt(data: raw) + factor) % curveOrder).data
         
         let derivedChainCode = digest[32..<64]
-        let fingurePrint = UInt32(bytes: publicKey.raw.hash160.prefix(4))
+        let fingurePrint: UInt32 = publicKey.raw.hash160.withUnsafeBytes { $0.pointee }
         
         return PrivateKey(
             privateKey: derivedPrivateKey,
