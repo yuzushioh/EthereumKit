@@ -9,13 +9,6 @@
 import Foundation
 
 extension UInt8 {
-    var toHexData: Data {
-        var v = self
-        return Data(bytes: &v, count: MemoryLayout<UInt8>.size)
-    }
-}
-
-extension UInt8 {
     var bits: [String] {
         let totalBitsCount = MemoryLayout<UInt8>.size * 8
         var bitsArray = [String](repeating: "0", count: totalBitsCount)

@@ -47,14 +47,14 @@ public struct PrivateKey {
         
         var data = Data()
         if hardens {
-            data += UInt8(0).toHexData
+            data += UInt8(0)
             data += raw
         } else {
             data += publicKey.raw
         }
         
         let derivingIndex = hardens ? (edge + index) : index
-        data += derivingIndex.toHexData
+        data += derivingIndex
         
         let digest = Crypto.HMACSHA512(key: chainCode, data: data)
         let factor = BInt(data: digest[0..<32])

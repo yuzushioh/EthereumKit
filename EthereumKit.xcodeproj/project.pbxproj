@@ -17,7 +17,6 @@
 		AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291982018ADAE0047E0F0 /* Wallet.swift */; };
 		AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */; };
 		AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82919E2018ADAF0047E0F0 /* WordList.swift */; };
-		AE8291A82018AEBF0047E0F0 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291A72018AEBF0047E0F0 /* UInt32.swift */; };
 		AE8291AA2018C1F10047E0F0 /* BigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
@@ -104,7 +103,6 @@
 		AE8291982018ADAE0047E0F0 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		AE82919E2018ADAF0047E0F0 /* WordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
-		AE8291A72018AEBF0047E0F0 /* UInt32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt32.swift; sourceTree = "<group>"; };
 		AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Extension.swift"; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 			children = (
 				AEBA90E41FFA23C6003EA2BA /* String+Extension.swift */,
 				AEBA91111FFA5E6D003EA2BA /* UInt8+Extension.swift */,
-				AE8291A72018AEBF0047E0F0 /* UInt32.swift */,
 				AEBA90E61FFA2651003EA2BA /* Data+Extension.swift */,
 			);
 			path = Extension;
@@ -498,7 +495,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8291AA2018C1F10047E0F0 /* BigInt+Extension.swift in Sources */,
-				AE8291A82018AEBF0047E0F0 /* UInt32.swift in Sources */,
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
 				AEBA91121FFA5E6D003EA2BA /* UInt8+Extension.swift in Sources */,
