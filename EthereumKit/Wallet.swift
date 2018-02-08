@@ -19,4 +19,17 @@ public final class Wallet {
         privateKey = PrivateKey(seed: seed, network: network)
         publicKey = privateKey.publicKey
     }
+    
+    public var changePrivateKey: PrivateKey {
+        // m/44'/60'/0'/0
+        let purpose = privateKey.derived(at: 44, hardens: true)
+        let coinType = purpose.derived(at: network.coinType, hardens: true)
+        let account = coinType.derived(at: 0, hardens: true)
+        let change = account.derived(at: 0)
+        return change
+    }
+    
+    public func generateAddress(at index: UInt32) -> String {
+        return changePrivateKey.derived(at: index).publicKey.address
+    }
 }
