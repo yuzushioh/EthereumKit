@@ -16,7 +16,7 @@ class EthereumKitTests: XCTestCase {
         let mnemonic = Mnemonic.create(entropy: entropy)
         XCTAssertEqual(
             mnemonic,
-            "abandon amount liar amount expire adjust cage candy arch gather drum bulk"
+            "abandon amount liar amount expire adjust cage candy arch gather drum buyer"
         )
         
         let entropy2 = Data(hex: "a26a4821e36c7f7dccaa5484c080cefa")
@@ -33,7 +33,7 @@ class EthereumKitTests: XCTestCase {
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         XCTAssertEqual(
             seed.toHexString(),
-            "4425453cdece7f75f8c106ba123a617d6f8059fbab0deeee6f29c40f989fa249a0785261361a0768a01da79d35ef21975d94398ab5bf4b62bd2f424a8cad329a"
+            "3779b041fab425e9c0fd55846b2a03e9a388fb12784067bd8ebdb464c2574a05bcc7a8eb54d7b2a2c8420ff60f630722ea5132d28605dbc996c8ca7d7a8311c0"
         )
         
         let entropy2 = Data(hex: "a26a4821e36c7f7dccaa5484c080cefa")
@@ -68,12 +68,12 @@ class EthereumKitTests: XCTestCase {
         let firstPrivateKey = change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address,
-            "0x9dc0062feefaf332276a2c35a8fb8f8561f038c7"
+            "0xa801dcb9ade82fd81329dbfe7e3c67f2003aefa1"
         )
         
         XCTAssertEqual(
             firstPrivateKey.raw.toHexString(),
-            "b0104cb67b4f8eb19878ab878307d83afa51afb09e9ba0e099dc3e23667a3b87"
+            "21d517baeaf3bf4d7716bbdb7a209740fd646f53f2bf95472f1c2b162902a532"
         )
     }
 }

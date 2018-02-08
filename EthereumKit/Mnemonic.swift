@@ -8,6 +8,7 @@
 
 import Foundation
 
+// https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
 public final class Mnemonic {
     public enum Strength: Int {
         case normal = 128
@@ -22,24 +23,18 @@ public final class Mnemonic {
     }
     
     public static func create(entropy: Data, language: WordList = .english) -> String {
-        var bin = String(entropy.flatMap { ("00000000" + String($0, radix:2)).suffix(8) })
+        let entropybits = String(entropy.flatMap { ("00000000" + String($0, radix: 2)).suffix(8) })
+        let hashBits = String(entropy.sha256().flatMap { ("00000000" + String($0, radix: 2)).suffix(8) })
+        let checkSum = String(hashBits.prefix((entropy.count * 8) / 32))
         
-        let hash = entropy.sha256()
-        let hashBits = String(hash.flatMap { ("00000000" + String($0, radix: 2).suffix(8) )})
-        
-        let cs = (entropy.count * 8) / 32
-        let checkSum = String(hashBits.prefix(cs))
-        bin += checkSum
-        
-        let interval = 11
         let words = language.words
+        let concatenatedBits = entropybits + checkSum
         
         var mnemonic: [String] = []
-        for index in 0..<(bin.count / interval) {
-            let startIndex = bin.index(bin.startIndex, offsetBy: index * interval)
-            let endIndex = bin.index(bin.startIndex, offsetBy: (index + 1) * interval)
-            
-            let wordIndex = Int(bin[startIndex..<endIndex], radix: 2)!
+        for index in 0..<(concatenatedBits.count / 11) {
+            let startIndex = concatenatedBits.index(concatenatedBits.startIndex, offsetBy: index * 11)
+            let endIndex = concatenatedBits.index(startIndex, offsetBy: 11)
+            let wordIndex = Int(strtoul(String(concatenatedBits[startIndex..<endIndex]), nil, 2))
             mnemonic.append(String(words[wordIndex]))
         }
         
