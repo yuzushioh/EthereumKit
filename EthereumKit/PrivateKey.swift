@@ -9,36 +9,46 @@
 import CryptoSwift
 
 public struct PrivateKey {
+    public let raw: Data
+    public let chainCode: Data
     public let depth: UInt8
     public let fingerprint: UInt32
     public let index: UInt32
     public let network: Network
     
-    public let raw: Data
-    public let chainCode: Data
-    
     init(seed: Data, network: Network) {
+        let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
+        self.raw = Data(hex: "0x") + output[0..<32]
+        self.chainCode = output[32..<64]
         self.depth = 0
         self.fingerprint = 0
         self.index = 0
         self.network = network
-        
-        let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
-        self.raw = output[0..<32]
-        self.chainCode = output[32..<64]
     }
     
     init(privateKey: Data, chainCode: Data, depth: UInt8, fingerprint: UInt32, index: UInt32, network: Network) {
+        self.raw = privateKey
+        self.chainCode = chainCode
         self.depth = depth
         self.fingerprint = fingerprint
         self.index = index
         self.network = network
-        self.raw = privateKey
-        self.chainCode = chainCode
     }
     
     public var publicKey: PublicKey {
         return PublicKey(privateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: index)
+    }
+    
+    public var extended: String {
+        var extendedPrivateKeyData = Data()
+        extendedPrivateKeyData += network.privateKeyPrefix.bigEndian
+        extendedPrivateKeyData += depth.littleEndian
+        extendedPrivateKeyData += fingerprint.littleEndian
+        extendedPrivateKeyData += index.littleEndian
+        extendedPrivateKeyData += chainCode
+        extendedPrivateKeyData += UInt8(0)
+        extendedPrivateKeyData += raw
+        return extendedPrivateKeyData.base58BaseEncodedString
     }
     
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {
@@ -54,7 +64,7 @@ public struct PrivateKey {
         }
         
         let derivingIndex = hardens ? (edge + index) : index
-        data += derivingIndex
+        data += derivingIndex.bigEndian
         
         let digest = Crypto.HMACSHA512(key: chainCode, data: data)
         let factor = BInt(data: digest[0..<32])

@@ -20,10 +20,10 @@ class ViewController: UIViewController {
         // abandon amount liar amount expire adjust cage candy arch gather drum buyer
         
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        print(seed)
         // 3779b041fab425e9c0fd55846b2a03e9a388fb12784067bd8ebdb464c2574a05bcc7a8eb54d7b2a2c8420ff60f630722ea5132d28605dbc996c8ca7d7a8311c0
         
         let wallet = Wallet(seed: seed, network: .main)
+        print(wallet.privateKey.extended)
         
         // BIP44 key derivation
         // m/44'
@@ -37,9 +37,11 @@ class ViewController: UIViewController {
         
         // m/44'/60'/0'/0
         let change = account.derived(at: 0)
+        print(change.extended)
         
         // m/44'/60'/0'/0
         let firstPrivateKey = change.derived(at: 0)
+        print(firstPrivateKey.publicKey.raw.toHexString())
         print(firstPrivateKey.publicKey.address, firstPrivateKey.raw.toHexString())
         
         // PrivateKey: ee08ee9b92c8d4cc48f3690c55f70a9974e325a7c228b98ec58dcff8e6d14d66

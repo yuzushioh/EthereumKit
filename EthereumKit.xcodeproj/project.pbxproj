@@ -11,6 +11,7 @@
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
 		AE299DFE2018A63F002769F9 /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE299DFD2018A63E002769F9 /* SMP.swift */; };
+		AE354224202D46E400007B80 /* Base58Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE354223202D46E400007B80 /* Base58Encode.swift */; };
 		AE6639F12027470C0055B143 /* RIPEMD160.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6639F02027470C0055B143 /* RIPEMD160.swift */; };
 		AE717288202B67A200516D63 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90E81FFA2722003EA2BA /* CryptoSwift.framework */; };
 		AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7172A0202CAA0100516D63 /* DataConvertable.swift */; };
@@ -96,6 +97,7 @@
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		AE299DFD2018A63E002769F9 /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
+		AE354223202D46E400007B80 /* Base58Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Encode.swift; sourceTree = "<group>"; };
 		AE6639F02027470C0055B143 /* RIPEMD160.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIPEMD160.swift; sourceTree = "<group>"; };
 		AE7172A0202CAA0100516D63 /* DataConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertable.swift; sourceTree = "<group>"; };
 		AE8291972018ADAE0047E0F0 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				AE82919E2018ADAF0047E0F0 /* WordList.swift */,
 				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
+				AE354223202D46E400007B80 /* Base58Encode.swift */,
 				AE6639F22027473F0055B143 /* RIPEMD160 */,
 				AE299DFF2018A642002769F9 /* BigInt */,
 				AEBA90D81FFA21ED003EA2BA /* WalletKit.h */,
@@ -483,6 +486,7 @@
 				AE8291AA2018C1F10047E0F0 /* BigInt+Extension.swift in Sources */,
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
+				AE354224202D46E400007B80 /* Base58Encode.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
 				AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */,
 				AE6639F12027470C0055B143 /* RIPEMD160.swift in Sources */,
