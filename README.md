@@ -14,28 +14,22 @@ Architectures are highly inspired by [WalletKit](https://github.com/yuzushioh/Wa
 - Generate seed and convert it to mnemonic sentence.
 
 ```swift
-let entropy = "000102030405060708090a0b0c0d0e0f"
+let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
 let mnemonic = Mnemonic.create(entropy: entropy)
 print(mnemonic)
 // abandon amount liar amount expire adjust cage candy arch gather drum buyer
         
 let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-print(seed)
+print(seed.toHexString())
 ```
 
-- Create your wallet.
+- PrivateKey and key derivation (BIP32)
 
 ```swift
-// It generates master key pair from the seed provided.
-let wallet = Wallet(seed: seed, network: .main)
-```
+let masterPrivateKey = PrivateKey(seed: seed, network: .main)
 
-- Derive private keys at any index from its master private key.
-
-```swift
-// BIP44 key derivation
 // m/44'
-let purpose = wallet.privateKey.derived(at: 44, hardens: true)
+let purpose = masterPrivateKey.derived(at: 44, hardens: true)
 
 // m/44'/60'
 let coinType = purpose.derived(at: 60, hardens: true)
@@ -49,6 +43,23 @@ let change = account.derived(at: 0)
 // m/44'/60'/0'/0
 let firstPrivateKey = change.derived(at: 0)
 print(firstPrivateKey.publicKey.address)
+```
+
+
+- Create your wallet and generate addresse
+
+```swift
+// It generates master key pair from the seed provided.
+let wallet = Wallet(seed: seed, network: .main)
+
+let firstAddress = wallet.generateAddress(at: 0)
+print(firstAddress)
+        
+let secondAddress = wallet.generateAddress(at: 1)
+print(secondAddress)
+        
+let thirdAddress = wallet.generateAddress(at: 2)
+print(thirdAddress)
 ```
 
 ## License
