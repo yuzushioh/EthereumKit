@@ -44,8 +44,8 @@ class ViewController: UIViewController {
         print(firstPrivateKey.publicKey.raw.toHexString())
         print(firstPrivateKey.publicKey.address, firstPrivateKey.raw.toHexString())
         
-        // PrivateKey: ee08ee9b92c8d4cc48f3690c55f70a9974e325a7c228b98ec58dcff8e6d14d66
-        // Address: 0x479c04427c15e84ffd2cbdee136c5a979a08a749
+        // PrivateKey: df02cbea58239744a8a6ba328056309ae43f86fec6db45e5f782adcf38aacadf
+        // Address: 0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7
         // You can check at MyEtherWallet if the private key actually generates the same address.
     }
 }

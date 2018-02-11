@@ -1,0 +1,38 @@
+//
+//  EIP55.swift
+//  EthereumKit
+//
+//  Created by yuzushioh on 2018/02/11.
+//  Copyright © 2018 yuzushioh. All rights reserved.
+//
+
+import Foundation
+import CryptoSwift
+
+// NOTE: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md
+
+private struct EIP55 {
+    static func convert(from data: Data) -> String {
+        let address = data.toHexString()
+        let hash = address.data(using: .ascii)!.sha3(.keccak256).toHexString()
+        
+        return zip(address, hash)
+            .map { a, h -> String in
+                switch (a, h) {
+                case ("0", _), ("1", _), ("2", _), ("3", _), ("4", _), ("5", _), ("6", _), ("7", _), ("8", _), ("9", _):
+                    return String(a)
+                case (_, "8"), (_, "9"), (_, "a"), (_, "b"), (_, "c"), (_, "d"), (_, "e"), (_, "f"):
+                    return String(a).uppercased()
+                default:
+                    return String(a).lowercased()
+                }
+            }
+            .joined()
+    }
+}
+
+extension Data {
+    var eip55Address: String {
+        return "0x" + EIP55.convert(from: self)
+    }
+}
