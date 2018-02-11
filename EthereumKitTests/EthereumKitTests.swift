@@ -68,12 +68,32 @@ class EthereumKitTests: XCTestCase {
         let firstPrivateKey = change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address,
-            "0x0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
+            "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
         )
         
         XCTAssertEqual(
             firstPrivateKey.raw.toHexString(),
             "df02cbea58239744a8a6ba328056309ae43f86fec6db45e5f782adcf38aacadf"
         )
+    }
+    
+    func testAddressGeneration() {
+        let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
+        let mnemonic = Mnemonic.create(entropy: entropy)
+        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let wallet = Wallet(seed: seed, network: .main)
+        
+        let firstAddress = wallet.generateAddress(at: 0)
+        XCTAssertEqual(firstAddress, "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7")
+        
+        let secondAddress = wallet.generateAddress(at: 1)
+        XCTAssertEqual(secondAddress, "0xb3c3D923CFc4d551b38Db8A86BbA42B623D063cE")
+        
+        let thirdAddress = wallet.generateAddress(at: 2)
+        XCTAssertEqual(thirdAddress, "0x82e35B34CfBEB9704E51Eb17f8263d919786E66a")
+        
+        let forthAddress = wallet.generateAddress(at: 3)
+        XCTAssertEqual(forthAddress, "0xCF1D652DAb65ea4f10990FD2D2E59Cd7cbEb315a")
+        
     }
 }
