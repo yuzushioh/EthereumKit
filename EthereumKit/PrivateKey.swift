@@ -16,7 +16,7 @@ public struct PrivateKey {
     public let index: UInt32
     public let network: Network
     
-    init(seed: Data, network: Network) {
+    public init(seed: Data, network: Network) {
         let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
         self.raw = Data(hex: "0x") + output[0..<32]
         self.chainCode = output[32..<64]
@@ -26,7 +26,7 @@ public struct PrivateKey {
         self.network = network
     }
     
-    init(privateKey: Data, chainCode: Data, depth: UInt8, fingerprint: UInt32, index: UInt32, network: Network) {
+    private init(privateKey: Data, chainCode: Data, depth: UInt8, fingerprint: UInt32, index: UInt32, network: Network) {
         self.raw = privateKey
         self.chainCode = chainCode
         self.depth = depth
