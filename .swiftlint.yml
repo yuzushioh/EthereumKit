@@ -1,0 +1,21 @@
+disabled_rules:
+  - file_length
+  - line_length
+  - function_body_length 
+  - type_body_length
+  - type_name
+  - identifier_name
+  - function_parameter_count
+  - cyclomatic_complexity
+  - todo
+  - nesting
+opt_in_rules:
+  - explicit_init
+  - first_where
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - switch_case_on_newline
+trailing_whitespace:
+  ignores_empty_lines: true
