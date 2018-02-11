@@ -1,3 +1,5 @@
 language: objective-c
-xcode_project: EthereumKitt.xcodeproj
-xcode_scheme: EthereumKitTests
+osx_image: xcode9
+xcode_project: EthereumKit.xcodeproj
+xcode_scheme: EthereumKit
+xcode_sdk: iphonesimulatorX
