@@ -182,14 +182,6 @@
 			path = BigInt;
 			sourceTree = "<group>";
 		};
-		AE6639F22027473F0055B143 /* RIPEMD160 */ = {
-			isa = PBXGroup;
-			children = (
-				AE6639F02027470C0055B143 /* RIPEMD160.swift */,
-			);
-			path = RIPEMD160;
-			sourceTree = "<group>";
-		};
 		AE90A0761FFA698D005ED7AF /* EthereumKitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,10 +225,10 @@
 				AE1BF3342028B17B00344FB0 /* PublicKey.swift */,
 				AE82919E2018ADAF0047E0F0 /* WordList.swift */,
 				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
-				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
-				AE354223202D46E400007B80 /* Base58Encode.swift */,
 				AE35422E20300E4900007B80 /* EIP55.swift */,
-				AE6639F22027473F0055B143 /* RIPEMD160 */,
+				AE6639F02027470C0055B143 /* RIPEMD160.swift */,
+				AE354223202D46E400007B80 /* Base58Encode.swift */,
+				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				AE299DFF2018A642002769F9 /* BigInt */,
 				AEBA90D81FFA21ED003EA2BA /* WalletKit.h */,
 				AEBA90D91FFA21ED003EA2BA /* Info.plist */,

@@ -11,8 +11,8 @@ import CryptoSwift
 
 // NOTE: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md
 
-private struct EIP55 {
-    static func convert(from data: Data) -> String {
+struct EIP55 {
+    static func encode(_ data: Data) -> String {
         let address = data.toHexString()
         let hash = address.data(using: .ascii)!.sha3(.keccak256).toHexString()
         
@@ -28,11 +28,5 @@ private struct EIP55 {
                 }
             }
             .joined()
-    }
-}
-
-extension Data {
-    var eip55Address: String {
-        return "0x" + EIP55.convert(from: self)
     }
 }
