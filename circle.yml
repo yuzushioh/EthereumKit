@@ -1,0 +1,9 @@
+machine:
+  xcode:
+    version: 9.0
+  environment:
+    LANG: en_US.UTF-8
+test:
+  override:
+  - set -o pipefail
+  - xcodebuild test -workspace Ethereum.xcworkspace -scheme EthereumKit -sdk iphonesimulator -destination "name=iPhone X" | xcpretty -c --test
