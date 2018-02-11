@@ -6,15 +6,15 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import CryptoSwift
+import Foundation
 
 public struct PrivateKey {
     public let raw: Data
     public let chainCode: Data
-    public let depth: UInt8
-    public let fingerprint: UInt32
-    public let index: UInt32
-    public let network: Network
+    private let depth: UInt8
+    private let fingerprint: UInt32
+    private let index: UInt32
+    private let network: Network
     
     public init(seed: Data, network: Network) {
         let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
@@ -48,7 +48,7 @@ public struct PrivateKey {
         extendedPrivateKeyData += chainCode
         extendedPrivateKeyData += UInt8(0)
         extendedPrivateKeyData += raw
-        return extendedPrivateKeyData.base58BaseEncodedString
+        return Base58.encode(extendedPrivateKeyData)
     }
     
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {
@@ -73,7 +73,7 @@ public struct PrivateKey {
         let derivedPrivateKey = ((BInt(data: raw) + factor) % curveOrder).data
         
         let derivedChainCode = digest[32..<64]
-        let fingurePrint: UInt32 = publicKey.raw.hash160.withUnsafeBytes { $0.pointee }
+        let fingurePrint: UInt32 = RIPEMD160.hash(publicKey.raw.sha256()).withUnsafeBytes { $0.pointee }
         
         return PrivateKey(
             privateKey: derivedPrivateKey,

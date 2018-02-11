@@ -7,8 +7,9 @@
 //
 
 import CryptoSwift
+import ECDSA
 
-final class Crypto {    
+final class Crypto {
     static func HMACSHA512(key: Data, data: Data) -> Data {
         let output: [UInt8]
         do {
@@ -27,6 +28,10 @@ final class Crypto {
             fatalError("PKCS5.PBKDF2 faild: \(error.localizedDescription)")
         }
         return Data(output)
+    }
+    
+    static func generatePublicKey(data: Data, compressed: Bool) -> Data {
+        return ECDSA.secp256k1.generatePublicKey(with: data, isCompressed: compressed)
     }
 }
 

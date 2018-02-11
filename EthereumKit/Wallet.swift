@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CryptoSwift
 
 public final class Wallet {
     private let privateKey: PrivateKey

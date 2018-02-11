@@ -8,52 +8,58 @@
 
 import Foundation
 
-// MARK: Base56Encode
-
-extension Data {
-    var base58BaseEncodedString: String {
-        return base58Encode()
-    }
+public struct Base58 {
+    private static let alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     
-    private func base58Encode() -> String {
-        let dec58 = BInt(58)
-        let dec0 = BInt(0)
-        let base58EncodeCharacters: [Character] = [
-            "1", "2", "3", "4", "5", "6", "7", "8", "9",
-            "A", "B", "C", "D", "E", "F", "G", "H", "J",
-            "K", "L", "M", "N", "P", "Q", "R", "S", "T",
-            "U", "V", "W", "X", "Y", "Z",
-            "a", "b", "c", "d", "e", "f", "g", "h", "i",
-            "j", "k", "m", "n", "o", "p", "q", "r", "s",
-            "t", "u", "v", "w", "x", "y", "z"
-        ]
+    public static func encode(_ bytes: Data) -> String {
+        var bytes = bytes
+        var zerosCount = 0
+        var length = 0
         
-        let checksum = self.doubleSHA256
-        let tmp = self + checksum[0...3]
-        
-        guard var dec = BInt(hex: tmp.toHexString()) else {
-            fatalError()
+        for b in bytes {
+            if b != 0 { break }
+            zerosCount += 1
         }
         
-        var characters = Array<String>()
-        while dec > dec0 {
-            let rem = dec % dec58
-            dec = dec / dec58
+        bytes.removeFirst(zerosCount)
+        
+        let size = bytes.count * 138 / 100 + 1
+        
+        var base58: [UInt8] = Array(repeating: 0, count: size)
+        for b in bytes {
+            var carry = Int(b)
+            var i = 0
             
-            if let index = rem.toInt() {
-                characters.insert(String(base58EncodeCharacters[index]), at: 0)
+            for j in 0...base58.count-1 where carry != 0 || i < length {
+                carry += 256 * Int(base58[base58.count - j - 1])
+                base58[base58.count - j - 1] = UInt8(carry % 58)
+                carry /= 58
+                i += 1
             }
+            
+            assert(carry == 0)
+            
+            length = i
         }
         
-        // replace leading char '0' with '1'
-        characters.forEach { character in
-            guard character == "0" else {
-                return
-            }
-            let index = characters.index(of: character)!
-            characters.replaceSubrange(index...index + 1, with: ["1"])
+        // skip leading zeros
+        var zerosToRemove = 0
+        var str = ""
+        for b in base58 {
+            if b != 0 { break }
+            zerosToRemove += 1
+        }
+        base58.removeFirst(zerosToRemove)
+        
+        while 0 < zerosCount {
+            str = "\(str)1"
+            zerosCount -= 1
         }
         
-        return characters.joined()
+        for b in base58 {
+            str = "\(str)\(alphabet[String.Index(encodedOffset: Int(b))])"
+        }
+        
+        return str
     }
 }

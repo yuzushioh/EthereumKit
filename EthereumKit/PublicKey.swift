@@ -6,21 +6,19 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import ECDSA
-import CryptoSwift
+import Foundation
 
 public struct PublicKey {
     public let raw: Data
     public let chainCode: Data
-    public let depth: UInt8
-    public let fingerprint: UInt32
-    public let index: UInt32
-    public let network: Network
-    
+    private let depth: UInt8
+    private let fingerprint: UInt32
+    private let index: UInt32
+    private let network: Network
     private let privateKey: PrivateKey
     
     init(privateKey: PrivateKey, chainCode: Data, network: Network, depth: UInt8, fingerprint: UInt32, index: UInt32) {
-        let compressed = ECDSA.secp256k1.generatePublicKey(with: privateKey.raw, isCompressed: true)
+        let compressed = Crypto.generatePublicKey(data: privateKey.raw, compressed: true)
         self.raw = Data(hex: "0x") + compressed
         self.chainCode = chainCode
         self.depth = depth
@@ -31,12 +29,12 @@ public struct PublicKey {
     }
     
     private var addressData: Data {
-        let uncompressed = ECDSA.secp256k1.generatePublicKey(with: privateKey.raw, isCompressed: false)
+        let uncompressed = Crypto.generatePublicKey(data: privateKey.raw, compressed: false)
         let hash = uncompressed.dropFirst().sha3(.keccak256)
         return hash.suffix(20)
     }
     
     public var address: String {
-        return addressData.eip55Address
+        return "0x" + EIP55.encode(addressData)
     }
 }
