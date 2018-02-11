@@ -49,11 +49,11 @@ class EthereumKitTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .main)
+        let privateKey = PrivateKey(seed: seed, network: .main)
         
         // BIP44 key derivation
         // m/44'
-        let purpose = wallet.privateKey.derived(at: 44, hardens: true)
+        let purpose = privateKey.derived(at: 44, hardens: true)
         
         // m/44'/60'
         let coinType = purpose.derived(at: 60, hardens: true)
@@ -68,12 +68,12 @@ class EthereumKitTests: XCTestCase {
         let firstPrivateKey = change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address,
-            "0xa801dcb9ade82fd81329dbfe7e3c67f2003aefa1"
+            "0x0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
         )
         
         XCTAssertEqual(
             firstPrivateKey.raw.toHexString(),
-            "21d517baeaf3bf4d7716bbdb7a209740fd646f53f2bf95472f1c2b162902a532"
+            "df02cbea58239744a8a6ba328056309ae43f86fec6db45e5f782adcf38aacadf"
         )
     }
 }

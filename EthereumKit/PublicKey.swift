@@ -30,9 +30,13 @@ public struct PublicKey {
         self.privateKey = privateKey
     }
     
-    public var address: String {
+    private var addressData: Data {
         let uncompressed = ECDSA.secp256k1.generatePublicKey(with: privateKey.raw, isCompressed: false)
         let hash = uncompressed.dropFirst().sha3(.keccak256)
-        return "0x" + hash.suffix(20).toHexString()
+        return hash.suffix(20)
+    }
+    
+    public var address: String {
+        return addressData.eip55Address
     }
 }
