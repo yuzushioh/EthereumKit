@@ -68,7 +68,7 @@ class EthereumKitTests: XCTestCase {
         let firstPrivateKey = change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address,
-            "0x0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
+            "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
         )
         
         XCTAssertEqual(
