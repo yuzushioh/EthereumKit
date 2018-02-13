@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Copied from https://github.com/kishikawakatsumi/BitcoinKit/blob/master/BitcoinKit/Encoding.swift
 public struct Base58 {
     private static let alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
     
