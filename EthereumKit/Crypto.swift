@@ -7,6 +7,7 @@
 //
 
 import CryptoSwift
+import secp256k1
 
 final class Crypto {
     static func HMACSHA512(key: Data, data: Data) -> Data {
@@ -30,7 +31,7 @@ final class Crypto {
     }
     
     static func generatePublicKey(data: Data, compressed: Bool) -> Data {
-        return Data() // FIX
+        return Secp256k1.generatePublicKey(withPrivateKey: data, compression: compressed)
     }
 }
 

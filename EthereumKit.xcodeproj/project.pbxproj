@@ -149,14 +149,6 @@
 			path = BigInt;
 			sourceTree = "<group>";
 		};
-		AE8387C420349CAB00FAC88F /* ModuleMap */ = {
-			isa = PBXGroup;
-			children = (
-				AE8387C12034962C00FAC88F /* module.modulemap */,
-			);
-			path = ModuleMap;
-			sourceTree = "<group>";
-		};
 		AE90A0761FFA698D005ED7AF /* EthereumKitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +196,7 @@
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				AED02DB52019B90A00B76CEC /* secp256k1.h */,
 				AED02DAC2019B83100B76CEC /* secp256k1.m */,
-				AE8387C420349CAB00FAC88F /* ModuleMap */,
+				AE8387C12034962C00FAC88F /* module.modulemap */,
 				AE299DFF2018A642002769F9 /* BigInt */,
 				AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */,
 				AEBA90D91FFA21ED003EA2BA /* Info.plist */,
@@ -644,16 +636,23 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/secp256k1/include";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Libraries/secp256k1/include",
+					"$(SRCROOT)/Libraries/openssl/include",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/EthereumKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libraries/secp256k1/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Libraries/secp256k1/lib",
+					"$(SRCROOT)/Libraries/openssl/lib",
+				);
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries $(SRCROOT)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -673,16 +672,23 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/secp256k1/include";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Libraries/secp256k1/include",
+					"$(SRCROOT)/Libraries/openssl/include",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/EthereumKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libraries/secp256k1/lib";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/Libraries/secp256k1/lib",
+					"$(SRCROOT)/Libraries/openssl/lib",
+				);
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries $(SRCROOT)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
