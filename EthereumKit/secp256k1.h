@@ -2,8 +2,8 @@
 //  secp256k1.h
 //  secp256k1
 //
-//  Created by 仇弘扬 on 2017/8/17.
-//  Copyright © 2017年 askcoin. All rights reserved.
+//  Created by yuzushioh on 2018/02/14.
+//  Copyright © 2018 yuzushioh.
 //
 
 #import <Foundation/Foundation.h>

@@ -2,12 +2,13 @@
 //  secp256k1.m
 //  secp256k1
 //
-//  Created by 仇弘扬 on 2017/8/17.
-//  Copyright © 2017年 askcoin. All rights reserved.
+//  Created by yuzushioh on 2018/02/14.
+//  Copyright © 2018 yuzushioh.
 //
 
-#import <Foundation/Foundation.h>
 #import "secp256k1.h"
+#import <openssl/sha.h>
+#import <openssl/ripemd.h>
 #import <openssl/hmac.h>
 #import <openssl/ec.h>
 
