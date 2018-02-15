@@ -52,6 +52,10 @@ public struct PrivateKey {
         return Base58.encode(extendedPrivateKeyData)
     }
     
+    public func generateAddress(at index: UInt32) -> String {
+        return derived(at: index).publicKey.address
+    }
+    
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {
         guard (0x80000000 & index) == 0 else {
             fatalError("Invalid child index")
