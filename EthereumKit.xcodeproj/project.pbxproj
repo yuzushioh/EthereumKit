@@ -245,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEBA90DD1FFA21ED003EA2BA /* Build configuration list for PBXNativeTarget "EthereumKit" */;
 			buildPhases = (
+				AE8387CD2035DCE100FAC88F /* Build Libraries */,
 				AEBA90D01FFA21ED003EA2BA /* Sources */,
 				AEBA90D11FFA21ED003EA2BA /* Frameworks */,
 				AEBA90D21FFA21ED003EA2BA /* Headers */,
@@ -366,6 +367,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    git ls-files -mo --exclude-standard | grep \\.swift$ | xargs -I{} swiftlint autocorrect --path {}\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		AE8387CD2035DCE100FAC88F /* Build Libraries */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Libraries";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ ! -d \"$SRCROOT/Libraries/secp256k1/lib\" ] || [ ! -d \"$SRCROOT/Libraries/openssl/lib\" ]; then\n    env -i PATH=$PATH sh \"$SRCROOT/script/build_libraries.sh\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
