@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import EthereumKit.Private
 
 public struct PrivateKey {
     public let raw: Data
     public let chainCode: Data
     private let depth: UInt8
     private let fingerprint: UInt32
-    private let index: UInt32
+    private let childIndex: UInt32
     private let network: Network
     
     public init(seed: Data, network: Network) {
@@ -22,7 +23,7 @@ public struct PrivateKey {
         self.chainCode = output[32..<64]
         self.depth = 0
         self.fingerprint = 0
-        self.index = 0
+        self.childIndex = 0
         self.network = network
     }
     
@@ -31,12 +32,12 @@ public struct PrivateKey {
         self.chainCode = chainCode
         self.depth = depth
         self.fingerprint = fingerprint
-        self.index = index
+        self.childIndex = index
         self.network = network
     }
     
     public var publicKey: PublicKey {
-        return PublicKey(privateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: index)
+        return PublicKey(privateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: childIndex)
     }
     
     public var extended: String {
@@ -44,7 +45,7 @@ public struct PrivateKey {
         extendedPrivateKeyData += network.privateKeyPrefix.bigEndian
         extendedPrivateKeyData += depth.littleEndian
         extendedPrivateKeyData += fingerprint.littleEndian
-        extendedPrivateKeyData += index.littleEndian
+        extendedPrivateKeyData += childIndex.littleEndian
         extendedPrivateKeyData += chainCode
         extendedPrivateKeyData += UInt8(0)
         extendedPrivateKeyData += raw
@@ -52,35 +53,29 @@ public struct PrivateKey {
     }
     
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {
-        let edge: UInt32 = 0x80000000
-        guard (edge & index) == 0 else { fatalError("Invalid child index") }
-        
-        var data = Data()
-        if hardens {
-            data += UInt8(0)
-            data += raw
-        } else {
-            data += publicKey.raw
+        guard (0x80000000 & index) == 0 else {
+            fatalError("Invalid child index")
         }
         
-        let derivingIndex = hardens ? (edge + index) : index
-        data += derivingIndex.bigEndian
+        let keyDeriver = KeyDerivation(
+            privateKey: raw,
+            publicKey: publicKey.raw,
+            chainCode: chainCode,
+            depth: depth,
+            fingerprint: fingerprint,
+            childIndex: childIndex
+        )
         
-        let digest = Crypto.HMACSHA512(key: chainCode, data: data)
-        let factor = BInt(data: digest[0..<32])
-        
-        let curveOrder = BInt(hex: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")!
-        let derivedPrivateKey = ((BInt(data: raw) + factor) % curveOrder).data
-        
-        let derivedChainCode = digest[32..<64]
-        let fingurePrint: UInt32 = Crypto.hash160(publicKey.raw).withUnsafeBytes { $0.pointee }
+        guard let derivedKey = keyDeriver.derived(at: index, hardened: hardens) else {
+            fatalError("Child key derivation failed at index: \(index)")
+        }
         
         return PrivateKey(
-            privateKey: derivedPrivateKey,
-            chainCode: derivedChainCode,
-            depth: depth + 1,
-            fingerprint: fingurePrint,
-            index: derivingIndex,
+            privateKey: derivedKey.privateKey!,
+            chainCode: derivedKey.chainCode,
+            depth: derivedKey.depth,
+            fingerprint: derivedKey.fingerprint,
+            index: derivedKey.childIndex,
             network: network
         )
     }
