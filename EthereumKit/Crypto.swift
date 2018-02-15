@@ -7,7 +7,7 @@
 //
 
 import CryptoSwift
-import ECDSA
+import EthereumKit.Private
 
 final class Crypto {
     static func HMACSHA512(key: Data, data: Data) -> Data {
@@ -31,7 +31,7 @@ final class Crypto {
     }
     
     static func generatePublicKey(data: Data, compressed: Bool) -> Data {
-        return ECDSA.secp256k1.generatePublicKey(with: data, isCompressed: compressed)
+        return Secp256k1.generatePublicKey(withPrivateKey: data, compression: compressed)
     }
 }
 
