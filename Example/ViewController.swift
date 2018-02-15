@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = Wallet(seed: seed, network: .main)
         
-        let firstAddress = wallet.generateAddress(at: 0)
+        let firstAddress = wallet.receiveAddress(at: 0)
         print(firstAddress)
         
-        let secondAddress = wallet.generateAddress(at: 1)
+        let secondAddress = wallet.receiveAddress(at: 1)
         print(secondAddress)
         
-        let thirdAddress = wallet.generateAddress(at: 2)
+        let thirdAddress = wallet.receiveAddress(at: 2)
         print(thirdAddress)
         
         // PrivateKey: df02cbea58239744a8a6ba328056309ae43f86fec6db45e5f782adcf38aacadf
