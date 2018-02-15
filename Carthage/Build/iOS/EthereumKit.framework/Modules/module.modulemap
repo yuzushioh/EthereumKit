@@ -1,0 +1,16 @@
+framework module EthereumKit {
+    umbrella header "EthereumKit.h"
+    
+    export *
+    module * { export * }
+    
+    explicit module Private {
+        header "Internal.h"
+        link "crypto"
+    }
+}
+
+module EthereumKit.Swift {
+    header "EthereumKit-Swift.h"
+    requires objc
+}
