@@ -1,7 +1,6 @@
 # EthereumKit
 
 EthereumKit is a Swift framework that enables you to create Ethereum wallet and use it in your app.
-Architectures are highly inspired by [WalletKit](https://github.com/yuzushioh/WalletKit) and [BitcoinKit](https://github.com/kishikawakatsumi/BitcoinKit)
 
 🚨 __EthereumKit is currently under development. not ready for the production use__ 🚨
 
@@ -69,6 +68,11 @@ let thirdAddress = wallet.receiveAddress(at: 2)
 
 - Insert `github "yuzushioh/EthereumKit"` to your Cartfile.
 - Run `carthage update --platform ios`.
+
+## Made possible by
+- [BitcoinKit](https://github.com/kishikawakatsumi/BitcoinKit)
+- [BitcoinCore](https://github.com/oleganza/CoreBitcoin)
+- [openssl](https://github.com/openssl/openssl)
 
 ## License
 EthereumKit is released under the [MIT License](LICENSE.md).
