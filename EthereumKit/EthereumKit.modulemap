@@ -5,7 +5,7 @@ framework module EthereumKit {
     module * { export * }
     
     explicit module Private {
-        header "secp256k1.h"
+        header "Internal.h"
         link "crypto"
     }
 }

@@ -73,7 +73,7 @@ public struct PrivateKey {
         let derivedPrivateKey = ((BInt(data: raw) + factor) % curveOrder).data
         
         let derivedChainCode = digest[32..<64]
-        let fingurePrint: UInt32 = RIPEMD160.hash(publicKey.raw.sha256()).withUnsafeBytes { $0.pointee }
+        let fingurePrint: UInt32 = Crypto.hash160(publicKey.raw).withUnsafeBytes { $0.pointee }
         
         return PrivateKey(
             privateKey: derivedPrivateKey,
