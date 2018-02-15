@@ -22,7 +22,7 @@ public final class Wallet {
         return privateKey(change: .internal).generateAddress(at: index)
     }
     
-    public func recieveAddress(at index: UInt32) -> String {
+    public func receiveAddress(at index: UInt32) -> String {
         return privateKey(change: .external).generateAddress(at: index)
     }
     
