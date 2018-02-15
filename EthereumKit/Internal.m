@@ -6,7 +6,7 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-#import "secp256k1.h"
+#import "Internal.h"
 #import <openssl/sha.h>
 #import <openssl/ripemd.h>
 #import <openssl/hmac.h>
@@ -49,4 +49,43 @@
     return result;
 }
 
+@end
+
+@implementation CryptoHash
+
++ (NSData *)sha256:(NSData *)data {
+    NSMutableData *result = [NSMutableData dataWithLength:SHA256_DIGEST_LENGTH];
+    SHA256(data.bytes, data.length, result.mutableBytes);
+    return result;
+}
+
++ (NSData *)sha256sha256:(NSData *)data {
+    return [self sha256:[self sha256:data]];
+}
+
++ (NSData *)ripemd160:(NSData *)data {
+    NSMutableData *result = [NSMutableData dataWithLength:RIPEMD160_DIGEST_LENGTH];
+    RIPEMD160(data.bytes, data.length, result.mutableBytes);
+    return result;
+}
+
++ (NSData *)sha256ripemd160:(NSData *)data {
+    return [self ripemd160:[self sha256:data]];
+}
+
++ (NSData *)hmacsha512:(NSData *)data key:(NSData *)key {
+    unsigned int length = SHA512_DIGEST_LENGTH;
+    NSMutableData *result = [NSMutableData dataWithLength:length];
+    HMAC(EVP_sha512(), key.bytes, (int)key.length, data.bytes, data.length, result.mutableBytes, &length);
+    return result;
+}
+
+@end
+
+@implementation PKCS5
++ (NSData *)PBKDF2:(NSData *)password salt:(NSData *)salt iterations:(NSInteger)iterations keyLength:(NSInteger)keyLength {
+    NSMutableData *result = [NSMutableData dataWithLength:keyLength];
+    PKCS5_PBKDF2_HMAC(password.bytes, (int)password.length, salt.bytes, (int)salt.length, (int)iterations, EVP_sha512(), (int)keyLength, result.mutableBytes);
+    return result;
+}
 @end
