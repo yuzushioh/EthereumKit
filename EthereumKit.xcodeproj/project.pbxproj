@@ -22,7 +22,7 @@
 		AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82919E2018ADAF0047E0F0 /* WordList.swift */; };
 		AE8291AA2018C1F10047E0F0 /* BigInt+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */; };
 		AE8387C020348C5500FAC88F /* secp256k1.m in Sources */ = {isa = PBXBuildFile; fileRef = AED02DAC2019B83100B76CEC /* secp256k1.m */; };
-		AE8387C320349AD700FAC88F /* secp256k1.h in Headers */ = {isa = PBXBuildFile; fileRef = AED02DB52019B90A00B76CEC /* secp256k1.h */; };
+		AE8387C320349AD700FAC88F /* secp256k1.h in Headers */ = {isa = PBXBuildFile; fileRef = AED02DB52019B90A00B76CEC /* secp256k1.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -91,7 +91,7 @@
 		AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		AE82919E2018ADAF0047E0F0 /* WordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
 		AE8291A92018C1F10047E0F0 /* BigInt+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigInt+Extension.swift"; sourceTree = "<group>"; };
-		AE8387C12034962C00FAC88F /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		AE8387C12034962C00FAC88F /* EthereumKit.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = EthereumKit.modulemap; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				AED02DB52019B90A00B76CEC /* secp256k1.h */,
 				AED02DAC2019B83100B76CEC /* secp256k1.m */,
-				AE8387C12034962C00FAC88F /* module.modulemap */,
+				AE8387C12034962C00FAC88F /* EthereumKit.modulemap */,
 				AE299DFF2018A642002769F9 /* BigInt */,
 				AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */,
 				AEBA90D91FFA21ED003EA2BA /* Info.plist */,
@@ -474,6 +474,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/crypto/include";
 				INFOPLIST_FILE = EthereumKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -494,6 +495,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Libraries/crypto/include";
 				INFOPLIST_FILE = EthereumKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -648,7 +650,7 @@
 					"$(SRCROOT)/Libraries/secp256k1/lib",
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
-				MODULEMAP_FILE = "";
+				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -684,7 +686,7 @@
 					"$(SRCROOT)/Libraries/secp256k1/lib",
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
-				MODULEMAP_FILE = "";
+				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

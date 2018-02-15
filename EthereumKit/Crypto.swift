@@ -7,7 +7,7 @@
 //
 
 import CryptoSwift
-import secp256k1
+import EthereumKit.Private
 
 final class Crypto {
     static func HMACSHA512(key: Data, data: Data) -> Data {
