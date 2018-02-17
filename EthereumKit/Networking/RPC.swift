@@ -13,13 +13,14 @@ public final class RPC {
         public typealias Response = Balance
         
         public let address: String
+        public let blockParameter: BlockParameter
         
         public var method: String {
             return "eth_getBalance"
         }
         
         public var parameters: Any? {
-            return [address, "latest"]
+            return [address, blockParameter.rawValue]
         }
         
         public func response(from resultObject: Any) throws -> Balance {

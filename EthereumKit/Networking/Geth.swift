@@ -16,8 +16,8 @@ public final class Geth {
         etherClient = EtherClient(network: network)
     }
     
-    public func getBalance(of address: String, handler: @escaping (Result<Balance, RPCError>) -> Void) {
-        let rpc = RPC.GetBalance(address: address)
+    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, RPCError>) -> Void) {
+        let rpc = RPC.GetBalance(address: address, blockParameter: blockParameter)
         etherClient.send(rpc, handler: handler)
     }
 }

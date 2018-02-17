@@ -6,10 +6,20 @@
 //  Copyright © 2018 yuzushioh. All rights reserved.
 //
 
+import APIKit
+
+// TODO: Handle jsonrpc error
 public enum RPCError: Error {
-    case hoge
+    case connectionError(Error)
+    case systemError(Error)
     
     init(_ error: Error) {
-        self = .hoge
+        switch error {
+        case SessionTaskError.connectionError(let error):
+            self = .connectionError(error)
+            
+        default:
+            self = .systemError(error)
+        }
     }
 }
