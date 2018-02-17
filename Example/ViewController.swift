@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         // abandon amount liar amount expire adjust cage candy arch gather drum buyer
         
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .main)
+        let wallet = Wallet(seed: seed, network: .test)
         
         let firstAddress = wallet.receiveAddress(at: 0)
         print(firstAddress)
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         // You can check at MyEtherWallet if the private key actually generates the same address.
         
         let geth = Geth(network: .main)
-        geth.getBalance(of: "0x7aBadDaBE5a304633b11EbF16475F440BE7367F6") { result in
+        geth.getBalance(of: firstAddress) { result in
             switch result {
             case .success(let balance):
                 print(balance.wei, balance.ether)
