@@ -28,4 +28,26 @@ public enum Network {
             return 0x04358394
         }
     }
+    
+    public var baseURL: URL {
+        switch self {
+        case .main:
+            return Endpoint.mainnet.url
+        case .test:
+            return Endpoint.ropsten.url
+        }
+    }
+}
+
+public enum Endpoint {
+    case mainnet, ropsten
+    
+    var url: URL {
+        switch self {
+        case .mainnet:
+            return URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!
+        case .ropsten:
+            return URL(string: "https://ropsten.infura.io/z1sEfnzz0LLMsdYMX4PV")!
+        }
+    }
 }
