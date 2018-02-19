@@ -1,5 +1,5 @@
 //
-//  HTTPRequest.swift
+//  HTTPJSONRPCRequest.swift
 //  EthereumKit
 //
 //  Created by yuzushioh on 2018/02/17.
@@ -9,7 +9,7 @@
 import JSONRPCKit
 import APIKit
 
-public struct HTTPRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
+public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
     
     public typealias Response = Batch.Responses
     
@@ -22,7 +22,7 @@ public struct HTTPRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
     }
     
     public var baseURL: URL {
-        return network.baseURL
+        return NetworkEnvironment(network: network).infuraURL
     }
     
     public var method: HTTPMethod {

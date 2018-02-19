@@ -27,7 +27,8 @@ public final class EtherClient {
     
     public func send<RPC: JSONRPCKit.Request>(_ rpc: RPC, handler: @escaping (Result<RPC.Response, RPCError>) -> Void) {
         let batch = batchFactory.create(rpc)
-        let httpRequest = HTTPRequest(batch: batch, network: network)
+        let httpRequest = HTTPJSONRPCRequest(batch: batch, network: network)
+        
         session.send(httpRequest) { result in
             switch result {
             case .success(let response):
