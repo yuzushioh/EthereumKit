@@ -236,6 +236,46 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
+		AE838802203B271600FAC88F /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AE8291972018ADAE0047E0F0 /* Network.swift */,
+				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
+				AE35422E20300E4900007B80 /* EIP55.swift */,
+				AE354223202D46E400007B80 /* Base58Encode.swift */,
+				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		AE838803203B272200FAC88F /* Mnemonic */ = {
+			isa = PBXGroup;
+			children = (
+				AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */,
+				AE82919E2018ADAF0047E0F0 /* WordList.swift */,
+			);
+			path = Mnemonic;
+			sourceTree = "<group>";
+		};
+		AE838804203B272E00FAC88F /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				AE8291982018ADAE0047E0F0 /* Wallet.swift */,
+				AE838803203B272200FAC88F /* Mnemonic */,
+				AE838805203B274600FAC88F /* KeyPair */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		AE838805203B274600FAC88F /* KeyPair */ = {
+			isa = PBXGroup;
+			children = (
+				AE1BF3322028AEA400344FB0 /* PrivateKey.swift */,
+				AE1BF3342028B17B00344FB0 /* PublicKey.swift */,
+			);
+			path = KeyPair;
+			sourceTree = "<group>";
+		};
 		AE90A0761FFA698D005ED7AF /* EthereumKitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,17 +314,9 @@
 			isa = PBXGroup;
 			children = (
 				AE8387DA20374A3100FAC88F /* Networking */,
+				AE838804203B272E00FAC88F /* Wallet */,
 				AE8387E72037F5FF00FAC88F /* Model */,
-				AE8291982018ADAE0047E0F0 /* Wallet.swift */,
-				AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */,
-				AE8291972018ADAE0047E0F0 /* Network.swift */,
-				AE1BF3322028AEA400344FB0 /* PrivateKey.swift */,
-				AE1BF3342028B17B00344FB0 /* PublicKey.swift */,
-				AE82919E2018ADAF0047E0F0 /* WordList.swift */,
-				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
-				AE35422E20300E4900007B80 /* EIP55.swift */,
-				AE354223202D46E400007B80 /* Base58Encode.swift */,
-				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
+				AE838802203B271600FAC88F /* Helper */,
 				AED02DB52019B90A00B76CEC /* Internal.h */,
 				AED02DAC2019B83100B76CEC /* Internal.m */,
 				AE8387C12034962C00FAC88F /* EthereumKit.modulemap */,
