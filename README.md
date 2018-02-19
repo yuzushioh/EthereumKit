@@ -69,11 +69,11 @@ geth.getBalance(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result 
 
 ## Supported JSONRPC APIs
 
-`Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost⚠️)
+`Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost soon⚠️)
 
 ***
 
-##### `GetBalance`
+#### `GetBalance`
 
 Return a balance of specified address based on the `BlockParameter`.
 
@@ -97,7 +97,7 @@ geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result 
 
 ***
 
-##### `GetAccount`
+#### `GetAccount`
 
 Returns a balance of specified address and map it to `Account` model.
 
