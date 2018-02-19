@@ -37,6 +37,12 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
         return batch.requestObject
     }
     
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        return try batch.responses(from: object)
+    }
+}
+
+extension HTTPJSONRPCRequest {
     public func intercept(urlRequest: URLRequest) throws -> URLRequest {
         #if DEBUG
             DispatchQueue.global().async {
@@ -47,9 +53,5 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
         #endif
         
         return urlRequest
-    }
-    
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        return try batch.responses(from: object)
     }
 }

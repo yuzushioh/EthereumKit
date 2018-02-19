@@ -10,10 +10,10 @@ import Result
 
 public final class Geth {
     
-    private let etherClient: EtherClient
+    private let etherClient: JSONRPCClient
     
     public init(network: Network) {
-        etherClient = EtherClient(network: network)
+        etherClient = JSONRPCClient(network: network)
     }
     
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, RPCError>) -> Void) {
