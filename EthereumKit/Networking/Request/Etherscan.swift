@@ -10,7 +10,7 @@ import APIKit
 
 public final class Etherscan {
     public struct GetTransactions: EtherscanRequestType {
-        public typealias Response = Any
+        public typealias Response = Transactions
         
         public enum Sort: String {
             case asc, des
@@ -41,10 +41,6 @@ public final class Etherscan {
                 "endblock": NSNumber(value: endBlock),
                 "sort": sort.rawValue
             ]
-        }
-        
-        public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-            return object
         }
     }
 }

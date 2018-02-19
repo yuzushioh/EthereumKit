@@ -14,3 +14,10 @@ public protocol EtherscanRequestType {
     var parameters: Any? { get }
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response
 }
+
+extension EtherscanRequestType where Response: Decodable {
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+        let data = try JSONSerialization.data(withJSONObject: object, options: [])
+        return try JSONDecoder().decode(Response.self, from: data)
+    }
+}

@@ -45,6 +45,7 @@
 		AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FA203B1B4600FAC88F /* APIClient.swift */; };
 		AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FC203B20B700FAC88F /* EtherscanClient.swift */; };
 		AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */; };
+		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -133,6 +134,7 @@
 		AE8387FA203B1B4600FAC88F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		AE8387FC203B20B700FAC88F /* EtherscanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanClient.swift; sourceTree = "<group>"; };
 		AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequestType.swift; sourceTree = "<group>"; };
+		AE838800203B236300FAC88F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				AE8387EE203AF38C00FAC88F /* Account.swift */,
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
+				AE838800203B236300FAC88F /* Transaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
 				AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */,
 				AE8387F1203B0E2D00FAC88F /* NetworkEnvironment.swift in Sources */,
+				AE838801203B236300FAC88F /* Transaction.swift in Sources */,
 				AE8387DE20374C0000FAC88F /* RPC.swift in Sources */,
 				AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */,
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
