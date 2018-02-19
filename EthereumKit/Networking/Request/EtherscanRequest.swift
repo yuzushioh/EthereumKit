@@ -8,32 +8,40 @@
 
 import APIKit
 
-public protocol EtherscanRequest: APIKit.Request {
-    var network: Network { get }
-}
-
-extension EtherscanRequest {
-    // Override in HTTPRequest
-    public var network: Network {
-        return .test
+public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
+    
+    public typealias Response = Request.Response
+    
+    private let baseRequest: Request
+    private let network: Network
+    
+    public init(_ baseRequest: Request, network: Network) {
+        self.baseRequest = baseRequest
+        self.network = network
     }
     
-    // Override in HTTPRequest
     public var baseURL: URL {
         return NetworkEnvironment(network: network).etherscanURL
+    }
+    
+    public var method: HTTPMethod {
+        return baseRequest.method
     }
     
     public var path: String {
         return "/api"
     }
     
-    public var method: HTTPMethod {
-        return .get
+    public var parameters: Any? {
+        var parameters: [String: Any] = [:]
+        if let originalParameters = baseRequest.parameters as? [String: Any] {
+            parameters = originalParameters
+        }
+        parameters["apikey"] = "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
+        return parameters
     }
-}
-
-extension EtherscanRequest where Response == Any {
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
-        return object
+    
+    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Request.Response {
+        return try baseRequest.response(from: object, urlResponse: urlResponse)
     }
 }

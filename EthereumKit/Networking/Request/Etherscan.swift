@@ -9,7 +9,7 @@
 import APIKit
 
 public final class Etherscan {
-    public struct GetTransactions: EtherscanRequest {
+    public struct GetTransactions: EtherscanRequestType {
         public typealias Response = Any
         
         public enum Sort: String {
@@ -28,6 +28,10 @@ public final class Etherscan {
             self.endBlock = endBlock
         }
         
+        public var method: HTTPMethod {
+            return .get
+        }
+        
         public var parameters: Any? {
             return [
                 "module": "account",
@@ -37,6 +41,10 @@ public final class Etherscan {
                 "endblock": NSNumber(value: endBlock),
                 "sort": sort.rawValue
             ]
+        }
+        
+        public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+            return object
         }
     }
 }

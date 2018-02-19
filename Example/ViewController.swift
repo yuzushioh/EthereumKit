@@ -52,5 +52,14 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
+        
+        geth.getTransactions(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+            switch result {
+            case .success(let transactions):
+                print(transactions)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

@@ -13,15 +13,13 @@ public struct HTTPRequest<Request: APIKit.Request>: APIKit.Request {
     public typealias Response = Request.Response
     
     private let baseRequest: Request
-    private let network: Network
     
-    public init(_ baseRequest: Request, network: Network) {
+    public init(_ baseRequest: Request) {
         self.baseRequest = baseRequest
-        self.network = network
     }
     
     public var baseURL: URL {
-        return NetworkEnvironment(network: network).etherscanURL
+        return baseRequest.baseURL
     }
     
     public var path: String {
@@ -33,12 +31,7 @@ public struct HTTPRequest<Request: APIKit.Request>: APIKit.Request {
     }
     
     public var parameters: Any? {
-        var parameters: [String: Any] = [:]
-        if let originalParameters = baseRequest.parameters as? [String: Any] {
-            parameters = originalParameters
-        }
-        parameters["apikey"] = "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
-        return parameters
+        return baseRequest.parameters
     }
     
     public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Request.Response {

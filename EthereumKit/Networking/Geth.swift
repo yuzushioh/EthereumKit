@@ -11,10 +11,14 @@ import Result
 public final class Geth {
     
     private let etherClient: JSONRPCClient
+    private let etherscanClient: EtherscanClient
     
     public init(network: Network) {
         etherClient = JSONRPCClient(network: network)
+        etherscanClient = EtherscanClient(network: network)
     }
+    
+    // MARK: - JSONRPC APIs
     
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, RPCError>) -> Void) {
         etherClient.send(RPC.GetBalance(address: address, blockParameter: blockParameter), handler: handler)
@@ -29,5 +33,11 @@ public final class Geth {
                 handler(.failure(error))
             }
         }
+    }
+    
+    // MARK: - Etherscan APIs
+    
+    public func getTransactions(address: String, handler: @escaping (Result<Any, RPCError>) -> Void) {
+        etherscanClient.send(Etherscan.GetTransactions(address: address), handler: handler)
     }
 }

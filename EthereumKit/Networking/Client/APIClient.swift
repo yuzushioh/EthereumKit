@@ -24,7 +24,7 @@ public class APIClient {
     }()
     
     public func send<Request: APIKit.Request>(_ request: Request, handler: @escaping (Result<Request.Response, RPCError>) -> Void) {
-        let httpRequest = HTTPRequest(request, network: network)
+        let httpRequest = HTTPRequest(request)
         session.send(httpRequest) { result in
             switch result {
             case .success(let response):

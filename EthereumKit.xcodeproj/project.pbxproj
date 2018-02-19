@@ -43,6 +43,8 @@
 		AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */; };
 		AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F6203B131A00FAC88F /* Etherscan.swift */; };
 		AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FA203B1B4600FAC88F /* APIClient.swift */; };
+		AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FC203B20B700FAC88F /* EtherscanClient.swift */; };
+		AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -129,6 +131,8 @@
 		AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequest.swift; sourceTree = "<group>"; };
 		AE8387F6203B131A00FAC88F /* Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etherscan.swift; sourceTree = "<group>"; };
 		AE8387FA203B1B4600FAC88F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		AE8387FC203B20B700FAC88F /* EtherscanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanClient.swift; sourceTree = "<group>"; };
+		AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequestType.swift; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				AE8387DD20374C0000FAC88F /* RPC.swift */,
 				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
 				AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */,
+				AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			children = (
 				AE8387F0203B0E2D00FAC88F /* NetworkEnvironment.swift */,
 				AE8387FA203B1B4600FAC88F /* APIClient.swift */,
+				AE8387FC203B20B700FAC88F /* EtherscanClient.swift */,
 				AE8387CE2037435300FAC88F /* JSONRPCClient.swift */,
 				AE8387D820374A1A00FAC88F /* IDGenerator.swift */,
 				AE8387EA2037F7D300FAC88F /* RPCError.swift */,
@@ -497,6 +503,7 @@
 			files = (
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
+				AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
 				AE8387D920374A1A00FAC88F /* IDGenerator.swift in Sources */,
@@ -513,6 +520,7 @@
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
 				AE8387E62037F55E00FAC88F /* Balance.swift in Sources */,
+				AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */,
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
