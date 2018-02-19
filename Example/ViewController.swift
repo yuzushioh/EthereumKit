@@ -34,11 +34,20 @@ class ViewController: UIViewController {
         // Address: 0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7
         // You can check at MyEtherWallet if the private key actually generates the same address.
         
-        let geth = Geth(network: .main)
-        geth.getBalance(of: firstAddress) { result in
+        let geth = Geth(network: .test)
+        geth.getBalance(of: firstAddress, blockParameter: .latest) { result in
             switch result {
             case .success(let balance):
                 print(balance.wei, balance.ether)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        geth.getAccount(address: firstAddress, blockParameter: .latest) { result in
+            switch result {
+            case .success(let account):
+                print(account)
             case .failure(let error):
                 print(error)
             }
