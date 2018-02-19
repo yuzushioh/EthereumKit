@@ -40,7 +40,6 @@ let change = account.derived(at: 0)
 let privateKey = change.derived(at: 0)
 ```
 
-
 - Create your wallet and generate addresse.
 
 ```swift
@@ -58,34 +57,65 @@ let thirdAddress = wallet.receiveAddress(at: 2)
 
 ```
 
-### Geth
+- See a currenct balance of address.
 
-##### Communicate with Ethereum blockchain via `Geth`.
-
-`Geth` interacts with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost⚠️)
-
-#### Supporting APIs
-- `GetBalance` (Get a balance of a specific address)
-    - Parameters
-        - `address`: The Address you want to get a balance of.
-        - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
-        
 ```swift
 let geth = Geth(network: .test)
-geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+geth.getBalance(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
     // do something with `Balance`.
 }
 ```
 
-- `GetAccount` (Get a balance of a specific address and convert it to Account model.)
-    - Parameters
-        - `address`: The Address you want to get a balance of.
-        - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
 
+## Supported JSONRPC APIs
+
+`Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost soon⚠️)
+
+***
+
+#### `GetBalance`
+
+Return a balance of specified address based on the `BlockParameter`.
+
+##### Parameters
+
+1. `address` - the Address you want to get a balance of.
+2. `blockParameter`: based on what block parameter you want to see a balance. default is `latest`. see the [default block parameter](#the-default-block-parameter).
+
+##### Returns
+
+`Balance` of specified address.
+
+##### Example
+        
 ```swift
 let geth = Geth(network: .test)
 geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
-    // do something with `Account`.
+    // do something...
+}
+```
+
+***
+
+#### `GetAccount`
+
+Returns a balance of specified address and map it to `Account` model.
+
+##### Parameters
+
+1. `address` - the Address you want to get a balance of.
+2. `blockParameter`: based on what block parameter you want to see a balance. default is `latest`. see the [default block parameter](#the-default-block-parameter).
+
+##### Returns
+
+`Account` of specified address.
+
+##### Example
+        
+```swift
+let geth = Geth(network: .test)
+geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+    // do something...
 }
 ```
 
