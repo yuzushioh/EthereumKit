@@ -28,13 +28,13 @@ public struct PublicKey {
         self.privateKey = privateKey
     }
     
+    public var address: String {
+        return "0x" + EIP55.encode(addressData)
+    }
+    
     private var addressData: Data {
         let uncompressed = Crypto.generatePublicKey(data: privateKey.raw, compressed: false)
         let hash = uncompressed.dropFirst().sha3(.keccak256)
         return hash.suffix(20)
-    }
-    
-    public var address: String {
-        return "0x" + EIP55.encode(addressData)
     }
 }

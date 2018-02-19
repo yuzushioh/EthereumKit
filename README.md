@@ -8,10 +8,13 @@ EthereumKit is a Swift framework that enables you to create Ethereum wallet and 
 - Mnemonic recovery phrease in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
 - [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)/[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) HD wallet
 - [EIP55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) format address encoding
+- See currency balance of an address.
 
 ## How to Use
 
-- Generate seed and convert it to mnemonic sentence.
+### Wallet
+
+- BIP39: Generate seed and mnemonic sentence.
 
 ```swift
 let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
@@ -23,30 +26,22 @@ let seed = Mnemonic.createSeed(mnemonic: mnemonic)
 print(seed.toHexString())
 ```
 
-- PrivateKey and key derivation (BIP32)
+- BIP32: PrivateKey and key derivation.
 
 ```swift
-let masterPrivateKey = PrivateKey(seed: seed, network: .main)
-
-// m/44'
-let purpose = masterPrivateKey.derived(at: 44, hardens: true)
-
-// m/44'/60'
-let coinType = purpose.derived(at: 60, hardens: true)
-
-// m/44'/60'/0'
-let account = coinType.derived(at: 0, hardens: true)
-
 // m/44'/60'/0'/0
+let masterPrivateKey = PrivateKey(seed: seed, network: .main)
+let purpose = masterPrivateKey.derived(at: 44, hardens: true)
+let coinType = purpose.derived(at: 60, hardens: true)
+let account = coinType.derived(at: 0, hardens: true)
 let change = account.derived(at: 0)
 
-// m/44'/60'/0'/0
-let firstPrivateKey = change.derived(at: 0)
-print(firstPrivateKey.publicKey.address)
+// m/44'/60'/0'/0/0
+let privateKey = change.derived(at: 0)
 ```
 
 
-- Create your wallet and generate addresse
+- Create your wallet and generate addresse.
 
 ```swift
 // It generates master key pair from the seed provided.
@@ -61,6 +56,37 @@ let secondAddress = wallet.receiveAddress(at: 1)
 let thirdAddress = wallet.receiveAddress(at: 2)
 // 0x82e35B34CfBEB9704E51Eb17f8263d919786E66a
 
+```
+
+### Geth
+
+##### Communicate with Ethereum blockchain via `Geth`.
+
+`Geth` interacts with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost⚠️)
+
+#### Supporting APIs
+- `GetBalance` (Get a balance of a specific address)
+    - Parameters
+        - `address`: The Address you want to get a balance of.
+        - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
+        
+```swift
+let geth = Geth(network: .test)
+geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+    // do something with `Balance`.
+}
+```
+
+- `GetAccount` (Get a balance of a specific address and convert it to Account model.)
+    - Parameters
+        - `address`: The Address you want to get a balance of.
+        - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
+
+```swift
+let geth = Geth(network: .test)
+geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+    // do something with `Account`.
+}
 ```
 
 ## Installation
