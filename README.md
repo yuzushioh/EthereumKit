@@ -60,21 +60,27 @@ let thirdAddress = wallet.receiveAddress(at: 2)
 
 ### Geth
 
-- Communicate with Ethereum blockchain via `Geth`.
+##### Communicate with Ethereum blockchain via `Geth`.
 
-`Geth` interacts with Ethereum via JSONRPC. It connects to `Ropsten` for test and `Mainnet` for main. (Will support localhost⚠️)
+`Geth` interacts with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost⚠️)
 
 #### Supporting APIs
 - `GetBalance` (Get a balance of a specific address)
     - Parameters
         - `address`: The Address you want to get a balance of.
         - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
+        
+```swift
+let geth = Geth(network: .test)
+geth.getAccount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") { result in
+    // do something with `Balance`.
+}
+```
 
 - `GetAccount` (Get a balance of a specific address and convert it to Account model.)
     - Parameters
         - `address`: The Address you want to get a balance of.
         - `blockParameter`: The default is `latest`. You can set `latest`, `earliest`, `pending`.
-
 
 ```swift
 let geth = Geth(network: .test)
