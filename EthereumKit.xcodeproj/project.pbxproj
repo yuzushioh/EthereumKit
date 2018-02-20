@@ -46,6 +46,12 @@
 		AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FC203B20B700FAC88F /* EtherscanClient.swift */; };
 		AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */; };
 		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
+		AE83887D203C727500FAC88F /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83887C203C727500FAC88F /* BigInt.framework */; };
+		AE83887E203C729900FAC88F /* BigInt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83887C203C727500FAC88F /* BigInt.framework */; };
+		AE83887F203C729900FAC88F /* BigInt.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE83887C203C727500FAC88F /* BigInt.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE838881203C73D800FAC88F /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE838880203C73D800FAC88F /* SipHash.framework */; };
+		AE838882203C73E100FAC88F /* SipHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE838880203C73D800FAC88F /* SipHash.framework */; };
+		AE838883203C73E100FAC88F /* SipHash.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE838880203C73D800FAC88F /* SipHash.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,8 +99,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				AE8387E020374D1300FAC88F /* APIKit.framework in Embed Frameworks */,
+				AE83887F203C729900FAC88F /* BigInt.framework in Embed Frameworks */,
 				AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */,
 				AE8387E420374D1300FAC88F /* Result.framework in Embed Frameworks */,
+				AE838883203C73E100FAC88F /* SipHash.framework in Embed Frameworks */,
 				AEBA91031FFA2C74003EA2BA /* CryptoSwift.framework in Embed Frameworks */,
 				AE8387E220374D1300FAC88F /* JSONRPCKit.framework in Embed Frameworks */,
 			);
@@ -135,6 +143,8 @@
 		AE8387FC203B20B700FAC88F /* EtherscanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanClient.swift; sourceTree = "<group>"; };
 		AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequestType.swift; sourceTree = "<group>"; };
 		AE838800203B236300FAC88F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		AE83887C203C727500FAC88F /* BigInt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigInt.framework; path = Carthage/Build/iOS/BigInt.framework; sourceTree = "<group>"; };
+		AE838880203C73D800FAC88F /* SipHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SipHash.framework; path = Carthage/Build/iOS/SipHash.framework; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,7 +180,9 @@
 				AE8387D42037436E00FAC88F /* JSONRPCKit.framework in Frameworks */,
 				AEBA90E91FFA2722003EA2BA /* CryptoSwift.framework in Frameworks */,
 				AE8387D52037436E00FAC88F /* APIKit.framework in Frameworks */,
+				AE83887D203C727500FAC88F /* BigInt.framework in Frameworks */,
 				AE8387D32037436E00FAC88F /* Result.framework in Frameworks */,
+				AE838881203C73D800FAC88F /* SipHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,8 +191,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8387DF20374D1300FAC88F /* APIKit.framework in Frameworks */,
+				AE83887E203C729900FAC88F /* BigInt.framework in Frameworks */,
 				AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */,
 				AE8387E320374D1300FAC88F /* Result.framework in Frameworks */,
+				AE838882203C73E100FAC88F /* SipHash.framework in Frameworks */,
 				AEBA91021FFA2C74003EA2BA /* CryptoSwift.framework in Frameworks */,
 				AE8387E120374D1300FAC88F /* JSONRPCKit.framework in Frameworks */,
 			);
@@ -288,6 +302,8 @@
 		AEBA90CB1FFA21ED003EA2BA = {
 			isa = PBXGroup;
 			children = (
+				AE838880203C73D800FAC88F /* SipHash.framework */,
+				AE83887C203C727500FAC88F /* BigInt.framework */,
 				AE8387D22037436E00FAC88F /* APIKit.framework */,
 				AE8387D12037436E00FAC88F /* JSONRPCKit.framework */,
 				AE8387D02037436E00FAC88F /* Result.framework */,
