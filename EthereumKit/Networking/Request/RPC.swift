@@ -12,7 +12,7 @@ public final class RPC {
     public struct GetBalance: Request {
         public typealias Response = Balance
         
-        public let address: String
+        public let address: Address
         public let blockParameter: BlockParameter
         
         public var method: String {
@@ -23,11 +23,54 @@ public final class RPC {
             return [address, blockParameter.rawValue]
         }
         
-        public func response(from resultObject: Any) throws -> Balance {
+        public func response(from resultObject: Any) throws -> Response {
             guard let response = resultObject as? String, let wei = UInt64(response.dropFirst(2), radix:16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
+        }
+    }
+    
+    public struct GetTransactionCount: Request {
+        public typealias Response = UInt64
+        
+        public let address: Address
+        public let blockParameter: BlockParameter
+        
+        public var method: String {
+            return "eth_getTransactionCount"
+        }
+        
+        public var parameters: Any? {
+            return [address, blockParameter.rawValue]
+        }
+        
+        public func response(from resultObject: Any) throws -> Response {
+            guard let response = resultObject as? String, let count = UInt64(response.dropFirst(2), radix: 16) else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return count
+        }
+    }
+    
+    public struct SendRawTransaction: Request {
+        public typealias Response = String
+        
+        public let rawTransaction: String
+        
+        public var method: String {
+            return "eth_sendRawTransaction"
+        }
+        
+        public var parameters: Any? {
+            return [rawTransaction]
+        }
+        
+        public func response(from resultObject: Any) throws -> Any {
+            guard let transactionID = resultObject as? String else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return transactionID
         }
     }
 }

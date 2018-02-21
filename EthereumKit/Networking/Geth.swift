@@ -20,11 +20,19 @@ public final class Geth {
     
     // MARK: - JSONRPC APIs
     
-    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, RPCError>) -> Void) {
+    public func getBalance(of address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, RPCError>) -> Void) {
         etherClient.send(RPC.GetBalance(address: address, blockParameter: blockParameter), handler: handler)
     }
     
-    public func getAccount(address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, RPCError>) -> Void) {
+    public func getTransactionCount(of address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<UInt64, RPCError>) -> Void) {
+        etherClient.send(RPC.GetTransactionCount(address: address, blockParameter: blockParameter), handler: handler)
+    }
+    
+    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<Any, RPCError>) -> Void) {
+        etherClient.send(RPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
+    }
+    
+    public func getAccount(address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, RPCError>) -> Void) {
         getBalance(of: address) { result in
             switch result {
             case .success(let balance):
