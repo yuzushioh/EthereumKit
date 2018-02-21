@@ -29,7 +29,7 @@ public struct Transaction: Decodable {
     public let value: String
     
     public var balance: Balance {
-        return Balance(wei: UInt64(value) ?? 0)
+        return Balance(wei: BInt(number: value, withBase: 10))
     }
 }
 

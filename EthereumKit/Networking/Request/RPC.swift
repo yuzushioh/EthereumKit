@@ -24,10 +24,14 @@ public final class RPC {
         }
         
         public func response(from resultObject: Any) throws -> Balance {
-            guard let response = resultObject as? String, let wei = UInt64(response.dropFirst(2), radix:16) else {
+            guard let response = resultObject as? String, let wei = BInt.make(response.toHex().lowercased(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
         }
     }
 }
+
+
+
+

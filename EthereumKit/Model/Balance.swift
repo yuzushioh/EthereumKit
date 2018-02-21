@@ -9,9 +9,9 @@
 import Foundation
 
 public struct Balance {
-    public let wei: UInt64
+    public let wei: BInt
     
-    public var ether: Double {
-        return Double(wei) / Double(1000000000000000000)
+    public var ether: BDouble {
+        return BDouble(wei, over: BInt(number: "1000000000000000000", withBase: 10))
     }
 }
