@@ -66,7 +66,7 @@ public final class RPC {
             return [rawTransaction]
         }
         
-        public func response(from resultObject: Any) throws -> Any {
+        public func response(from resultObject: Any) throws -> Response {
             guard let transactionID = resultObject as? String else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }

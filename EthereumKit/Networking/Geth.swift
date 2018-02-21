@@ -28,7 +28,7 @@ public final class Geth {
         etherClient.send(RPC.GetTransactionCount(address: address, blockParameter: blockParameter), handler: handler)
     }
     
-    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<Any, RPCError>) -> Void) {
+    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<String, RPCError>) -> Void) {
         etherClient.send(RPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
     }
     
