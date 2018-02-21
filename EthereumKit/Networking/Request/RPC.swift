@@ -52,4 +52,25 @@ public final class RPC {
             return count
         }
     }
+    
+    public struct SendRawTransaction: Request {
+        public typealias Response = String
+        
+        public let rawTransaction: String
+        
+        public var method: String {
+            return "eth_sendRawTransaction"
+        }
+        
+        public var parameters: Any? {
+            return [rawTransaction]
+        }
+        
+        public func response(from resultObject: Any) throws -> Any {
+            guard let transactionID = resultObject as? String else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return transactionID
+        }
+    }
 }
