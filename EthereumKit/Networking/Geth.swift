@@ -28,6 +28,10 @@ public final class Geth {
         etherClient.send(RPC.GetTransactionCount(address: address, blockParameter: blockParameter), handler: handler)
     }
     
+    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<Any, RPCError>) -> Void) {
+        etherClient.send(RPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
+    }
+    
     public func getAccount(address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, RPCError>) -> Void) {
         getBalance(of: address) { result in
             switch result {
