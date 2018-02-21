@@ -59,6 +59,7 @@
 		AEBA91031FFA2C74003EA2BA /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90E81FFA2722003EA2BA /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D77FB334203DCE71003213DB /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FB333203DCE71003213DB /* SMP.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		AEBA90FE1FFA2C6A003EA2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED02DAC2019B83100B76CEC /* Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Internal.m; sourceTree = "<group>"; };
 		AED02DB52019B90A00B76CEC /* Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Internal.h; sourceTree = "<group>"; };
+		D77FB333203DCE71003213DB /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +241,7 @@
 		AE838802203B271600FAC88F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				D77FB333203DCE71003213DB /* SMP.swift */,
 				AE8291972018ADAE0047E0F0 /* Network.swift */,
 				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
 				AE35422E20300E4900007B80 /* EIP55.swift */,
@@ -556,6 +559,7 @@
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
 				AE8387E62037F55E00FAC88F /* Balance.swift in Sources */,
+				D77FB334203DCE71003213DB /* SMP.swift in Sources */,
 				AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */,
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
