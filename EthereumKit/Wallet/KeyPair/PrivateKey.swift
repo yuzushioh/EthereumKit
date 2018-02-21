@@ -52,6 +52,10 @@ public struct PrivateKey {
         return Base58.encode(extendedPrivateKeyData)
     }
     
+    public func sign(hash: Data) -> Data {
+        return Crypto.sign(hash, privateKey: raw)
+    }
+    
     public func generateAddress(at index: UInt32) -> String {
         return derived(at: index).publicKey.address
     }
