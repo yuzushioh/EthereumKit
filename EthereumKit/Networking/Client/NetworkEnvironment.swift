@@ -21,6 +21,13 @@ public struct NetworkEnvironment {
     public var etherscanURL: URL {
         return Endpoint(network: network).etherscanURL
     }
+    
+    public var chainID: UInt64 {
+        switch network {
+        case .main: return 1
+        case .test: return 3
+        }
+    }
 }
 
 public enum Endpoint {
