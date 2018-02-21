@@ -95,4 +95,16 @@ class EthereumKitTests: XCTestCase {
         XCTAssertEqual(forthAddress, "0xCF1D652DAb65ea4f10990FD2D2E59Cd7cbEb315a")
         
     }
+  
+    func testRPCGetBalance() {
+        let firstBalanceHex = "0x0000000000000000000000000000000000000000000000000DE0B6B3A7640000" // 1ether = 1000000000000000000wei
+        let firstBalance = try! RPC.GetBalance.init(address: "", blockParameter: .latest).response(from: firstBalanceHex)
+        XCTAssertEqual(firstBalance.wei, 1000000000000000000)
+        XCTAssertEqual(firstBalance.ether, 1)
+        let secondBalanceHex = "0x0000000000000000000000000000000000000000000000056BC75E2D63100000" // 100ether = 100000000000000000000wei
+        let secondBalance = try! RPC.GetBalance.init(address: "", blockParameter: .latest).response(from: secondBalanceHex)
+        XCTAssertEqual(secondBalance.wei, 100000000000000000000)
+        XCTAssertEqual(secondBalance.ether, 100)
+    }
+
 }
