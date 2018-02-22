@@ -7,6 +7,7 @@
 //
 
 import JSONRPCKit
+import BigNumber_iOS
 
 public final class RPC {
     public struct GetBalance: Request {

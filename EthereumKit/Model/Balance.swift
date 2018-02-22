@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import BigNumber_iOS
 
 public struct Balance {
     public let wei: BInt
     
     public var ether: BDouble {
-        return BDouble(wei, over: BInt(number: "1000000000000000000", withBase: 10))
+        return BDouble(wei, over: BInt(number: "1000000000000000000", withBase: 10)!)
     }
 }

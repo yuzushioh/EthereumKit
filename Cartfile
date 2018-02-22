@@ -1,3 +1,5 @@
 github "bricklife/JSONRPCKit"
 github "ishkawa/APIKit"
 github "krzyzanowskim/CryptoSwift"
+#github "yuzushioh/Swift-Big-Integer" "support-carthage"
+github "noppefoxwolf/Swift-Big-Integer" "feature/carthage_fix_deployment_target"
