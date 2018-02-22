@@ -11,7 +11,7 @@ import BigNumber_iOS
 
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
 extension BInt {
-  init?(_ str: String, radix: Int) {
+  internal init?(_ str: String, radix: Int) {
     self.init(0)
     let bint16 = BInt(16)
     
@@ -31,7 +31,7 @@ extension BInt {
 }
 
 extension String {
-  func toHex() -> String {
+  internal var hex: String {
     var hex = self
     while hex.first == "0" || hex.first == "x" {
       hex = String(hex.dropFirst())
