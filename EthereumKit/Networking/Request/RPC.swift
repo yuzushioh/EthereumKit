@@ -25,7 +25,7 @@ public final class RPC {
         }
         
         public func response(from resultObject: Any) throws -> Balance {
-            guard let response = resultObject as? String, let wei = BInt.init(response.toHex().lowercased(), radix: 16) else {
+            guard let response = resultObject as? String, let wei = BInt.init(response.hex.lowercased(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
