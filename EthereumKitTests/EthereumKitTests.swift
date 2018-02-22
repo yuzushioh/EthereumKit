@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import BigNumber_iOS
 @testable import EthereumKit
 
 class EthereumKitTests: XCTestCase {
