@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BigNumber_iOS
+import BigNumber
 
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
 extension BInt {
@@ -20,7 +20,7 @@ extension BInt {
     for c in str.reversed() {
       let int = Int(String(c), radix: radix)
       if int != nil {
-        let value =  BInt(int!)
+        let value = BInt(int!)
         self = self + (value * exp)
         exp = exp * bint16
       } else {
