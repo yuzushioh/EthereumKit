@@ -10,6 +10,7 @@ EthereumKit is a Swift framework that enables you to create Ethereum wallet and 
 - [EIP55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) format address encoding
 - See currency balance of an address.
 - Get transactions of an address.
+- Get transaction count of an address.
 
 ## How to Use
 
@@ -145,8 +146,6 @@ geth.getTransactionCount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") 
 ```
 
 ## Etherscan API
-
-***
 
 #### `GetTransactions`
 
