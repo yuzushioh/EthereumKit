@@ -1,9 +1,9 @@
 {
-  "commitish" : "f70c00901d9de66e01935f9aa16253beaf5c4f13",
+  "commitish" : "1a5915f8482d25ea1b7c7505f388cb772d74d93b",
   "iOS" : [
     {
       "name" : "BigNumber",
-      "hash" : "6f67120af7a6b1ddedb4051bfb551ca7b1a956e86fcb8cd008e7ac5d03e51dd0"
+      "hash" : "88be716d058eab169709bfe17c241995646d4d396262fc80250654cbbad9792d"
     }
   ]
 }
