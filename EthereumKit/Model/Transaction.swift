@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BigNumber
+import SMP
 
 public struct Transaction: Decodable {
     public let blockHash: String

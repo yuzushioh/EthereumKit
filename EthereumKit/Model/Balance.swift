@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BigNumber
+import SMP
 
 public struct Balance {
     public let wei: BInt

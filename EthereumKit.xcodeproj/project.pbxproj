@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A5EF4FA203FBB7900058936 /* BigNumber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5EF4F9203FBB7900058936 /* BigNumber.framework */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -47,6 +46,10 @@
 		AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FC203B20B700FAC88F /* EtherscanClient.swift */; };
 		AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */; };
 		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
+		AE83890D20404CC300FAC88F /* SMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; };
+		AE83890E20404CCC00FAC88F /* SMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; };
+		AE83890F20404CCC00FAC88F /* SMP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE83891020404CD000FAC88F /* SMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,6 +100,7 @@
 				AE8387E020374D1300FAC88F /* APIKit.framework in Embed Frameworks */,
 				AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */,
 				AE8387E420374D1300FAC88F /* Result.framework in Embed Frameworks */,
+				AE83890F20404CCC00FAC88F /* SMP.framework in Embed Frameworks */,
 				AEBA91031FFA2C74003EA2BA /* CryptoSwift.framework in Embed Frameworks */,
 				AE8387E220374D1300FAC88F /* JSONRPCKit.framework in Embed Frameworks */,
 			);
@@ -106,7 +110,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A5EF4F9203FBB7900058936 /* BigNumber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumber.framework; path = Carthage/Build/iOS/BigNumber.framework; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		AE8387FC203B20B700FAC88F /* EtherscanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanClient.swift; sourceTree = "<group>"; };
 		AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequestType.swift; sourceTree = "<group>"; };
 		AE838800203B236300FAC88F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		AE83890C20404CC300FAC88F /* SMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMP.framework; path = Carthage/Build/iOS/SMP.framework; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE83891020404CD000FAC88F /* SMP.framework in Frameworks */,
 				AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */,
 				AE717288202B67A200516D63 /* CryptoSwift.framework in Frameworks */,
 			);
@@ -172,8 +177,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8387D42037436E00FAC88F /* JSONRPCKit.framework in Frameworks */,
+				AE83890D20404CC300FAC88F /* SMP.framework in Frameworks */,
 				AEBA90E91FFA2722003EA2BA /* CryptoSwift.framework in Frameworks */,
-				1A5EF4FA203FBB7900058936 /* BigNumber.framework in Frameworks */,
 				AE8387D52037436E00FAC88F /* APIKit.framework in Frameworks */,
 				AE8387D32037436E00FAC88F /* Result.framework in Frameworks */,
 			);
@@ -186,6 +191,7 @@
 				AE8387DF20374D1300FAC88F /* APIKit.framework in Frameworks */,
 				AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */,
 				AE8387E320374D1300FAC88F /* Result.framework in Frameworks */,
+				AE83890E20404CCC00FAC88F /* SMP.framework in Frameworks */,
 				AEBA91021FFA2C74003EA2BA /* CryptoSwift.framework in Frameworks */,
 				AE8387E120374D1300FAC88F /* JSONRPCKit.framework in Frameworks */,
 			);
@@ -294,7 +300,7 @@
 		AEBA90CB1FFA21ED003EA2BA = {
 			isa = PBXGroup;
 			children = (
-				1A5EF4F9203FBB7900058936 /* BigNumber.framework */,
+				AE83890C20404CC300FAC88F /* SMP.framework */,
 				AE8387D22037436E00FAC88F /* APIKit.framework */,
 				AE8387D12037436E00FAC88F /* JSONRPCKit.framework */,
 				AE8387D02037436E00FAC88F /* Result.framework */,
