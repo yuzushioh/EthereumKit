@@ -1,4 +1,0 @@
-framework module BigNumber {
-    header "BigNumber-Swift.h"
-    requires objc
-}

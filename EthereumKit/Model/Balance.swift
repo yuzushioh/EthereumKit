@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BigNumber
+import BigNumber_iOS
 
 public struct Balance {
     public let wei: BInt

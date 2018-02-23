@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BigNumber
+import BigNumber_iOS
 
 public struct Transaction: Decodable {
     public let blockHash: String

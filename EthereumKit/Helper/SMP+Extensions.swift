@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BigNumber
+import BigNumber_iOS
 
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
 extension BInt {
