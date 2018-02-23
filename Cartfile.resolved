@@ -1,4 +1,6 @@
 github "antitypical/Result" "3.2.4"
+github "attaswift/BigInt" "v3.0.2"
+github "attaswift/SipHash" "v1.2.0"
 github "bricklife/JSONRPCKit" "3.0.0"
 github "ishkawa/APIKit" "3.2.1"
 github "krzyzanowskim/CryptoSwift" "0.8.2"
