@@ -7,6 +7,7 @@
 //
 
 import JSONRPCKit
+import BigNumber_iOS
 
 public final class RPC {
     public struct GetBalance: Request {
@@ -23,8 +24,8 @@ public final class RPC {
             return [address, blockParameter.rawValue]
         }
         
-        public func response(from resultObject: Any) throws -> Response {
-            guard let response = resultObject as? String, let wei = UInt64(response.dropFirst(2), radix:16) else {
+        public func response(from resultObject: Any) throws -> Balance {
+            guard let response = resultObject as? String, let wei = BInt(response.hex.lowercased(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
