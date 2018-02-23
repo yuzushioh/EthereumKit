@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A5EF4FA203FBB7900058936 /* BigNumber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A5EF4F9203FBB7900058936 /* BigNumber.framework */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -60,9 +61,6 @@
 		AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FB335203DE3D0003213DB /* SMP+Extensions.swift */; };
-		D77FB37C203F2F74003213DB /* BigNumber_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77FB37B203F2F74003213DB /* BigNumber_iOS.framework */; };
-		D77FB37D203F2F74003213DB /* BigNumber_iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D77FB37B203F2F74003213DB /* BigNumber_iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D77FB37E203F2F7C003213DB /* BigNumber_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77FB37B203F2F74003213DB /* BigNumber_iOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,7 +96,6 @@
 			files = (
 				AE8387E020374D1300FAC88F /* APIKit.framework in Embed Frameworks */,
 				AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */,
-				D77FB37D203F2F74003213DB /* BigNumber_iOS.framework in Embed Frameworks */,
 				AE8387E420374D1300FAC88F /* Result.framework in Embed Frameworks */,
 				AEBA91031FFA2C74003EA2BA /* CryptoSwift.framework in Embed Frameworks */,
 				AE8387E220374D1300FAC88F /* JSONRPCKit.framework in Embed Frameworks */,
@@ -109,6 +106,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A5EF4F9203FBB7900058936 /* BigNumber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumber.framework; path = Carthage/Build/iOS/BigNumber.framework; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 		AED02DB52019B90A00B76CEC /* Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Internal.h; sourceTree = "<group>"; };
 		D77FB335203DE3D0003213DB /* SMP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+Extensions.swift"; sourceTree = "<group>"; };
 		D77FB375203F28B0003213DB /* BigNumber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumber.framework; path = Carthage/Build/iOS/BigNumber.framework; sourceTree = "<group>"; };
-		D77FB37B203F2F74003213DB /* BigNumber_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumber_iOS.framework; path = Carthage/Build/iOS/BigNumber_iOS.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,9 +172,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D77FB37E203F2F7C003213DB /* BigNumber_iOS.framework in Frameworks */,
 				AE8387D42037436E00FAC88F /* JSONRPCKit.framework in Frameworks */,
 				AEBA90E91FFA2722003EA2BA /* CryptoSwift.framework in Frameworks */,
+				1A5EF4FA203FBB7900058936 /* BigNumber.framework in Frameworks */,
 				AE8387D52037436E00FAC88F /* APIKit.framework in Frameworks */,
 				AE8387D32037436E00FAC88F /* Result.framework in Frameworks */,
 			);
@@ -189,7 +186,6 @@
 			files = (
 				AE8387DF20374D1300FAC88F /* APIKit.framework in Frameworks */,
 				AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */,
-				D77FB37C203F2F74003213DB /* BigNumber_iOS.framework in Frameworks */,
 				AE8387E320374D1300FAC88F /* Result.framework in Frameworks */,
 				AEBA91021FFA2C74003EA2BA /* CryptoSwift.framework in Frameworks */,
 				AE8387E120374D1300FAC88F /* JSONRPCKit.framework in Frameworks */,
@@ -299,7 +295,7 @@
 		AEBA90CB1FFA21ED003EA2BA = {
 			isa = PBXGroup;
 			children = (
-				D77FB37B203F2F74003213DB /* BigNumber_iOS.framework */,
+				1A5EF4F9203FBB7900058936 /* BigNumber.framework */,
 				AE8387D22037436E00FAC88F /* APIKit.framework */,
 				AE8387D12037436E00FAC88F /* JSONRPCKit.framework */,
 				AE8387D02037436E00FAC88F /* Result.framework */,

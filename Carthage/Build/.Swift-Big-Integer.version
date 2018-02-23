@@ -1,0 +1,9 @@
+{
+  "commitish" : "f70c00901d9de66e01935f9aa16253beaf5c4f13",
+  "iOS" : [
+    {
+      "name" : "BigNumber",
+      "hash" : "6f67120af7a6b1ddedb4051bfb551ca7b1a956e86fcb8cd008e7ac5d03e51dd0"
+    }
+  ]
+}
