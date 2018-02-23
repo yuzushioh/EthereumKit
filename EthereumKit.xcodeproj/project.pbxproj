@@ -155,7 +155,6 @@
 		AED02DAC2019B83100B76CEC /* Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Internal.m; sourceTree = "<group>"; };
 		AED02DB52019B90A00B76CEC /* Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Internal.h; sourceTree = "<group>"; };
 		D77FB335203DE3D0003213DB /* SMP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+Extensions.swift"; sourceTree = "<group>"; };
-		D77FB375203F28B0003213DB /* BigNumber.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BigNumber.framework; path = Carthage/Build/iOS/BigNumber.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +303,6 @@
 				AE90A0761FFA698D005ED7AF /* EthereumKitTests */,
 				AEBA90F11FFA2C6A003EA2BA /* Example */,
 				AEBA90D61FFA21ED003EA2BA /* Products */,
-				AED560752019B9A30060A676 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -345,14 +343,6 @@
 				AEBA90FE1FFA2C6A003EA2BA /* Info.plist */,
 			);
 			path = Example;
-			sourceTree = "<group>";
-		};
-		AED560752019B9A30060A676 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D77FB375203F28B0003213DB /* BigNumber.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
