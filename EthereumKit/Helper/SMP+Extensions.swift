@@ -6,7 +6,6 @@
 //  Copyright © 2018年 yuzushioh. All rights reserved.
 //
 
-import UIKit
 import SMP
 
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
