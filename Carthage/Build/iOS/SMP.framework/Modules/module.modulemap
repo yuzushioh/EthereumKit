@@ -1,0 +1,11 @@
+framework module SMP {
+  umbrella header "SMP.h"
+
+  export *
+  module * { export * }
+}
+
+module SMP.Swift {
+    header "SMP-Swift.h"
+    requires objc
+}

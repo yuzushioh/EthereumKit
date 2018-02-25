@@ -1,0 +1,21 @@
+{
+  "iOS" : [
+    {
+      "hash" : "40a261964d4baf464f94b59e75c0992b6daf4bfe21e841ba5b3807d984a52bd0",
+      "name" : "SMP"
+    }
+  ],
+  "commitish" : "1011b18a715018f0dd7e95b4f3f154c6a480d200",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+    {
+      "hash" : "1988b6868fc2930c36552cc1f1fb08912c16fe8cf4cd9cb49242f83b963af48d",
+      "name" : "BigNumber"
+    }
+  ]
+}

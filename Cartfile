@@ -1,4 +1,4 @@
 github "bricklife/JSONRPCKit"
 github "ishkawa/APIKit"
-github "attaswift/BigInt"
 github "krzyzanowskim/CryptoSwift"
+github "yuzushioh/Swift-Big-Integer" "master"
