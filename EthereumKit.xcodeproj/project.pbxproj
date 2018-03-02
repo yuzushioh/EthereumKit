@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				AE8387EE203AF38C00FAC88F /* Account.swift */,
+				AE0057192048F946007AA468 /* Address.swift */,
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
 				AE838800203B236300FAC88F /* Transaction.swift */,
@@ -566,6 +569,7 @@
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
+				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
 				AE8387EB2037F7D300FAC88F /* RPCError.swift in Sources */,
 				AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */,

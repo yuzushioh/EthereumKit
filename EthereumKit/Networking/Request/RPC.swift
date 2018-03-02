@@ -21,7 +21,7 @@ public final class RPC {
         }
         
         public var parameters: Any? {
-            return [address, blockParameter.rawValue]
+            return [address.string, blockParameter.rawValue]
         }
         
         public func response(from resultObject: Any) throws -> Balance {
@@ -43,7 +43,7 @@ public final class RPC {
         }
         
         public var parameters: Any? {
-            return [address, blockParameter.rawValue]
+            return [address.string, blockParameter.rawValue]
         }
         
         public func response(from resultObject: Any) throws -> Response {

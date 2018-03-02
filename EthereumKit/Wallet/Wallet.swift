@@ -15,7 +15,7 @@ public final class Wallet {
     
     public init(seed: Data, network: Network) {
         self.network = network
-        privateKey = PrivateKey(seed: seed, network: network)
+        self.privateKey = PrivateKey(seed: seed, network: network)
     }
     
     public func changeAddress(at index: UInt32) -> String {
