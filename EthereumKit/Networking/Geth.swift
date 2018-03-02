@@ -45,7 +45,7 @@ public final class Geth {
     
     // MARK: - Etherscan APIs
     
-    public func getTransactions(address: String, handler: @escaping (Result<Transactions, RPCError>) -> Void) {
+    public func getTransactions(address: Address, handler: @escaping (Result<Transactions, RPCError>) -> Void) {
         etherscanClient.send(Etherscan.GetTransactions(address: address), handler: handler)
     }
 }
