@@ -53,7 +53,7 @@ public struct PrivateKey {
     }
     
     public func generateAddress(at index: UInt32) -> String {
-        return derived(at: index).publicKey.address
+        return derived(at: index).publicKey.address.string
     }
     
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {

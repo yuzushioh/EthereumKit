@@ -28,8 +28,8 @@ public struct PublicKey {
         self.privateKey = privateKey
     }
     
-    public var address: String {
-        return "0x" + EIP55.encode(addressData)
+    public var address: Address {
+        return Address(data: addressData)
     }
     
     private var addressData: Data {

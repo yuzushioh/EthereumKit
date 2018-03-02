@@ -36,7 +36,7 @@ public final class Etherscan {
             return [
                 "module": "account",
                 "action": "txlist",
-                "address": address,
+                "address": address.string,
                 "startblock": NSNumber(value: startBlock),
                 "endblock": NSNumber(value: endBlock),
                 "sort": sort.rawValue

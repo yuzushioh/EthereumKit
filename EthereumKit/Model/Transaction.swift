@@ -17,9 +17,9 @@ public struct Transaction: Decodable {
     public let confirmations: String
     public let nonce: String
     public let timeStamp: String
-    public let contractAddress: Address
-    public let from: Address
-    public let to: Address
+    public let contractAddress: String
+    public let from: String
+    public let to: String
     public let gas: String
     public let gasPrice: String
     public let gasUsed: String
