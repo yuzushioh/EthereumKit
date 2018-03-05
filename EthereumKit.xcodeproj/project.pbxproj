@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AE0057182042E4CF007AA468 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057172042E4CF007AA468 /* RLP.swift */; };
 		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
+		AE00571C20490095007AA468 /* SignTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571B20490095007AA468 /* SignTransaction.swift */; };
 		AE005720204D7D59007AA468 /* RLPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571F204D7D59007AA468 /* RLPTests.swift */; };
 		AE005724204D852E007AA468 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005723204D852E007AA468 /* AddressTests.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
@@ -116,6 +117,7 @@
 /* Begin PBXFileReference section */
 		AE0057172042E4CF007AA468 /* RLP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
 		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		AE00571B20490095007AA468 /* SignTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTransaction.swift; sourceTree = "<group>"; };
 		AE00571F204D7D59007AA468 /* RLPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLPTests.swift; sourceTree = "<group>"; };
 		AE005723204D852E007AA468 /* AddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTests.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
 				AE838800203B236300FAC88F /* Transaction.swift */,
+				AE00571B20490095007AA468 /* SignTransaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
 				AE8387D920374A1A00FAC88F /* IDGenerator.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,
+				AE00571C20490095007AA468 /* SignTransaction.swift in Sources */,
 				AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */,
 				AE8387EF203AF38C00FAC88F /* Account.swift in Sources */,
 				AE8387CF2037435300FAC88F /* JSONRPCClient.swift in Sources */,
