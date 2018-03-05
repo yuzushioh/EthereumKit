@@ -57,4 +57,12 @@ class EIP155SignerTests: XCTestCase {
             "0af0867d4acb71dd0bd590b86aef78d7ccfdcdcf16e881e9f426e432a1603eaf"
         )
     }
+    
+    func testGeneratingRSV() {
+        let signiture = Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa63627667cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d8300")
+        let (r, s, v) = EIP155Signer.calculateRSV(signiture: signiture, chainID: 1)
+        XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!.serialize())
+        XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!.serialize())
+        XCTAssertEqual(v, BInt(37).serialize())
+    }
 }

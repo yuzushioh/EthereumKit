@@ -36,4 +36,12 @@ public struct EIP155Signer {
         
         return RLP.encode(elements)
     }
+    
+    public static func calculateRSV(signiture: Data, chainID: Int) -> (r: Data, s: Data, v: Data) {
+        return (
+            r: signiture[..<32],
+            s: signiture[32..<64],
+            v: Data([signiture[64] + UInt8(35) + UInt8(chainID) + UInt8(chainID)])
+        )
+    }
 }
