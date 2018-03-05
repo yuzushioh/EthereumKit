@@ -77,26 +77,6 @@ class EthereumKitTests: XCTestCase {
         )
     }
     
-    func testAddressGeneration() {
-        let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
-        let mnemonic = Mnemonic.create(entropy: entropy)
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .main)
-        
-        let firstAddress = wallet.receiveAddress(at: 0)
-        XCTAssertEqual(firstAddress, "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7")
-        
-        let secondAddress = wallet.receiveAddress(at: 1)
-        XCTAssertEqual(secondAddress, "0xb3c3D923CFc4d551b38Db8A86BbA42B623D063cE")
-        
-        let thirdAddress = wallet.receiveAddress(at: 2)
-        XCTAssertEqual(thirdAddress, "0x82e35B34CfBEB9704E51Eb17f8263d919786E66a")
-        
-        let forthAddress = wallet.receiveAddress(at: 3)
-        XCTAssertEqual(forthAddress, "0xCF1D652DAb65ea4f10990FD2D2E59Cd7cbEb315a")
-        
-    }
-    
     func testBalance() {
         let firstBalanceHex = "0x0000000000000000000000000000000000000000000000000DE0B6B3A7640000" // 1ether = 1000000000000000000wei
         let firstBalanceWei = BInt(firstBalanceHex.hex.lowercased(), radix: 16)!
@@ -109,5 +89,4 @@ class EthereumKitTests: XCTestCase {
         XCTAssertEqual(secondBalance.wei, BInt(number: "100000000000000000000", withBase: 10))
         XCTAssertEqual(secondBalance.ether, BDouble(100))
     }
-
 }

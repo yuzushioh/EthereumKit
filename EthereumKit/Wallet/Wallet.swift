@@ -19,11 +19,25 @@ public final class Wallet {
     }
     
     public func changeAddress(at index: UInt32) -> String {
-        return privateKey(change: .internal).generateAddress(at: index)
+        return privateKey(change: .internal)
+            .derived(at: 0)
+            .generateAddress(at: index)
+    }
+    
+    public func changePrivateKey(at index: UInt32) -> PrivateKey {
+        return privateKey(change: .internal)
+            .derived(at: index)
     }
     
     public func receiveAddress(at index: UInt32) -> String {
-        return privateKey(change: .external).generateAddress(at: index)
+        return privateKey(change: .external)
+            .derived(at: 0)
+            .generateAddress(at: index)
+    }
+    
+    public func receivePrivateKey(at index: UInt32) -> PrivateKey {
+        return privateKey(change: .external)
+            .derived(at: index)
     }
     
     private enum Change: UInt32 {

@@ -10,6 +10,7 @@
 		AE0057182042E4CF007AA468 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057172042E4CF007AA468 /* RLP.swift */; };
 		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
 		AE005720204D7D59007AA468 /* RLPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571F204D7D59007AA468 /* RLPTests.swift */; };
+		AE005724204D852E007AA468 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005723204D852E007AA468 /* AddressTests.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -116,6 +117,7 @@
 		AE0057172042E4CF007AA468 /* RLP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
 		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AE00571F204D7D59007AA468 /* RLPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLPTests.swift; sourceTree = "<group>"; };
+		AE005723204D852E007AA468 /* AddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTests.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */,
 				AE00571F204D7D59007AA468 /* RLPTests.swift */,
+				AE005723204D852E007AA468 /* AddressTests.swift */,
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
 			path = EthereumKitTests;
@@ -544,6 +547,7 @@
 			files = (
 				AE005720204D7D59007AA468 /* RLPTests.swift in Sources */,
 				AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */,
+				AE005724204D852E007AA468 /* AddressTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
