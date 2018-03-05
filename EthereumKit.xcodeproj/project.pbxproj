@@ -10,7 +10,9 @@
 		AE0057182042E4CF007AA468 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057172042E4CF007AA468 /* RLP.swift */; };
 		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
 		AE00571C20490095007AA468 /* SignTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571B20490095007AA468 /* SignTransaction.swift */; };
+		AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571D2049482A007AA468 /* EIP155Signer.swift */; };
 		AE005720204D7D59007AA468 /* RLPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571F204D7D59007AA468 /* RLPTests.swift */; };
+		AE005722204D82A1007AA468 /* EIP155SignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005721204D82A1007AA468 /* EIP155SignerTests.swift */; };
 		AE005724204D852E007AA468 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005723204D852E007AA468 /* AddressTests.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
@@ -118,7 +120,9 @@
 		AE0057172042E4CF007AA468 /* RLP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
 		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AE00571B20490095007AA468 /* SignTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTransaction.swift; sourceTree = "<group>"; };
+		AE00571D2049482A007AA468 /* EIP155Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP155Signer.swift; sourceTree = "<group>"; };
 		AE00571F204D7D59007AA468 /* RLPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLPTests.swift; sourceTree = "<group>"; };
+		AE005721204D82A1007AA468 /* EIP155SignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP155SignerTests.swift; sourceTree = "<group>"; };
 		AE005723204D852E007AA468 /* AddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTests.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				AE35422E20300E4900007B80 /* EIP55.swift */,
 				AE354223202D46E400007B80 /* Base58Encode.swift */,
 				AE0057172042E4CF007AA468 /* RLP.swift */,
+				AE00571D2049482A007AA468 /* EIP155Signer.swift */,
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				D77FB335203DE3D0003213DB /* SMP+Extensions.swift */,
 			);
@@ -306,6 +311,7 @@
 			children = (
 				AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */,
 				AE00571F204D7D59007AA468 /* RLPTests.swift */,
+				AE005721204D82A1007AA468 /* EIP155SignerTests.swift */,
 				AE005723204D852E007AA468 /* AddressTests.swift */,
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
@@ -551,6 +557,7 @@
 				AE005720204D7D59007AA468 /* RLPTests.swift in Sources */,
 				AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */,
 				AE005724204D852E007AA468 /* AddressTests.swift in Sources */,
+				AE005722204D82A1007AA468 /* EIP155SignerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +579,7 @@
 				D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */,
 				AE354224202D46E400007B80 /* Base58Encode.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
+				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
 				AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */,
 				AE0057182042E4CF007AA468 /* RLP.swift in Sources */,
 				AE8387F1203B0E2D00FAC88F /* NetworkEnvironment.swift in Sources */,
