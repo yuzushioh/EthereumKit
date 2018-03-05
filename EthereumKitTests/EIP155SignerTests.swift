@@ -12,18 +12,19 @@ import SMP
 
 class EIP155SignerTests: XCTestCase {
     func testEIP155Signing() {
+        let signer = EIP155Signer(chainID: 3)
+        
         let signTransaction1 = SignTransaction(
             value: BInt("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             gasPrice: BInt(99000000000),
             gasLimit: BInt(21000),
             data: Data(),
-            nonce: 2,
-            chainID: 3
+            nonce: 2
         )
         
         XCTAssertEqual(
-            EIP155Signer.hash(signTransaction: signTransaction1).toHexString(),
+            signer.hash(signTransaction: signTransaction1).toHexString(),
             "84df8756f832aa25f79fdeac98ae9adf83b1da0119dd3555807f890f09c3e1a7"
         )
         
@@ -33,12 +34,11 @@ class EIP155SignerTests: XCTestCase {
             gasPrice: BInt(99000000000),
             gasLimit: BInt(21000),
             data: Data(),
-            nonce: 4,
-            chainID: 3
+            nonce: 4
         )
         
         XCTAssertEqual(
-            EIP155Signer.hash(signTransaction: signTransaction2).toHexString(),
+            signer.hash(signTransaction: signTransaction2).toHexString(),
             "18f93470671a0db633e4346dfa5ecdc2568e2befdbf815ac205d9eef06a91350"
         )
         
@@ -48,19 +48,18 @@ class EIP155SignerTests: XCTestCase {
             gasPrice: BInt(99000000000),
             gasLimit: BInt(21000),
             data: Data(),
-            nonce: 25,
-            chainID: 3
+            nonce: 25
         )
         
         XCTAssertEqual(
-            EIP155Signer.hash(signTransaction: signTransaction3).toHexString(),
+            signer.hash(signTransaction: signTransaction3).toHexString(),
             "0af0867d4acb71dd0bd590b86aef78d7ccfdcdcf16e881e9f426e432a1603eaf"
         )
     }
     
     func testGeneratingRSV() {
         let signiture = Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa63627667cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d8300")
-        let (r, s, v) = EIP155Signer.calculateRSV(signiture: signiture, chainID: 1)
+        let (r, s, v) = EIP155Signer(chainID: 1).calculateRSV(signiture: signiture)
         XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!.serialize())
         XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!.serialize())
         XCTAssertEqual(v, BInt(37).serialize())

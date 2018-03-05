@@ -15,5 +15,4 @@ public struct SignTransaction {
     public let gasLimit: BInt
     public let data: Data
     public let nonce: Int
-    public let chainID: Int
 }
