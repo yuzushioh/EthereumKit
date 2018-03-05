@@ -29,6 +29,33 @@ extension BInt {
   }
 }
 
+extension BInt {
+    internal func serialize() -> Data {
+        let byteCount = (bitWidth + 7) / 8
+        
+        guard byteCount > 0 else {
+            return Data()
+        }
+        
+        var data = Data(count: byteCount)
+        data.withUnsafeMutableBytes { (p: UnsafeMutablePointer<UInt8>) -> Void in
+            var i = byteCount - 1
+            for var word in words {
+                for _ in 0 ..< UInt.bitWidth / 8 {
+                    p[i] = UInt8(word & 0xFF)
+                    word >>= 8
+                    if i == 0 {
+                        assert(word == 0)
+                        break
+                    }
+                    i -= 1
+                }
+            }
+        }
+        return data
+    }
+}
+
 extension String {
   internal var hex: String {
     var hex = self
