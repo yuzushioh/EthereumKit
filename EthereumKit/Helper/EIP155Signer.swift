@@ -24,7 +24,7 @@ public struct EIP155Signer {
         return Data(bytes: SHA3(variant: .keccak256).calculate(for: data.bytes))
     }
     
-    public func encode(signTransaction: SignTransaction, rsv: (r: Data, s: Data, v: Data)? = nil) -> Data? {
+    public func encode(signTransaction: SignTransaction) -> Data? {
         var elements: [Any] = [
             signTransaction.nonce,
             signTransaction.gasPrice,
@@ -34,13 +34,6 @@ public struct EIP155Signer {
             signTransaction.data,
             chainID, 0, 0 // EIP155
         ]
-        
-        if let rsvValue = rsv {
-            elements.append(rsvValue.r)
-            elements.append(rsvValue.s)
-            elements.append(rsvValue.v)
-        }
-        
         return RLP.encode(elements)
     }
     
