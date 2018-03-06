@@ -13,8 +13,8 @@ import CryptoSwift
 
 struct EIP55 {
     static func encode(_ data: Data) -> String {
-        let address = data.hex
-        let hash = address.data(using: .ascii)!.sha3(.keccak256).hex
+        let address = data.toHexString()
+        let hash = address.data(using: .ascii)!.sha3(.keccak256).toHexString()
         
         return zip(address, hash)
             .map { a, h -> String in
