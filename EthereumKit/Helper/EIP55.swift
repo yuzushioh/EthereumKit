@@ -6,7 +6,6 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import Foundation
 import CryptoSwift
 
 // NOTE: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md

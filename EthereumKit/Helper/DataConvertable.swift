@@ -6,8 +6,6 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import Foundation
-
 protocol DataConvertable {
     static func +(lhs: Data, rhs: Self) -> Data
     static func +=(lhs: inout Data, rhs: Self)

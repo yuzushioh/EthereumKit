@@ -6,8 +6,6 @@
 //  Copyright © 2018 yuzushioh.
 //
 
-import Foundation
-
 public final class Wallet {
     
     private let network: Network
