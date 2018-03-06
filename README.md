@@ -38,12 +38,13 @@ let thirdAddress = wallet.generateAddress(at: 2)
 
 ```
 
-## Supported JSONRPC APIs
+## Supported APIs
 
 `Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost soon⚠️)
 
-
-## Etherscan APIs
+To see more about APIs, check the documentations.
+- [JSONRPC APIs](https://github.com/yuzushioh/EthereumKit/blob/master/docs/JSONRPC.md)
+- [Etherscan APIs](https://github.com/yuzushioh/EthereumKit/blob/master/docs/Etherscan.md)
 
 
 ## Installation
