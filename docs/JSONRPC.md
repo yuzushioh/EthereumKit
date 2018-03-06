@@ -69,3 +69,19 @@ geth.getTransactionCount(address: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F") 
     // do something...
 }
 ```
+
+***
+
+#### `SendRawTransaction`
+
+Creates new message call transaction or a contract creation for signed transactions.
+
+##### Parameters
+
+1. `data` - The signed transaction data.
+
+##### Returns
+
+
+DATA, 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available.
+Use `GetTransactionReceipt` to get the contract address, after the transaction was mined, when you created a contract.
