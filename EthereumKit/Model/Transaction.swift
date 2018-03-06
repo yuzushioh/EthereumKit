@@ -40,3 +40,7 @@ public struct Transactions: Decodable {
         case elements = "result"
     }
 }
+
+public struct SentTransaction {
+    public let id: String
+}
