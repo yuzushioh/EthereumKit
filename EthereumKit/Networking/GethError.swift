@@ -1,5 +1,5 @@
 //
-//  RPCError.swift
+//  GethError.swift
 //  EthereumKit
 //
 //  Created by yuzushioh on 2018/02/17.
@@ -9,7 +9,7 @@
 import APIKit
 
 // TODO: Handle jsonrpc error
-public enum RPCError: Error {
+public enum GethError: Error {
     case connectionError(Error)
     case systemError(Error)
     
