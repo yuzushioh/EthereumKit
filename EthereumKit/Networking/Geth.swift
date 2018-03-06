@@ -20,23 +20,23 @@ public final class Geth {
     
     // MARK: - JSONRPC APIs
     
-    public func getBalance(of address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, GethError>) -> Void) {
-        etherClient.send(JSONRPC.GetBalance(address: address, blockParameter: blockParameter), handler: handler)
+    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }
     
-    public func getTransactionCount(of address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<UInt64, GethError>) -> Void) {
-        etherClient.send(JSONRPC.GetTransactionCount(address: address, blockParameter: blockParameter), handler: handler)
+    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<UInt64, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetTransactionCount(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }
     
     public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<SentTransaction, GethError>) -> Void) {
         etherClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
     }
     
-    public func getAccount(address: Address, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, GethError>) -> Void) {
+    public func getAccount(address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, GethError>) -> Void) {
         getBalance(of: address) { result in
             switch result {
             case .success(let balance):
-                handler(.success(Account(address: address, balance: balance)))
+                handler(.success(Account(address: Address(string: address), balance: balance)))
             case .failure(let error):
                 handler(.failure(error))
             }
