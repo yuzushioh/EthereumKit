@@ -6,7 +6,6 @@
 //  Copyright © 2018 yuzushioh. All rights reserved.
 //
 
-import Foundation
 import SMP
 
 public struct Transaction: Decodable {
