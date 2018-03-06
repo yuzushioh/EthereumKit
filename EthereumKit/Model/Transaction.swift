@@ -41,6 +41,15 @@ public struct Transactions: Decodable {
     }
 }
 
+public struct SignTransaction {
+    public let value: BInt
+    public let to: Address
+    public let gasPrice: BInt
+    public let gasLimit: BInt
+    public let data: Data
+    public let nonce: Int
+}
+
 public struct SentTransaction {
     public let id: String
 }
