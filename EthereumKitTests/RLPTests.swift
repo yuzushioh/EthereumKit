@@ -141,17 +141,17 @@ class RLPTests: XCTestCase {
         )
         
         XCTAssertEqual(
-            RLP.encode(BInt("102030405060708090a0b0c0d0e0f2", radix: 16)!)!.toHexString(),
+            RLP.encode(BInt(str: "102030405060708090a0b0c0d0e0f2", radix: 16)!)!.toHexString(),
             "8f102030405060708090a0b0c0d0e0f2"
         )
         
         XCTAssertEqual(
-            RLP.encode(BInt("0100020003000400050006000700080009000a000b000c000d000e01", radix: 16)!)!.toHexString(),
+            RLP.encode(BInt(str: "0100020003000400050006000700080009000a000b000c000d000e01", radix: 16)!)!.toHexString(),
             "9c0100020003000400050006000700080009000a000b000c000d000e01"
         )
         
         XCTAssertEqual(
-            RLP.encode(BInt("010000000000000000000000000000000000000000000000000000000000000000", radix: 16)!)!.toHexString(),
+            RLP.encode(BInt(str: "010000000000000000000000000000000000000000000000000000000000000000", radix: 16)!)!.toHexString(),
             "a1010000000000000000000000000000000000000000000000000000000000000000"
         )
     }
