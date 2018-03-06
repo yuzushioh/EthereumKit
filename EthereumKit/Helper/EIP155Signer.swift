@@ -44,9 +44,3 @@ public struct EIP155Signer {
         )
     }
 }
-
-extension Data {
-    var hexStringWith0xPrefix: String {
-        return "0x" + toHexString()
-    }
-}

@@ -16,4 +16,8 @@ extension String {
         }
         return hex
     }
+    
+    public var appending0xPrefix: String {
+        return "0x".appending(self)
+    }
 }
