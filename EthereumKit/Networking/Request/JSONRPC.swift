@@ -1,5 +1,5 @@
 //
-//  RPC.swift
+//  JSONRPC.swift
 //  EthereumKit
 //
 //  Created by yuzushioh on 2018/02/17.
@@ -9,7 +9,7 @@
 import JSONRPCKit
 import SMP
 
-public final class RPC {
+public final class JSONRPC {
     public struct GetBalance: Request {
         public typealias Response = Balance
         
@@ -47,7 +47,7 @@ public final class RPC {
         }
         
         public func response(from resultObject: Any) throws -> Response {
-            guard let response = resultObject as? String, let count = UInt64(response.dropFirst(2), radix: 16) else {
+            guard let response = resultObject as? String, let count = UInt64(response.hex, radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return count
@@ -55,7 +55,7 @@ public final class RPC {
     }
     
     public struct SendRawTransaction: Request {
-        public typealias Response = String
+        public typealias Response = SentTransaction
         
         public let rawTransaction: String
         
@@ -71,7 +71,7 @@ public final class RPC {
             guard let transactionID = resultObject as? String else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
-            return transactionID
+            return Response(id: transactionID)
         }
     }
 }

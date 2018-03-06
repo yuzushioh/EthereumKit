@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371090204E8FC0003A40BB /* String+Extension.swift */; };
 		AE0057182042E4CF007AA468 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057172042E4CF007AA468 /* RLP.swift */; };
 		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
 		AE00571C20490095007AA468 /* SignTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571B20490095007AA468 /* SignTransaction.swift */; };
@@ -32,9 +33,8 @@
 		AE8387D42037436E00FAC88F /* JSONRPCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D12037436E00FAC88F /* JSONRPCKit.framework */; };
 		AE8387D52037436E00FAC88F /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D22037436E00FAC88F /* APIKit.framework */; };
 		AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */; };
-		AE8387D920374A1A00FAC88F /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387D820374A1A00FAC88F /* IDGenerator.swift */; };
 		AE8387DC20374A5600FAC88F /* Geth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DB20374A5600FAC88F /* Geth.swift */; };
-		AE8387DE20374C0000FAC88F /* RPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DD20374C0000FAC88F /* RPC.swift */; };
+		AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DD20374C0000FAC88F /* JSONRPC.swift */; };
 		AE8387DF20374D1300FAC88F /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D22037436E00FAC88F /* APIKit.framework */; };
 		AE8387E020374D1300FAC88F /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D22037436E00FAC88F /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE8387E120374D1300FAC88F /* JSONRPCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D12037436E00FAC88F /* JSONRPCKit.framework */; };
@@ -42,16 +42,15 @@
 		AE8387E320374D1300FAC88F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D02037436E00FAC88F /* Result.framework */; };
 		AE8387E420374D1300FAC88F /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE8387D02037436E00FAC88F /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE8387E62037F55E00FAC88F /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387E52037F55E00FAC88F /* Balance.swift */; };
-		AE8387EB2037F7D300FAC88F /* RPCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* RPCError.swift */; };
+		AE8387EB2037F7D300FAC88F /* GethError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* GethError.swift */; };
 		AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EC2038041B00FAC88F /* BlockParameter.swift */; };
 		AE8387EF203AF38C00FAC88F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EE203AF38C00FAC88F /* Account.swift */; };
-		AE8387F1203B0E2D00FAC88F /* NetworkEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F0203B0E2D00FAC88F /* NetworkEnvironment.swift */; };
+		AE8387F1203B0E2D00FAC88F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F0203B0E2D00FAC88F /* Endpoint.swift */; };
 		AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F2203B10B900FAC88F /* HTTPRequest.swift */; };
 		AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */; };
 		AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F6203B131A00FAC88F /* Etherscan.swift */; };
 		AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FA203B1B4600FAC88F /* APIClient.swift */; };
 		AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FC203B20B700FAC88F /* EtherscanClient.swift */; };
-		AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */; };
 		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
 		AE83890D20404CC300FAC88F /* SMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; };
 		AE83890E20404CCC00FAC88F /* SMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83890C20404CC300FAC88F /* SMP.framework */; };
@@ -117,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A371090204E8FC0003A40BB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AE0057172042E4CF007AA468 /* RLP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
 		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AE00571B20490095007AA468 /* SignTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignTransaction.swift; sourceTree = "<group>"; };
@@ -140,20 +140,18 @@
 		AE8387D12037436E00FAC88F /* JSONRPCKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSONRPCKit.framework; path = Carthage/Build/iOS/JSONRPCKit.framework; sourceTree = "<group>"; };
 		AE8387D22037436E00FAC88F /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPJSONRPCRequest.swift; sourceTree = "<group>"; };
-		AE8387D820374A1A00FAC88F /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
 		AE8387DB20374A5600FAC88F /* Geth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geth.swift; sourceTree = "<group>"; };
-		AE8387DD20374C0000FAC88F /* RPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPC.swift; sourceTree = "<group>"; };
+		AE8387DD20374C0000FAC88F /* JSONRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		AE8387E52037F55E00FAC88F /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
-		AE8387EA2037F7D300FAC88F /* RPCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPCError.swift; sourceTree = "<group>"; };
+		AE8387EA2037F7D300FAC88F /* GethError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethError.swift; sourceTree = "<group>"; };
 		AE8387EC2038041B00FAC88F /* BlockParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameter.swift; sourceTree = "<group>"; };
 		AE8387EE203AF38C00FAC88F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		AE8387F0203B0E2D00FAC88F /* NetworkEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnvironment.swift; sourceTree = "<group>"; };
+		AE8387F0203B0E2D00FAC88F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AE8387F2203B10B900FAC88F /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequest.swift; sourceTree = "<group>"; };
 		AE8387F6203B131A00FAC88F /* Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etherscan.swift; sourceTree = "<group>"; };
 		AE8387FA203B1B4600FAC88F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		AE8387FC203B20B700FAC88F /* EtherscanClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanClient.swift; sourceTree = "<group>"; };
-		AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequestType.swift; sourceTree = "<group>"; };
 		AE838800203B236300FAC88F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		AE83890C20404CC300FAC88F /* SMP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SMP.framework; path = Carthage/Build/iOS/SMP.framework; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,10 +212,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A371092204E8FE0003A40BB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D77FB335203DE3D0003213DB /* SMP+Extensions.swift */,
+				1A371090204E8FC0003A40BB /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AE8387DA20374A3100FAC88F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				AE8387DB20374A5600FAC88F /* Geth.swift */,
+				AE8387EA2037F7D300FAC88F /* GethError.swift */,
+				AE8387F0203B0E2D00FAC88F /* Endpoint.swift */,
 				AE8387F9203B179700FAC88F /* Client */,
 				AE8387F8203B167000FAC88F /* Request */,
 			);
@@ -242,10 +251,9 @@
 			children = (
 				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 				AE8387F2203B10B900FAC88F /* HTTPRequest.swift */,
-				AE8387DD20374C0000FAC88F /* RPC.swift */,
-				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
 				AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */,
-				AE8387FE203B20FF00FAC88F /* EtherscanRequestType.swift */,
+				AE8387DD20374C0000FAC88F /* JSONRPC.swift */,
+				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -253,12 +261,9 @@
 		AE8387F9203B179700FAC88F /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				AE8387F0203B0E2D00FAC88F /* NetworkEnvironment.swift */,
 				AE8387FA203B1B4600FAC88F /* APIClient.swift */,
 				AE8387FC203B20B700FAC88F /* EtherscanClient.swift */,
 				AE8387CE2037435300FAC88F /* JSONRPCClient.swift */,
-				AE8387D820374A1A00FAC88F /* IDGenerator.swift */,
-				AE8387EA2037F7D300FAC88F /* RPCError.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -273,7 +278,6 @@
 				AE0057172042E4CF007AA468 /* RLP.swift */,
 				AE00571D2049482A007AA468 /* EIP155Signer.swift */,
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
-				D77FB335203DE3D0003213DB /* SMP+Extensions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -350,6 +354,7 @@
 				AE838804203B272E00FAC88F /* Wallet */,
 				AE8387E72037F5FF00FAC88F /* Model */,
 				AE838802203B271600FAC88F /* Helper */,
+				1A371092204E8FE0003A40BB /* Extension */,
 				AED02DB52019B90A00B76CEC /* Internal.h */,
 				AED02DAC2019B83100B76CEC /* Internal.m */,
 				AE8387C12034962C00FAC88F /* EthereumKit.modulemap */,
@@ -567,10 +572,8 @@
 			files = (
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
-				AE8387FF203B20FF00FAC88F /* EtherscanRequestType.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
-				AE8387D920374A1A00FAC88F /* IDGenerator.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,
 				AE00571C20490095007AA468 /* SignTransaction.swift in Sources */,
 				AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */,
@@ -582,9 +585,9 @@
 				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
 				AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */,
 				AE0057182042E4CF007AA468 /* RLP.swift in Sources */,
-				AE8387F1203B0E2D00FAC88F /* NetworkEnvironment.swift in Sources */,
+				AE8387F1203B0E2D00FAC88F /* Endpoint.swift in Sources */,
 				AE838801203B236300FAC88F /* Transaction.swift in Sources */,
-				AE8387DE20374C0000FAC88F /* RPC.swift in Sources */,
+				AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */,
 				AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */,
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
@@ -595,8 +598,9 @@
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
-				AE8387EB2037F7D300FAC88F /* RPCError.swift in Sources */,
+				AE8387EB2037F7D300FAC88F /* GethError.swift in Sources */,
 				AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */,
+				1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */,
 				AE8387DC20374A5600FAC88F /* Geth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

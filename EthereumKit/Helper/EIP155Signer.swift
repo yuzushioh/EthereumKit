@@ -25,7 +25,7 @@ public struct EIP155Signer {
     }
     
     public func encode(signTransaction: SignTransaction) -> Data? {
-        var elements: [Any] = [
+        return RLP.encode([
             signTransaction.nonce,
             signTransaction.gasPrice,
             signTransaction.gasLimit,
@@ -33,8 +33,7 @@ public struct EIP155Signer {
             signTransaction.value,
             signTransaction.data,
             chainID, 0, 0 // EIP155
-        ]
-        return RLP.encode(elements)
+        ])
     }
     
     public func calculateRSV(signiture: Data) -> (r: Data, s: Data, v: Data) {

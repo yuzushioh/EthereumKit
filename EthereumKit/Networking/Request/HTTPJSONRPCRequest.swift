@@ -22,7 +22,7 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
     }
     
     public var baseURL: URL {
-        return NetworkEnvironment(network: network).infuraURL
+        return Endpoint(network: network).infuraURL
     }
     
     public var method: HTTPMethod {

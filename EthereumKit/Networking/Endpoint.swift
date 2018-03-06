@@ -1,34 +1,10 @@
 //
-//  NetworkEnvironment.swift
+//  Endpoint.swift
 //  EthereumKit
 //
 //  Created by yuzushioh on 2018/02/19.
 //  Copyright © 2018 yuzushioh. All rights reserved.
 //
-
-public struct NetworkEnvironment {
-    
-    private let network: Network
-    
-    public init(network: Network) {
-        self.network = network
-    }
-    
-    public var infuraURL: URL {
-        return Endpoint(network: network).infuraURL
-    }
-    
-    public var etherscanURL: URL {
-        return Endpoint(network: network).etherscanURL
-    }
-    
-    public var chainID: UInt64 {
-        switch network {
-        case .main: return 1
-        case .test: return 3
-        }
-    }
-}
 
 public enum Endpoint {
     case mainnet, ropsten

@@ -56,8 +56,8 @@ public struct PrivateKey {
         return Crypto.sign(hash, privateKey: raw)
     }
     
-    public func generateAddress(at index: UInt32) -> String {
-        return derived(at: index).publicKey.address.string
+    public func generateAddress() -> String {
+        return publicKey.address.string
     }
     
     public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {

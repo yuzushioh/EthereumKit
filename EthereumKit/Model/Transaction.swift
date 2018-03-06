@@ -6,7 +6,6 @@
 //  Copyright © 2018 yuzushioh. All rights reserved.
 //
 
-import Foundation
 import SMP
 
 public struct Transaction: Decodable {
@@ -40,4 +39,8 @@ public struct Transactions: Decodable {
     enum CodingKeys: String, CodingKey {
         case elements = "result"
     }
+}
+
+public struct SentTransaction {
+    public let id: String
 }
