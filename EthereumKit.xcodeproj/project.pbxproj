@@ -10,6 +10,8 @@
 		1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371090204E8FC0003A40BB /* String+Extension.swift */; };
 		1A37109420502C76003A40BB /* Gas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37109320502C76003A40BB /* Gas.swift */; };
 		1A37109620503C6E003A40BB /* GasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A37109520503C6E003A40BB /* GasTests.swift */; };
+		1A371098205050A6003A40BB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371097205050A6003A40BB /* Converter.swift */; };
+		1A37109A205052C1003A40BB /* ConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371099205052C1003A40BB /* ConverterTests.swift */; };
 		AE0057182042E4CF007AA468 /* RLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057172042E4CF007AA468 /* RLP.swift */; };
 		AE00571A2048F946007AA468 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057192048F946007AA468 /* Address.swift */; };
 		AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00571D2049482A007AA468 /* EIP155Signer.swift */; };
@@ -121,6 +123,8 @@
 		1A371090204E8FC0003A40BB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1A37109320502C76003A40BB /* Gas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gas.swift; sourceTree = "<group>"; };
 		1A37109520503C6E003A40BB /* GasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasTests.swift; sourceTree = "<group>"; };
+		1A371097205050A6003A40BB /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		1A371099205052C1003A40BB /* ConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterTests.swift; sourceTree = "<group>"; };
 		AE0057172042E4CF007AA468 /* RLP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RLP.swift; sourceTree = "<group>"; };
 		AE0057192048F946007AA468 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		AE00571D2049482A007AA468 /* EIP155Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP155Signer.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 				AE0057172042E4CF007AA468 /* RLP.swift */,
 				AE00571D2049482A007AA468 /* EIP155Signer.swift */,
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
+				1A371097205050A6003A40BB /* Converter.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				AE005723204D852E007AA468 /* AddressTests.swift */,
 				AE005725204EE61D007AA468 /* TransactionSigningTests.swift */,
 				1A37109520503C6E003A40BB /* GasTests.swift */,
+				1A371099205052C1003A40BB /* ConverterTests.swift */,
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
 			path = EthereumKitTests;
@@ -569,6 +575,7 @@
 				AE005720204D7D59007AA468 /* RLPTests.swift in Sources */,
 				AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */,
 				AE005724204D852E007AA468 /* AddressTests.swift in Sources */,
+				1A37109A205052C1003A40BB /* ConverterTests.swift in Sources */,
 				AE005722204D82A1007AA468 /* EIP155SignerTests.swift in Sources */,
 				1A37109620503C6E003A40BB /* GasTests.swift in Sources */,
 			);
@@ -579,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
+				1A371098205050A6003A40BB /* Converter.swift in Sources */,
 				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
