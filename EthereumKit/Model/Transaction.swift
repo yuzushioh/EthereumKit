@@ -24,11 +24,11 @@ public struct SignTransaction {
     public let value: BInt
     public let to: Address
     public let nonce: Int
-    public let gasPrice: BInt
-    public let gasLimit: BInt
+    public let gasPrice: Int
+    public let gasLimit: Int
     public let data: Data
     
-    public init(rawTransaction: RawTransaction, gasPrice: BInt, gasLimit: BInt, data: Data) {
+    public init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int, data: Data = Data()) {
         self.value = rawTransaction.value
         self.to = rawTransaction.to
         self.nonce = rawTransaction.nonce
@@ -76,7 +76,7 @@ public struct Transactions: Decodable {
 }
 
 extension SignTransaction {
-    public init(value: BInt, to: Address, nonce: Int, gasPrice: BInt, gasLimit: BInt, data: Data) {
+    public init(value: BInt, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
         self.value = value
         self.to = to
         self.nonce = nonce

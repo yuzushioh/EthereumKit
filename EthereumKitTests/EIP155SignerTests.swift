@@ -18,8 +18,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 2,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(21000),
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -32,8 +32,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 4,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(21000),
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -46,8 +46,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("10000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
             nonce: 25,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(21000),
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -64,8 +64,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 2,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(21000),
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -78,8 +78,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 4,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(200000),
+            gasPrice: 99000000000,
+            gasLimit: 200000,
             data: Data()
         )
         
@@ -92,8 +92,8 @@ class EIP155SignerTests: XCTestCase {
             value: BInt("20000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
             nonce: 25,
-            gasPrice: BInt(99000000000),
-            gasLimit: BInt(21000),
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
