@@ -11,19 +11,19 @@ import XCTest
 
 class GasTests: XCTestCase {
     func testGas() {
-        XCTAssertEqual(Gas.limit.value, GasLimit.default.value)
-        XCTAssertEqual(Gas.price.value, GasPrice.default.value)
+        XCTAssertEqual(Gas.limit.value, Gas.GasLimit.default.value)
+        XCTAssertEqual(Gas.price.value, Gas.GasPrice.default.value)
         
         Gas.setGasLimit(.high)
         Gas.setGasPirce(.high)
         
-        XCTAssertEqual(Gas.limit.value, GasLimit.high.value)
-        XCTAssertEqual(Gas.price.value, GasPrice.high.value)
+        XCTAssertEqual(Gas.limit.value, Gas.GasLimit.high.value)
+        XCTAssertEqual(Gas.price.value, Gas.GasPrice.high.value)
         
         Gas.setGasLimit(.low)
         Gas.setGasPirce(.custom(9000))
         
-        XCTAssertEqual(Gas.limit.value, GasLimit.low.value)
+        XCTAssertEqual(Gas.limit.value, Gas.GasLimit.low.value)
         XCTAssertEqual(Gas.price.value, 9000)
     }
 }
