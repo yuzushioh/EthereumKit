@@ -17,6 +17,28 @@ public struct EIP155Signer {
         self.chainID = chainID
     }
     
+    public func sign(_ rawTransaction: RawTransaction, with privateKey: Data) -> Data {
+        let signTransaction = SignTransaction(rawTransaction: rawTransaction, gasPrice: BInt("99000000000")!, gasLimit: BInt("21000")!, data: Data())
+        
+        let signiture = Crypto.sign(hash(signTransaction: signTransaction), privateKey: privateKey)
+        let (r, s, v) = calculateRSV(signiture: signiture)
+        let signedData = RLP.encode([
+            signTransaction.nonce,
+            signTransaction.gasPrice,
+            signTransaction.gasLimit,
+            signTransaction.to.data,
+            signTransaction.value,
+            signTransaction.data,
+            v, r, s
+        ])
+        
+        guard let data = signedData else {
+            fatalError()
+        }
+        
+        return data
+    }
+    
     public func hash(signTransaction: SignTransaction) -> Data {
         guard let data = encode(signTransaction: signTransaction) else {
             fatalError("Failded to RLP hash \(signTransaction)")

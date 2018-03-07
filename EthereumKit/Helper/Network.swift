@@ -28,4 +28,13 @@ public enum Network {
             return 0x04358394
         }
     }
+    
+    public var chainID: Int {
+        switch self {
+        case .main:
+            return 1
+        case .test:
+            return 3
+        }
+    }
 }
