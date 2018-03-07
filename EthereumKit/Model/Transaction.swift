@@ -13,8 +13,12 @@ public struct RawTransaction {
     public let to: Address
     public let nonce: Int
     
-    public init(value: BInt, address: String, nonce: Int) {
-        self.value = value
+    public static func create(value: String, address: String, nonce: Int) -> RawTransaction {
+        return RawTransaction(value: value, address: address, nonce: nonce)
+    }
+    
+    internal init(value: String, address: String, nonce: Int) {
+        self.value = BInt(value)!
         self.to = Address(string: address)
         self.nonce = nonce
     }
@@ -75,8 +79,16 @@ public struct Transactions: Decodable {
     }
 }
 
+extension RawTransaction {
+//    internal init(value: BInt, address: String, nonce: Int) {
+//        self.value = value
+//        self.to = Address(string: address)
+//        self.nonce = nonce
+//    }
+}
+
 extension SignTransaction {
-    public init(value: BInt, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
+    internal init(value: BInt, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
         self.value = value
         self.to = to
         self.nonce = nonce
