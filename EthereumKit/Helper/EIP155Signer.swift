@@ -18,7 +18,7 @@ public struct EIP155Signer {
     }
     
     public func sign(_ rawTransaction: RawTransaction, with privateKey: Data) -> Data {
-        let signTransaction = SignTransaction(rawTransaction: rawTransaction, gasPrice: BInt("99000000000")!, gasLimit: BInt("21000")!, data: Data())
+        let signTransaction = SignTransaction(rawTransaction: rawTransaction, gasPrice: BInt(99000000000), gasLimit: BInt(21000), data: Data())
         
         let signiture = Crypto.sign(hash(signTransaction: signTransaction), privateKey: privateKey)
         let (r, s, v) = calculateRSV(signiture: signiture)

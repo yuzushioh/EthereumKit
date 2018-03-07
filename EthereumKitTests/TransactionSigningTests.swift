@@ -210,28 +210,40 @@ class TransactionSigningTests: XCTestCase {
         )
     }
     
-    func testTransactionSigningWithWallet() {
-        let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
-        
-        XCTAssertEqual(wallet.generateAddress(), "0x88b44BC83add758A3642130619D61682282850Df")
-        XCTAssertEqual(wallet.generatePrivateKey().raw.toHexString(), "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
-        
-        let rawTransaction = RawTransaction(
-            value: BInt("1000000000000000000")!,
-            address: "0x88b44BC83add758A3642130619D61682282850Df",
-            nonce: 0
+    func testTransactionSigning7() {
+        let signTransaction = SignTransaction(
+            value: BInt("1000000000000000")!,
+            to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
+            nonce: 0,
+            gasPrice: BInt("99000000000")!,
+            gasLimit: BInt("21000")!,
+            data: Data()
         )
         
-        let tx = wallet.signTransaction(rawTransaction)
+        let signer = EIP155Signer(chainID: 3)
+        let signiture = Crypto.sign(
+            signer.hash(signTransaction: signTransaction),
+            privateKey: Data(hex: "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
+        )
+        
+        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        
+        let data = RLP.encode([
+            signTransaction.nonce,
+            signTransaction.gasPrice,
+            signTransaction.gasLimit,
+            signTransaction.to.data,
+            signTransaction.value,
+            signTransaction.data,
+            v, r, s
+        ])
+        
         XCTAssertEqual(
-            tx,
-        "0xf86c8085170cdc1e008252089488b44bc83add758a3642130619d61682282850df880de0b6b3a7640000802aa002f3a48564121ab94a36dfda38d92d64e0af7a65aa4aaa156774799326d01415a06cd50668baff69a2a1fdc4c4254c64e256f28fcdae14599c793b2d22b147ad25"
+            data!.toHexString().appending0xPrefix, "0xf86b8085170cdc1e008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a01edbb41d5936c75314cd75d795e2c79ef8882eb6daa041f22a894f84dec7a97fa020569fc39ffa956592f40020b2afb710ba8dabebee4de32fb7dce22a1209b90d"
         )
     }
     
-    func testTransactionSigningWithWallet1() {
+    func testTransactionSigningWithWallet() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = Wallet(seed: seed, network: .test)
@@ -240,7 +252,7 @@ class TransactionSigningTests: XCTestCase {
         XCTAssertEqual(wallet.generatePrivateKey().raw.toHexString(), "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
         
         let rawTransaction = RawTransaction(
-            value: BInt("1000000000000000000")!,
+            value: BInt("100000000000000000")!,
             address: "0x94bD4ddE47B2F10C4DbE9377D5c3a83eDf22860D",
             nonce: 0
         )
@@ -248,7 +260,7 @@ class TransactionSigningTests: XCTestCase {
         let tx = wallet.signTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
-        "0xf86c8085170cdc1e008252089494bd4dde47b2f10c4dbe9377d5c3a83edf22860d880de0b6b3a76400008029a0d499b8b912a245b558210b830cbc6b20b1f92319a98336f927b4b1db6e1a9799a05cf772910ce7fa55dc47ff256387dfbe07198d4347346eb9629089652b783c9c"
+        "0xf86c8085170cdc1e008252089494bd4dde47b2f10c4dbe9377d5c3a83edf22860d88016345785d8a00008029a08a7073c62a3d2708d11a04ab835d740e4a804bae7b7daefa08febf4878025d0fa006be9422f299cafefe1a7ea7dd043131c5141693140248144c4c6d09dd42fd9d"
         )
     }
     
