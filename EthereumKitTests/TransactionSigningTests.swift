@@ -17,8 +17,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 5,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("21000")!,
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -50,8 +50,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("100000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
             nonce: 5,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("21000")!,
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -83,8 +83,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("500000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
             nonce: 5,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("200000")!,
+            gasPrice: 99000000000,
+            gasLimit: 200000,
             data: Data()
         )
         
@@ -116,8 +116,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 0,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("21000")!,
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -149,8 +149,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
             nonce: 0,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("21000")!,
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -182,8 +182,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("5000000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
             nonce: 0,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("200000")!,
+            gasPrice: 99000000000,
+            gasLimit: 200000,
             data: Data()
         )
         
@@ -215,8 +215,8 @@ class TransactionSigningTests: XCTestCase {
             value: BInt("1000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 0,
-            gasPrice: BInt("99000000000")!,
-            gasLimit: BInt("21000")!,
+            gasPrice: 99000000000,
+            gasLimit: 21000,
             data: Data()
         )
         
@@ -244,65 +244,44 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet() {
+        Gas.setGasPirce(.default)
+        Gas.setGasLimit(.default)
+        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = Wallet(seed: seed, network: .test)
         
-        XCTAssertEqual(wallet.generateAddress(at: 1), "0x94bD4ddE47B2F10C4DbE9377D5c3a83eDf22860D")
-        XCTAssertEqual(wallet.generatePrivateKey().raw.toHexString(), "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
-        
         let rawTransaction = RawTransaction(
             value: BInt("100000000000000000")!,
-            address: "0x94bD4ddE47B2F10C4DbE9377D5c3a83eDf22860D",
-            nonce: 0
+            address: "0x88b44BC83add758A3642130619D61682282850Df",
+            nonce: 2
         )
         
         let tx = wallet.signTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
-        "0xf86c8085170cdc1e008252089494bd4dde47b2f10c4dbe9377d5c3a83edf22860d88016345785d8a00008029a08a7073c62a3d2708d11a04ab835d740e4a804bae7b7daefa08febf4878025d0fa006be9422f299cafefe1a7ea7dd043131c5141693140248144c4c6d09dd42fd9d"
+        "0xf86c0285098bca5a008252089488b44bc83add758a3642130619d61682282850df88016345785d8a00008029a028959f3003dbd17385dec3348cdc62b348240a707bfce5827635a396d4ad02a0a033d1786b113fbc0578e6aafd345311fdc72d4a8e60a66da90159d93369c7246b"
         )
     }
     
     func testTransactionSigningWithWallet2() {
+        Gas.setGasPirce(.default)
+        Gas.setGasLimit(.default)
+        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = Wallet(seed: seed, network: .test)
-        
-        XCTAssertEqual(wallet.generateAddress(at: 2), "0xebf3cf4E89C9Be367EC86d76D5Dc977c21877C14")
-        XCTAssertEqual(wallet.generatePrivateKey().raw.toHexString(), "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
-        
-        let rawTransaction = RawTransaction(
-            value: BInt("1000000000000000000")!,
-            address: "0xebf3cf4E89C9Be367EC86d76D5Dc977c21877C14",
-            nonce: 0
-        )
-        
-        let tx = wallet.signTransaction(rawTransaction)
-        XCTAssertEqual(
-            tx,
-        "0xf86c8085170cdc1e0082520894ebf3cf4e89c9be367ec86d76d5dc977c21877c14880de0b6b3a76400008029a03562007f46c34b968874680f2324b2cf6910bcfc066740d2ebb020e6652dba58a068379abc69786ccee531112cdff1a39a1f68d2a5eca2a42aca07cf68f743209c"
-        )
-    }
-    
-    func testTransactionSigningWithWallet3() {
-        let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
-        
-        XCTAssertEqual(wallet.generateAddress(at: 3), "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6")
-        XCTAssertEqual(wallet.generatePrivateKey().raw.toHexString(), "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
         
         let rawTransaction = RawTransaction(
             value: BInt("1000000000000000000")!,
             address: "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6",
-            nonce: 0
+            nonce: 2
         )
         
         let tx = wallet.signTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
-        "0xf86c8085170cdc1e00825208942f9ee3ede488e3b7702be866e2dc80a2a962f8a6880de0b6b3a76400008029a00e3136fed6f4fb70eba248a531903f21a2ea849b4814b9fb89758f39fd987338a005eaabaaf0db182941d925ab06c91f5aa39f21611f110511b60dc6ffa0e31feb"
+        "0xf86c0285098bca5a00825208942f9ee3ede488e3b7702be866e2dc80a2a962f8a6880de0b6b3a76400008029a09ce012054ee76b1ac9cd442335a00de747d8536eda6639a1f65e4fac5002fb9ba05c26e5e9263d86d36835f29b38ed62cd0575875eea62ea7022c231db6e7d5b44"
         )
     }
 }
