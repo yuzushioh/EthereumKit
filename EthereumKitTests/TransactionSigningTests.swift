@@ -16,10 +16,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            nonce: 5,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("21000")!,
-            data: Data(),
-            nonce: 5
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 3)
@@ -37,7 +37,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
@@ -49,10 +49,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("100000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
+            nonce: 5,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("21000")!,
-            data: Data(),
-            nonce: 5
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 3)
@@ -70,7 +70,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
@@ -82,10 +82,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("500000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
+            nonce: 5,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("200000")!,
-            data: Data(),
-            nonce: 5
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 3)
@@ -103,7 +103,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
@@ -115,10 +115,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            nonce: 0,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("21000")!,
-            data: Data(),
-            nonce: 0
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 1)
@@ -136,7 +136,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
@@ -148,10 +148,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("1000000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
+            nonce: 0,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("21000")!,
-            data: Data(),
-            nonce: 0
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 1)
@@ -169,7 +169,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
@@ -181,10 +181,10 @@ class TransactionSigningTests: XCTestCase {
         let signTransaction = SignTransaction(
             value: BInt("5000000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
+            nonce: 0,
             gasPrice: BInt("99000000000")!,
             gasLimit: BInt("200000")!,
-            data: Data(),
-            nonce: 0
+            data: Data()
         )
         
         let signer = EIP155Signer(chainID: 1)
@@ -202,7 +202,7 @@ class TransactionSigningTests: XCTestCase {
             signTransaction.to.data,
             signTransaction.value,
             signTransaction.data,
-            v, r, s,
+            v, r, s
         ])
         
         XCTAssertEqual(
