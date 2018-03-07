@@ -126,6 +126,46 @@ class RLPTests: XCTestCase {
         )
         
         XCTAssertEqual(
+            RLP.encode(BInt("10000000000000000")!)!.toHexString(),
+            "872386f26fc10000"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("100000000000000000")!)!.toHexString(),
+            "88016345785d8a0000"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("1000000000000000000")!)!.toHexString(),
+            "880de0b6b3a7640000"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("10000000000000000000")!)!.toHexString(),
+            "888ac7230489e80000"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("12371637000000000")!)!.toHexString(),
+            "872bf3f034acd200"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("123716370000000000")!)!.toHexString(),
+            "8801b787620ec03400"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("1237163700000000000")!)!.toHexString(),
+            "88112b49d493820800"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("12371637000000000000")!)!.toHexString(),
+            "88abb0e24dc3145000"
+        )
+        
+        XCTAssertEqual(
             RLP.encode(BInt(0xffffff))!.toHexString(),
             "83ffffff"
         )

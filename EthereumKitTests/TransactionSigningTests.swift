@@ -252,7 +252,7 @@ class TransactionSigningTests: XCTestCase {
         let wallet = Wallet(seed: seed, network: .test)
         
         let rawTransaction = RawTransaction(
-            value: BInt("100000000000000000")!,
+            value: "100000000000000000",
             address: "0x88b44BC83add758A3642130619D61682282850Df",
             nonce: 2
         )
@@ -273,7 +273,7 @@ class TransactionSigningTests: XCTestCase {
         let wallet = Wallet(seed: seed, network: .test)
         
         let rawTransaction = RawTransaction(
-            value: BInt("1000000000000000000")!,
+            value: "1000000000000000000",
             address: "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6",
             nonce: 2
         )
