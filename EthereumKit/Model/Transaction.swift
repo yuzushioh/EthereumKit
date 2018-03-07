@@ -79,14 +79,6 @@ public struct Transactions: Decodable {
     }
 }
 
-extension RawTransaction {
-//    internal init(value: BInt, address: String, nonce: Int) {
-//        self.value = value
-//        self.to = Address(string: address)
-//        self.nonce = nonce
-//    }
-}
-
 extension SignTransaction {
     internal init(value: BInt, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
         self.value = value
