@@ -8,6 +8,40 @@
 
 import SMP
 
+public struct RawTransaction {
+    public let value: BInt
+    public let to: Address
+    public let nonce: Int
+    
+    public init(value: BInt, address: String, nonce: Int) {
+        self.value = value
+        self.to = Address(string: address)
+        self.nonce = nonce
+    }
+}
+
+public struct SignTransaction {
+    public let value: BInt
+    public let to: Address
+    public let nonce: Int
+    public let gasPrice: BInt
+    public let gasLimit: BInt
+    public let data: Data
+    
+    public init(rawTransaction: RawTransaction, gasPrice: BInt, gasLimit: BInt, data: Data) {
+        self.value = rawTransaction.value
+        self.to = rawTransaction.to
+        self.nonce = rawTransaction.nonce
+        self.gasPrice = gasPrice
+        self.gasLimit = gasLimit
+        self.data = data
+    }
+}
+
+public struct SentTransaction {
+    public let id: String
+}
+
 public struct Transaction: Decodable {
     public let blockHash: String
     public let blockNumber: String
@@ -41,15 +75,13 @@ public struct Transactions: Decodable {
     }
 }
 
-public struct SignTransaction {
-    public let value: BInt
-    public let to: Address
-    public let gasPrice: BInt
-    public let gasLimit: BInt
-    public let data: Data
-    public let nonce: Int
-}
-
-public struct SentTransaction {
-    public let id: String
+extension SignTransaction {
+    public init(value: BInt, to: Address, nonce: Int, gasPrice: BInt, gasLimit: BInt, data: Data) {
+        self.value = value
+        self.to = to
+        self.nonce = nonce
+        self.gasPrice = gasPrice
+        self.gasLimit = gasLimit
+        self.data = data
+    }
 }
