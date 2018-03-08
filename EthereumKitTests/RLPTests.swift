@@ -94,6 +94,38 @@ class RLPTests: XCTestCase {
         XCTAssert(RLP.encode(Array<Int>(repeating: 0, count: 1024))!.toHexString().hasPrefix("f90400"))
     }
     
+    func testData() {
+        XCTAssertEqual(
+            RLP.encode(Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276"))!.toHexString(),
+            "a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!.serialize())!.toHexString(),
+            "a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(Data(hex: "67cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83"))!.toHexString(),
+            "a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!.serialize())!.toHexString(),
+            "a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(Data(hex: "29"))!.toHexString(),
+            "29"
+        )
+        
+        XCTAssertEqual(
+            RLP.encode(BInt(41).serialize())!.toHexString(),
+            "29"
+        )
+    }
+    
     func testBInt() {
         XCTAssertEqual(
             RLP.encode(BInt(0))!.toHexString(),
