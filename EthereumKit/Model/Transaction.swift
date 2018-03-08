@@ -9,7 +9,7 @@
 import SMP
 
 public struct RawTransaction {
-    public let value: BInt
+    public let value: Wei
     public let to: Address
     public let nonce: Int
     
@@ -18,14 +18,14 @@ public struct RawTransaction {
     }
     
     internal init(value: String, address: String, nonce: Int) {
-        self.value = BInt(value)!
+        self.value = Wei(value)!
         self.to = Address(string: address)
         self.nonce = nonce
     }
 }
 
 public struct SignTransaction {
-    public let value: BInt
+    public let value: Wei
     public let to: Address
     public let nonce: Int
     public let gasPrice: Int
@@ -80,7 +80,7 @@ public struct Transactions: Decodable {
 }
 
 extension SignTransaction {
-    internal init(value: BInt, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
+    internal init(value: Wei, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
         self.value = value
         self.to = to
         self.nonce = nonce

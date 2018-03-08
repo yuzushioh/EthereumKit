@@ -2,6 +2,29 @@
 
 #### `GetBalance`
 
+Returns the current price per gas in wei.
+
+##### Parameters
+
+none
+
+##### Returns
+
+`QUANTITY` - integer of the current gas price in wei.
+
+##### Example
+        
+```swift
+let geth = Geth(network: .test)
+geth.getGasPrice() { result in 
+    // do something...
+}
+```
+
+***
+
+#### `GetBalance`
+
 Return a balance of specified address based on the `BlockParameter`.
 
 ##### Parameters

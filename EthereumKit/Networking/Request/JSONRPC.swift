@@ -7,9 +7,23 @@
 //
 
 import JSONRPCKit
-import SMP
 
 public final class JSONRPC {
+    public struct GetGasPrice: Request {
+        public typealias Response = Wei
+        
+        public var method: String {
+            return "eth_gasPrice"
+        }
+        
+        public func response(from resultObject: Any) throws -> Wei {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return wei
+        }
+    }
+    
     public struct GetBalance: Request {
         public typealias Response = Balance
         
@@ -25,7 +39,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Balance {
-            guard let response = resultObject as? String, let wei = BInt(response.hex.lowercased(), radix: 16) else {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
@@ -33,7 +47,7 @@ public final class JSONRPC {
     }
     
     public struct GetTransactionCount: Request {
-        public typealias Response = UInt64
+        public typealias Response = Int
         
         public let address: Address
         public let blockParameter: BlockParameter
@@ -47,7 +61,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Response {
-            guard let response = resultObject as? String, let count = UInt64(response.hex, radix: 16) else {
+            guard let response = resultObject as? String, let count = Int(response.hex, radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return count
