@@ -20,11 +20,15 @@ public final class Geth {
     
     // MARK: - JSONRPC APIs
     
+    public func getGasPrice(handler: @escaping (Result<Wei, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetGasPrice(), handler: handler)
+    }
+    
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, GethError>) -> Void) {
         etherClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }
     
-    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<UInt64, GethError>) -> Void) {
+    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Int, GethError>) -> Void) {
         etherClient.send(JSONRPC.GetTransactionCount(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }
     
