@@ -8,30 +8,21 @@
 
 public final class Gas {
     public enum GasPrice {
-        case `default`
-        case low
-        case high
-        case custom(Int)
+        case `default`, low, high, custom(GWei: Int)
         
+        // Its unit is in GWei
         public var value: Int {
             switch self {
-            case .default:
-                return 41000000000
-            case .low:
-                return 1000000000
-            case .high:
-                return 99000000000
-            case .custom(let price):
-                return price
+            case .default: return 41
+            case .low: return 1
+            case .high: return 99
+            case .custom(let gwei): return gwei
             }
         }
     }
     
     public enum GasLimit {
-        case `default`
-        case low
-        case high
-        case custom(Int)
+        case `default`, low, high, custom(Int)
         
         public var value: Int {
             return 21000

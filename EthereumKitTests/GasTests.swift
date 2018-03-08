@@ -21,9 +21,9 @@ class GasTests: XCTestCase {
         XCTAssertEqual(Gas.price.value, Gas.GasPrice.high.value)
         
         Gas.setGasLimit(.low)
-        Gas.setGasPirce(.custom(9000))
+        Gas.setGasPirce(.custom(GWei: 9))
         
         XCTAssertEqual(Gas.limit.value, Gas.GasLimit.low.value)
-        XCTAssertEqual(Gas.price.value, 9000)
+        XCTAssertEqual(Gas.price.value, 9)
     }
 }

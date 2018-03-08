@@ -244,6 +244,75 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet() {
+        Gas.setGasPirce(.custom(GWei: 99))
+        Gas.setGasLimit(.custom(21000))
+        
+        let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
+        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let wallet = Wallet(seed: seed, network: .test)
+        
+        // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
+        
+        let rawTransaction = RawTransaction(
+            value: "1000000000000000",
+            address: "0x88b44BC83add758A3642130619D61682282850Df",
+            nonce: 2
+        )
+        
+        let tx = wallet.signTransaction(rawTransaction)
+        XCTAssertEqual(
+            tx,
+            "0xf86b0285170cdc1e008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0dbc4a4748e889d9921c28593fd8ad17edaee69ec992cc7a798229d8d5bd30c61a0407c70218b1bcff3bd6d824c14703b03b6744b66354226416053c2c4a73b5bc2"
+        )
+    }
+    
+    func testTransactionSigningWithWallet1() {
+        Gas.setGasPirce(.custom(GWei: 1))
+        Gas.setGasLimit(.custom(21000))
+        
+        let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
+        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let wallet = Wallet(seed: seed, network: .test)
+        
+        // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
+        
+        let rawTransaction = RawTransaction(
+            value: "1000000000000000",
+            address: "0x88b44BC83add758A3642130619D61682282850Df",
+            nonce: 2
+        )
+        
+        let tx = wallet.signTransaction(rawTransaction)
+        XCTAssertEqual(
+            tx,
+            "0xf86a02843b9aca008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0db114beaab321c241df4c7da6de7e4f4267019dbd20699a881483d063314fe00a066dc7e3a5c96160213de1cac1b48a21ef11da46531b78a08742399417477cd8e"
+        )
+    }
+    
+    func testTransactionSigningWithWallet2() {
+        Gas.setGasPirce(.custom(GWei: 10))
+        Gas.setGasLimit(.custom(21000))
+        
+        let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
+        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let wallet = Wallet(seed: seed, network: .test)
+        
+        // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
+        
+        let rawTransaction = RawTransaction(
+            value: "1000000000000000",
+            address: "0x88b44BC83add758A3642130619D61682282850Df",
+            nonce: 2
+        )
+        
+        let tx = wallet.signTransaction(rawTransaction)
+        XCTAssertEqual(
+            tx,
+            "0xf86b028502540be4008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0e947eb994fcc3f2dd3538a08e0fd39f2aa03281b6c0b6a8ffbc77a06835782d8a065ee30e21936676e6d1431a5eabb44a0111cc528a92b2021dfe1323adf7f3d10"
+        )
+    }
+    
+    func testTransactionSigningWithWallet3() {
         Gas.setGasPirce(.default)
         Gas.setGasLimit(.default)
         
@@ -264,7 +333,7 @@ class TransactionSigningTests: XCTestCase {
         )
     }
     
-    func testTransactionSigningWithWallet2() {
+    func testTransactionSigningWithWallet4() {
         Gas.setGasPirce(.default)
         Gas.setGasLimit(.default)
         

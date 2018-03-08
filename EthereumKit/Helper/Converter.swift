@@ -8,6 +8,8 @@
 
 import SMP
 
+// Online Converter: https://etherconverter.online
+
 public final class Converter {
     private static let etherUnit = BInt(number: "1000000000000000000", withBase: 10)!
     
@@ -17,5 +19,10 @@ public final class Converter {
     
     public static func toWei(ether: BDouble) -> BInt {
         return (ether * BDouble(etherUnit.description)!).rounded()
+    }
+    
+    // Only used for calcurating gas price and gas limit.
+    public static func toWei(GWei: Int) -> Int {
+        return GWei * 1000000000
     }
 }
