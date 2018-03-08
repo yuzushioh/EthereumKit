@@ -313,8 +313,8 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet3() {
-        Gas.setGasPirce(.default)
-        Gas.setGasLimit(.default)
+        Gas.setGasPirce(.normal)
+        Gas.setGasLimit(.normal)
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
@@ -334,8 +334,8 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet4() {
-        Gas.setGasPirce(.default)
-        Gas.setGasLimit(.default)
+        Gas.setGasPirce(.normal)
+        Gas.setGasLimit(.normal)
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
