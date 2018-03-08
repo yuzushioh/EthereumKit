@@ -37,7 +37,12 @@ public final class Wallet {
     public func signTransaction(_ rawTransaction: RawTransaction) -> String {
         let signer = EIP155Signer(chainID: network.chainID)
         let privateKey = generatePrivateKey()
-        let signTransaction = SignTransaction(rawTransaction: rawTransaction, gasPrice: Gas.price.value, gasLimit: Gas.limit.value)
+        let signTransaction = SignTransaction(
+            rawTransaction: rawTransaction,
+            gasPrice: Converter.toWei(GWei: Gas.price.value),
+            gasLimit: Gas.limit.value
+        )
+        
         let rawData = signer.sign(signTransaction, with: privateKey.raw)
         return rawData.toHexString().appending0xPrefix
     }
