@@ -17,7 +17,7 @@ public struct EIP155Signer {
         self.chainID = chainID
     }
     
-    public func sign(_ signTransaction: SignTransaction, with privateKey: Data) -> Data {
+    public func sign(_ signTransaction: SignTransaction, privateKey: Data) -> Data {
         let signiture = Crypto.sign(hash(signTransaction: signTransaction), privateKey: privateKey)
         let (r, s, v) = calculateRSV(signiture: signiture)
         let signedData = RLP.encode([
