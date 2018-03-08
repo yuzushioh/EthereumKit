@@ -10,9 +10,9 @@ import Foundation
 import SMP
 
 public struct Balance {
-    public let wei: BInt
+    public let wei: Wei
     
-    public var ether: BDouble {
-        return BDouble(wei, over: BInt(number: "1000000000000000000", withBase: 10)!)
+    public var ether: Ether {
+        return Converter.toEther(wei: wei)
     }
 }
