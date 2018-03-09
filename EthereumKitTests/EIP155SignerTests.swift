@@ -1,11 +1,3 @@
-//
-//  EIP155SignerTests.swift
-//  EthereumKitTests
-//
-//  Created by yuzushioh on 2018/03/05.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import XCTest
 import SMP
 @testable import EthereumKit
@@ -15,7 +7,7 @@ class EIP155SignerTests: XCTestCase {
         let signer = EIP155Signer(chainID: 3)
         
         let signTransaction1 = SignTransaction(
-            value: BInt("10000000000000000")!,
+            value: Wei("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 2,
             gasPrice: 99000000000,
@@ -29,7 +21,7 @@ class EIP155SignerTests: XCTestCase {
         )
         
         let signTransaction2 = SignTransaction(
-            value: BInt("10000000000000000")!,
+            value: Wei("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 4,
             gasPrice: 99000000000,
@@ -43,7 +35,7 @@ class EIP155SignerTests: XCTestCase {
         )
         
         let signTransaction3 = SignTransaction(
-            value: BInt("10000000000000000")!,
+            value: Wei("10000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
             nonce: 25,
             gasPrice: 99000000000,
@@ -61,7 +53,7 @@ class EIP155SignerTests: XCTestCase {
         let signer = EIP155Signer(chainID: 1)
         
         let signTransaction1 = SignTransaction(
-            value: BInt("10000000000000000")!,
+            value: Wei("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 2,
             gasPrice: 99000000000,
@@ -75,7 +67,7 @@ class EIP155SignerTests: XCTestCase {
         )
         
         let signTransaction2 = SignTransaction(
-            value: BInt("10000000000000000")!,
+            value: Wei("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 4,
             gasPrice: 99000000000,
@@ -89,7 +81,7 @@ class EIP155SignerTests: XCTestCase {
         )
         
         let signTransaction3 = SignTransaction(
-            value: BInt("20000000000000000")!,
+            value: Wei("20000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
             nonce: 25,
             gasPrice: 99000000000,

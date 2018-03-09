@@ -1,11 +1,3 @@
-//
-//  Address.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/03/02.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 public struct Address {
     public let data: Data
     public let string: String

@@ -1,11 +1,3 @@
-//
-//  AddressTests.swift
-//  EthereumKitTests
-//
-//  Created by yuzushioh on 2018/03/05.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import XCTest
 @testable import EthereumKit
 

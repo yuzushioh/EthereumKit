@@ -1,12 +1,3 @@
-//
-//  SMP+Extensions.swift
-//  EthereumKit
-//
-//  Created by Tomoya Hirano on 2018/02/22.
-//  Copyright © 2018年 yuzushioh. All rights reserved.
-//
-
-import UIKit
 import SMP
 
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
