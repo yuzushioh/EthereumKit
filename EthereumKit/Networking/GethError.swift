@@ -1,11 +1,3 @@
-//
-//  GethError.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/17.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import APIKit
 
 // TODO: Handle jsonrpc error

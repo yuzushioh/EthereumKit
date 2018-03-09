@@ -1,13 +1,4 @@
-//
-//  EthereumKitTests.swift
-//  EthereumKitTests
-//
-//  Created by yuzushioh on 2018/01/01.
-//  Copyright © 2018 yuzushioh.
-//
-
 import XCTest
-import SMP
 @testable import EthereumKit
 
 class EthereumKitTests: XCTestCase {
@@ -79,14 +70,14 @@ class EthereumKitTests: XCTestCase {
     
     func testBalance() {
         let firstBalanceHex = "0x0000000000000000000000000000000000000000000000000DE0B6B3A7640000" // 1ether = 1000000000000000000wei
-        let firstBalanceWei = BInt(str: firstBalanceHex.hex.lowercased(), radix: 16)!
+        let firstBalanceWei = Wei(str: firstBalanceHex.hex.lowercased(), radix: 16)!
         let firstBalance = Balance(wei: firstBalanceWei)
-        XCTAssertEqual(firstBalance.wei, BInt(number: "1000000000000000000", withBase: 10))
-        XCTAssertEqual(firstBalance.ether, BDouble(1))
+        XCTAssertEqual(firstBalance.wei, Wei(number: "1000000000000000000", withBase: 10))
+        XCTAssertEqual(firstBalance.ether, Ether(1))
         let secondBalanceHex = "0x0000000000000000000000000000000000000000000000056BC75E2D63100000" // 100ether = 100000000000000000000wei
-        let secondBalanceWei = BInt(str: secondBalanceHex.hex.lowercased(), radix: 16)!
+        let secondBalanceWei = Wei(str: secondBalanceHex.hex.lowercased(), radix: 16)!
         let secondBalance = Balance(wei: secondBalanceWei)
-        XCTAssertEqual(secondBalance.wei, BInt(number: "100000000000000000000", withBase: 10))
-        XCTAssertEqual(secondBalance.ether, BDouble(100))
+        XCTAssertEqual(secondBalance.wei, Wei(number: "100000000000000000000", withBase: 10))
+        XCTAssertEqual(secondBalance.ether, Ether(100))
     }
 }

@@ -1,11 +1,3 @@
-//
-//  EIP155Signer.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/03/02.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import SMP
 import CryptoSwift
 

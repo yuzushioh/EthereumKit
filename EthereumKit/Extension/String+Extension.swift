@@ -1,13 +1,3 @@
-//
-//  String+Extension.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/03/06.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
-import Foundation
-
 extension String {
     public var hex: String {
         var hex = self

@@ -1,17 +1,8 @@
-//
-//  EIP55.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/11.
-//  Copyright © 2018 yuzushioh.
-//
-
 import CryptoSwift
 
 // NOTE: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md
-
-struct EIP55 {
-    static func encode(_ data: Data) -> String {
+public struct EIP55 {
+    public static func encode(_ data: Data) -> String {
         let address = data.toHexString()
         let hash = address.data(using: .ascii)!.sha3(.keccak256).toHexString()
         

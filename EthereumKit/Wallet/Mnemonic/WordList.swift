@@ -1,13 +1,3 @@
-//
-//  WordList.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/01/01.
-//  Copyright © 2018 yuzushioh.
-//
-
-import Foundation
-
 public enum WordList {
     case english
     

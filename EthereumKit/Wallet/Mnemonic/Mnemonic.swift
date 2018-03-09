@@ -1,11 +1,3 @@
-//
-//  Mnemonic.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/01/01.
-//  Copyright © 2018 yuzushioh.
-//
-
 import Foundation
 
 // https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki

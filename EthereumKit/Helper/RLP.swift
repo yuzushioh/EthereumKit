@@ -1,11 +1,3 @@
-//
-//  RLP.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/25.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import SMP
 
 public struct RLP {
@@ -89,20 +81,20 @@ public struct RLP {
         case 0 ..< (1 << 16):
             return Data([
                 UInt8(i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         case 0 ..< (1 << 24):
             return Data([
                 UInt8(i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         case 0 ..< (1 << 32):
             return Data([
                 UInt8(i >> 24),
                 UInt8(truncatingIfNeeded: i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         case 0 ..< (1 << 40):
             return Data([
@@ -110,7 +102,7 @@ public struct RLP {
                 UInt8(truncatingIfNeeded: i >> 24),
                 UInt8(truncatingIfNeeded: i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         case 0 ..< (1 << 48):
             return Data([
@@ -119,7 +111,7 @@ public struct RLP {
                 UInt8(truncatingIfNeeded: i >> 24),
                 UInt8(truncatingIfNeeded: i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         case 0 ..< (1 << 56):
             return Data([
@@ -129,7 +121,7 @@ public struct RLP {
                 UInt8(truncatingIfNeeded: i >> 24),
                 UInt8(truncatingIfNeeded: i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
                 ])
         default:
             return Data([
@@ -140,7 +132,7 @@ public struct RLP {
                 UInt8(truncatingIfNeeded: i >> 24),
                 UInt8(truncatingIfNeeded: i >> 16),
                 UInt8(truncatingIfNeeded: i >> 8),
-                UInt8(truncatingIfNeeded: i),
+                UInt8(truncatingIfNeeded: i)
             ])
         }
     }

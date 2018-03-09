@@ -1,11 +1,3 @@
-//
-//  BlockParameter.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/17.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 /// https://github.com/ethereum/wiki/wiki/JSON-RPC#the-default-block-parameter
 /// String "earliest" for the earliest/genesis block
 /// String "latest" - for the latest mined block

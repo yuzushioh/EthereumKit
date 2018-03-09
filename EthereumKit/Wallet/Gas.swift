@@ -1,11 +1,3 @@
-//
-//  Gas.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/03/07.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 public final class Gas {
     public enum GasPrice {
         case normal, low, high, custom(GWei: Int)

@@ -1,11 +1,3 @@
-//
-//  Base58Encode.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/09.
-//  Copyright © 2018 yuzushioh.
-//
-
 // Copied from https://github.com/kishikawakatsumi/BitcoinKit/blob/master/BitcoinKit/Encoding.swift
 public struct Base58 {
     private static let alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
@@ -29,7 +21,7 @@ public struct Base58 {
             var carry = Int(b)
             var i = 0
             
-            for j in 0...base58.count-1 where carry != 0 || i < length {
+            for j in 0...base58.count - 1 where carry != 0 || i < length {
                 carry += 256 * Int(base58[base58.count - j - 1])
                 base58[base58.count - j - 1] = UInt8(carry % 58)
                 carry /= 58

@@ -1,11 +1,3 @@
-//
-//  Wallet.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/01/01.
-//  Copyright © 2018 yuzushioh.
-//
-
 public final class Wallet {
     
     private let network: Network

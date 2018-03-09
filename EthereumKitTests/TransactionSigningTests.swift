@@ -1,20 +1,11 @@
-//
-//  TransactionSigningTests.swift
-//  EthereumKitTests
-//
-//  Created by yuzushioh on 2018/03/07.
-//  Copyright © 2018 yuzushioh. All rights reserved.
-//
-
 import XCTest
-import SMP
 @testable import EthereumKit
 
 class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning() {
         let signTransaction = SignTransaction(
-            value: BInt("1000000000000000000")!,
+            value: Wei("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 5,
             gasPrice: 99000000000,
@@ -47,7 +38,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning2() {
         let signTransaction = SignTransaction(
-            value: BInt("100000000000000000")!,
+            value: Wei("100000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
             nonce: 5,
             gasPrice: 99000000000,
@@ -80,7 +71,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning3() {
         let signTransaction = SignTransaction(
-            value: BInt("500000000000000000")!,
+            value: Wei("500000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
             nonce: 5,
             gasPrice: 99000000000,
@@ -113,7 +104,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning4() {
         let signTransaction = SignTransaction(
-            value: BInt("1000000000000000000")!,
+            value: Wei("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
             nonce: 0,
             gasPrice: 99000000000,
@@ -146,7 +137,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning5() {
         let signTransaction = SignTransaction(
-            value: BInt("1000000000000000000")!,
+            value: Wei("1000000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
             nonce: 0,
             gasPrice: 99000000000,
@@ -179,7 +170,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning6() {
         let signTransaction = SignTransaction(
-            value: BInt("5000000000000000000")!,
+            value: Wei("5000000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
             nonce: 0,
             gasPrice: 99000000000,
@@ -212,7 +203,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning7() {
         let signTransaction = SignTransaction(
-            value: BInt("1000000000000000")!,
+            value: Wei("1000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
             nonce: 0,
             gasPrice: 99000000000,
