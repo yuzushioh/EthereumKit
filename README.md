@@ -10,6 +10,15 @@ let seed = Mnemonic.createSeed(mnemonic: mnemonic)
 // BIP32: Key derivation and address generation
 let wallet = Wallet(seed: seed, network: .main)
 let address = wallet.generateAddress(at: 0)
+
+// Send some ether
+let rawTransaction = RawTransaction(ether: "0.15", address: "0x88b44BC83add758A3642130619D61682282850Df", nonce: 2)
+let tx = wallet.signTransaction(rawTransaction)
+
+let geth = Geth(network: .main)
+geth.sendRawTransaction(rawTransaction: tx) { result in 
+    // Do something...
+}
 ```
 
 ## Features
