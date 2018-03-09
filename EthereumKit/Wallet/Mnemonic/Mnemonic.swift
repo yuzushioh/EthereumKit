@@ -33,15 +33,9 @@ public final class Mnemonic {
         return mnemonic.joined(separator: " ")
     }
     
-    public static func createSeed(mnemonic: String, withPassphrase passphrase: String = "") -> Data? {
-        guard let password = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8) else {
-            return nil
-        }
-        
-        guard let salt = ("mnemonic" + passphrase).decomposedStringWithCompatibilityMapping.data(using: .utf8) else {
-            return nil
-        }
-        
+    public static func createSeed(mnemonic: String, withPassphrase passphrase: String = "") -> Data {
+        let password = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+        let salt = ("mnemonic" + passphrase).decomposedStringWithCompatibilityMapping.data(using: .utf8)!
         return Crypto.PBKDF2SHA512(password, salt: salt)
     }
 }
