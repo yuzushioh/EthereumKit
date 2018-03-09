@@ -5,14 +5,22 @@ public struct RawTransaction {
     public let to: Address
     public let nonce: Int
     
-    public static func create(value: String, address: String, nonce: Int) -> RawTransaction {
-        return RawTransaction(value: value, address: address, nonce: nonce)
+    public static func create(wei: String, address: String, nonce: Int) -> RawTransaction {
+        return RawTransaction(wei: wei, address: address, nonce: nonce)
     }
     
-    internal init(value: String, address: String, nonce: Int) {
-        self.value = Wei(value)!
+    public static func create(ether: String, address: String, nonce: Int) -> RawTransaction {
+        return RawTransaction(ether: ether, address: address, nonce: nonce)
+    }
+    
+    internal init(wei: String, address: String, nonce: Int) {
+        self.value = Wei(wei)!
         self.to = Address(string: address)
         self.nonce = nonce
+    }
+    
+    internal init(ether: String, address: String, nonce: Int) {
+        self.init(wei: Converter.toWei(ether: Ether(ether)!).description, address: address, nonce: nonce)
     }
 }
 
