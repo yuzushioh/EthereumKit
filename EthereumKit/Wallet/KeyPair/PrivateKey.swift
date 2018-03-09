@@ -62,7 +62,7 @@ public struct PrivateKey {
     
     public func derived(at index: UInt32, hardens: Bool = false) throws -> PrivateKey {
         guard (0x80000000 & index) == 0 else {
-            throw EthereumKitError.invalidIndex
+            fatalError("Invalid index \(index)")
         }
         
         let keyDeriver = KeyDerivation(
@@ -75,7 +75,7 @@ public struct PrivateKey {
         )
         
         guard let derivedKey = keyDeriver.derived(at: index, hardened: hardens) else {
-            throw EthereumKitError.invalidIndex
+            throw DerivationError.derivateionFailed
         }
         
         return PrivateKey(
@@ -87,4 +87,8 @@ public struct PrivateKey {
             network: network
         )
     }
+}
+
+public enum DerivationError : Error {
+    case derivateionFailed
 }
