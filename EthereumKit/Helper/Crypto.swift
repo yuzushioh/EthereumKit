@@ -18,7 +18,7 @@ public final class Crypto {
         return Secp256k1.generatePublicKey(withPrivateKey: data, compression: compressed)
     }
     
-    public static func sign(_ data: Data, privateKey: Data) -> Data {
+    public static func sign(_ data: Data, privateKey: Data) throws -> Data {
         let context = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN | SECP256K1_CONTEXT_VERIFY))!
         defer { secp256k1_context_destroy(context) }
 
@@ -28,7 +28,7 @@ public final class Crypto {
         }
         
         guard status == 1 else {
-            fatalError()
+            throw EthereumKitError.failedToSignTransaction
         }
         
         var output = Data(count: 65)

@@ -19,6 +19,7 @@
 		AE005722204D82A1007AA468 /* EIP155SignerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005721204D82A1007AA468 /* EIP155SignerTests.swift */; };
 		AE005724204D852E007AA468 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005723204D852E007AA468 /* AddressTests.swift */; };
 		AE005726204EE61D007AA468 /* TransactionSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005725204EE61D007AA468 /* TransactionSigningTests.swift */; };
+		AE0057282052F954007AA468 /* EthereumKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057272052F954007AA468 /* EthereumKitError.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -132,6 +133,7 @@
 		AE005721204D82A1007AA468 /* EIP155SignerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP155SignerTests.swift; sourceTree = "<group>"; };
 		AE005723204D852E007AA468 /* AddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTests.swift; sourceTree = "<group>"; };
 		AE005725204EE61D007AA468 /* TransactionSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSigningTests.swift; sourceTree = "<group>"; };
+		AE0057272052F954007AA468 /* EthereumKitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitError.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		AE8387E72037F5FF00FAC88F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE0057272052F954007AA468 /* EthereumKitError.swift */,
 				AE8387EE203AF38C00FAC88F /* Account.swift */,
 				AE0057192048F946007AA468 /* Address.swift */,
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
@@ -603,6 +606,7 @@
 				AE8387F1203B0E2D00FAC88F /* Endpoint.swift in Sources */,
 				AE838801203B236300FAC88F /* Transaction.swift in Sources */,
 				AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */,
+				AE0057282052F954007AA468 /* EthereumKitError.swift in Sources */,
 				AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */,
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,

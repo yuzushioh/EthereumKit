@@ -19,7 +19,7 @@ public struct RLP {
             return encode(string)
         
         default:
-            fatalError("tried to encode unsupported object: \(element)")
+            return nil
         }
     }
     

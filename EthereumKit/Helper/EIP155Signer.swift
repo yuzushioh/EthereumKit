@@ -9,8 +9,12 @@ public struct EIP155Signer {
         self.chainID = chainID
     }
     
-    public func sign(_ signTransaction: SignTransaction, privateKey: Data) -> Data {
-        let signiture = Crypto.sign(hash(signTransaction: signTransaction), privateKey: privateKey)
+    public func sign(_ signTransaction: SignTransaction, privateKey: PrivateKey) throws -> Data? {
+        guard let transactionHash = hash(signTransaction: signTransaction) else {
+            return nil
+        }
+        
+        let signiture = try privateKey.sign(hash: transactionHash)
         let (r, s, v) = calculateRSV(signiture: signiture)
         let signedData = RLP.encode([
             signTransaction.nonce,
@@ -22,16 +26,12 @@ public struct EIP155Signer {
             v, r, s
         ])
         
-        guard let data = signedData else {
-            fatalError()
-        }
-        
-        return data
+        return signedData
     }
     
-    public func hash(signTransaction: SignTransaction) -> Data {
+    public func hash(signTransaction: SignTransaction) -> Data? {
         guard let data = encode(signTransaction: signTransaction) else {
-            fatalError("Failded to RLP hash \(signTransaction)")
+            return nil
         }
         return Data(bytes: SHA3(variant: .keccak256).calculate(for: data.bytes))
     }
