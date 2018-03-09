@@ -1,5 +1,7 @@
 ## JSONRPC Requests
 
+`Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost soon⚠️)
+
 #### `GetBalance`
 
 Returns the current price per gas in wei.
