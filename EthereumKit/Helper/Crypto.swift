@@ -29,12 +29,10 @@ final class Crypto {
     static func sign(_ data: Data, privateKey: Data) -> Data {
         let context = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN | SECP256K1_CONTEXT_VERIFY))!
         defer { secp256k1_context_destroy(context) }
-        
-        let signature = UnsafeMutablePointer<secp256k1_ecdsa_signature>.allocate(capacity: 1)
-        defer { signature.deallocate(capacity: 1) }
-        
-        let status = data.withUnsafeBytes { (ptr: UnsafePointer<UInt8>) in
-            privateKey.withUnsafeBytes { secp256k1_ecdsa_sign(context, signature, ptr, $0, nil, nil) }
+
+        var signature = secp256k1_ecdsa_recoverable_signature()
+        let status = privateKey.withUnsafeBytes { (key: UnsafePointer<UInt8>) in
+            data.withUnsafeBytes { secp256k1_ecdsa_sign_recoverable(context, &signature, $0, key, nil, nil) }
         }
         
         guard status == 1 else {
@@ -42,9 +40,13 @@ final class Crypto {
         }
         
         var output = Data(count: 65)
-        guard output.withUnsafeMutableBytes({ secp256k1_ecdsa_signature_serialize_compact(context, $0, signature) })  == 1 else {
-            fatalError()
+        var recid = 0 as Int32
+        _ = output.withUnsafeMutableBytes { (output: UnsafeMutablePointer<UInt8>) in
+            secp256k1_ecdsa_recoverable_signature_serialize_compact(context, output, &recid, &signature)
         }
+        
+        output[64] = UInt8(recid)
+        
         return output
     }
 }
