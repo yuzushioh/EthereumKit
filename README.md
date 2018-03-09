@@ -13,39 +13,26 @@ EthereumKit is a Swift framework that enables you to create Ethereum wallet and 
 
 ### Wallet
 
-- BIP39: Generate seed and mnemonic sentence.
-
 ```swift
-let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
-let mnemonic = Mnemonic.create(entropy: entropy)
+// BIP39: Generate seed and mnemonic sentence.
+let mnemonic = Mnemonic.create()
 let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-```
 
-- BIP32: Key derivation and address generation
-
-```swift
-// It generates master key pair from the seed provided.
+// BIP32: Key derivation and address generation
 let wallet = Wallet(seed: seed, network: .main)
-
-let firstAddress = wallet.generateAddress(at: 0)
-// 0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7
-
-let secondAddress = wallet.generateAddress(at: 1)
-// 0xb3c3D923CFc4d551b38Db8A86BbA42B623D063cE
-
-let thirdAddress = wallet.generateAddress(at: 2)
-// 0x82e35B34CfBEB9704E51Eb17f8263d919786E66a
-
+let address = wallet.generateAddress(at: 0)
 ```
 
-## Supported APIs
+## Documentations
 
-`Geth` in EthereumKit communicates with Ethereum via JSONRPC. It connects to `Ropsten` for test network and `Mainnet` for main network. (Will support localhost soon⚠️)
+- [Getting Started](Documentation/GettingStarted.md)
+- [JSONRPC API](Documentation/JSONRPC.md)
+- [Etherscan API](Documentation/Etherscan.md)
 
-To see more about APIs, check the documentations.
-- [JSONRPC APIs](https://github.com/yuzushioh/EthereumKit/blob/master/docs/JSONRPC.md)
-- [Etherscan APIs](https://github.com/yuzushioh/EthereumKit/blob/master/docs/Etherscan.md)
+## Requirements
 
+- Swift 4.0 or later
+- iOS 10.0 or later
 
 ## Installation
 #### [Carthage](https://github.com/Carthage/Carthage)
