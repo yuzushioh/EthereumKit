@@ -23,7 +23,7 @@ class EthereumKitTests: XCTestCase {
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         XCTAssertEqual(
-            seed.toHexString(),
+            seed!.toHexString(),
             "3779b041fab425e9c0fd55846b2a03e9a388fb12784067bd8ebdb464c2574a05bcc7a8eb54d7b2a2c8420ff60f630722ea5132d28605dbc996c8ca7d7a8311c0"
         )
         
@@ -31,7 +31,7 @@ class EthereumKitTests: XCTestCase {
         let mnemonic2 = Mnemonic.create(entropy: entropy2)
         let seed2 = Mnemonic.createSeed(mnemonic: mnemonic2)
         XCTAssertEqual(
-            seed2.toHexString(),
+            seed2!.toHexString(),
             "2bb2ea75d2891584559506b2429426722bfa81958c824affb84b37def230fe94a7da1701d550fef6a216176de786150d0a4f2b7b3770139582c1c01a6958d91a"
         )
     }
@@ -40,23 +40,23 @@ class EthereumKitTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let privateKey = PrivateKey(seed: seed, network: .main)
+        let privateKey = PrivateKey(seed: seed!, network: .main)
         
         // BIP44 key derivation
         // m/44'
-        let purpose = privateKey.derived(at: 44, hardens: true)
+        let purpose = try! privateKey.derived(at: 44, hardens: true)
         
         // m/44'/60'
-        let coinType = purpose.derived(at: 60, hardens: true)
+        let coinType = try! purpose.derived(at: 60, hardens: true)
         
         // m/44'/60'/0'
-        let account = coinType.derived(at: 0, hardens: true)
+        let account = try! coinType.derived(at: 0, hardens: true)
         
         // m/44'/60'/0'/0
-        let change = account.derived(at: 0)
+        let change = try! account.derived(at: 0)
         
         // m/44'/60'/0'/0
-        let firstPrivateKey = change.derived(at: 0)
+        let firstPrivateKey = try! change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address.string,
             "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
