@@ -16,9 +16,9 @@ public final class Wallet {
             .privateKey
     }
     
-    public init(network: Network, privateKey: PrivateKey) {
+    public init(network: Network, privateKey: String) {
         self.network = network
-        self.privateKey = privateKey
+        self.privateKey = PrivateKey(raw: Data(hex: privateKey))
     }
     
     // MARK: - Public Methods

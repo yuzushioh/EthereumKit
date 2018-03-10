@@ -18,6 +18,10 @@ public final class HDWallet {
         return try generatePrivateKey(at: index).publicKey.generateAddress()
     }
     
+    public func dumpPrivateKey(at index: UInt32) throws -> String {
+        return try generatePrivateKey(at: index).raw.toHexString()
+    }
+    
     // MARK: - Private Methods
     
     // Ethereum only uses external.
