@@ -23,7 +23,7 @@ public final class Wallet {
     
     // MARK: - Public Methods
     
-    public func generateAddress() throws -> String {
+    public func generateAddress() -> String {
         return privateKey.publicKey.generateAddress()
     }
     
