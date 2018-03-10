@@ -13,7 +13,7 @@ class AddressTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .main)
+        let wallet = HDWallet(seed: seed, network: .main)
         
         let firstAddress = try! wallet.generateAddress(at: 0)
         XCTAssertEqual(firstAddress, "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7")
