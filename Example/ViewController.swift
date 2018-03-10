@@ -72,6 +72,10 @@ class ViewController: UIViewController {
             // Do something
         }
         
+        geth.getTransactions(address: address) { result in
+            print(result)
+        }
+        
         // You can get the current nonce by calling
         geth.getTransactionCount(of: address) { result in
             switch result {

@@ -4,15 +4,21 @@ EthereumKit is a Swift framework that enables you to create Ethereum wallet and 
 
 ```swift
 // BIP39: Generate seed and mnemonic sentence.
+
 let mnemonic = Mnemonic.create()
 let seed = Mnemonic.createSeed(mnemonic: mnemonic)
 
 // BIP32: Key derivation and address generation
-let wallet = try HDWallet(seed: seed, network: .main)
-let address = try wallet.generateAddress(at: 0)
+
+let wallet: Wallet
+do {
+    wallet = try Wallet(seed: seed, network: .main)
+} catch let error {
+    fatalError("Error: \(error.localizedDescription)")
+}
 
 // Send some ether
-let rawTransaction = RawTransaction(ether: "0.15", address: "0x88b44BC83add758A3642130619D61682282850Df", nonce: 2)
+let rawTransaction = RawTransaction(ether: "0.15", address: wallet.generateAddress(), nonce: 0)
 let tx = try wallet.signTransaction(rawTransaction)
 
 geth.sendRawTransaction(rawTransaction: tx) { result in 

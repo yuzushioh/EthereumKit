@@ -52,6 +52,9 @@ do {
 
 ## Geth
 `Geth` is responsible for interacting with Ethereum network. Geth interacts with network via JSONRPC. You can see the list of JSONRPC requests [here](Documentation/JSONRPC.md).
+To create `Configuration` struct for `Geth`, you need 
+- url for Ethereum node. you can get one at [infura.io](https://infura.io)
+- Etherscan API key. you can get one at [Etherscan](https://etherscan.io)
 
 ```swift
 // Create an instance of `Geth` with `Configuration`.
@@ -73,6 +76,15 @@ geth.getBalance(of: address, blockParameter: .latest) { result in
     // Do something
 } 
 
+```
+
+### Get Transactions
+To get the list of transactions related to the specified address, `Geth` uses Etherscan API.
+
+```swift
+geth.getTransactions(address: address) { result in
+    // Do something            
+}
 ```
 
 ### Send Ether
