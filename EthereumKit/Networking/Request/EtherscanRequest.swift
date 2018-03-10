@@ -19,15 +19,15 @@ public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
     public typealias Response = Request.Response
     
     private let baseRequest: Request
-    private let network: Network
+    private let endpoint: URL
     
-    public init(_ baseRequest: Request, network: Network) {
+    public init(_ baseRequest: Request, endpoint: URL) {
         self.baseRequest = baseRequest
-        self.network = network
+        self.endpoint = endpoint
     }
     
     public var baseURL: URL {
-        return Endpoint(network: network).etherscanURL
+        return endpoint
     }
     
     public var method: HTTPMethod {

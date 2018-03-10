@@ -240,7 +240,7 @@ class TransactionSigningTests: XCTestCase {
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
+        let wallet = Wallet(seed: seed, network: .ropsten)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
         
@@ -263,7 +263,7 @@ class TransactionSigningTests: XCTestCase {
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
+        let wallet = Wallet(seed: seed, network: .ropsten)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
         
@@ -286,7 +286,7 @@ class TransactionSigningTests: XCTestCase {
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
+        let wallet = Wallet(seed: seed, network: .ropsten)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
         
@@ -309,7 +309,7 @@ class TransactionSigningTests: XCTestCase {
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
+        let wallet = Wallet(seed: seed, network: .ropsten)
         
         let rawTransaction = RawTransaction(
             wei: "100000000000000000",
@@ -330,7 +330,7 @@ class TransactionSigningTests: XCTestCase {
         
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let wallet = Wallet(seed: seed, network: .test)
+        let wallet = Wallet(seed: seed, network: .ropsten)
         
         let rawTransaction = RawTransaction(
             wei: "1000000000000000000",
