@@ -44,19 +44,19 @@ class EthereumKitTests: XCTestCase {
         
         // BIP44 key derivation
         // m/44'
-        let purpose = privateKey.derived(at: 44, hardens: true)
+        let purpose = try! privateKey.derived(at: 44, hardens: true)
         
         // m/44'/60'
-        let coinType = purpose.derived(at: 60, hardens: true)
+        let coinType = try! purpose.derived(at: 60, hardens: true)
         
         // m/44'/60'/0'
-        let account = coinType.derived(at: 0, hardens: true)
+        let account = try! coinType.derived(at: 0, hardens: true)
         
         // m/44'/60'/0'/0
-        let change = account.derived(at: 0)
+        let change = try! account.derived(at: 0)
         
         // m/44'/60'/0'/0
-        let firstPrivateKey = change.derived(at: 0)
+        let firstPrivateKey = try! change.derived(at: 0)
         XCTAssertEqual(
             firstPrivateKey.publicKey.address.string,
             "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"

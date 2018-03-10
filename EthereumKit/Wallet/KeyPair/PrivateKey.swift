@@ -52,17 +52,17 @@ public struct PrivateKey {
         return Base58.encode(extendedPrivateKeyData)
     }
     
-    public func sign(hash: Data) -> Data {
-        return Crypto.sign(hash, privateKey: raw)
+    public func sign(hash: Data) throws -> Data {
+        return try Crypto.sign(hash, privateKey: raw)
     }
     
     public func generateAddress() -> String {
         return publicKey.address.string
     }
     
-    public func derived(at index: UInt32, hardens: Bool = false) -> PrivateKey {
+    public func derived(at index: UInt32, hardens: Bool = false) throws -> PrivateKey {
         guard (0x80000000 & index) == 0 else {
-            fatalError("Invalid child index")
+            fatalError("Invalid index \(index)")
         }
         
         let keyDeriver = KeyDerivation(
@@ -75,7 +75,7 @@ public struct PrivateKey {
         )
         
         guard let derivedKey = keyDeriver.derived(at: index, hardened: hardens) else {
-            fatalError("Child key derivation failed at index: \(index)")
+            throw EthereumKitError.keyDerivateionFailed
         }
         
         return PrivateKey(

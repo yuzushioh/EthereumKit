@@ -10,35 +10,35 @@ public final class Wallet {
     
     // MARK: - Public Methods
     
-    public func generatePrivateKey() -> PrivateKey {
-        return generatePrivateKey(at: 0)
+    public func generatePrivateKey() throws -> PrivateKey {
+        return try generatePrivateKey(at: 0)
     }
     
-    public func generatePrivateKey(at index: UInt32) -> PrivateKey {
-        return privateKey(change: .external).derived(at: index)
+    public func generateAddress() throws -> String {
+        return try generateAddress(at: 0)
     }
     
-    public func generateAddress() -> String {
-        return generateAddress(at: 0)
-    }
-    
-    public func generateAddress(at index: UInt32) -> String {
-        return generatePrivateKey(at: index).generateAddress()
-    }
-    
-    public func signTransaction(_ rawTransaction: RawTransaction) -> String {
+    public func signTransaction(_ rawTransaction: RawTransaction) throws -> String? {
         let signTransaction = SignTransaction(
             rawTransaction: rawTransaction,
             gasPrice: Converter.toWei(GWei: Gas.price.value),
             gasLimit: Gas.limit.value
         )
         
-        let rawData = EIP155Signer(chainID: network.chainID).sign(
-            signTransaction,
-            privateKey: generatePrivateKey().raw
-        )
-        
-        return rawData.toHexString().appending0xPrefix
+        let signer = EIP155Signer(chainID: network.chainID)
+        let privateKey = try generatePrivateKey()
+        let rawData = try signer.sign(signTransaction, privateKey: privateKey)
+        return rawData?.toHexString().appending0xPrefix
+    }
+    
+    // MARK: - Internal Methods
+    
+    internal func generatePrivateKey(at index: UInt32) throws -> PrivateKey {
+        return try privateKey(change: .external).derived(at: index)
+    }
+    
+    internal func generateAddress(at index: UInt32) throws -> String {
+        return try generatePrivateKey(at: index).generateAddress()
     }
     
     // MARK: - Private Methods
@@ -49,8 +49,8 @@ public final class Wallet {
     }
     
     // m/44'/coin_type'/0'/external
-    private func privateKey(change: Change) -> PrivateKey {
-        return masterPrivateKey
+    private func privateKey(change: Change) throws -> PrivateKey {
+        return try masterPrivateKey
             .derived(at: 44, hardens: true)
             .derived(at: network.coinType, hardens: true)
             .derived(at: 0, hardens: true)
