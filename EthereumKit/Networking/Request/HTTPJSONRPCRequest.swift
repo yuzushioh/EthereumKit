@@ -5,16 +5,16 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
     
     public typealias Response = Batch.Responses
     
-    private let network: Network
+    private let endpoint: URL
     private let batch: Batch
     
-    public init(batch: Batch, network: Network) {
-        self.network = network
+    public init(batch: Batch, endpoint: URL) {
+        self.endpoint = endpoint
         self.batch = batch
     }
     
     public var baseURL: URL {
-        return Endpoint(network: network).infuraURL
+        return endpoint
     }
     
     public var method: HTTPMethod {

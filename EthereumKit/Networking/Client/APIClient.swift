@@ -3,10 +3,10 @@ import Result
 
 public class APIClient {
     
-    public let network: Network
+    public let configuration: Configuration
     
-    public init(network: Network) {
-        self.network = network
+    public init(configuration: Configuration) {
+        self.configuration = configuration
     }
     
     private var session: Session = {

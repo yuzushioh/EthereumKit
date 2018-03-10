@@ -16,7 +16,7 @@ public final class JSONRPCClient: APIClient {
     
     public func send<RPC: JSONRPCKit.Request>(_ rpc: RPC, handler: @escaping (Result<RPC.Response, GethError>) -> Void) {
         let batch = batchFactory.create(rpc)
-        let httpRequest = HTTPJSONRPCRequest(batch: batch, network: network)
+        let httpRequest = HTTPJSONRPCRequest(batch: batch, endpoint: configuration.nodeEndpoint)
         send(httpRequest, handler: handler)
     }
 }

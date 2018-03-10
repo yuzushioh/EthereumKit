@@ -20,6 +20,7 @@
 		AE005724204D852E007AA468 /* AddressTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005723204D852E007AA468 /* AddressTests.swift */; };
 		AE005726204EE61D007AA468 /* TransactionSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005725204EE61D007AA468 /* TransactionSigningTests.swift */; };
 		AE00572A205390E1007AA468 /* EthereumKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005729205390E1007AA468 /* EthereumKitError.swift */; };
+		AE00572E205391E2007AA468 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00572D205391E2007AA468 /* Configuration.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -50,7 +51,6 @@
 		AE8387EB2037F7D300FAC88F /* GethError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* GethError.swift */; };
 		AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EC2038041B00FAC88F /* BlockParameter.swift */; };
 		AE8387EF203AF38C00FAC88F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EE203AF38C00FAC88F /* Account.swift */; };
-		AE8387F1203B0E2D00FAC88F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F0203B0E2D00FAC88F /* Endpoint.swift */; };
 		AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F2203B10B900FAC88F /* HTTPRequest.swift */; };
 		AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */; };
 		AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F6203B131A00FAC88F /* Etherscan.swift */; };
@@ -134,6 +134,7 @@
 		AE005723204D852E007AA468 /* AddressTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTests.swift; sourceTree = "<group>"; };
 		AE005725204EE61D007AA468 /* TransactionSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSigningTests.swift; sourceTree = "<group>"; };
 		AE005729205390E1007AA468 /* EthereumKitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitError.swift; sourceTree = "<group>"; };
+		AE00572D205391E2007AA468 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -156,7 +157,6 @@
 		AE8387EA2037F7D300FAC88F /* GethError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethError.swift; sourceTree = "<group>"; };
 		AE8387EC2038041B00FAC88F /* BlockParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameter.swift; sourceTree = "<group>"; };
 		AE8387EE203AF38C00FAC88F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		AE8387F0203B0E2D00FAC88F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		AE8387F2203B10B900FAC88F /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequest.swift; sourceTree = "<group>"; };
 		AE8387F6203B131A00FAC88F /* Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etherscan.swift; sourceTree = "<group>"; };
@@ -236,7 +236,6 @@
 			children = (
 				AE8387DB20374A5600FAC88F /* Geth.swift */,
 				AE8387EA2037F7D300FAC88F /* GethError.swift */,
-				AE8387F0203B0E2D00FAC88F /* Endpoint.swift */,
 				AE8387F9203B179700FAC88F /* Client */,
 				AE8387F8203B167000FAC88F /* Request */,
 			);
@@ -270,6 +269,7 @@
 		AE8387F9203B179700FAC88F /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				AE00572D205391E2007AA468 /* Configuration.swift */,
 				AE8387FA203B1B4600FAC88F /* APIClient.swift */,
 				AE8387FC203B20B700FAC88F /* EtherscanClient.swift */,
 				AE8387CE2037435300FAC88F /* JSONRPCClient.swift */,
@@ -603,7 +603,6 @@
 				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
 				AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */,
 				AE0057182042E4CF007AA468 /* RLP.swift in Sources */,
-				AE8387F1203B0E2D00FAC88F /* Endpoint.swift in Sources */,
 				AE838801203B236300FAC88F /* Transaction.swift in Sources */,
 				AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */,
 				AE00572A205390E1007AA468 /* EthereumKitError.swift in Sources */,
@@ -611,6 +610,7 @@
 				AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
 				AE8387E62037F55E00FAC88F /* Balance.swift in Sources */,
+				AE00572E205391E2007AA468 /* Configuration.swift in Sources */,
 				AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */,
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,

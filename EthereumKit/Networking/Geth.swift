@@ -5,9 +5,9 @@ public final class Geth {
     private let etherClient: JSONRPCClient
     private let etherscanClient: EtherscanClient
     
-    public init(network: Network) {
-        etherClient = JSONRPCClient(network: network)
-        etherscanClient = EtherscanClient(network: network)
+    public init(configuration: Configuration) {
+        etherClient = JSONRPCClient(configuration: configuration)
+        etherscanClient = EtherscanClient(configuration: configuration)
     }
     
     // MARK: - JSONRPC APIs

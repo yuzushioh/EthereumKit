@@ -1,13 +1,13 @@
 public enum Network {
     case main
-    case test
+    case ropsten
     
     // https://github.com/satoshilabs/slips/blob/master/slip-0044.md
     public var coinType: UInt32 {
         switch self {
         case .main:
             return 60
-        case .test:
+        case .ropsten:
             return 1
         }
     }
@@ -16,7 +16,7 @@ public enum Network {
         switch self {
         case .main:
             return 0x0488ADE4
-        case .test:
+        case .ropsten:
             return 0x04358394
         }
     }
@@ -25,7 +25,7 @@ public enum Network {
         switch self {
         case .main:
             return 1
-        case .test:
+        case .ropsten:
             return 3
         }
     }
