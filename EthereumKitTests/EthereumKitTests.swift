@@ -6,14 +6,14 @@ class EthereumKitTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         XCTAssertEqual(
-            mnemonic,
+            mnemonic.joined(separator: " "),
             "abandon amount liar amount expire adjust cage candy arch gather drum buyer"
         )
         
         let entropy2 = Data(hex: "a26a4821e36c7f7dccaa5484c080cefa")
         let mnemonic2 = Mnemonic.create(entropy: entropy2)
         XCTAssertEqual(
-            mnemonic2,
+            mnemonic2.joined(separator: " "),
             "pen false anchor short side same crawl enhance luggage advice crisp village"
         )
     }
@@ -40,7 +40,7 @@ class EthereumKitTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
-        let privateKey = PrivateKey(seed: seed, network: .main)
+        let privateKey = HDPrivateKey(seed: seed, network: .main)
         
         // BIP44 key derivation
         // m/44'
@@ -58,7 +58,7 @@ class EthereumKitTests: XCTestCase {
         // m/44'/60'/0'/0
         let firstPrivateKey = try! change.derived(at: 0)
         XCTAssertEqual(
-            firstPrivateKey.publicKey.address.string,
+            firstPrivateKey.hdPublicKey.publicKey.generateAddress(),
             "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7"
         )
         

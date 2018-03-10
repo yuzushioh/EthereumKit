@@ -7,14 +7,14 @@ public final class Mnemonic {
         case hight = 256
     }
     
-    public static func create(strength: Strength = .normal, language: WordList = .english) -> String {
+    public static func create(strength: Strength = .normal, language: WordList = .english) -> [String] {
         let byteCount = strength.rawValue / 8
         var bytes = Data(count: byteCount)
         _ = bytes.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault, byteCount, $0) }
         return create(entropy: bytes, language: language)
     }
     
-    public static func create(entropy: Data, language: WordList = .english) -> String {
+    public static func create(entropy: Data, language: WordList = .english) -> [String] {
         let entropybits = String(entropy.flatMap { ("00000000" + String($0, radix: 2)).suffix(8) })
         let hashBits = String(entropy.sha256().flatMap { ("00000000" + String($0, radix: 2)).suffix(8) })
         let checkSum = String(hashBits.prefix((entropy.count * 8) / 32))
@@ -30,11 +30,11 @@ public final class Mnemonic {
             mnemonic.append(String(words[wordIndex]))
         }
         
-        return mnemonic.joined(separator: " ")
+        return mnemonic
     }
     
-    public static func createSeed(mnemonic: String, withPassphrase passphrase: String = "") -> Data {
-        let password = mnemonic.decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+    public static func createSeed(mnemonic: [String], withPassphrase passphrase: String = "") -> Data {
+        let password = mnemonic.joined(separator: " ").decomposedStringWithCompatibilityMapping.data(using: .utf8)!
         let salt = ("mnemonic" + passphrase).decomposedStringWithCompatibilityMapping.data(using: .utf8)!
         return Crypto.PBKDF2SHA512(password, salt: salt)
     }

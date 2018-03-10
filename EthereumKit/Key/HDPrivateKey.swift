@@ -1,15 +1,4 @@
-//
-//  PrivateKey.swift
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/06.
-//  Copyright © 2018 yuzushioh.
-//
-
-import Foundation
-import EthereumKit.Private
-
-public struct PrivateKey {
+public struct HDPrivateKey {
     public let raw: Data
     public let chainCode: Data
     private let depth: UInt8
@@ -27,8 +16,8 @@ public struct PrivateKey {
         self.network = network
     }
     
-    private init(privateKey: Data, chainCode: Data, depth: UInt8, fingerprint: UInt32, index: UInt32, network: Network) {
-        self.raw = privateKey
+    private init(hdPrivateKey: Data, chainCode: Data, depth: UInt8, fingerprint: UInt32, index: UInt32, network: Network) {
+        self.raw = hdPrivateKey
         self.chainCode = chainCode
         self.depth = depth
         self.fingerprint = fingerprint
@@ -36,8 +25,12 @@ public struct PrivateKey {
         self.network = network
     }
     
-    public var publicKey: PublicKey {
-        return PublicKey(privateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: childIndex)
+    public var privateKey: PrivateKey {
+        return PrivateKey(raw: raw)
+    }
+    
+    public var hdPublicKey: HDPublicKey {
+        return HDPublicKey(hdPrivateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: childIndex)
     }
     
     public var extended: String {
@@ -52,22 +45,14 @@ public struct PrivateKey {
         return Base58.encode(extendedPrivateKeyData)
     }
     
-    public func sign(hash: Data) throws -> Data {
-        return try Crypto.sign(hash, privateKey: raw)
-    }
-    
-    public func generateAddress() -> String {
-        return publicKey.address.string
-    }
-    
-    public func derived(at index: UInt32, hardens: Bool = false) throws -> PrivateKey {
+    public func derived(at index: UInt32, hardens: Bool = false) throws -> HDPrivateKey {
         guard (0x80000000 & index) == 0 else {
             fatalError("Invalid index \(index)")
         }
         
         let keyDeriver = KeyDerivation(
             privateKey: raw,
-            publicKey: publicKey.raw,
+            publicKey: hdPublicKey.raw,
             chainCode: chainCode,
             depth: depth,
             fingerprint: fingerprint,
@@ -78,8 +63,8 @@ public struct PrivateKey {
             throw EthereumKitError.keyDerivateionFailed
         }
         
-        return PrivateKey(
-            privateKey: derivedKey.privateKey!,
+        return HDPrivateKey(
+            hdPrivateKey: derivedKey.privateKey!,
             chainCode: derivedKey.chainCode,
             depth: derivedKey.depth,
             fingerprint: derivedKey.fingerprint,

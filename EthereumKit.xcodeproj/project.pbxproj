@@ -21,6 +21,9 @@
 		AE005726204EE61D007AA468 /* TransactionSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005725204EE61D007AA468 /* TransactionSigningTests.swift */; };
 		AE00572A205390E1007AA468 /* EthereumKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE005729205390E1007AA468 /* EthereumKitError.swift */; };
 		AE00572E205391E2007AA468 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00572D205391E2007AA468 /* Configuration.swift */; };
+		AE00573020539565007AA468 /* HDPrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00572F20539565007AA468 /* HDPrivateKey.swift */; };
+		AE00573220539575007AA468 /* HDPublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00573120539575007AA468 /* HDPublicKey.swift */; };
+		AE00573420539993007AA468 /* HDWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00573320539993007AA468 /* HDWallet.swift */; };
 		AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3322028AEA400344FB0 /* PrivateKey.swift */; };
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
@@ -135,6 +138,9 @@
 		AE005725204EE61D007AA468 /* TransactionSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSigningTests.swift; sourceTree = "<group>"; };
 		AE005729205390E1007AA468 /* EthereumKitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitError.swift; sourceTree = "<group>"; };
 		AE00572D205391E2007AA468 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		AE00572F20539565007AA468 /* HDPrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDPrivateKey.swift; sourceTree = "<group>"; };
+		AE00573120539575007AA468 /* HDPublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDPublicKey.swift; sourceTree = "<group>"; };
+		AE00573320539993007AA468 /* HDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDWallet.swift; sourceTree = "<group>"; };
 		AE1BF3322028AEA400344FB0 /* PrivateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKey.swift; sourceTree = "<group>"; };
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
@@ -280,6 +286,7 @@
 		AE838802203B271600FAC88F /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				1A37109320502C76003A40BB /* Gas.swift */,
 				AE8291972018ADAE0047E0F0 /* Network.swift */,
 				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
 				AE35422E20300E4900007B80 /* EIP55.swift */,
@@ -306,20 +313,20 @@
 			isa = PBXGroup;
 			children = (
 				AE8291982018ADAE0047E0F0 /* Wallet.swift */,
-				1A37109320502C76003A40BB /* Gas.swift */,
-				AE838803203B272200FAC88F /* Mnemonic */,
-				AE838805203B274600FAC88F /* KeyPair */,
+				AE00573320539993007AA468 /* HDWallet.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
 		};
-		AE838805203B274600FAC88F /* KeyPair */ = {
+		AE838805203B274600FAC88F /* Key */ = {
 			isa = PBXGroup;
 			children = (
 				AE1BF3322028AEA400344FB0 /* PrivateKey.swift */,
 				AE1BF3342028B17B00344FB0 /* PublicKey.swift */,
+				AE00572F20539565007AA468 /* HDPrivateKey.swift */,
+				AE00573120539575007AA468 /* HDPublicKey.swift */,
 			);
-			path = KeyPair;
+			path = Key;
 			sourceTree = "<group>";
 		};
 		AE90A0761FFA698D005ED7AF /* EthereumKitTests */ = {
@@ -367,6 +374,8 @@
 			children = (
 				AE8387DA20374A3100FAC88F /* Networking */,
 				AE838804203B272E00FAC88F /* Wallet */,
+				AE838803203B272200FAC88F /* Mnemonic */,
+				AE838805203B274600FAC88F /* Key */,
 				AE8387E72037F5FF00FAC88F /* Model */,
 				AE838802203B271600FAC88F /* Helper */,
 				1A371092204E8FE0003A40BB /* Extension */,
@@ -588,6 +597,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE00573220539575007AA468 /* HDPublicKey.swift in Sources */,
+				AE00573420539993007AA468 /* HDWallet.swift in Sources */,
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				1A371098205050A6003A40BB /* Converter.swift in Sources */,
 				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
@@ -598,6 +609,7 @@
 				AE8387EF203AF38C00FAC88F /* Account.swift in Sources */,
 				AE8387CF2037435300FAC88F /* JSONRPCClient.swift in Sources */,
 				D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */,
+				AE00573020539565007AA468 /* HDPrivateKey.swift in Sources */,
 				AE354224202D46E400007B80 /* Base58Encode.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
 				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
