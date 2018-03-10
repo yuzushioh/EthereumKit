@@ -8,7 +8,7 @@ public struct PrivateKey {
     }
     
     public var publicKey: PublicKey {
-        return PublicKey(raw: Crypto.generatePublicKey(data: raw, compressed: false))
+        return PublicKey(privateKey: self)
     }
     
     public func sign(hash: Data) throws -> Data {

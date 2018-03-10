@@ -11,7 +11,7 @@ public final class HDWallet {
     // MARK: - Public Methods
     
     public func generatePrivateKey(at index: UInt32) throws -> PrivateKey {
-        return try privateKey(change: .external).derived(at: index).privateKey
+        return try privateKey(change: .external).derived(at: index).privateKey()
     }
     
     public func generateAddress(at index: UInt32) throws -> String {

@@ -13,7 +13,7 @@ public final class Wallet {
             .derived(at: 0, hardens: true)
             .derived(at: 0) // 0 for external
             .derived(at: 0)
-            .privateKey
+            .privateKey()
     }
     
     public init(network: Network, privateKey: String) {

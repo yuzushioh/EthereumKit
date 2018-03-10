@@ -6,6 +6,10 @@ public struct PublicKey {
         self.raw = raw
     }
     
+    public init(privateKey: PrivateKey) {
+        self.init(raw: PublicKey.from(data: privateKey.raw, compressed: false))
+    }
+    
     private var addressData: Data {
         let hash = raw.dropFirst().sha3(.keccak256)
         return hash.suffix(20)
@@ -13,5 +17,9 @@ public struct PublicKey {
     
     public func generateAddress() -> String {
         return Address(data: addressData).string
+    }
+    
+    public static func from(data: Data, compressed: Bool) -> Data {
+        return Crypto.generatePublicKey(data: data, compressed: compressed)
     }
 }
