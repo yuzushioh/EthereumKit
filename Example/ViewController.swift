@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         
         // To get a balance of an address, call `getBalance`.
         geth.getBalance(of: address, blockParameter: .latest) { result in
-            // Do something
+            print(result)
         }
         
         geth.getTransactions(address: address) { result in

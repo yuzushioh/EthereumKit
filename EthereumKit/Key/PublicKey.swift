@@ -7,7 +7,7 @@ public struct PublicKey {
     }
     
     public init(privateKey: PrivateKey) {
-        self.init(raw: PublicKey.from(data: privateKey.raw, compressed: false))
+        self.init(raw: Data(hex: "0x") + PublicKey.from(data: privateKey.raw, compressed: false))
     }
     
     private var addressData: Data {

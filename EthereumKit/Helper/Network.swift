@@ -15,7 +15,7 @@ public enum Network {
     public var privateKeyPrefix: UInt32 {
         switch self {
         case .main:
-            return 0x0488ADE4
+            return 0x0488ade4
         case .ropsten:
             return 0x04358394
         }
