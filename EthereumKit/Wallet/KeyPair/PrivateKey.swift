@@ -75,7 +75,7 @@ public struct PrivateKey {
         )
         
         guard let derivedKey = keyDeriver.derived(at: index, hardened: hardens) else {
-            throw DerivationError.derivateionFailed
+            throw EthereumKitError.keyDerivateionFailed
         }
         
         return PrivateKey(
@@ -87,8 +87,4 @@ public struct PrivateKey {
             network: network
         )
     }
-}
-
-public enum DerivationError : Error {
-    case derivateionFailed
 }

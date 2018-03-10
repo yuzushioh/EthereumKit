@@ -1,9 +1,5 @@
 import SMP
 
-public enum RLPError: Error {
-    case failedToEncode(Any)
-}
-
 public struct RLP {
     public static func encode(_ element: Any) throws -> Data {
         let encoded: Data?
@@ -25,10 +21,10 @@ public struct RLP {
             encoded = encode(string: string)
         
         default:
-            throw RLPError.failedToEncode(element)
+            encoded = nil
         }
         
-        guard let data = encoded else { throw RLPError.failedToEncode(element) }
+        guard let data = encoded else { throw EthereumKitError.rlpFailedToEncode(element) }
         return data
     }
     

@@ -27,7 +27,7 @@ public final class Crypto {
             data.withUnsafeBytes { secp256k1_ecdsa_sign_recoverable(context, &signature, $0, key, nil, nil) }
         }
         
-        guard status == 1 else { throw CryptoError.failedToSign }
+        guard status == 1 else { throw EthereumKitError.failedToSign }
         
         var output = Data(count: 65)
         var recid = 0 as Int32
@@ -39,8 +39,4 @@ public final class Crypto {
         
         return output
     }
-}
-
-public enum CryptoError: Error {
-    case failedToSign
 }
