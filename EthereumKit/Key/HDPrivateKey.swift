@@ -8,7 +8,7 @@ public struct HDPrivateKey {
     
     public init(seed: Data, network: Network) {
         let output = Crypto.HMACSHA512(key: "Bitcoin seed".data(using: .ascii)!, data: seed)
-        self.raw = Data(hex: "0x") + output[0..<32]
+        self.raw = output[0..<32]
         self.chainCode = output[32..<64]
         self.depth = 0
         self.fingerprint = 0
@@ -26,23 +26,11 @@ public struct HDPrivateKey {
     }
     
     public func privateKey() -> PrivateKey {
-        return PrivateKey(raw: raw)
+        return PrivateKey(raw: Data(hex: "0x") + raw)
     }
     
     public func hdPublicKey() -> HDPublicKey {
         return HDPublicKey(hdPrivateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: childIndex)
-    }
-    
-    public func extended() -> String {
-        var extendedPrivateKeyData = Data()
-        extendedPrivateKeyData += network.privateKeyPrefix.bigEndian
-        extendedPrivateKeyData += depth.littleEndian
-        extendedPrivateKeyData += fingerprint.littleEndian
-        extendedPrivateKeyData += childIndex.littleEndian
-        extendedPrivateKeyData += chainCode
-        extendedPrivateKeyData += UInt8(0)
-        extendedPrivateKeyData += raw
-        return Base58.encode(extendedPrivateKeyData)
     }
     
     internal func derived(at index: UInt32, hardens: Bool = false) throws -> HDPrivateKey {

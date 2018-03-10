@@ -1,5 +1,6 @@
 import EthereumKit.Private
 import secp256k1
+import CryptoSwift
 
 public final class Crypto {
     public static func HMACSHA512(key: Data, data: Data) -> Data {
@@ -12,6 +13,10 @@ public final class Crypto {
     
     public static func hash160(_ data: Data) -> Data {
         return CryptoHash.ripemd160(CryptoHash.sha256(data))
+    }
+    
+    public static func doubleSHA256(_ data: Data) -> Data {
+        return data.sha256().sha256()
     }
     
     public static func generatePublicKey(data: Data, compressed: Bool) -> Data {
