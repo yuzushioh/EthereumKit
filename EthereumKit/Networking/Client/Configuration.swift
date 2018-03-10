@@ -12,7 +12,7 @@ public struct Configuration {
     public var etherscanURL: URL {
         switch network {
         case .main:
-            return URL(string: "https://etherscan.io")!
+            return URL(string: "https://api.etherscan.io")!
             
         case .ropsten:
             return URL(string: "https://ropsten.etherscan.io")!
