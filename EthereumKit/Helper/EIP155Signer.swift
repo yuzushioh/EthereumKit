@@ -9,7 +9,7 @@ public struct EIP155Signer {
         self.chainID = chainID
     }
     
-    public func sign(_ signTransaction: SignTransaction, privateKey: PrivateKey) throws -> Data? {
+    public func sign(_ signTransaction: SignTransaction, privateKey: PrivateKey) throws -> Data {
         let transactionHash = try hash(signTransaction: signTransaction)
         let signiture = try privateKey.sign(hash: transactionHash)
         

@@ -3,7 +3,7 @@
 ## Wallet
 `Wallet` is responsible for generating and storing private keys and addresses, and signing transactions with private keys. There are two types of `Wallet` in EthereumKit. One is normal `Wallet` and another is `HDWallet` defined by [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) and [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).  You can choose `HDWallet` for creating a multi-account wallet and `Wallet` for creating single-account wallet.
 
-### Creating Wallet
+### Create Wallet
 You can create a wallet by two ways. One is by importing a private key from the other wallet and another is by generating a private key by the seed data. `Mnemonic` class is used for generating a seed data and mnemonic sentence for the back-up.
 
 ```swift
@@ -31,7 +31,12 @@ wallet = Wallet(network: .main, privateKey: "56fa1542efa79a278bf78ba1cf11ef20d96
 
 // If you want to create HD Wallet, use `HDWallet` with the same parameters.
 let hdWallet = HDWallet(seed: seed, network: .main)
+```
 
+### Generate Address
+You can generate address and store private keys via `Wallet`
+
+```swift
 // Generate an address, or private key by simply calling
 let address = wallet.generateAddress()
 let privateKey = wallet.dumpPrivateKey()
@@ -58,4 +63,35 @@ geth.getBalance(of: address, blockParameter: .latest) { result in
     // Do something
 } 
 
+```
+
+### Send Ether
+You need to create `RawTransaction` with 
+- value (how much ether/wei you want to send)
+- to (which address you want to send to)
+- nonce (currenct nonce)
+and send hash by `Geth` via JSONRPC.
+
+```swift
+// You can get the current nonce by calling 
+geth.getTransactionCount(of: address) { result in
+    // Do something
+}
+```
+
+Then,
+
+```swift
+let rawTransaction = RawTransaction.create(ether: "0.125", address: address, nonce: nonce)
+let tx: String
+do {
+    tx = try wallet.signTransaction(rawTransaction)
+} catch let error {
+    // Handle error
+}
+
+// It returns the transaction ID.
+geth.sendRawTransaction(rawTransaction: tx) { result in
+    // Do something
+}
 ```
