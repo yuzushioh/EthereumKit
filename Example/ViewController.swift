@@ -54,8 +54,17 @@ class ViewController: UIViewController {
         }
         
         // Create an instance of `Geth` with `Configuration`.
-        // In configuration, specify which network to use and url for the node you want to connect.
-        let configuration = Configuration(network: .main, nodeEndpoint: URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!)
+        // In configuration, specify
+        // - network: network to use
+        // - nodeEndpoint: url for the node you want to connect
+        // - etherscanAPIKey: api key of etherscan
+        
+        let configuration = Configuration(
+            network: .main,
+            nodeEndpoint: URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!,
+            etherscanAPIKey: "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
+        )
+        
         let geth = Geth(configuration: configuration)
         
         // To get a balance of an address, call `getBalance`.
