@@ -13,7 +13,7 @@ public final class Wallet {
             .derived(at: 0, hardens: true)
             .derived(at: 0) // 0 for external
             .derived(at: 0)
-            .privateKey
+            .privateKey()
     }
     
     public init(network: Network, privateKey: String) {
@@ -31,7 +31,7 @@ public final class Wallet {
         return privateKey.raw.toHexString()
     }
     
-    public func signTransaction(_ rawTransaction: RawTransaction) throws -> String? {
+    public func signTransaction(_ rawTransaction: RawTransaction) throws -> String {
         let signTransaction = SignTransaction(
             rawTransaction: rawTransaction,
             gasPrice: Converter.toWei(GWei: Gas.price.value),
@@ -40,6 +40,6 @@ public final class Wallet {
         
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
-        return rawData?.toHexString().appending0xPrefix
+        return rawData.toHexString().appending0xPrefix
     }
 }

@@ -25,15 +25,15 @@ public struct HDPrivateKey {
         self.network = network
     }
     
-    public var privateKey: PrivateKey {
+    public func privateKey() -> PrivateKey {
         return PrivateKey(raw: raw)
     }
     
-    public var hdPublicKey: HDPublicKey {
+    public func hdPublicKey() -> HDPublicKey {
         return HDPublicKey(hdPrivateKey: self, chainCode: chainCode, network: network, depth: depth, fingerprint: fingerprint, index: childIndex)
     }
     
-    public var extended: String {
+    public func extended() -> String {
         var extendedPrivateKeyData = Data()
         extendedPrivateKeyData += network.privateKeyPrefix.bigEndian
         extendedPrivateKeyData += depth.littleEndian
@@ -45,14 +45,14 @@ public struct HDPrivateKey {
         return Base58.encode(extendedPrivateKeyData)
     }
     
-    public func derived(at index: UInt32, hardens: Bool = false) throws -> HDPrivateKey {
+    internal func derived(at index: UInt32, hardens: Bool = false) throws -> HDPrivateKey {
         guard (0x80000000 & index) == 0 else {
             fatalError("Invalid index \(index)")
         }
         
         let keyDeriver = KeyDerivation(
             privateKey: raw,
-            publicKey: hdPublicKey.raw,
+            publicKey: hdPublicKey().raw,
             chainCode: chainCode,
             depth: depth,
             fingerprint: fingerprint,

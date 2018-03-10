@@ -20,10 +20,12 @@ public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
     
     private let baseRequest: Request
     private let endpoint: URL
+    private let apiKey: String
     
-    public init(_ baseRequest: Request, endpoint: URL) {
+    public init(_ baseRequest: Request, endpoint: URL, apiKey: String) {
         self.baseRequest = baseRequest
         self.endpoint = endpoint
+        self.apiKey = apiKey
     }
     
     public var baseURL: URL {
@@ -43,7 +45,7 @@ public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
         if let originalParameters = baseRequest.parameters as? [String: Any] {
             parameters = originalParameters
         }
-        parameters["apikey"] = "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
+        parameters["apikey"] = apiKey
         return parameters
     }
     

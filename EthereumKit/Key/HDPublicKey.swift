@@ -8,9 +8,8 @@ public struct HDPublicKey {
     
     private let hdPrivateKey: HDPrivateKey
     
-    init(hdPrivateKey: HDPrivateKey, chainCode: Data, network: Network, depth: UInt8, fingerprint: UInt32, index: UInt32) {
-        let compressed = Crypto.generatePublicKey(data: hdPrivateKey.raw, compressed: true)
-        self.raw = Data(hex: "0x") + compressed
+    public init(hdPrivateKey: HDPrivateKey, chainCode: Data, network: Network, depth: UInt8, fingerprint: UInt32, index: UInt32) {
+        self.raw = Data(hex: "0x") + PublicKey.from(data: hdPrivateKey.raw, compressed: true)
         self.chainCode = chainCode
         self.depth = depth
         self.fingerprint = fingerprint
@@ -19,7 +18,7 @@ public struct HDPublicKey {
         self.hdPrivateKey = hdPrivateKey
     }
     
-    public var publicKey: PublicKey {
-        return PublicKey(raw: Crypto.generatePublicKey(data: hdPrivateKey.raw, compressed: false))
+    public func publicKey() -> PublicKey {
+        return PublicKey(privateKey: hdPrivateKey.privateKey())
     }
 }
