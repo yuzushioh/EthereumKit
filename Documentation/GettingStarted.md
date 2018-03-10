@@ -54,7 +54,8 @@ do {
 `Geth` is responsible for interacting with Ethereum network. Geth interacts with network via JSONRPC. You can see the list of JSONRPC requests [here](Documentation/JSONRPC.md).
 
 ```swift
-// Create an instance of `Geth` with `Configuration`. In configuration, specify which network to use and url for the node you want to connect.
+// Create an instance of `Geth` with `Configuration`. 
+// In configuration, specify which network to use and url for the node you want to connect.
 let configuration = Configuration(network: .main, nodeEndpoint: URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!)
 let geth = Geth(configuration: configuration)
 
@@ -79,7 +80,7 @@ geth.getTransactionCount(of: address) { result in
 }
 ```
 
-Then,
+Then
 
 ```swift
 let rawTransaction = RawTransaction.create(ether: "0.125", address: address, nonce: nonce)
