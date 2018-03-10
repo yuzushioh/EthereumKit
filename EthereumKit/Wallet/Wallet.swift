@@ -7,11 +7,13 @@ public final class Wallet {
         self.network = network
         
         // m/44'/coin_type'/0'/external
-        privateKey = try HDPrivateKey(seed: seed, network: network)
+        let externalPrivateKey = try HDPrivateKey(seed: seed, network: network)
             .derived(at: 44, hardens: true)
             .derived(at: network.coinType, hardens: true)
             .derived(at: 0, hardens: true)
             .derived(at: 0) // 0 for external
+        
+        privateKey = try externalPrivateKey
             .derived(at: 0)
             .privateKey()
     }

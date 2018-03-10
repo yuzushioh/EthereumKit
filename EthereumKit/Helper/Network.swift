@@ -21,6 +21,15 @@ public enum Network {
         }
     }
     
+    public var publicKeyPrefix: UInt32 {
+        switch self {
+        case .main:
+            return 0x0488b21e
+        case .ropsten:
+            return 0x043587cf
+        }
+    }
+    
     public var chainID: Int {
         switch self {
         case .main:
