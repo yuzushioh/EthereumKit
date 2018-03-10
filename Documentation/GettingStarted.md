@@ -1,9 +1,9 @@
 # Getting started
 
 ## Wallet
-There are two types of `Wallet` in EthereumKit. One is normal `Wallet` and another is `HDWallet` defined by [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) and [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).  You can choose `HDWallet` for creating a multi-account wallet and `Wallet` for creating single-account wallet.
+`Wallet` is responsible for generating and storing private keys and addresses, and signing transactions with private keys. There are two types of `Wallet` in EthereumKit. One is normal `Wallet` and another is `HDWallet` defined by [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) and [BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki).  You can choose `HDWallet` for creating a multi-account wallet and `Wallet` for creating single-account wallet.
 
-### Creating a Wallet
+### Creating Wallet
 You can create a wallet by two ways. One is by importing a private key from the other wallet and another is by generating a private key by the seed data. `Mnemonic` class is used for generating a seed data and mnemonic sentence for the back-up.
 
 ```swift
@@ -31,5 +31,31 @@ wallet = Wallet(network: .main, privateKey: "56fa1542efa79a278bf78ba1cf11ef20d96
 
 // If you want to create HD Wallet, use `HDWallet` with the same parameters.
 let hdWallet = HDWallet(seed: seed, network: .main)
+
+// Generate an address, or private key by simply calling
+let address = wallet.generateAddress()
+let privateKey = wallet.dumpPrivateKey()
+
+// If you use `HDWallet`, you can specify an index
+do {
+    let firstAddress = try hdWallet.generateAddress(at: 0)
+    let firstPrivateKey = try hdWallet.dumpPrivateKey(at: 0)
+} catch let error {
+    // Handle error
+}
 ```
 
+## Geth
+`Geth` is responsible for interacting with Ethereum network. Geth interacts with network via JSONRPC. You can see the list of JSONRPC requests [here](Documentation/JSONRPC.md).
+
+```swift
+// Create an instance of `Geth` with `Configuration`. In configuration, specify which network to use and url for the node you want to connect.
+let configuration = Configuration(network: .main, nodeEndpoint: URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!)
+let geth = Geth(configuration: configuration)
+
+// To get a balance of an address, call `getBalance`.
+geth.getBalance(of: address, blockParameter: .latest) { result in
+    // Do something
+} 
+
+```
