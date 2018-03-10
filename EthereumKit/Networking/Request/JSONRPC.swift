@@ -53,10 +53,10 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Response {
-            guard let response = resultObject as? String, let count = Int(response.hex, radix: 16) else {
+            guard let response = resultObject as? String else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
-            return count
+            return Int(response.hex, radix: 16) ?? 0
         }
     }
     
