@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         
         let configuration = Configuration(
             network: .main,
-            nodeEndpoint: URL(string: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV")!,
+            nodeEndpoint: "https://mainnet.infura.io/z1sEfnzz0LLMsdYMX4PV",
             etherscanAPIKey: "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
         )
         
