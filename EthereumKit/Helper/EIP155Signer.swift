@@ -10,13 +10,11 @@ public struct EIP155Signer {
     }
     
     public func sign(_ signTransaction: SignTransaction, privateKey: PrivateKey) throws -> Data? {
-        guard let transactionHash = hash(signTransaction: signTransaction) else {
-            return nil
-        }
-        
+        let transactionHash = try hash(signTransaction: signTransaction)
         let signiture = try privateKey.sign(hash: transactionHash)
+        
         let (r, s, v) = calculateRSV(signiture: signiture)
-        let signedData = RLP.encode([
+        return try RLP.encode([
             signTransaction.nonce,
             signTransaction.gasPrice,
             signTransaction.gasLimit,
@@ -25,19 +23,16 @@ public struct EIP155Signer {
             signTransaction.data,
             v, r, s
         ])
-        
-        return signedData
     }
     
-    public func hash(signTransaction: SignTransaction) -> Data? {
-        guard let data = encode(signTransaction: signTransaction) else {
-            return nil
-        }
-        return Data(bytes: SHA3(variant: .keccak256).calculate(for: data.bytes))
+    public func hash(signTransaction: SignTransaction) throws -> Data {
+        let sha3 = SHA3(variant: .keccak256)
+        let data = try encode(signTransaction: signTransaction)
+        return Data(bytes: sha3.calculate(for: data.bytes))
     }
     
-    public func encode(signTransaction: SignTransaction) -> Data? {
-        return RLP.encode([
+    public func encode(signTransaction: SignTransaction) throws -> Data {
+        return try RLP.encode([
             signTransaction.nonce,
             signTransaction.gasPrice,
             signTransaction.gasLimit,

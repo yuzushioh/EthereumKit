@@ -1,29 +1,38 @@
 import SMP
 
+public enum RLPError: Error {
+    case failedToEncode(Any)
+}
+
 public struct RLP {
-    public static func encode(_ element: Any) -> Data? {
+    public static func encode(_ element: Any) throws -> Data {
+        let encoded: Data?
+        
         switch element {
         case let list as [Any]:
-            return encode(list)
+            encoded = try encode(elements: list)
         
         case let bint as BInt:
-            return encode(bint)
+            encoded = encode(bint: bint)
         
         case let int as Int:
-            return encode(BInt(int))
+            encoded = encode(bint: BInt(int))
         
         case let data as Data:
-            return encode(data)
+            encoded = encode(data: data)
             
         case let string as String:
-            return encode(string)
+            encoded = encode(string: string)
         
         default:
-            return nil
+            throw RLPError.failedToEncode(element)
         }
+        
+        guard let data = encoded else { throw RLPError.failedToEncode(element) }
+        return data
     }
     
-    private static func encode(_ data: Data) -> Data {
+    private static func encode(data: Data) -> Data {
         if data.count == 1 && data[0] <= 0x7f {
             return data
         }
@@ -33,28 +42,25 @@ public struct RLP {
         return encoded
     }
     
-    private static func encode(_ string: String) -> Data? {
+    private static func encode(string: String) -> Data? {
         guard let data = string.data(using: .utf8) else {
             return nil
         }
-        return encode(data)
+        return encode(data: data)
     }
     
-    private static func encode(_ bint: BInt) -> Data? {
+    private static func encode(bint: BInt) -> Data? {
         let data = bint.serialize()
         if data.isEmpty {
             return Data(bytes: [0x80])
         }
-        return encode(data)
+        return encode(data: data)
     }
     
-    private static func encode(_ elements: [Any]) -> Data? {
+    private static func encode(elements: [Any]) throws -> Data? {
         var data = Data()
         for element in elements {
-            guard let encoded = encode(element) else {
-                return nil
-            }
-            data.append(encoded)
+            data.append(try encode(element))
         }
         
         var encodedData = encodeHeader(size: UInt64(data.count), smallTag: 0xc0, largeTag: 0xf7)
