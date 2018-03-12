@@ -1,9 +1,0 @@
-{
-  "commitish" : "632051138bd70fc043e9ce65cdfa4a2a72dad8b7",
-  "iOS" : [
-    {
-      "name" : "SMP",
-      "hash" : "0ed0bfe7631a6189ab8567e03fd75017018645449e49e79c0f6fd16290f8823a"
-    }
-  ]
-}
