@@ -1,5 +1,5 @@
 github "antitypical/Result" "3.2.4"
 github "bricklife/JSONRPCKit" "3.0.0"
 github "ishkawa/APIKit" "3.2.1"
-github "krzyzanowskim/CryptoSwift" "0.8.2"
-github "yuzushioh/Swift-Big-Integer" "632051138bd70fc043e9ce65cdfa4a2a72dad8b7"
+github "krzyzanowskim/CryptoSwift" "0.8.3"
+github "yuzushioh/Swift-Big-Integer" "v2.0.1"
