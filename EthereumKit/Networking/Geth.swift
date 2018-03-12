@@ -28,6 +28,10 @@ public final class Geth {
         etherClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
     }
     
+    public func call(from: String? = nil, to: String, gas: Int? = nil, gasPrice: Int? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, handler: @escaping (Result<String, GethError>) -> Void) {
+        etherClient.send(JSONRPC.Call(from: from != nil ? Address(string: from!) : nil, to: Address(string: to), gas: gas, gasPrice: gasPrice, value: value, data: data, blockParameter: blockParameter), handler: handler)
+    }
+    
     public func getAccount(address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, GethError>) -> Void) {
         getBalance(of: address) { result in
             switch result {
