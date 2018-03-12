@@ -1,4 +1,4 @@
-github "bricklife/JSONRPCKit" == 3.0.0
-github "ishkawa/APIKit" == 3.2.1
-github "krzyzanowskim/CryptoSwift" == 0.8.3
-github "yuzushioh/Swift-Big-Integer" == 2.0.1
+github "bricklife/JSONRPCKit"
+github "ishkawa/APIKit"
+github "krzyzanowskim/CryptoSwift"
+github "yuzushioh/Swift-Big-Integer"
