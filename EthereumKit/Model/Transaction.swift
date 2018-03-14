@@ -4,23 +4,25 @@ public struct RawTransaction {
     public let value: Wei
     public let to: Address
     public let nonce: Int
+    public let data: Data
     
-    public static func create(wei: String, address: String, nonce: Int) -> RawTransaction {
-        return RawTransaction(wei: wei, address: address, nonce: nonce)
+    public static func create(wei: String, address: String, nonce: Int, data: Data = Data()) -> RawTransaction {
+        return RawTransaction(wei: wei, address: address, nonce: nonce, data: data)
     }
     
-    public static func create(ether: String, address: String, nonce: Int) -> RawTransaction {
-        return RawTransaction(ether: ether, address: address, nonce: nonce)
+    public static func create(ether: String, address: String, nonce: Int, data: Data = Data()) -> RawTransaction {
+        return RawTransaction(ether: ether, address: address, nonce: nonce, data: data)
     }
     
-    internal init(wei: String, address: String, nonce: Int) {
+    internal init(wei: String, address: String, nonce: Int, data: Data) {
         self.value = Wei(wei)!
         self.to = Address(string: address)
         self.nonce = nonce
+        self.data = data
     }
     
-    internal init(ether: String, address: String, nonce: Int) {
-        self.init(wei: Converter.toWei(ether: Ether(ether)!).description, address: address, nonce: nonce)
+    internal init(ether: String, address: String, nonce: Int, data: Data) {
+        self.init(wei: Converter.toWei(ether: Ether(ether)!).description, address: address, nonce: nonce, data: data)
     }
 }
 
@@ -32,13 +34,13 @@ public struct SignTransaction {
     public let gasLimit: Int
     public let data: Data
     
-    public init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int, data: Data = Data()) {
+    public init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int) {
         self.value = rawTransaction.value
         self.to = rawTransaction.to
         self.nonce = rawTransaction.nonce
         self.gasPrice = gasPrice
         self.gasLimit = gasLimit
-        self.data = data
+        self.data = rawTransaction.data
     }
 }
 

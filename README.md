@@ -19,7 +19,7 @@ do {
 
 // Send some ether
 let rawTransaction = RawTransaction(ether: "0.15", address: wallet.generateAddress(), nonce: 0)
-let tx = try wallet.signRawTransaction(rawTransaction)
+let tx = try wallet.signTransaction(rawTransaction)
 
 geth.sendRawTransaction(rawTransaction: tx) { result in 
     // Do something...

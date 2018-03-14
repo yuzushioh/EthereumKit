@@ -108,7 +108,7 @@ Then
 let rawTransaction = RawTransaction.create(ether: "0.125", address: address, nonce: nonce)
 let tx: String
 do {
-    tx = try wallet.signRawTransaction(rawTransaction)
+    tx = try wallet.signTransaction(rawTransaction)
 } catch let error {
     // Handle error
 }
