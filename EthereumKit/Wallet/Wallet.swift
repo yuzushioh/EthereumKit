@@ -48,7 +48,7 @@ public final class Wallet {
 }
 
 extension Wallet {
-    func sign(_ signTransaction: SignTransaction) throws -> String {
+    fileprivate func sign(_ signTransaction: SignTransaction) throws -> String {
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
         return rawData.toHexString().appending0xPrefix
