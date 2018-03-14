@@ -39,7 +39,6 @@ public final class Wallet {
             gasPrice: Converter.toWei(GWei: Gas.price.value),
             gasLimit: Gas.limit.value
         )
-        
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
         return rawData.toHexString().appending0xPrefix
