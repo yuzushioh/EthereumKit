@@ -33,13 +33,22 @@ public final class Wallet {
         return privateKey.raw.toHexString()
     }
     
-    public func signTransaction(_ rawTransaction: RawTransaction) throws -> String {
+    public func signRawTransaction(_ rawTransaction: RawTransaction) throws -> String {
         let signTransaction = SignTransaction(
             rawTransaction: rawTransaction,
             gasPrice: Converter.toWei(GWei: Gas.price.value),
             gasLimit: Gas.limit.value
         )
-        
+        return try sign(signTransaction)
+    }
+    
+    public func signTransaction(_ signTransaction: SignTransaction) throws -> String {
+        return try sign(signTransaction)
+    }
+}
+
+extension Wallet {
+    func sign(_ signTransaction: SignTransaction) throws -> String {
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
         return rawData.toHexString().appending0xPrefix

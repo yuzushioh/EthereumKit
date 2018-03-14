@@ -250,7 +250,7 @@ class TransactionSigningTests: XCTestCase {
             nonce: 2
         )
         
-        let tx = try! wallet.signTransaction(rawTransaction)
+        let tx = try! wallet.signRawTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
             "0xf86b0285170cdc1e008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0dbc4a4748e889d9921c28593fd8ad17edaee69ec992cc7a798229d8d5bd30c61a0407c70218b1bcff3bd6d824c14703b03b6744b66354226416053c2c4a73b5bc2"
@@ -273,7 +273,7 @@ class TransactionSigningTests: XCTestCase {
             nonce: 2
         )
         
-        let tx = try! wallet.signTransaction(rawTransaction)
+        let tx = try! wallet.signRawTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
             "0xf86a02843b9aca008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0db114beaab321c241df4c7da6de7e4f4267019dbd20699a881483d063314fe00a066dc7e3a5c96160213de1cac1b48a21ef11da46531b78a08742399417477cd8e"
@@ -296,7 +296,7 @@ class TransactionSigningTests: XCTestCase {
             nonce: 2
         )
         
-        let tx = try! wallet.signTransaction(rawTransaction)
+        let tx = try! wallet.signRawTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
             "0xf86b028502540be4008252089488b44bc83add758a3642130619d61682282850df87038d7ea4c680008029a0e947eb994fcc3f2dd3538a08e0fd39f2aa03281b6c0b6a8ffbc77a06835782d8a065ee30e21936676e6d1431a5eabb44a0111cc528a92b2021dfe1323adf7f3d10"
@@ -317,7 +317,7 @@ class TransactionSigningTests: XCTestCase {
             nonce: 2
         )
         
-        let tx = try! wallet.signTransaction(rawTransaction)
+        let tx = try! wallet.signRawTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
         "0xf86c0285098bca5a008252089488b44bc83add758a3642130619d61682282850df88016345785d8a00008029a028959f3003dbd17385dec3348cdc62b348240a707bfce5827635a396d4ad02a0a033d1786b113fbc0578e6aafd345311fdc72d4a8e60a66da90159d93369c7246b"
@@ -338,7 +338,7 @@ class TransactionSigningTests: XCTestCase {
             nonce: 2
         )
         
-        let tx = try! wallet.signTransaction(rawTransaction)
+        let tx = try! wallet.signRawTransaction(rawTransaction)
         XCTAssertEqual(
             tx,
         "0xf86c0285098bca5a00825208942f9ee3ede488e3b7702be866e2dc80a2a962f8a6880de0b6b3a76400008029a09ce012054ee76b1ac9cd442335a00de747d8536eda6639a1f65e4fac5002fb9ba05c26e5e9263d86d36835f29b38ed62cd0575875eea62ea7022c231db6e7d5b44"
