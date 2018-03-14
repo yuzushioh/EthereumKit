@@ -81,7 +81,7 @@ public final class JSONRPC {
         }
     }
     
-    public struct Call: JSONRPCKit.Request {
+    public struct Call: Request {
         public typealias Response = String
         
         public let from: Address?
@@ -97,20 +97,26 @@ public final class JSONRPC {
         }
         
         public var parameters: Any? {
-            // NOTE: This is to remove key/value if the value is nil.
-            let txParams: [String: Any] = [
-                "from": from?.string as Any?,
-                "to": to.string,
-                "gas": gas,
-                "gasPrice": gasPrice,
-                "value": value,
-                "data": data
-                ].reduce([String: Any]()){ (d, e) in
-                    guard let value = e.value else { return d }
-                    var d = d
-                    d[e.key] = value
-                    return d
+            var txParams: [Any] = []
+            
+            if let fromAddress = from?.string {
+                txParams.append(fromAddress)
             }
+            if let gas = gas {
+                txParams.append(gas)
+            }
+            if let gasPrice = gasPrice {
+                txParams.append(gasPrice)
+            }
+            if let value = value {
+                txParams.append(value)
+            }
+            if let data = data {
+                txParams.append(data)
+            }
+            
+            txParams.append(to.string)
+
             return [txParams, blockParameter.rawValue]
         }
         
