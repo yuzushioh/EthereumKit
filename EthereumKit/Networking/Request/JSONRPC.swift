@@ -97,25 +97,29 @@ public final class JSONRPC {
         }
         
         public var parameters: Any? {
-            var txParams: [Any] = []
+            var txParams: [String: Any] = [:]
             
             if let fromAddress = from?.string {
-                txParams.append(fromAddress)
-            }
-            if let gas = gas {
-                txParams.append(gas)
-            }
-            if let gasPrice = gasPrice {
-                txParams.append(gasPrice)
-            }
-            if let value = value {
-                txParams.append(value)
-            }
-            if let data = data {
-                txParams.append(data)
+                txParams["from"] = fromAddress
             }
             
-            txParams.append(to.string)
+            txParams["to"] = to.string
+            
+            if let gas = gas {
+                txParams["gas"] = gas
+            }
+            
+            if let gasPrice = gasPrice {
+                txParams["gasPrice"] = gasPrice
+            }
+            
+            if let value = value {
+                txParams["value"] = value
+            }
+            
+            if let data = data {
+                txParams["data"] = data
+            }
 
             return [txParams, blockParameter.rawValue]
         }
