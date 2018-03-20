@@ -1,5 +1,3 @@
-import SMP
-
 // https://github.com/mkrd/Swift-Big-Integer/pull/24
 // TODO: use init(_:, radix:) in SMP but need to fix bugs
 extension BInt {

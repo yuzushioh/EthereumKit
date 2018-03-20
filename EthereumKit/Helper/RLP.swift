@@ -1,5 +1,3 @@
-import SMP
-
 public struct RLP {
     public static func encode(_ element: Any) throws -> Data {
         let encoded: Data?

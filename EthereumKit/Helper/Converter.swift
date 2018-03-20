@@ -1,5 +1,3 @@
-import SMP
-
 // Online Converter: https://etherconverter.online
 public typealias Ether = BDouble
 public typealias Wei = BInt

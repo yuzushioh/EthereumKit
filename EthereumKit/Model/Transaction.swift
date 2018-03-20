@@ -1,5 +1,3 @@
-import SMP
-
 public struct RawTransaction {
     public let value: Wei
     public let to: Address

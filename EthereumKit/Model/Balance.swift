@@ -1,5 +1,4 @@
 import Foundation
-import SMP
 
 public struct Balance {
     public let wei: Wei

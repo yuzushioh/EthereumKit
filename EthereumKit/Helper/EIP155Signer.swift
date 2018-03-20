@@ -1,4 +1,3 @@
-import SMP
 import CryptoSwift
 
 public struct EIP155Signer {
