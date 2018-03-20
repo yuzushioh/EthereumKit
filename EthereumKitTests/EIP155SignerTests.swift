@@ -1,5 +1,4 @@
 import XCTest
-import SMP
 @testable import EthereumKit
 
 class EIP155SignerTests: XCTestCase {
