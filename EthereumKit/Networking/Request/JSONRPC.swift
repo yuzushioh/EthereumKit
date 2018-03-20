@@ -80,4 +80,55 @@ public final class JSONRPC {
             return Response(id: transactionID)
         }
     }
+    
+    public struct Call: Request {
+        public typealias Response = String
+        
+        public let from: Address?
+        public let to: Address
+        public let gas: Int?
+        public let gasPrice: Int?
+        public let value: Int?
+        public let data: String?
+        public let blockParameter: BlockParameter
+        
+        public var method: String {
+            return "eth_call"
+        }
+        
+        public var parameters: Any? {
+            var txParams: [String: Any] = [:]
+            
+            if let fromAddress = from?.string {
+                txParams["from"] = fromAddress
+            }
+            
+            txParams["to"] = to.string
+            
+            if let gas = gas {
+                txParams["gas"] = gas
+            }
+            
+            if let gasPrice = gasPrice {
+                txParams["gasPrice"] = gasPrice
+            }
+            
+            if let value = value {
+                txParams["value"] = value
+            }
+            
+            if let data = data {
+                txParams["data"] = data
+            }
+
+            return [txParams, blockParameter.rawValue]
+        }
+        
+        public func response(from resultObject: Any) throws -> Response {
+            guard let response = resultObject as? Response else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return response
+        }
+    }
 }
