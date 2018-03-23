@@ -16,6 +16,9 @@ public struct Configuration {
             
         case .ropsten:
             return URL(string: "https://ropsten.etherscan.io")!
+            
+        case .geth(_):
+            return URL(string: "https://ropsten.etherscan.io")!
         }
     }
 }

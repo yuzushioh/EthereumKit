@@ -97,32 +97,32 @@ class EIP155SignerTests: XCTestCase {
     func testGeneratingRSVOnTestnet() {
         let signiture = Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa63627667cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d8300")
         let (r, s, v) = EIP155Signer(chainID: 3).calculateRSV(signiture: signiture)
-        XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!.serialize())
-        XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!.serialize())
-        XCTAssertEqual(v, BInt(41).serialize())
+        XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!)
+        XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!)
+        XCTAssertEqual(v, BInt(41))
     }
     
     func testGeneratingRSVOnTestnet1() {
         let signiture = Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa63627667cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d8300")
         let (r, s, v) = EIP155Signer(chainID: 3).calculateRSV(signiture: signiture)
-        XCTAssertEqual(r.toHexString(), "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276")
-        XCTAssertEqual(s.toHexString(), "67cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83")
-        XCTAssertEqual(v.toHexString(), "29")
+        XCTAssertEqual(r.asString(withBase: 16), "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276")
+        XCTAssertEqual(s.asString(withBase: 16), "67cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83")
+        XCTAssertEqual(v.asString(withBase: 16), "29")
     }
     
     func testGeneratingRSVOnTestnet2() {
         let signiture = Data(hex: "5e7e818d4ca60295c42f0fab371e8a0409cb5080ba958a67d8d31cdcf18ae50b21fe08e591cb6d5f75d4a443818fdc3ee324f0599253cfd1f5b5c7ac17d0c73a00")
         let (r, s, v) = EIP155Signer(chainID: 3).calculateRSV(signiture: signiture)
-        XCTAssertEqual(r.toHexString(), "5e7e818d4ca60295c42f0fab371e8a0409cb5080ba958a67d8d31cdcf18ae50b")
-        XCTAssertEqual(s.toHexString(), "21fe08e591cb6d5f75d4a443818fdc3ee324f0599253cfd1f5b5c7ac17d0c73a")
-        XCTAssertEqual(v.toHexString(), "29")
+        XCTAssertEqual(r.asString(withBase: 16), "5e7e818d4ca60295c42f0fab371e8a0409cb5080ba958a67d8d31cdcf18ae50b")
+        XCTAssertEqual(s.asString(withBase: 16), "21fe08e591cb6d5f75d4a443818fdc3ee324f0599253cfd1f5b5c7ac17d0c73a")
+        XCTAssertEqual(v.asString(withBase: 16), "29")
     }
     
     func testGeneratingRSVOnMainnet() {
         let signiture = Data(hex: "28ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa63627667cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d8300")
         let (r, s, v) = EIP155Signer(chainID: 1).calculateRSV(signiture: signiture)
-        XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!.serialize())
-        XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!.serialize())
-        XCTAssertEqual(v, BInt(37).serialize())
+        XCTAssertEqual(r, BInt("18515461264373351373200002665853028612451056578545711640558177340181847433846")!)
+        XCTAssertEqual(s, BInt("46948507304638947509940763649030358759909902576025900602547168820602576006531")!)
+        XCTAssertEqual(v, BInt(37))
     }
 }
