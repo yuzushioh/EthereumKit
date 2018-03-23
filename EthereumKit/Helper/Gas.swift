@@ -18,10 +18,10 @@ public final class Gas {
         
         public var value: Int {
             switch self {
-            case .normal: return 21000
-            case .low: return 21000
-            case .high: return 21000
-            case .custom(let limit): return limit
+            case .low, .normal, .high:
+                return 21000
+            case .custom(let limit):
+                return limit
             }
         }
     }
