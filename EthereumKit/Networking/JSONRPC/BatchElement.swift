@@ -9,10 +9,7 @@ protocol BatchElementType {
     var body: Any { get }
     
     func response(from: Any) throws -> Request.Response
-    func response(from: [Any]) throws -> Request.Response
-    
     func result(from: Any) -> Result<Request.Response, JSONRPCError>
-    func result(from: [Any]) -> Result<Request.Response, JSONRPCError>
 }
 
 internal extension BatchElementType {
@@ -21,16 +18,6 @@ internal extension BatchElementType {
         case .success(let response):
             return response
             
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    internal func response(from objects: [Any]) throws -> Request.Response {
-        switch result(from: objects) {
-        case .success(let response):
-            return response
-        
         case .failure(let error):
             throw error
         }
@@ -46,7 +33,8 @@ internal extension BatchElementType {
             return .failure(.unsupportedVersion(receivedVersion))
         }
         
-        guard id == dictionary["id"] as? Int else {
+        let receivedId = dictionary["id"] as? Int
+        guard id == receivedId else {
             return .failure(.responseNotFound(requestId: id, object: dictionary))
         }
         
@@ -68,19 +56,6 @@ internal extension BatchElementType {
             return .failure(.missingBothResultAndError(dictionary))
         }
     }
-    
-    internal func result(from objects: [Any]) -> Result<Request.Response, JSONRPCError> {
-        let matchedObject = objects
-            .flatMap { $0 as? [String: Any] }
-            .filter { $0["id"] as? Int == id }
-            .first
-        
-        guard let object = matchedObject else {
-            return .failure(.responseNotFound(requestId: id, object: objects))
-        }
-        
-        return result(from: object)
-    }
 }
 
 internal extension BatchElementType where Request.Response == Void {
@@ -88,15 +63,7 @@ internal extension BatchElementType where Request.Response == Void {
         return ()
     }
     
-    internal func response(_ objects: [Any]) throws -> Request.Response {
-        return ()
-    }
-    
     internal func result(_ object: Any) -> Result<Request.Response, JSONRPCError> {
-        return .success(())
-    }
-    
-    internal func result(_ objects: [Any]) -> Result<Request.Response, JSONRPCError> {
         return .success(())
     }
 }

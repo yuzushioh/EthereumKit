@@ -6,7 +6,6 @@ public enum JSONRPCError: Error {
     case unsupportedVersion(String?)
     case unexpectedTypeObject(Any)
     case missingBothResultAndError(Any)
-    case nonArrayResponse(Any)
     
     public init(errorObject: Any) {
         enum ParseError: Error {

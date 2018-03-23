@@ -242,11 +242,11 @@
 		AE1A4B8B2065592700346BA2 /* JSONRPC */ = {
 			isa = PBXGroup;
 			children = (
-				AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */,
-				AE1A4B89206558B300346BA2 /* JSONRPCError.swift */,
-				AE295DEE2065551C00F774A6 /* BatchFactory.swift */,
 				AE1A4B8C20655A1F00346BA2 /* Batch.swift */,
 				AE295DEC206554E500F774A6 /* BatchElement.swift */,
+				AE295DEE2065551C00F774A6 /* BatchFactory.swift */,
+				AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */,
+				AE1A4B89206558B300346BA2 /* JSONRPCError.swift */,
 				AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */,
 			);
 			path = JSONRPC;

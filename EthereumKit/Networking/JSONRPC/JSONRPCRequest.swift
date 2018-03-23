@@ -12,9 +12,3 @@ public extension JSONRPCRequest {
         return nil
     }
 }
-
-public extension JSONRPCRequest where Response == Void {
-    public func response(from resultObject: Any) throws -> Response {
-        return ()
-    }
-}
