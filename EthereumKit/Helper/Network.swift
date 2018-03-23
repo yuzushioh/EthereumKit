@@ -10,7 +10,7 @@ public enum Network {
             return 60
         case .ropsten:
             return 1
-        case .`private`:
+        case .private:
             return 1
         }
     }
@@ -21,7 +21,7 @@ public enum Network {
             return 0x0488ade4
         case .ropsten:
             return 0x04358394
-        case .`private`:
+        case .private:
             return 0x04358394
         }
     }
@@ -32,7 +32,7 @@ public enum Network {
             return 0x0488b21e
         case .ropsten:
             return 0x043587cf
-        case .`private`:
+        case .private:
             return 0x043587cf
         }
     }
@@ -43,7 +43,7 @@ public enum Network {
             return 1
         case .ropsten:
             return 3
-        case .`private`(let chainID):
+        case .private(let chainID):
             return chainID
         }
     }
