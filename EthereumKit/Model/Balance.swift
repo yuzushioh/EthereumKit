@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Balance {
     public let wei: Wei
     

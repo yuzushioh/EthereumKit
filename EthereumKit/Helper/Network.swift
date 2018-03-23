@@ -8,9 +8,7 @@ public enum Network {
         switch self {
         case .main:
             return 60
-        case .ropsten:
-            return 1
-        case .private:
+        case .ropsten, .private:
             return 1
         }
     }
@@ -19,9 +17,7 @@ public enum Network {
         switch self {
         case .main:
             return 0x0488ade4
-        case .ropsten:
-            return 0x04358394
-        case .private:
+        case .ropsten, .private:
             return 0x04358394
         }
     }
@@ -30,9 +26,7 @@ public enum Network {
         switch self {
         case .main:
             return 0x0488b21e
-        case .ropsten:
-            return 0x043587cf
-        case .private:
+        case .ropsten, .private:
             return 0x043587cf
         }
     }

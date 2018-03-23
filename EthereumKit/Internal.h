@@ -1,11 +1,3 @@
-//
-//  Internal.h
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/14.
-//  Copyright © 2018 yuzushioh.
-//
-
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN

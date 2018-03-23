@@ -1,11 +1,3 @@
-//
-//  EthereumKit.h
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/01/01.
-//  Copyright © 2018 yuzushioh.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for EthereumKit.

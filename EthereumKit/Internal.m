@@ -1,11 +1,3 @@
-//
-//  Internal.m
-//  EthereumKit
-//
-//  Created by yuzushioh on 2018/02/14.
-//  Copyright © 2018 yuzushioh.
-//
-
 #import "Internal.h"
 #import <openssl/sha.h>
 #import <openssl/ripemd.h>
