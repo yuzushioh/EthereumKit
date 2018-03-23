@@ -16,6 +16,10 @@ public struct Configuration {
             
         case .ropsten:
             return URL(string: "https://ropsten.etherscan.io")!
+            
+        case .private:
+            // NOTE: does not get any transactions because of private network.
+            return URL(string: "https://ropsten.etherscan.io")!
         }
     }
 }
