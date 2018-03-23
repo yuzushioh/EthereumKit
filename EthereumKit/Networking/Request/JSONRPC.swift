@@ -1,7 +1,5 @@
-import JSONRPCKit
-
 public final class JSONRPC {
-    public struct GetGasPrice: Request {
+    public struct GetGasPrice: JSONRPCRequest {
         public typealias Response = Wei
         
         public var method: String {
@@ -16,7 +14,7 @@ public final class JSONRPC {
         }
     }
     
-    public struct GetBalance: Request {
+    public struct GetBalance: JSONRPCRequest {
         public typealias Response = Balance
         
         public let address: Address
@@ -38,7 +36,7 @@ public final class JSONRPC {
         }
     }
     
-    public struct GetTransactionCount: Request {
+    public struct GetTransactionCount: JSONRPCRequest {
         public typealias Response = Int
         
         public let address: Address
@@ -60,7 +58,7 @@ public final class JSONRPC {
         }
     }
     
-    public struct SendRawTransaction: Request {
+    public struct SendRawTransaction: JSONRPCRequest {
         public typealias Response = SentTransaction
         
         public let rawTransaction: String
@@ -81,7 +79,7 @@ public final class JSONRPC {
         }
     }
     
-    public struct Call: Request {
+    public struct Call: JSONRPCRequest {
         public typealias Response = String
         
         public let from: Address?

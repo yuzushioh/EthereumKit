@@ -1,7 +1,6 @@
-import JSONRPCKit
 import APIKit
 
-public struct HTTPJSONRPCRequest<Batch: JSONRPCKit.Batch>: APIKit.Request {
+public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: APIKit.Request {
     
     public typealias Response = Batch.Responses
     
