@@ -42,11 +42,11 @@ public struct EIP155Signer {
         ])
     }
     
-    public func calculateRSV(signiture: Data) -> (r: Data, s: Data, v: Data) {
+    public func calculateRSV(signiture: Data) -> (r: BInt, s: BInt, v: BInt) {
         return (
-            r: signiture[..<32],
-            s: signiture[32..<64],
-            v: Data([signiture[64] + UInt8(35) + UInt8(chainID) + UInt8(chainID)])
+            r: BInt(str: signiture[..<32].toHexString(), radix: 16)!,
+            s: BInt(str: signiture[32..<64].toHexString(), radix: 16)!,
+            v: BInt(signiture[64]) + BInt(35) + BInt(chainID) + BInt(chainID)
         )
     }
 }

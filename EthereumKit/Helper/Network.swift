@@ -1,6 +1,7 @@
 public enum Network {
     case main
     case ropsten
+    case `private`(chainID: Int)
     
     // https://github.com/satoshilabs/slips/blob/master/slip-0044.md
     public var coinType: UInt32 {
@@ -8,6 +9,8 @@ public enum Network {
         case .main:
             return 60
         case .ropsten:
+            return 1
+        case .private:
             return 1
         }
     }
@@ -18,6 +21,8 @@ public enum Network {
             return 0x0488ade4
         case .ropsten:
             return 0x04358394
+        case .private:
+            return 0x04358394
         }
     }
     
@@ -26,6 +31,8 @@ public enum Network {
         case .main:
             return 0x0488b21e
         case .ropsten:
+            return 0x043587cf
+        case .private:
             return 0x043587cf
         }
     }
@@ -36,6 +43,8 @@ public enum Network {
             return 1
         case .ropsten:
             return 3
+        case .private(let chainID):
+            return chainID
         }
     }
 }
