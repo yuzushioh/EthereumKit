@@ -1,4 +1,3 @@
 github "antitypical/Result" "3.2.4"
-github "bricklife/JSONRPCKit" "3.0.0"
 github "ishkawa/APIKit" "3.2.1"
 github "krzyzanowskim/CryptoSwift" "0.8.3"
