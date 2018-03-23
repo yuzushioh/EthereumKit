@@ -108,11 +108,15 @@ public struct BatchElement<Request: JSONRPCRequest>: BatchElementType {
     public let body: Any
     
     public init(request: Request, version: String, id: Int) {
-        let body: [String: Any] = [
+        var body: [String: Any] = [
             "jsonrpc": version,
             "method": request.method,
             "id": id
         ]
+        
+        if let parameters = request.parameters {
+            body["params"] = parameters
+        }
         
         self.request = request
         self.version = version
