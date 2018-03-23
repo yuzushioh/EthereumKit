@@ -14,7 +14,7 @@ public struct Batch1<Request: JSONRPCRequest>: JSONRPCBatchType {
     }
     
     public func responses(from object: Any) throws -> Responses {
-        return try batchElement.request.response(from: object)
+        return try batchElement.response(from: object)
     }
 }
 
@@ -37,8 +37,8 @@ public struct Batch2<Request1: JSONRPCRequest, Request2: JSONRPCRequest>: JSONRP
         }
         
         return (
-            try batchElement1.request.response(from: batchObjects),
-            try batchElement2.request.response(from: batchObjects)
+            try batchElement1.response(from: batchObjects),
+            try batchElement2.response(from: batchObjects)
         )
     }
 }
