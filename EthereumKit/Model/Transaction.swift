@@ -9,7 +9,7 @@ public struct RawTransaction {
     }
     
     public static func create(ether: String, address: String, nonce: Int, data: Data = Data()) -> RawTransaction {
-        return RawTransaction(ether: ether, address: address, nonce: nonce, data: data)
+        return RawTransaction(wei: Converter.toWei(ether: Ether(ether)!).description, address: address, nonce: nonce, data: data)
     }
     
     internal init(wei: String, address: String, nonce: Int, data: Data) {
@@ -17,10 +17,6 @@ public struct RawTransaction {
         self.to = Address(string: address)
         self.nonce = nonce
         self.data = data
-    }
-    
-    internal init(ether: String, address: String, nonce: Int, data: Data) {
-        self.init(wei: Converter.toWei(ether: Ether(ether)!).description, address: address, nonce: nonce, data: data)
     }
 }
 
@@ -32,7 +28,16 @@ public struct SignTransaction {
     public let gasLimit: Int
     public let data: Data
     
-    public init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int) {
+    public static func create(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int) -> SignTransaction {
+        return SignTransaction(rawTransaction: rawTransaction, gasPrice: gasPrice, gasLimit: gasLimit)
+    }
+    
+    public static func create(wei: String, address: String, nonce: Int, data: Data, gasPrice: Int, gasLimit: Int) -> SignTransaction {
+        let rawTransaction = RawTransaction(wei: wei, address: address, nonce: nonce, data: data)
+        return SignTransaction(rawTransaction: rawTransaction, gasPrice: gasPrice, gasLimit: gasLimit)
+    }
+    
+    internal init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int) {
         self.value = rawTransaction.value
         self.to = rawTransaction.to
         self.nonce = rawTransaction.nonce

@@ -26,6 +26,8 @@
 		AE00573420539993007AA468 /* HDWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00573320539993007AA468 /* HDWallet.swift */; };
 		AE0057362053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */; };
 		AE0057382053A5E4007AA468 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057372053A5E4007AA468 /* WalletTests.swift */; };
+		AE14A60320693CFD003A63FF /* URLSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */; };
+		AE14A60520694412003A63FF /* URLSchemeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A60420694412003A63FF /* URLSchemeAction.swift */; };
 		AE1A4B8A206558B300346BA2 /* JSONRPCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B89206558B300346BA2 /* JSONRPCError.swift */; };
 		AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B8C20655A1F00346BA2 /* Batch.swift */; };
 		AE1A4B8F20655A5200346BA2 /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */; };
@@ -143,6 +145,8 @@
 		AE00573320539993007AA468 /* HDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDWallet.swift; sourceTree = "<group>"; };
 		AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyAndPublicKeyTests.swift; sourceTree = "<group>"; };
 		AE0057372053A5E4007AA468 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeHandler.swift; sourceTree = "<group>"; };
+		AE14A60420694412003A63FF /* URLSchemeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeAction.swift; sourceTree = "<group>"; };
 		AE1A4B89206558B300346BA2 /* JSONRPCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCError.swift; sourceTree = "<group>"; };
 		AE1A4B8C20655A1F00346BA2 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
 		AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				1A371097205050A6003A40BB /* Converter.swift */,
 				AE005729205390E1007AA468 /* EthereumKitError.swift */,
+				AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */,
+				AE14A60420694412003A63FF /* URLSchemeAction.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
+				AE14A60320693CFD003A63FF /* URLSchemeHandler.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,
 				AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */,
 				AE8387EF203AF38C00FAC88F /* Account.swift in Sources */,
@@ -651,6 +658,7 @@
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
+				AE14A60520694412003A63FF /* URLSchemeAction.swift in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
