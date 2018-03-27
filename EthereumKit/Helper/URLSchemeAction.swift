@@ -1,5 +1,5 @@
 public enum URLSchemeAction {
-    case call(to: String, data: String, gasLimit: Gas.GasLimit?, gasPrice: Gas.GasPrice?)
+    case call(to: String, data: String, gasLimit: Gas.GasLimit?, gasPrice: Gas.GasPrice?, callBack: URL?)
     
     internal init?(url: URL) {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -8,8 +8,8 @@ public enum URLSchemeAction {
                 return nil
         }
         
-        switch (host, urlComponents.path) {
-        case ("jsonrpc", "/call"):
+        switch host {
+        case "jsonrpc":
             guard let to = queryItems.first(where: { $0.name == "to" })?.value,
                 let data = queryItems.first(where: { $0.name == "data" })?.value else {
                     return nil
@@ -23,7 +23,10 @@ public enum URLSchemeAction {
                 .flatMap(Int.init)
                 .flatMap({ Gas.GasPrice.custom(GWei: $0) })
             
-            self = .call(to: to, data: data, gasLimit: gasLimit, gasPrice: gasPrice)
+            let callBack = queryItems.first(where: { $0.name == "callback" })?.value
+                .flatMap(URL.init)
+            
+            self = .call(to: to, data: data, gasLimit: gasLimit, gasPrice: gasPrice, callBack: callBack)
             
         default:
             return nil
