@@ -11,8 +11,7 @@ public struct PublicKey {
     }
     
     private var addressData: Data {
-        let hash = raw.dropFirst().sha3(.keccak256)
-        return hash.suffix(20)
+        return Crypto.hashSHA3256(raw.dropFirst()).suffix(20)
     }
     
     public func generateAddress() -> String {

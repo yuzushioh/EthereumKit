@@ -25,9 +25,7 @@ public struct EIP155Signer {
     }
     
     public func hash(signTransaction: SignTransaction) throws -> Data {
-        let sha3 = SHA3(variant: .keccak256)
-        let data = try encode(signTransaction: signTransaction)
-        return Data(bytes: sha3.calculate(for: data.bytes))
+        return Crypto.hashSHA3256(try encode(signTransaction: signTransaction))
     }
     
     public func encode(signTransaction: SignTransaction) throws -> Data {

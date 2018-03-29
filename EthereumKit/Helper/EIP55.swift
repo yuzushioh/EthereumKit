@@ -4,7 +4,7 @@ import CryptoSwift
 public struct EIP55 {
     public static func encode(_ data: Data) -> String {
         let address = data.toHexString()
-        let hash = address.data(using: .ascii)!.sha3(.keccak256).toHexString()
+        let hash = Crypto.hashSHA3256(address.data(using: .ascii)!).toHexString()
         
         return zip(address, hash)
             .map { a, h -> String in
