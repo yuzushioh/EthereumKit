@@ -16,8 +16,8 @@ extension CryptoTests {
     }
 
     private func assertValidatesSignature(compressed: Bool, line: UInt = #line) {
-        let hash = Crypto.hashSHA3256("Secret".data(using: .utf8)!)
-        let otherHash = Crypto.hashSHA3256("0123456789".data(using: .utf8)!)
+        let hash = Crypto.hashSHA3_256("Secret".data(using: .utf8)!)
+        let otherHash = Crypto.hashSHA3_256("0123456789".data(using: .utf8)!)
 
         let privateKey = self.privateKey().raw
         let publicKey = Crypto.generatePublicKey(data: privateKey, compressed: compressed)

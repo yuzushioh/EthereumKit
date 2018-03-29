@@ -2,27 +2,59 @@ import EthereumKit.Private
 import secp256k1
 import CryptoSwift
 
+/// Helper class for cryptographic algorithms.
 public final class Crypto {
+    /// Produces "hash-based message authentication code" that can be used to verify data integrity and authenticity.
+    /// Hash is 512-bit length (64 bytes)
+    ///
+    /// - Parameters:
+    ///   - key: secret key for signing the message
+    ///   - data: message to sign
+    /// - Returns: 512-bit hash-based message authentication code
     public static func HMACSHA512(key: Data, data: Data) -> Data {
         return CryptoHash.hmacsha512(data, key: key)
     }
     
+    /// Derives 512-bit (64-byte) private key from a password using PBKDF2 algorithm
+    ///
+    /// - Parameters:
+    ///   - password: password to generate private key from
+    ///   - salt: random data (entropy)
+    /// - Returns: private key derived from password
     public static func PBKDF2SHA512(_ password: Data, salt: Data) -> Data {
         return PKCS5.pbkdf2(password, salt: salt, iterations: 2048, keyLength: 64)
     }
     
+    /// Returns 160-bit hash of the data
+    ///
+    /// - Parameter data: data to be hashed
+    /// - Returns: hash
     public static func hash160(_ data: Data) -> Data {
         return CryptoHash.ripemd160(CryptoHash.sha256(data))
     }
     
+    /// Hashes data with SHA256 twice
+    ///
+    /// - Parameter data: data to be hashed
+    /// - Returns: hash
     public static func doubleSHA256(_ data: Data) -> Data {
         return data.sha256().sha256()
     }
 
-    public static func hashSHA3256(_ data: Data) -> Data {
+    /// Returns SHA3 256-bit (32-byte) hash of the data
+    ///
+    /// - Parameter data: data to be hashed
+    /// - Returns: 256-bit (32-byte) hash
+    public static func hashSHA3_256(_ data: Data) -> Data {
         return data.sha3(.keccak256)
     }
     
+    /// Generates public key from private key using secp256k1 elliptic curve math
+    ///
+    /// - Parameters:
+    ///   - data: private key
+    ///   - compressed: whether public key should be compressed
+    /// - Returns: 65-byte key if not compressed, otherwise 33-byte public key.
     public static func generatePublicKey(data: Data, compressed: Bool) -> Data {
         return Secp256k1.generatePublicKey(withPrivateKey: data, compression: compressed)
     }
@@ -36,8 +68,8 @@ public final class Crypto {
     /// - Throws: EthereumKitError.failedToSign in case private key was invalid
     public static func sign(_ hash: Data, privateKey: Data) throws -> Data {
         let encrypter = EllipticCurveEncrypterSecp256k1()
-        guard var sig = encrypter.sign(hash: hash, privateKey: privateKey) else { throw EthereumKitError.failedToSign }
-        return encrypter.export(signature: &sig)
+        guard var signatureInInternalFormat = encrypter.sign(hash: hash, privateKey: privateKey) else { throw EthereumKitError.failedToSign }
+        return encrypter.export(signature: &signatureInInternalFormat)
     }
 
     /// Validates a signature of a hash with publicKey. If valid, it guarantees that the hash was signed by the
@@ -51,100 +83,9 @@ public final class Crypto {
     /// - Returns: True, if signature is valid for the hash and public key, false otherwise.
     public static func isValid(signature: Data, of hash: Data, publicKey: Data, compressed: Bool) -> Bool {
         let encrypter = EllipticCurveEncrypterSecp256k1()
-        var sig = encrypter.import(signature: signature)
-        guard var recoveredKey = encrypter.publicKey(signature: &sig, hash: hash) else { return false }
-        let recoveredPublicKey = encrypter.export(publicKey: &recoveredKey, compressed: compressed)
+        var signatureInInternalFormat = encrypter.import(signature: signature)
+        guard var publicKeyInInternalFormat = encrypter.publicKey(signature: &signatureInInternalFormat, hash: hash) else { return false }
+        let recoveredPublicKey = encrypter.export(publicKey: &publicKeyInInternalFormat, compressed: compressed)
         return recoveredPublicKey == publicKey
-    }
-}
-
-/// Convenience class over libsecp256k1 methods
-final class EllipticCurveEncrypterSecp256k1 {
-    // holds internal state of the c library
-    private let context: OpaquePointer
-
-    init() {
-        context = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN | SECP256K1_CONTEXT_VERIFY))!
-    }
-
-    deinit {
-        secp256k1_context_destroy(context)
-    }
-
-    /// Converts serialized signature into library's signature format. Use it to supply signature to
-    /// the publicKey(signature:hash:) method.
-    ///
-    /// - Parameter signature: serialized 65-byte signature
-    /// - Returns: signature structure
-    func `import`(signature: Data) -> secp256k1_ecdsa_recoverable_signature {
-        precondition(signature.count == 65, "Signature must be 65 byte size")
-        var sig = secp256k1_ecdsa_recoverable_signature()
-        let recid = Int32(signature[64])
-        signature.withUnsafeBytes { (input: UnsafePointer<UInt8>) -> Void in
-            secp256k1_ecdsa_recoverable_signature_parse_compact(context, &sig, input, recid)
-        }
-        return sig
-    }
-
-    /// Recovers public key from the signature and the hash. Use import(signature:) to convert signature from bytes.
-    /// Use export(publicKey:compressed) to convert recovered public key into bytes.
-    ///
-    /// - Parameters:
-    ///   - signature: signature structure
-    ///   - hash: 32-byte (256-bit) hash of a message
-    /// - Returns: public key structure or nil, if signature invalid
-    func publicKey(signature: inout secp256k1_ecdsa_recoverable_signature, hash: Data) -> secp256k1_pubkey? {
-        precondition(hash.count == 32, "Hash must be 32 bytes size")
-        let hash = hash.bytes
-        var outPubKey = secp256k1_pubkey()
-        let status = secp256k1_ecdsa_recover(context, &outPubKey, &signature, hash)
-        return status == 1 ? outPubKey : nil
-    }
-
-    /// Converts public key from library's data structure to bytes
-    ///
-    /// - Parameters:
-    ///   - publicKey: public key structure to convert.
-    ///   - compressed: whether public key should be compressed.
-    /// - Returns: If compression enabled, public key is 33 bytes size, otherwise it is 65 bytes.
-    func export(publicKey: inout secp256k1_pubkey, compressed: Bool) -> Data {
-        var output = Data(count: compressed ? 33 : 65)
-        var outputLen: Int = output.count
-        let compressedFlags = compressed ? UInt32(SECP256K1_EC_COMPRESSED) : UInt32(SECP256K1_EC_UNCOMPRESSED)
-        output.withUnsafeMutableBytes { (pointer: UnsafeMutablePointer<UInt8>) -> Void in
-            secp256k1_ec_pubkey_serialize(context, pointer, &outputLen, &publicKey, compressedFlags)
-        }
-        return output
-    }
-
-    /// Signs the hash with the private key. Produces signature data structure that can be exported with
-    /// export(signature:) method.
-    ///
-    /// - Parameters:
-    ///   - hash: 32-byte (256-bit) hash of the message
-    ///   - privateKey: 32-byte private key
-    /// - Returns: signature data structure if signing succeeded, otherwise nil.
-    func sign(hash: Data, privateKey: Data) -> secp256k1_ecdsa_recoverable_signature? {
-        precondition(hash.count == 32, "Hash must be 32 bytes size")
-        var signature = secp256k1_ecdsa_recoverable_signature()
-        let status = privateKey.withUnsafeBytes { (key: UnsafePointer<UInt8>) in
-            hash.withUnsafeBytes { secp256k1_ecdsa_sign_recoverable(context, &signature, $0, key, nil, nil) }
-        }
-        return status == 1 ? signature : nil
-    }
-
-    /// Converts signature data structure to 65 bytes.
-    ///
-    /// - Parameter signature: signature data structure
-    /// - Returns: 65 byte exported signature data.
-    func export(signature: inout secp256k1_ecdsa_recoverable_signature) -> Data {
-        var output = Data(count: 65)
-        var recid = 0 as Int32
-        _ = output.withUnsafeMutableBytes { (output: UnsafeMutablePointer<UInt8>) in
-            secp256k1_ecdsa_recoverable_signature_serialize_compact(context, output, &recid, &signature)
-        }
-
-        output[64] = UInt8(recid)
-        return output
     }
 }
