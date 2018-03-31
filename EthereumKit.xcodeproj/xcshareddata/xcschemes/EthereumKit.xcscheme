@@ -29,7 +29,26 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AE90A0741FFA698D005ED7AF"
+               BuildableName = "EthereumKitTests.xctest"
+               BlueprintName = "EthereumKitTests"
+               ReferencedContainer = "container:EthereumKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "AEBA90D41FFA21ED003EA2BA"
+            BuildableName = "EthereumKit.framework"
+            BlueprintName = "EthereumKit"
+            ReferencedContainer = "container:EthereumKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
