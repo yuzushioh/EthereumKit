@@ -1,4 +1,5 @@
 import XCTest
+import CryptoSwift
 @testable import EthereumKit
 
 class TransactionSigningTests: XCTestCase {
