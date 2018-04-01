@@ -37,6 +37,8 @@
 		AE14A611206F5555003A63FF /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A60A206F552D003A63FF /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE14A612206F5555003A63FF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A609206F552D003A63FF /* Result.framework */; };
 		AE14A613206F5555003A63FF /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A609206F552D003A63FF /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE14A6242070A98D003A63FF /* English.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A6232070A98D003A63FF /* English.swift */; };
+		AE14A6262070A9AE003A63FF /* Japanese.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A6252070A9AE003A63FF /* Japanese.swift */; };
 		AE1A4B8A206558B300346BA2 /* JSONRPCError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B89206558B300346BA2 /* JSONRPCError.swift */; };
 		AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B8C20655A1F00346BA2 /* Batch.swift */; };
 		AE1A4B8F20655A5200346BA2 /* IDGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */; };
@@ -149,6 +151,8 @@
 		AE14A608206F552D003A63FF /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		AE14A609206F552D003A63FF /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		AE14A60A206F552D003A63FF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
+		AE14A6232070A98D003A63FF /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
+		AE14A6252070A9AE003A63FF /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
 		AE1A4B89206558B300346BA2 /* JSONRPCError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCError.swift; sourceTree = "<group>"; };
 		AE1A4B8C20655A1F00346BA2 /* Batch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batch.swift; sourceTree = "<group>"; };
 		AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDGenerator.swift; sourceTree = "<group>"; };
@@ -335,6 +339,8 @@
 			children = (
 				AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */,
 				AE82919E2018ADAF0047E0F0 /* WordList.swift */,
+				AE14A6232070A98D003A63FF /* English.swift */,
+				AE14A6252070A9AE003A63FF /* Japanese.swift */,
 			);
 			path = Mnemonic;
 			sourceTree = "<group>";
@@ -663,8 +669,10 @@
 				AE8387FD203B20B700FAC88F /* EtherscanClient.swift in Sources */,
 				AE1A4B8A206558B300346BA2 /* JSONRPCError.swift in Sources */,
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
+				AE14A6262070A9AE003A63FF /* Japanese.swift in Sources */,
 				AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
+				AE14A6242070A98D003A63FF /* English.swift in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
