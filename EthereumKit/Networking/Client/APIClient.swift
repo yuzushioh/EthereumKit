@@ -3,12 +3,6 @@ import Result
 
 public class APIClient {
     
-    public let configuration: Configuration
-    
-    public init(configuration: Configuration) {
-        self.configuration = configuration
-    }
-    
     private var session: Session = {
         let configuration = URLSessionConfiguration.default
         let adapter = URLSessionAdapter(configuration: configuration)
