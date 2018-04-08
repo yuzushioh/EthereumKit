@@ -16,6 +16,10 @@ public final class Geth {
         etherClient.send(JSONRPC.GetGasPrice(), handler: handler)
     }
     
+    public func getEstimateGas(to: String, handler: @escaping (Result<Wei, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetEstimatGas(to: Address(string: to)), handler: handler)
+    }
+    
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, GethError>) -> Void) {
         etherClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }

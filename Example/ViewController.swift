@@ -80,5 +80,9 @@ class ViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             }
         }
+        
+        geth.getEstimateGas(to: address) { result in
+            print("Gas", result)
+        }
     }
 }

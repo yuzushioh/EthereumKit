@@ -14,6 +14,27 @@ public final class JSONRPC {
         }
     }
     
+    public struct GetEstimatGas: JSONRPCRequest {
+        public typealias Response = Wei
+        
+        public let to: Address
+        
+        public var method: String {
+            return "eth_estimateGas"
+        }
+        
+        public var parameters: Any? {
+            return [["to": to.string]]
+        }
+        
+        public func response(from resultObject: Any) throws -> Wei {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return wei
+        }
+    }
+    
     public struct GetBalance: JSONRPCRequest {
         public typealias Response = Balance
         
