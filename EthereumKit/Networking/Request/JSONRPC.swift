@@ -129,4 +129,54 @@ public final class JSONRPC {
             return response
         }
     }
+    
+    public struct GetEstimatGas: JSONRPCRequest {
+        public typealias Response = Wei
+        
+        public let from: Address?
+        public let to: Address
+        public let gas: Int?
+        public let gasPrice: Int?
+        public let value: Int?
+        public let data: String?
+        
+        public var method: String {
+            return "eth_estimateGas"
+        }
+        
+        public var parameters: Any? {
+            var txParams: [String: Any] = [:]
+            
+            if let fromAddress = from?.string {
+                txParams["from"] = fromAddress
+            }
+            
+            txParams["to"] = to.string
+            
+            if let gas = gas {
+                txParams["gas"] = gas
+            }
+            
+            if let gasPrice = gasPrice {
+                txParams["gasPrice"] = gasPrice
+            }
+            
+            if let value = value {
+                txParams["value"] = value
+            }
+            
+            if let data = data {
+                txParams["data"] = data
+            }
+            
+            return [txParams]
+        }
+        
+        public func response(from resultObject: Any) throws -> Wei {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return wei
+        }
+    }
 }
