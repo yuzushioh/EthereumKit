@@ -140,3 +140,29 @@ geth.call(to: "0xf204a4ef082f5c04bb89f7d5e6568b796096735a", data: "0x70a08231000
 }
 ```
 
+#### `GetEstimatGas`
+
+Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.
+
+##### Parameters
+
+1. `from` - (Optional) the Address the transaction is sent from.
+2. `to` - the address the transaction is directed to.
+3. `gas` - (Optional) integer of the gas provided for the transaction execution.
+4. `gasPrice` - (Optional) integer of the gasPrice used for each paid gas.
+5. `value` - (Optional) integer of the value send with this transaction.
+6. `data` - (Optional) hash of the method signature and encoded parameters.
+
+##### Returns
+
+QUANTITY - the amount of gas used.
+
+##### Example
+        
+```swift
+let geth = Geth(network: .test)
+geth.getEstimateGas(to: address) { result in
+    // Do something
+}
+```
+
