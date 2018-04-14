@@ -56,4 +56,4 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 - [openssl](https://github.com/openssl/openssl)
 
 ## License
-EthereumKit is released under the [MIT License](LICENSE.md).
+EthereumKit is released under the [Apache License 2.0](LICENSE.md).
