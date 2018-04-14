@@ -16,10 +16,6 @@ public final class Geth {
         etherClient.send(JSONRPC.GetGasPrice(), handler: handler)
     }
     
-    public func getEstimateGas(to: String, handler: @escaping (Result<Wei, GethError>) -> Void) {
-        etherClient.send(JSONRPC.GetEstimatGas(to: Address(string: to)), handler: handler)
-    }
-    
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, GethError>) -> Void) {
         etherClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), handler: handler)
     }
@@ -36,15 +32,8 @@ public final class Geth {
         etherClient.send(JSONRPC.Call(from: from.map(Address.init), to: Address(string: to), gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data, blockParameter: blockParameter), handler: handler)
     }
     
-    public func getAccount(address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Account, GethError>) -> Void) {
-        getBalance(of: address) { result in
-            switch result {
-            case .success(let balance):
-                handler(.success(Account(address: Address(string: address), balance: balance)))
-            case .failure(let error):
-                handler(.failure(error))
-            }
-        }
+    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, handler: @escaping (Result<Wei, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetEstimatGas(from: from.map(Address.init), to: Address(string: to), gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data), handler: handler)
     }
     
     // MARK: - Etherscan APIs
