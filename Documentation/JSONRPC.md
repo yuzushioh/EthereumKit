@@ -140,6 +140,8 @@ geth.call(to: "0xf204a4ef082f5c04bb89f7d5e6568b796096735a", data: "0x70a08231000
 }
 ```
 
+***
+
 #### `GetEstimatGas`
 
 Generates and returns an estimate of how much gas is necessary to allow the transaction to complete. The transaction will not be added to the blockchain. Note that the estimate may be significantly more than the amount of gas actually used by the transaction, for a variety of reasons including EVM mechanics and node performance.
@@ -166,3 +168,25 @@ geth.getEstimateGas(to: address) { result in
 }
 ```
 
+***
+
+#### `GetBlockNumber`
+
+Returns the number of most recent block.
+
+##### Parameters
+
+none
+
+##### Returns
+
+QUANTITY - integer of the current block number the client is on.
+
+##### Example
+
+```swift
+let geth = Geth(configuration: configuration)
+geth.getBlockNumber { result in
+// Do something
+}
+```
