@@ -36,6 +36,10 @@ public final class Geth {
         etherClient.send(JSONRPC.GetEstimatGas(from: from.map(Address.init), to: Address(string: to), gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data), handler: handler)
     }
     
+    public func getBlockNumber(handler: @escaping (Result<Int, GethError>) -> Void) {
+        etherClient.send(JSONRPC.GetBlockNumber(), handler: handler)
+    }
+    
     // MARK: - Etherscan APIs
     
     public func getTransactions(address: String, handler: @escaping (Result<Transactions, GethError>) -> Void) {

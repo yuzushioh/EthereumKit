@@ -179,4 +179,19 @@ public final class JSONRPC {
             return wei
         }
     }
+    
+    public struct GetBlockNumber: JSONRPCRequest {
+        public typealias Response = Int
+        
+        public var method: String {
+            return "eth_blockNumber"
+        }
+        
+        public func response(from resultObject: Any) throws -> Int {
+            guard let response = resultObject as? String, let blockNumber = Int(response.hex, radix: 16) else {
+                throw JSONRPCError.unexpectedTypeObject(resultObject)
+            }
+            return blockNumber
+        }
+    }
 }
