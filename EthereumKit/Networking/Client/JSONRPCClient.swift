@@ -10,7 +10,7 @@ public final class JSONRPCClient: APIClient {
         self.configuration = configuration
     }
     
-    public func send<RPC: JSONRPCRequest>(_ rpc: RPC, handler: @escaping (Result<RPC.Response, GethError>) -> Void) {
+    public func send<RPC: JSONRPCRequest>(_ rpc: RPC, handler: @escaping (Result<RPC.Response, EthereumKitError>) -> Void) {
         let batch = batchFactory.create(rpc)
         let httpRequest = HTTPJSONRPCRequest(batch: batch, endpoint: URL(string: configuration.nodeEndpoint)!)
         send(httpRequest, handler: handler)
