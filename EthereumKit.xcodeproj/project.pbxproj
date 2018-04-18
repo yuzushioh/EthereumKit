@@ -66,7 +66,6 @@
 		AE8387EB2037F7D300FAC88F /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* APIClientError.swift */; };
 		AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EC2038041B00FAC88F /* BlockParameter.swift */; };
 		AE8387EF203AF38C00FAC88F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EE203AF38C00FAC88F /* Account.swift */; };
-		AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F2203B10B900FAC88F /* HTTPRequest.swift */; };
 		AE8387F5203B12AA00FAC88F /* EtherscanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */; };
 		AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F6203B131A00FAC88F /* Etherscan.swift */; };
 		AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387FA203B1B4600FAC88F /* APIClient.swift */; };
@@ -179,7 +178,6 @@
 		AE8387EA2037F7D300FAC88F /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 		AE8387EC2038041B00FAC88F /* BlockParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameter.swift; sourceTree = "<group>"; };
 		AE8387EE203AF38C00FAC88F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
-		AE8387F2203B10B900FAC88F /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherscanRequest.swift; sourceTree = "<group>"; };
 		AE8387F6203B131A00FAC88F /* Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etherscan.swift; sourceTree = "<group>"; };
 		AE8387FA203B1B4600FAC88F /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -295,7 +293,6 @@
 			isa = PBXGroup;
 			children = (
 				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
-				AE8387F2203B10B900FAC88F /* HTTPRequest.swift */,
 				AE8387F4203B12AA00FAC88F /* EtherscanRequest.swift */,
 				AE8387DD20374C0000FAC88F /* JSONRPC.swift */,
 				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
@@ -640,7 +637,6 @@
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
 				1A371098205050A6003A40BB /* Converter.swift in Sources */,
 				AE1A4B8F20655A5200346BA2 /* IDGenerator.swift in Sources */,
-				AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,

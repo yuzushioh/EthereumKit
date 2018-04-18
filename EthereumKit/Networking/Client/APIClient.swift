@@ -12,8 +12,7 @@ public class APIClient {
     }()
     
     public func send<Request: APIKit.Request>(_ request: Request, handler: @escaping (Result<Request.Response, EthereumKitError>) -> Void) {
-        let httpRequest = HTTPRequest(request)
-        session.send(httpRequest) { result in
+        session.send(request) { result in
             switch result {
             case .success(let response):
                 handler(.success(response))
