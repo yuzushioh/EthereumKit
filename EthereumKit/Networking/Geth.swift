@@ -1,46 +1,69 @@
 public final class Geth {
     
-    private let etherClient: JSONRPCClient
-    private let etherscanClient: EtherscanClient
+    private let configuration: Configuration
+    private let httpClient: HTTPClient
     
     public init(configuration: Configuration) {
-        etherClient = JSONRPCClient(configuration: configuration)
-        etherscanClient = EtherscanClient(configuration: configuration)
+        self.configuration = configuration
+        self.httpClient = HTTPClient(configuration: configuration)
     }
     
     // MARK: - JSONRPC APIs
     
-    public func getGasPrice(handler: @escaping (Result<Wei>) -> Void) {
-        etherClient.send(JSONRPC.GetGasPrice(), handler: handler)
+    public func getGasPrice(completionHandler: @escaping (Result<Wei>) -> Void) {
+        httpClient.send(JSONRPC.GetGasPrice(), completionHandler: completionHandler)
     }
     
-    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance>) -> Void) {
-        etherClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), handler: handler)
+    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Balance>) -> Void) {
+        httpClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
-    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Int>) -> Void) {
-        etherClient.send(JSONRPC.GetTransactionCount(address: Address(string: address), blockParameter: blockParameter), handler: handler)
+    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Int>) -> Void) {
+        httpClient.send(JSONRPC.GetTransactionCount(address: Address(string: address), blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
-    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<SentTransaction>) -> Void) {
-        etherClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
+    public func sendRawTransaction(rawTransaction: String, completionHandler: @escaping (Result<SentTransaction>) -> Void) {
+        httpClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), completionHandler: completionHandler)
     }
     
-    public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, handler: @escaping (Result<String>) -> Void) {
-        etherClient.send(JSONRPC.Call(from: from.map(Address.init), to: Address(string: to), gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data, blockParameter: blockParameter), handler: handler)
+    public func getBlockNumber(completionHandler: @escaping (Result<Int>) -> Void) {
+        httpClient.send(JSONRPC.GetBlockNumber(), completionHandler: completionHandler)
     }
     
-    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, handler: @escaping (Result<Wei>) -> Void) {
-        etherClient.send(JSONRPC.GetEstimatGas(from: from.map(Address.init), to: Address(string: to), gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data), handler: handler)
+    public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<String>) -> Void) {
+        let request = JSONRPC.Call(
+            from: from.map(Address.init),
+            to: Address(string: to),
+            gas: gasLimit.map { $0.value },
+            gasPrice: gasPrice.map { $0.value },
+            value: value,
+            data: data,
+            blockParameter: blockParameter
+        )
+        
+        httpClient.send(request, completionHandler: completionHandler)
     }
     
-    public func getBlockNumber(handler: @escaping (Result<Int>) -> Void) {
-        etherClient.send(JSONRPC.GetBlockNumber(), handler: handler)
+    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, completionHandler: @escaping (Result<Wei>) -> Void) {
+        let request = JSONRPC.GetEstimatGas(
+            from: from.map(Address.init),
+            to: Address(string: to),
+            gas: gasLimit.map { $0.value },
+            gasPrice: gasPrice.map { $0.value },
+            value: value,
+            data: data
+        )
+        
+        httpClient.send(request, completionHandler: completionHandler)
     }
     
     // MARK: - Etherscan APIs
     
-    public func getTransactions(address: String, handler: @escaping (Result<Transactions>) -> Void) {
-        etherscanClient.send(Etherscan.GetTransactions(address: Address(string: address)), handler: handler)
+    public func getTransactions(address: String, completionHandler: @escaping (Result<Transactions>) -> Void) {
+        let request = Etherscan.GetTransactions(
+            configuration: .init(baseURL: configuration.etherscanURL, apiKey: configuration.etherscanAPIKey),
+            address: Address(string: address)
+        )
+        httpClient.send(request, completionHandler: completionHandler)
     }
 }

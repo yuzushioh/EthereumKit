@@ -1,5 +1,18 @@
 public class HTTPClient: HTTPClientType {
     
+    private let batchFactory = BatchFactory(version: "2.0")
+    
+    public let configuration: Configuration
+    
+    public init(configuration: Configuration) {
+        self.configuration = configuration
+    }
+    
+    public func send<RPC: JSONRPCRequest>(_ rpc: RPC, completionHandler: @escaping (Result<RPC.Response>) -> Void) {
+        let httpRequest = HTTPJSONRPCRequest(batch: batchFactory.create(rpc), endpoint: URL(string: configuration.nodeEndpoint)!)
+        send(httpRequest, completionHandler: completionHandler)
+    }
+    
     @discardableResult
     public func send<Request: RequestType>(_ request: Request, completionHandler: @escaping (Result<Request.Response>) -> Void) -> Cancellable? {
         switch buildRequest(from: request) {

@@ -23,3 +23,10 @@ extension RequestType {
         return nil
     }
 }
+
+extension RequestType where Response: Decodable {
+    public func response(from object: Any) throws -> Response {
+        let data = try JSONSerialization.data(withJSONObject: object, options: [])
+        return try JSONDecoder().decode(Response.self, from: data)
+    }
+}
