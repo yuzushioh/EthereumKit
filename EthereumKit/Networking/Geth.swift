@@ -15,11 +15,11 @@ public final class Geth {
     }
     
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Balance>) -> Void) {
-        httpClient.send(JSONRPC.GetBalance(address: Address(string: address), blockParameter: blockParameter), completionHandler: completionHandler)
+        httpClient.send(JSONRPC.GetBalance(address: address, blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
     public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Int>) -> Void) {
-        httpClient.send(JSONRPC.GetTransactionCount(address: Address(string: address), blockParameter: blockParameter), completionHandler: completionHandler)
+        httpClient.send(JSONRPC.GetTransactionCount(address: address, blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
     public func sendRawTransaction(rawTransaction: String, completionHandler: @escaping (Result<SentTransaction>) -> Void) {
@@ -32,8 +32,8 @@ public final class Geth {
     
     public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<String>) -> Void) {
         let request = JSONRPC.Call(
-            from: from.map(Address.init),
-            to: Address(string: to),
+            from: from,
+            to: to,
             gas: gasLimit.map { $0.value },
             gasPrice: gasPrice.map { $0.value },
             value: value,
@@ -46,8 +46,8 @@ public final class Geth {
     
     public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, completionHandler: @escaping (Result<Wei>) -> Void) {
         let request = JSONRPC.GetEstimatGas(
-            from: from.map(Address.init),
-            to: Address(string: to),
+            from: from,
+            to: to,
             gas: gasLimit.map { $0.value },
             gasPrice: gasPrice.map { $0.value },
             value: value,
