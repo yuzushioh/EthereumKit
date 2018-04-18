@@ -63,7 +63,7 @@
 		AE8387DC20374A5600FAC88F /* Geth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DB20374A5600FAC88F /* Geth.swift */; };
 		AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DD20374C0000FAC88F /* JSONRPC.swift */; };
 		AE8387E62037F55E00FAC88F /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387E52037F55E00FAC88F /* Balance.swift */; };
-		AE8387EB2037F7D300FAC88F /* GethError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* GethError.swift */; };
+		AE8387EB2037F7D300FAC88F /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EA2037F7D300FAC88F /* APIClientError.swift */; };
 		AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EC2038041B00FAC88F /* BlockParameter.swift */; };
 		AE8387EF203AF38C00FAC88F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EE203AF38C00FAC88F /* Account.swift */; };
 		AE8387F3203B10B900FAC88F /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F2203B10B900FAC88F /* HTTPRequest.swift */; };
@@ -176,7 +176,7 @@
 		AE8387DB20374A5600FAC88F /* Geth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geth.swift; sourceTree = "<group>"; };
 		AE8387DD20374C0000FAC88F /* JSONRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		AE8387E52037F55E00FAC88F /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
-		AE8387EA2037F7D300FAC88F /* GethError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GethError.swift; sourceTree = "<group>"; };
+		AE8387EA2037F7D300FAC88F /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
 		AE8387EC2038041B00FAC88F /* BlockParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameter.swift; sourceTree = "<group>"; };
 		AE8387EE203AF38C00FAC88F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		AE8387F2203B10B900FAC88F /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				AE8387DB20374A5600FAC88F /* Geth.swift */,
-				AE8387EA2037F7D300FAC88F /* GethError.swift */,
 				AE8387F9203B179700FAC88F /* Client */,
 				AE1A4B8B2065592700346BA2 /* JSONRPC */,
 				AE8387F8203B167000FAC88F /* Request */,
@@ -309,6 +308,7 @@
 			children = (
 				AE00572D205391E2007AA468 /* Configuration.swift */,
 				AE8387FA203B1B4600FAC88F /* APIClient.swift */,
+				AE8387EA2037F7D300FAC88F /* APIClientError.swift */,
 				AE8387FC203B20B700FAC88F /* EtherscanClient.swift */,
 				AE8387CE2037435300FAC88F /* JSONRPCClient.swift */,
 			);
@@ -676,7 +676,7 @@
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
-				AE8387EB2037F7D300FAC88F /* GethError.swift in Sources */,
+				AE8387EB2037F7D300FAC88F /* APIClientError.swift in Sources */,
 				AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */,
 				AE295DEB20654D8B00F774A6 /* JSONRPCRequest.swift in Sources */,
 				1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */,

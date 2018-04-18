@@ -1,7 +1,6 @@
 import APIKit
 
-// TODO: Handle jsonrpc error
-public enum GethError: Error {
+public enum APIClientError: Error {
     case connectionError(Error)
     case systemError(Error)
     
