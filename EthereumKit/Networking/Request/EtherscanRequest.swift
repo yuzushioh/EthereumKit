@@ -1,20 +1,18 @@
-import APIKit
-
 public protocol EtherscanRequestType {
     associatedtype Response
-    var method: HTTPMethod { get }
+    var method: Method { get }
     var parameters: Any? { get }
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response
+    func response(from object: Any) throws -> Response
 }
 
 extension EtherscanRequestType where Response: Decodable {
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+    public func response(from object: Any) throws -> Response {
         let data = try JSONSerialization.data(withJSONObject: object, options: [])
         return try JSONDecoder().decode(Response.self, from: data)
     }
 }
 
-public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
+public struct EtherscanRequest<Request: EtherscanRequestType>: RequestType {
     
     public typealias Response = Request.Response
     
@@ -32,12 +30,12 @@ public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
         return endpoint
     }
     
-    public var method: HTTPMethod {
+    public var method: Method {
         return baseRequest.method
     }
     
     public var path: String {
-        return "/api"
+        return "api"
     }
     
     public var parameters: Any? {
@@ -49,7 +47,7 @@ public struct EtherscanRequest<Request: EtherscanRequestType>: APIKit.Request {
         return parameters
     }
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Request.Response {
-        return try baseRequest.response(from: object, urlResponse: urlResponse)
+    public func response(from object: Any) throws -> Request.Response {
+        return try baseRequest.response(from: object)
     }
 }

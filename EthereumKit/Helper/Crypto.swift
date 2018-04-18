@@ -68,7 +68,7 @@ public final class Crypto {
     /// - Throws: EthereumKitError.failedToSign in case private key was invalid
     public static func sign(_ hash: Data, privateKey: Data) throws -> Data {
         let encrypter = EllipticCurveEncrypterSecp256k1()
-        guard var signatureInInternalFormat = encrypter.sign(hash: hash, privateKey: privateKey) else { throw EthereumKitError.failedToSign }
+        guard var signatureInInternalFormat = encrypter.sign(hash: hash, privateKey: privateKey) else { throw EthereumKitError.cryptoError(.failedToSign) }
         return encrypter.export(signature: &signatureInInternalFormat)
     }
 

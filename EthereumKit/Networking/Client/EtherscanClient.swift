@@ -1,6 +1,4 @@
-import Result
-
-public final class EtherscanClient: APIClient {
+public final class EtherscanClient: HTTPClient {
     
     public let configuration: Configuration
     
@@ -8,7 +6,7 @@ public final class EtherscanClient: APIClient {
         self.configuration = configuration
     }
     
-    public func send<Request: EtherscanRequestType>(_ request: Request, handler: @escaping (Result<Request.Response, EthereumKitError>) -> Void) {
-        send(EtherscanRequest(request, endpoint: configuration.etherscanURL, apiKey: configuration.etherscanAPIKey), handler: handler)
+    public func send<Request: EtherscanRequestType>(_ request: Request, handler: @escaping (Result<Request.Response>) -> Void) {
+        send(EtherscanRequest(request, endpoint: configuration.etherscanURL, apiKey: configuration.etherscanAPIKey), completionHandler: handler)
     }
 }

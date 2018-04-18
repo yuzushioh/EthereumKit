@@ -1,6 +1,22 @@
 public enum EthereumKitError: Error {
-    case apiClientError(APIClientError)
-    case failedToSign
-    case rlpFailedToEncode(Any)
-    case keyDerivateionFailed
+    
+    public enum RequestError: Error {
+        case invalidURL
+    }
+    
+    public enum ResponseError: Error {
+        case jsonrpcError(JSONRPCError)
+        case connectionError(Error)
+        case noContentProvided
+    }
+    
+    public enum CryptoError: Error {
+        case failedToSign
+        case rlpFailedToEncode(Any)
+        case keyDerivateionFailed
+    }
+    
+    case requestError(RequestError)
+    case responseError(ResponseError)
+    case cryptoError(CryptoError)
 }

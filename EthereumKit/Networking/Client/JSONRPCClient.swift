@@ -1,6 +1,4 @@
-import Result
-
-public final class JSONRPCClient: APIClient {
+public final class JSONRPCClient: HTTPClient {
     
     private let batchFactory = BatchFactory(version: "2.0")
     
@@ -10,9 +8,9 @@ public final class JSONRPCClient: APIClient {
         self.configuration = configuration
     }
     
-    public func send<RPC: JSONRPCRequest>(_ rpc: RPC, handler: @escaping (Result<RPC.Response, EthereumKitError>) -> Void) {
+    public func send<RPC: JSONRPCRequest>(_ rpc: RPC, handler: @escaping (Result<RPC.Response>) -> Void) {
         let batch = batchFactory.create(rpc)
         let httpRequest = HTTPJSONRPCRequest(batch: batch, endpoint: URL(string: configuration.nodeEndpoint)!)
-        send(httpRequest, handler: handler)
+        send(httpRequest, completionHandler: handler)
     }
 }

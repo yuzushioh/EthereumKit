@@ -61,7 +61,7 @@ public struct HDPrivateKey {
         )
         
         guard let derivedKey = keyDeriver.derived(at: index, hardened: hardens) else {
-            throw EthereumKitError.keyDerivateionFailed
+            throw EthereumKitError.cryptoError(.keyDerivateionFailed)
         }
         
         return HDPrivateKey(

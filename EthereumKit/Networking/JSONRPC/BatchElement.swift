@@ -1,5 +1,3 @@
-import Result
-
 protocol BatchElementType {
     associatedtype Request: JSONRPCRequest
     
@@ -9,7 +7,7 @@ protocol BatchElementType {
     var body: Any { get }
     
     func response(from: Any) throws -> Request.Response
-    func result(from: Any) -> Result<Request.Response, JSONRPCError>
+    func result(from: Any) -> Result<Request.Response>
 }
 
 internal extension BatchElementType {
@@ -23,19 +21,19 @@ internal extension BatchElementType {
         }
     }
     
-    internal func result(from object: Any) -> Result<Request.Response, JSONRPCError> {
+    internal func result(from object: Any) -> Result<Request.Response> {
         guard let dictionary = object as? [String: Any] else {
-            return .failure(.unexpectedTypeObject(object))
+            return .failure(EthereumKitError.responseError(.jsonrpcError(.unexpectedTypeObject(object))))
         }
         
         let receivedVersion = dictionary["jsonrpc"] as? String
         guard version == receivedVersion else {
-            return .failure(.unsupportedVersion(receivedVersion))
+            return .failure(EthereumKitError.responseError(.jsonrpcError(.unsupportedVersion(receivedVersion))))
         }
         
         let receivedId = dictionary["id"] as? Int
         guard id == receivedId else {
-            return .failure(.responseNotFound(requestId: id, object: dictionary))
+            return .failure(EthereumKitError.responseError(.jsonrpcError(.responseNotFound(requestId: id, object: dictionary))))
         }
         
         let resultObject = dictionary["result"]
@@ -43,17 +41,17 @@ internal extension BatchElementType {
         
         switch (resultObject, errorObject) {
         case (nil, let errorObject?):
-            return .failure(JSONRPCError(errorObject: errorObject))
+            return .failure(EthereumKitError.responseError(.jsonrpcError(JSONRPCError(errorObject: errorObject))))
             
         case (let resultObject?, nil):
             do {
                 return .success(try request.response(from: resultObject))
             } catch {
-                return .failure(.resultObjectParseError(error))
+                return .failure(EthereumKitError.responseError(.jsonrpcError(.resultObjectParseError(error))))
             }
             
         default:
-            return .failure(.missingBothResultAndError(dictionary))
+            return .failure(EthereumKitError.responseError(.jsonrpcError(.missingBothResultAndError(dictionary))))
         }
     }
 }
@@ -63,7 +61,7 @@ internal extension BatchElementType where Request.Response == Void {
         return ()
     }
     
-    internal func result(_ object: Any) -> Result<Request.Response, JSONRPCError> {
+    internal func result(_ object: Any) -> Result<Request.Response> {
         return .success(())
     }
 }

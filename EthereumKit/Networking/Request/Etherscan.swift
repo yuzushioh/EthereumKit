@@ -1,5 +1,3 @@
-import APIKit
-
 public final class Etherscan {
     public struct GetTransactions: EtherscanRequestType {
         public typealias Response = Transactions
@@ -20,7 +18,7 @@ public final class Etherscan {
             self.endBlock = endBlock
         }
         
-        public var method: HTTPMethod {
+        public var method: Method {
             return .get
         }
         

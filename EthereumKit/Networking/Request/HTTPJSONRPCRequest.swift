@@ -1,7 +1,4 @@
-import APIKit
-
-public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: APIKit.Request {
-    
+public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: RequestType {
     public typealias Response = Batch.Responses
     
     private let endpoint: URL
@@ -16,7 +13,7 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: APIKit.Request {
         return endpoint
     }
     
-    public var method: HTTPMethod {
+    public var method: Method {
         return .post
     }
     
@@ -28,21 +25,7 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: APIKit.Request {
         return batch.requestObject
     }
     
-    public func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Response {
+    public func response(from object: Any) throws -> Response {
         return try batch.responses(from: object)
-    }
-}
-
-extension HTTPJSONRPCRequest {
-    public func intercept(urlRequest: URLRequest) throws -> URLRequest {
-        #if DEBUG
-            DispatchQueue.global().async {
-                if let data = urlRequest.httpBody, let string = String(data: data, encoding: .utf8) {
-                    print("-->", string)
-                }
-            }
-        #endif
-        
-        return urlRequest
     }
 }

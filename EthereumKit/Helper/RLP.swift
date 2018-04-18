@@ -22,7 +22,7 @@ public struct RLP {
             encoded = nil
         }
         
-        guard let data = encoded else { throw EthereumKitError.rlpFailedToEncode(element) }
+        guard let data = encoded else { throw EthereumKitError.cryptoError(.rlpFailedToEncode(element)) }
         return data
     }
     
