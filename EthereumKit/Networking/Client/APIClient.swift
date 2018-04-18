@@ -18,7 +18,7 @@ public class APIClient {
             case .success(let response):
                 handler(.success(response))
             case .failure(let error):
-                handler(.failure(EthereumKitError(APIClientError(error))))
+                handler(.failure(EthereumKitError.apiClientError(APIClientError(error))))
             }
         }
     }
