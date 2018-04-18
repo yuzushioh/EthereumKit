@@ -7,6 +7,8 @@ public enum EthereumKitError: Error {
     public enum ResponseError: Error {
         case jsonrpcError(JSONRPCError)
         case connectionError(Error)
+        case unexpected(Error)
+        case unacceptableStatusCode(Int)
         case noContentProvided
     }
     

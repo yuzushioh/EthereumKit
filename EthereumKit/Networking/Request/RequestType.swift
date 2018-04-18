@@ -1,26 +1,34 @@
-public enum Method: String {
-    case get, post
-}
-
 public protocol RequestType {
     associatedtype Response
     
     var baseURL: URL { get }
+    
     var method: Method { get }
+    
     var path: String { get }
+    
     var parameters: Any? { get }
-    var headerFields: [String: Any]? { get }
+    
+    var headerFields: [String: String] { get }
     
     func response(from object: Any) throws -> Response
 }
 
 extension RequestType {
-    public var headerFields: [String: Any]? {
-        return nil
+    public var headerFields: [String: String] {
+        return [:]
     }
     
     public var parameters: Any? {
         return nil
+    }
+    
+    public var queryParameters: [String: Any]? {
+        guard let parameters = parameters as? [String: Any], method.prefersQueryParameters else {
+            return nil
+        }
+        
+        return parameters
     }
 }
 

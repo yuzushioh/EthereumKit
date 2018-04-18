@@ -50,6 +50,7 @@
 		AE61467D20874FE700A9E77A /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61467C20874FE700A9E77A /* Cancellable.swift */; };
 		AE61467F2087501000A9E77A /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61467E2087501000A9E77A /* Result.swift */; };
 		AE6146812087502D00A9E77A /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6146802087502D00A9E77A /* RequestType.swift */; };
+		AE61468320879AD500A9E77A /* Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61468220879AD500A9E77A /* Method.swift */; };
 		AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7172A0202CAA0100516D63 /* DataConvertable.swift */; };
 		AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291972018ADAE0047E0F0 /* Network.swift */; };
 		AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291982018ADAE0047E0F0 /* Wallet.swift */; };
@@ -161,6 +162,7 @@
 		AE61467C20874FE700A9E77A /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		AE61467E2087501000A9E77A /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		AE6146802087502D00A9E77A /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		AE61468220879AD500A9E77A /* Method.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Method.swift; sourceTree = "<group>"; };
 		AE7172A0202CAA0100516D63 /* DataConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConvertable.swift; sourceTree = "<group>"; };
 		AE8291972018ADAE0047E0F0 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		AE8291982018ADAE0047E0F0 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
@@ -280,10 +282,11 @@
 		AE8387F8203B167000FAC88F /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				AE6146802087502D00A9E77A /* RequestType.swift */,
+				AE61468220879AD500A9E77A /* Method.swift */,
+				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 				AE8387DD20374C0000FAC88F /* JSONRPC.swift */,
 				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
-				AE6146802087502D00A9E77A /* RequestType.swift */,
-				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -635,6 +638,7 @@
 				AE00573020539565007AA468 /* HDPrivateKey.swift in Sources */,
 				AE354224202D46E400007B80 /* Base58Encode.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
+				AE61468320879AD500A9E77A /* Method.swift in Sources */,
 				AE614679208744E600A9E77A /* HTTPClientType.swift in Sources */,
 				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
 				AE295DED206554E500F774A6 /* BatchElement.swift in Sources */,
