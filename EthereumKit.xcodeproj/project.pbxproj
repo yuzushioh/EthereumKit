@@ -28,6 +28,8 @@
 		AE00573420539993007AA468 /* HDWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00573320539993007AA468 /* HDWallet.swift */; };
 		AE0057362053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */; };
 		AE0057382053A5E4007AA468 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057372053A5E4007AA468 /* WalletTests.swift */; };
+		AE14A60320693CFD003A63FF /* URLSchemeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */; };
+		AE14A60520694412003A63FF /* URLSchemeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A60420694412003A63FF /* URLSchemeAction.swift */; };
 		AE14A60B206F552D003A63FF /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A608206F552D003A63FF /* APIKit.framework */; };
 		AE14A60C206F552D003A63FF /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A609206F552D003A63FF /* Result.framework */; };
 		AE14A60D206F552D003A63FF /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A60A206F552D003A63FF /* CryptoSwift.framework */; };
@@ -147,6 +149,8 @@
 		AE00573320539993007AA468 /* HDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDWallet.swift; sourceTree = "<group>"; };
 		AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyAndPublicKeyTests.swift; sourceTree = "<group>"; };
 		AE0057372053A5E4007AA468 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeHandler.swift; sourceTree = "<group>"; };
+		AE14A60420694412003A63FF /* URLSchemeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSchemeAction.swift; sourceTree = "<group>"; };
 		AE14A608206F552D003A63FF /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		AE14A609206F552D003A63FF /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		AE14A60A206F552D003A63FF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				AE7172A0202CAA0100516D63 /* DataConvertable.swift */,
 				1A371097205050A6003A40BB /* Converter.swift */,
 				AE005729205390E1007AA468 /* EthereumKitError.swift */,
+				AE14A60220693CFD003A63FF /* URLSchemeHandler.swift */,
+				AE14A60420694412003A63FF /* URLSchemeAction.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 				AE1A4B8F20655A5200346BA2 /* IDGenerator.swift in Sources */,
 				AE7172A1202CAA0100516D63 /* DataConvertable.swift in Sources */,
 				AE8387FB203B1B4600FAC88F /* APIClient.swift in Sources */,
+				AE14A60320693CFD003A63FF /* URLSchemeHandler.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,
 				AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */,
 				AE8387EF203AF38C00FAC88F /* Account.swift in Sources */,
@@ -668,6 +675,7 @@
 				AE14A6262070A9AE003A63FF /* Japanese.swift in Sources */,
 				AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */,
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
+				AE14A60520694412003A63FF /* URLSchemeAction.swift in Sources */,
 				AE14A6242070A98D003A63FF /* English.swift in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
