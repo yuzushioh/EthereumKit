@@ -63,7 +63,7 @@ class ViewController: UIViewController {
                 let rawTransaction = RawTransaction.create(ether: "0.0001", address: address, nonce: nonce)
                 let tx: String
                 do {
-                    tx = try wallet.signTransaction(rawTransaction)
+                    tx = try wallet.sign(rawTransaction: rawTransaction)
                 } catch let error {
                     fatalError("Error: \(error.localizedDescription)")
                 }
