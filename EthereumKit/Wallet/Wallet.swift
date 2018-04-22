@@ -33,10 +33,6 @@ public final class Wallet {
         return privateKey.raw.toHexString()
     }
     
-    public func sign(message: String) throws -> String {
-        return try privateKey.sign(message: message).toHexString().appending0xPrefix
-    }
-    
     public func sign(rawTransaction: RawTransaction) throws -> String {
         let signTransaction = SignTransaction(
             rawTransaction: rawTransaction,
@@ -45,6 +41,41 @@ public final class Wallet {
         )
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
-        return rawData.toHexString().appending0xPrefix
+        return rawData.toHexString().addHexPrefix()
+    }
+    
+    /// Sign calculates an Ethereum ECDSA signature for: keccack256("\x19Ethereum Signed Message:\n" + len(message) + message))
+    /// See also: https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_sign
+    ///
+    /// - Parameter hex: message in hex format to sign
+    /// - Returns: signiture in hex format
+    /// - Throws: EthereumKitError.failedToEncode when failed to encode
+    public func sign(hex: String) throws -> String {
+        let prefix = "\u{19}Ethereum Signed Message:\n"
+        
+        let messageData = Data(hex: hex.stripHexPrefix())
+        
+        guard let prefixData = (prefix + String(messageData.count)).data(using: .ascii) else {
+            throw EthereumKitError.failedToEncode(prefix + String(messageData.count))
+        }
+        
+        let hash = Crypto.hashSHA3_256(prefixData + messageData)
+        var signiture = try privateKey.sign(hash: hash)
+        
+        // Note, the produced signature conforms to the secp256k1 curve R, S and V values,
+        // where the V value will be 27 or 28 for legacy reasons.
+        signiture[64] += 27
+        
+        return signiture.toHexString().addHexPrefix()
+    }
+    
+    /// Sign calculates an Ethereum ECDSA signature for: keccack256("\x19Ethereum Signed Message:\n" + len(message) + message))
+    /// See also: https://github.com/ethereum/go-ethereum/wiki/Management-APIs#personal_sign
+    ///
+    /// - Parameter hex: message to sign
+    /// - Returns: signiture in hex format
+    /// - Throws: EthereumKitError.failedToEncode when failed to encode
+    public func sign(message: String) throws -> String {
+        return try sign(hex: message.toHexString())
     }
 }
