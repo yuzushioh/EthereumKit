@@ -17,3 +17,9 @@ extension DataConvertable {
 
 extension UInt8: DataConvertable {}
 extension UInt32: DataConvertable {}
+
+extension String {
+    func toData() -> Data {
+        return decomposedStringWithCompatibilityMapping.data(using: .utf8)!
+    }
+}
