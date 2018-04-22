@@ -7,7 +7,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Wei {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return wei
@@ -29,7 +29,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Balance {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
@@ -54,7 +54,7 @@ public final class JSONRPC {
             guard let response = resultObject as? String else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
-            return Int(response.hex, radix: 16) ?? 0
+            return Int(response.stripHexPrefix(), radix: 16) ?? 0
         }
     }
     
@@ -173,7 +173,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Wei {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.hex.lowercased()) else {
+            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return wei
@@ -188,7 +188,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Int {
-            guard let response = resultObject as? String, let blockNumber = Int(response.hex, radix: 16) else {
+            guard let response = resultObject as? String, let blockNumber = Int(response.stripHexPrefix(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return blockNumber

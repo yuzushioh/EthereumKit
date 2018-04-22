@@ -8,7 +8,7 @@ public struct Address {
     }
     
     public init(string: String) {
-        self.data = Data(hex: string.hex)
+        self.data = Data(hex: string.stripHexPrefix())
         self.string = string
     }
 }

@@ -14,7 +14,7 @@ public enum EthereumKitError: Error {
     
     public enum CryptoError: Error {
         case failedToSign
-        case rlpFailedToEncode(Any)
+        case failedToEncode(Any)
         case keyDerivateionFailed
     }
     
