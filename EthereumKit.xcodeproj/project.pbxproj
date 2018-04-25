@@ -924,7 +924,7 @@
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
 				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
+				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -962,7 +962,7 @@
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
 				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
+				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
