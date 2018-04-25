@@ -17,7 +17,7 @@ public final class JSONRPC {
     public struct GetBalance: JSONRPCRequest {
         public typealias Response = Balance
         
-        public let address: Address
+        public let address: String
         public let blockParameter: BlockParameter
         
         public var method: String {
@@ -25,7 +25,7 @@ public final class JSONRPC {
         }
         
         public var parameters: Any? {
-            return [address.string, blockParameter.rawValue]
+            return [address, blockParameter.rawValue]
         }
         
         public func response(from resultObject: Any) throws -> Balance {
@@ -39,7 +39,7 @@ public final class JSONRPC {
     public struct GetTransactionCount: JSONRPCRequest {
         public typealias Response = Int
         
-        public let address: Address
+        public let address: String
         public let blockParameter: BlockParameter
         
         public var method: String {
@@ -47,7 +47,7 @@ public final class JSONRPC {
         }
         
         public var parameters: Any? {
-            return [address.string, blockParameter.rawValue]
+            return [address, blockParameter.rawValue]
         }
         
         public func response(from resultObject: Any) throws -> Response {
@@ -82,8 +82,8 @@ public final class JSONRPC {
     public struct Call: JSONRPCRequest {
         public typealias Response = String
         
-        public let from: Address?
-        public let to: Address
+        public let from: String?
+        public let to: String
         public let gas: Int?
         public let gasPrice: Int?
         public let value: Int?
@@ -97,11 +97,11 @@ public final class JSONRPC {
         public var parameters: Any? {
             var txParams: [String: Any] = [:]
             
-            if let fromAddress = from?.string {
+            if let fromAddress = from {
                 txParams["from"] = fromAddress
             }
             
-            txParams["to"] = to.string
+            txParams["to"] = to
             
             if let gas = gas {
                 txParams["gas"] = gas
@@ -133,8 +133,8 @@ public final class JSONRPC {
     public struct GetEstimatGas: JSONRPCRequest {
         public typealias Response = Wei
         
-        public let from: Address?
-        public let to: Address
+        public let from: String?
+        public let to: String
         public let gas: Int?
         public let gasPrice: Int?
         public let value: Int?
@@ -147,11 +147,11 @@ public final class JSONRPC {
         public var parameters: Any? {
             var txParams: [String: Any] = [:]
             
-            if let fromAddress = from?.string {
+            if let fromAddress = from {
                 txParams["from"] = fromAddress
             }
             
-            txParams["to"] = to.string
+            txParams["to"] = to
             
             if let gas = gas {
                 txParams["gas"] = gas
