@@ -2,6 +2,7 @@ public enum EthereumKitError: Error {
     
     public enum RequestError: Error {
         case invalidURL
+        case invalidParameters(Any)
     }
     
     public enum ResponseError: Error {

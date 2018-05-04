@@ -68,6 +68,8 @@
 		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
+		AEA346CB209CD59C00E53536 /* URLEncodedSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA346CA209CD59C00E53536 /* URLEncodedSerialization.swift */; };
+		AEA346CD209CD76F00E53536 /* JSONBodySerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA346CC209CD76F00E53536 /* JSONBodySerialization.swift */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEBA90F31FFA2C6A003EA2BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA90F21FFA2C6A003EA2BA /* AppDelegate.swift */; };
 		AEBA90F51FFA2C6A003EA2BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA90F41FFA2C6A003EA2BA /* ViewController.swift */; };
@@ -180,6 +182,8 @@
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EthereumKitTests.swift; sourceTree = "<group>"; };
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEA346CA209CD59C00E53536 /* URLEncodedSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncodedSerialization.swift; sourceTree = "<group>"; };
+		AEA346CC209CD76F00E53536 /* JSONBodySerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONBodySerialization.swift; sourceTree = "<group>"; };
 		AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EthereumKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthereumKit.h; sourceTree = "<group>"; };
 		AEBA90D91FFA21ED003EA2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -281,8 +285,6 @@
 		AE8387F8203B167000FAC88F /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				AE6146802087502D00A9E77A /* RequestType.swift */,
-				AE61468220879AD500A9E77A /* Method.swift */,
 				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 				AE8387DD20374C0000FAC88F /* JSONRPC.swift */,
 				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
@@ -297,6 +299,9 @@
 				AE61467A20874FBE00A9E77A /* HTTPClient.swift */,
 				AE614678208744E600A9E77A /* HTTPClientType.swift */,
 				AE61467C20874FE700A9E77A /* Cancellable.swift */,
+				AE6146802087502D00A9E77A /* RequestType.swift */,
+				AE61468220879AD500A9E77A /* Method.swift */,
+				AEA346CE209CDA2200E53536 /* Serialization */,
 			);
 			path = HTTPClient;
 			sourceTree = "<group>";
@@ -369,6 +374,15 @@
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
 			path = EthereumKitTests;
+			sourceTree = "<group>";
+		};
+		AEA346CE209CDA2200E53536 /* Serialization */ = {
+			isa = PBXGroup;
+			children = (
+				AEA346CA209CD59C00E53536 /* URLEncodedSerialization.swift */,
+				AEA346CC209CD76F00E53536 /* JSONBodySerialization.swift */,
+			);
+			path = Serialization;
 			sourceTree = "<group>";
 		};
 		AEBA90CB1FFA21ED003EA2BA = {
@@ -653,6 +667,7 @@
 				AE295DEF2065551C00F774A6 /* BatchFactory.swift in Sources */,
 				0A0A89FC206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
+				AEA346CB209CD59C00E53536 /* URLEncodedSerialization.swift in Sources */,
 				AE8387E62037F55E00FAC88F /* Balance.swift in Sources */,
 				AE00572E205391E2007AA468 /* Configuration.swift in Sources */,
 				AE1A4B8A206558B300346BA2 /* JSONRPCError.swift in Sources */,
@@ -670,6 +685,7 @@
 				1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */,
 				AE8387DC20374A5600FAC88F /* Geth.swift in Sources */,
 				1A37109420502C76003A40BB /* Gas.swift in Sources */,
+				AEA346CD209CD76F00E53536 /* JSONBodySerialization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
