@@ -64,7 +64,6 @@
 		AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DD20374C0000FAC88F /* JSONRPC.swift */; };
 		AE8387E62037F55E00FAC88F /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387E52037F55E00FAC88F /* Balance.swift */; };
 		AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EC2038041B00FAC88F /* BlockParameter.swift */; };
-		AE8387EF203AF38C00FAC88F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387EE203AF38C00FAC88F /* Account.swift */; };
 		AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387F6203B131A00FAC88F /* Etherscan.swift */; };
 		AE838801203B236300FAC88F /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE838800203B236300FAC88F /* Transaction.swift */; };
 		AE90A0781FFA698D005ED7AF /* EthereumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE90A0771FFA698D005ED7AF /* EthereumKitTests.swift */; };
@@ -176,7 +175,6 @@
 		AE8387DD20374C0000FAC88F /* JSONRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		AE8387E52037F55E00FAC88F /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		AE8387EC2038041B00FAC88F /* BlockParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameter.swift; sourceTree = "<group>"; };
-		AE8387EE203AF38C00FAC88F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		AE8387F6203B131A00FAC88F /* Etherscan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Etherscan.swift; sourceTree = "<group>"; };
 		AE838800203B236300FAC88F /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		AE90A0751FFA698D005ED7AF /* EthereumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EthereumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,7 +270,6 @@
 		AE8387E72037F5FF00FAC88F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE8387EE203AF38C00FAC88F /* Account.swift */,
 				AE0057192048F946007AA468 /* Address.swift */,
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
@@ -636,7 +633,6 @@
 				AE61467F2087501000A9E77A /* Result.swift in Sources */,
 				AE35422F20300E4900007B80 /* EIP55.swift in Sources */,
 				AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */,
-				AE8387EF203AF38C00FAC88F /* Account.swift in Sources */,
 				D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */,
 				AE295DE720615AC500F774A6 /* SMP.swift in Sources */,
 				AE00573020539565007AA468 /* HDPrivateKey.swift in Sources */,
@@ -916,7 +912,7 @@
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
 				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
+				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -954,7 +950,7 @@
 					"$(SRCROOT)/Libraries/openssl/lib",
 				);
 				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
-				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.WalletKit;
+				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;

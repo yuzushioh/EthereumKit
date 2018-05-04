@@ -17,12 +17,12 @@ public final class Etherscan {
         }
         
         public let configuration: Configuration
-        public let address: Address
+        public let address: String
         public let sort: Sort
         public let startBlock: Int64
         public let endBlock: Int64
         
-        public init(configuration: Configuration, address: Address, sort: Sort = .asc, startBlock: Int64 = 0, endBlock: Int64 = 99999999) {
+        public init(configuration: Configuration, address: String, sort: Sort = .asc, startBlock: Int64 = 0, endBlock: Int64 = 99999999) {
             self.configuration = configuration
             self.address = address
             self.sort = sort
@@ -46,7 +46,7 @@ public final class Etherscan {
             return [
                 "module": "account",
                 "action": "txlist",
-                "address": address.string,
+                "address": address,
                 "startblock": NSNumber(value: startBlock),
                 "endblock": NSNumber(value: endBlock),
                 "sort": sort.rawValue,

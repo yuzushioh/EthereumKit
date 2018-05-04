@@ -11,7 +11,9 @@ public struct RawTransaction {
     public static func create(ether: String, address: String, nonce: Int, data: Data = Data()) -> RawTransaction {
         return RawTransaction(ether: ether, address: address, nonce: nonce, data: data)
     }
-    
+}
+
+extension RawTransaction {
     internal init(wei: String, address: String, nonce: Int, data: Data) {
         self.value = Wei(wei)!
         self.to = Address(string: address)
@@ -24,6 +26,31 @@ public struct RawTransaction {
     }
 }
 
+extension RawTransaction: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case value
+        case to
+        case nonce
+        case data
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        value = try container.decode(Wei.self, forKey: .value)
+        to = try container.decode(Address.self, forKey: .to)
+        nonce = try container.decode(Int.self, forKey: .nonce)
+        data = try container.decode(Data.self, forKey: .data)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(value, forKey: .value)
+        try container.encode(to, forKey: .to)
+        try container.encode(nonce, forKey: .nonce)
+        try container.encode(data, forKey: .data)
+    }
+}
+
 public struct SignTransaction {
     public let value: Wei
     public let to: Address
@@ -31,7 +58,9 @@ public struct SignTransaction {
     public let gasPrice: Int
     public let gasLimit: Int
     public let data: Data
-    
+}
+
+extension SignTransaction {
     public init(rawTransaction: RawTransaction, gasPrice: Int, gasLimit: Int) {
         self.value = rawTransaction.value
         self.to = rawTransaction.to
@@ -42,11 +71,42 @@ public struct SignTransaction {
     }
 }
 
+extension SignTransaction: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case value
+        case to
+        case nonce
+        case gasPrice
+        case gasLimit
+        case data
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        value = try container.decode(Wei.self, forKey: .value)
+        to = try container.decode(Address.self, forKey: .to)
+        nonce = try container.decode(Int.self, forKey: .nonce)
+        gasPrice = try container.decode(Int.self, forKey: .gasPrice)
+        gasLimit = try container.decode(Int.self, forKey: .gasLimit)
+        data = try container.decode(Data.self, forKey: .data)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(value, forKey: .value)
+        try container.encode(to, forKey: .to)
+        try container.encode(nonce, forKey: .nonce)
+        try container.encode(gasPrice, forKey: .gasPrice)
+        try container.encode(gasLimit, forKey: .gasLimit)
+        try container.encode(data, forKey: .data)
+    }
+}
+
 public struct SentTransaction {
     public let id: String
 }
 
-public struct Transaction: Decodable {
+public struct Transaction {
     public let blockHash: String
     public let blockNumber: String
     public let hash: String
@@ -63,7 +123,7 @@ public struct Transaction: Decodable {
     public let cumulativeGasUsed: String
     public let isError: String
     public let transactionIndex: String
-    public let txreceipt_status: String
+    public let txReceiptStatus: String
     public let value: String
     
     public var balance: Balance {
@@ -71,21 +131,89 @@ public struct Transaction: Decodable {
     }
 }
 
-public struct Transactions: Decodable {
-    public let elements: [Transaction]
+extension Transaction: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case blockHash
+        case blockNumber
+        case hash
+        case input
+        case confirmations
+        case nonce
+        case timeStamp
+        case contractAddress
+        case from
+        case to
+        case gas
+        case gasPrice
+        case gasUsed
+        case cumulativeGasUsed
+        case isError
+        case transactionIndex
+        case txReceiptStatus = "txreceipt_status"
+        case value
+    }
     
-    enum CodingKeys: String, CodingKey {
-        case elements = "result"
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        blockHash = try container.decode(String.self, forKey: .blockHash)
+        blockNumber = try container.decode(String.self, forKey: .blockNumber)
+        hash = try container.decode(String.self, forKey: .hash)
+        input = try container.decode(String.self, forKey: .input)
+        confirmations = try container.decode(String.self, forKey: .confirmations)
+        nonce = try container.decode(String.self, forKey: .nonce)
+        timeStamp = try container.decode(String.self, forKey: .timeStamp)
+        contractAddress = try container.decode(String.self, forKey: .contractAddress)
+        from = try container.decode(String.self, forKey: .from)
+        to = try container.decode(String.self, forKey: .to)
+        gas = try container.decode(String.self, forKey: .gas)
+        gasPrice = try container.decode(String.self, forKey: .gasPrice)
+        gasUsed = try container.decode(String.self, forKey: .gasUsed)
+        cumulativeGasUsed = try container.decode(String.self, forKey: .cumulativeGasUsed)
+        isError = try container.decode(String.self, forKey: .isError)
+        transactionIndex = try container.decode(String.self, forKey: .transactionIndex)
+        txReceiptStatus = try container.decode(String.self, forKey: .txReceiptStatus)
+        value = try container.decode(String.self, forKey: .value)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(blockHash, forKey: .blockHash)
+        try container.encode(blockNumber, forKey: .blockNumber)
+        try container.encode(hash, forKey: .hash)
+        try container.encode(input, forKey: .input)
+        try container.encode(confirmations, forKey: .confirmations)
+        try container.encode(nonce, forKey: .nonce)
+        try container.encode(timeStamp, forKey: .timeStamp)
+        try container.encode(contractAddress, forKey: .contractAddress)
+        try container.encode(from, forKey: .from)
+        try container.encode(to, forKey: .to)
+        try container.encode(gas, forKey: .gas)
+        try container.encode(gasPrice, forKey: .gasPrice)
+        try container.encode(gasUsed, forKey: .gasUsed)
+        try container.encode(cumulativeGasUsed, forKey: .cumulativeGasUsed)
+        try container.encode(isError, forKey: .isError)
+        try container.encode(transactionIndex, forKey: .transactionIndex)
+        try container.encode(txReceiptStatus, forKey: .txReceiptStatus)
+        try container.encode(value, forKey: .value)
     }
 }
 
-extension SignTransaction {
-    internal init(value: Wei, to: Address, nonce: Int, gasPrice: Int, gasLimit: Int, data: Data) {
-        self.value = value
-        self.to = to
-        self.nonce = nonce
-        self.gasPrice = gasPrice
-        self.gasLimit = gasLimit
-        self.data = data
+public struct Transactions {
+    public let elements: [Transaction]
+}
+
+extension Transactions: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case elements = "result"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        elements = try container.decode([Transaction].self, forKey: .elements)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(elements, forKey: .elements)
     }
 }
