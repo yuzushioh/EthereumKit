@@ -62,7 +62,7 @@ public final class Geth {
     public func getTransactions(address: String, completionHandler: @escaping (Result<Transactions>) -> Void) {
         let request = Etherscan.GetTransactions(
             configuration: .init(baseURL: configuration.etherscanURL, apiKey: configuration.etherscanAPIKey),
-            address: Address(string: address)
+            address: address
         )
         httpClient.send(request, completionHandler: completionHandler)
     }
