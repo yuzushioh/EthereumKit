@@ -1,14 +1,26 @@
+/// Defines the interface for the request
 public protocol RequestType {
+    
+    /// Response of the request
     associatedtype Response
     
+    /// base url of the request
     var baseURL: URL { get }
     
+    /// method to use
     var method: Method { get }
     
+    /// path to the endpoint
     var path: String { get }
     
+    /// parameters to send with
     var parameters: Any? { get }
     
+    /// response(from object:) method decodes returned object to Response
+    ///
+    /// - Parameter object: JSON object returned from url request
+    /// - Returns: Response object
+    /// - Throws: throws decode error if necessary
     func response(from object: Any) throws -> Response
 }
 
@@ -35,6 +47,10 @@ extension RequestType {
 }
 
 extension RequestType {
+    
+    /// build method builds url request
+    ///
+    /// - Returns: built url request
     public func build() -> Result<URLRequest> {
         let url = path.isEmpty ? baseURL : baseURL.appendingPathComponent(path)
         
@@ -68,6 +84,13 @@ extension RequestType {
         return .success(urlRequest)
     }
     
+    /// buildResponse method builds response from passed parameters, returns failure for errors
+    ///
+    /// - Parameters:
+    ///   - data: returned data from http response
+    ///   - response: returned response from http response
+    ///   - error: returned error from http response
+    /// - Returns: decoded response
     public func buildResponse(from data: Data?, response: URLResponse?, error: Error?) -> Result<Response> {
         if let error = error {
             return .failure(EthereumKitError.responseError(.connectionError(error)))
@@ -91,6 +114,11 @@ extension RequestType {
         return .success(response)
     }
     
+    /// parse parses data to JSON object
+    ///
+    /// - Parameter data: data returned from http response
+    /// - Returns: JSON object serialized from data
+    /// - Throws: serialization error
     private func parse(from data: Data) throws -> Any {
         guard data.count > 0 else {
             return [:]
