@@ -1,5 +1,6 @@
 /// `JSONBodyParameters` serializes JSON object for HTTP body and states its content type is JSON.
 public struct JSONBodySerialization {
+    
     /// The JSON object to be serialized.
     public let object: Any
     
@@ -20,6 +21,7 @@ public struct JSONBodySerialization {
     /// Builds `RequestBodyEntity.data` that represents `JSONObject`.
     /// - Throws: `NSError` if `JSONSerialization` fails to serialize `JSONObject`.
     public func build() -> Result<Data> {
+        
         // If isValidJSONObject(_:) is false, dataWithJSONObject(_:options:) throws NSException.
         guard JSONSerialization.isValidJSONObject(object) else {
             return .failure(EthereumKitError.requestError(.invalidParameters(object)))

@@ -9,20 +9,10 @@ public protocol RequestType {
     
     var parameters: Any? { get }
     
-    var headerFields: [String: String] { get }
-    
-    func build() -> Result<URLRequest>
-    
-    func buildResponse(from data: Data?, response: URLResponse?, error: Error?) -> Result<Response>
-    
     func response(from object: Any) throws -> Response
 }
 
 extension RequestType {
-    public var headerFields: [String: String] {
-        return [:]
-    }
-    
     public var parameters: Any? {
         return nil
     }
@@ -47,13 +37,14 @@ extension RequestType {
 extension RequestType {
     public func build() -> Result<URLRequest> {
         let url = path.isEmpty ? baseURL : baseURL.appendingPathComponent(path)
+        
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             return .failure(EthereumKitError.requestError(.invalidURL))
         }
         
         var urlRequest = URLRequest(url: url)
         
-        if let queryParameters = queryParameters {
+        if let queryParameters = queryParameters, !queryParameters.isEmpty {
             components.percentEncodedQuery = URLEncodedSerialization.string(from: queryParameters)
         }
         
@@ -69,13 +60,10 @@ extension RequestType {
             }
         }
         
+        urlRequest.url = components.url
         urlRequest.cachePolicy = .useProtocolCachePolicy
-        urlRequest.timeoutInterval = 6.0
+        urlRequest.timeoutInterval = 10.0
         urlRequest.httpMethod = method.rawValue.uppercased()
-        
-        headerFields.forEach {
-            urlRequest.setValue($0.value, forHTTPHeaderField: $0.key)
-        }
         
         return .success(urlRequest)
     }

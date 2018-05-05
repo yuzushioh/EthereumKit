@@ -256,6 +256,7 @@
 				AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */,
 				AE1A4B89206558B300346BA2 /* JSONRPCError.swift */,
 				AE1A4B8E20655A5200346BA2 /* IDGenerator.swift */,
+				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 			);
 			path = JSONRPC;
 			sourceTree = "<group>";
@@ -267,6 +268,7 @@
 				AE8387F9203B179700FAC88F /* HTTPClient */,
 				AE1A4B8B2065592700346BA2 /* JSONRPC */,
 				AE8387F8203B167000FAC88F /* Request */,
+				AEA346CE209CDA2200E53536 /* Serialization */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -285,7 +287,6 @@
 		AE8387F8203B167000FAC88F /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */,
 				AE8387DD20374C0000FAC88F /* JSONRPC.swift */,
 				AE8387F6203B131A00FAC88F /* Etherscan.swift */,
 			);
@@ -298,10 +299,9 @@
 				AE00572D205391E2007AA468 /* Configuration.swift */,
 				AE61467A20874FBE00A9E77A /* HTTPClient.swift */,
 				AE614678208744E600A9E77A /* HTTPClientType.swift */,
-				AE61467C20874FE700A9E77A /* Cancellable.swift */,
 				AE6146802087502D00A9E77A /* RequestType.swift */,
 				AE61468220879AD500A9E77A /* Method.swift */,
-				AEA346CE209CDA2200E53536 /* Serialization */,
+				AE61467C20874FE700A9E77A /* Cancellable.swift */,
 			);
 			path = HTTPClient;
 			sourceTree = "<group>";
