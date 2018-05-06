@@ -56,7 +56,7 @@ public final class Wallet {
         let messageData = Data(hex: hex.stripHexPrefix())
         
         guard let prefixData = (prefix + String(messageData.count)).data(using: .ascii) else {
-            throw EthereumKitError.failedToEncode(prefix + String(messageData.count))
+            throw EthereumKitError.cryptoError(.failedToEncode(prefix + String(messageData.count)))
         }
         
         let hash = Crypto.hashSHA3_256(prefixData + messageData)

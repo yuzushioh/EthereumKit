@@ -1,48 +1,123 @@
-import Result
-
+/// Geth is responsible for interacting with Ethereum blockchain
 public final class Geth {
     
-    private let etherClient: JSONRPCClient
-    private let etherscanClient: EtherscanClient
+    private let configuration: Configuration
+    private let httpClient: HTTPClient
     
+    /// init initialize Geth instance
+    ///
+    /// - Parameter configuration: configuration to use in http client
     public init(configuration: Configuration) {
-        etherClient = JSONRPCClient(configuration: configuration)
-        etherscanClient = EtherscanClient(configuration: configuration)
+        self.configuration = configuration
+        self.httpClient = HTTPClient(configuration: configuration)
     }
     
     // MARK: - JSONRPC APIs
     
-    public func getGasPrice(handler: @escaping (Result<Wei, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.GetGasPrice(), handler: handler)
+    /// getGasPrice returns currenct gas price
+    ///
+    /// - Parameters:
+    ///   - completionHandler:
+    public func getGasPrice(completionHandler: @escaping (Result<Wei>) -> Void) {
+        httpClient.send(JSONRPC.GetGasPrice(), completionHandler: completionHandler)
     }
     
-    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Balance, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.GetBalance(address: address, blockParameter: blockParameter), handler: handler)
+    /// getBalance returns currenct balance of specified address.
+    ///
+    /// - Parameters:
+    ///   - address: address you want to get the balance of
+    ///   - blockParameter: 
+    ///   - completionHandler:
+    public func getBalance(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Balance>) -> Void) {
+        httpClient.send(JSONRPC.GetBalance(address: address, blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
-    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, handler: @escaping (Result<Int, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.GetTransactionCount(address: address, blockParameter: blockParameter), handler: handler)
+    /// getTransactionCount returns the current nonce of specified address
+    ///
+    /// - Parameters:
+    ///   - address: address to check
+    ///   - blockParameter:
+    ///   - completionHandler:
+    public func getTransactionCount(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Int>) -> Void) {
+        httpClient.send(JSONRPC.GetTransactionCount(address: address, blockParameter: blockParameter), completionHandler: completionHandler)
     }
     
-    public func sendRawTransaction(rawTransaction: String, handler: @escaping (Result<SentTransaction, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), handler: handler)
+    /// sendRawTransaction sends the raw transaction string
+    ///
+    /// - Parameters:
+    ///   - rawTransaction: raw transaction encoded in rlp hex format
+    ///   - completionHandler:
+    public func sendRawTransaction(rawTransaction: String, completionHandler: @escaping (Result<SentTransaction>) -> Void) {
+        httpClient.send(JSONRPC.SendRawTransaction(rawTransaction: rawTransaction), completionHandler: completionHandler)
     }
     
-    public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, handler: @escaping (Result<String, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.Call(from: from, to: to, gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data, blockParameter: blockParameter), handler: handler)
+    /// getBlockNumber returns the latest block number
+    ///
+    /// - Parameter completionHandler:
+    public func getBlockNumber(completionHandler: @escaping (Result<Int>) -> Void) {
+        httpClient.send(JSONRPC.GetBlockNumber(), completionHandler: completionHandler)
     }
     
-    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, handler: @escaping (Result<Wei, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.GetEstimatGas(from: from, to: to, gas: gasLimit.map { $0.value }, gasPrice: gasPrice.map { $0.value }, value: value, data: data), handler: handler)
+    /// call sends transaction to a contract method
+    ///
+    /// - Parameters:
+    ///   - from: which address to send from
+    ///   - to: which address to send to
+    ///   - gasLimit: gas limit
+    ///   - gasPrice: gas price
+    ///   - value: value in wei
+    ///   - data: data to include in tx
+    ///   - blockParameter:
+    ///   - completionHandler:
+    public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<String>) -> Void) {
+        let request = JSONRPC.Call(
+            from: from,
+            to: to,
+            gas: gasLimit.map { $0.value },
+            gasPrice: gasPrice.map { $0.value },
+            value: value,
+            data: data,
+            blockParameter: blockParameter
+        )
+        
+        httpClient.send(request, completionHandler: completionHandler)
     }
     
-    public func getBlockNumber(handler: @escaping (Result<Int, EthereumKitError>) -> Void) {
-        etherClient.send(JSONRPC.GetBlockNumber(), handler: handler)
+    /// getEstimateGas returns estimated gas for the tx
+    ///
+    /// - Parameters:
+    ///   - from: which address to send from
+    ///   - to: which address to send to
+    ///   - gasLimit: gas limit
+    ///   - gasPrice: gas price
+    ///   - value: value in wei
+    ///   - data: data to include in tx
+    ///   - completionHandler:
+    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, completionHandler: @escaping (Result<Wei>) -> Void) {
+        let request = JSONRPC.GetEstimatGas(
+            from: from,
+            to: to,
+            gas: gasLimit.map { $0.value },
+            gasPrice: gasPrice.map { $0.value },
+            value: value,
+            data: data
+        )
+        
+        httpClient.send(request, completionHandler: completionHandler)
     }
     
     // MARK: - Etherscan APIs
     
-    public func getTransactions(address: String, sort: Etherscan.GetTransactions.Sort = .des, startBlock: Int64 = 0, endBlock: Int64 = 99999999, handler: @escaping (Result<Transactions, EthereumKitError>) -> Void) {
-        etherscanClient.send(Etherscan.GetTransactions(address: address, sort: sort, startBlock: startBlock, endBlock: endBlock), handler: handler)
+    /// getTransactions returns the list of transaction for the specified address.
+    ///
+    /// - Parameters:
+    ///   - address: address to get transactions from
+    ///   - completionHandler:
+    public func getTransactions(address: String, completionHandler: @escaping (Result<Transactions>) -> Void) {
+        let request = Etherscan.GetTransactions(
+            configuration: .init(baseURL: configuration.etherscanURL, apiKey: configuration.etherscanAPIKey),
+            address: address
+        )
+        httpClient.send(request, completionHandler: completionHandler)
     }
 }
