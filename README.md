@@ -50,10 +50,10 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 - Insert `github "yuzushioh/EthereumKit"` to your Cartfile.
 - Run `carthage update --platform ios`.
 
-## Made possible by
-- [BitcoinKit](https://github.com/kishikawakatsumi/BitcoinKit)
-- [BitcoinCore](https://github.com/oleganza/CoreBitcoin)
-- [openssl](https://github.com/openssl/openssl)
+## Author
+
+Ryo Fukuda, [@yuzushioh](https://twitter.com/yuzushioh), yuzushioh@gmail.com
+
 
 ## License
 EthereumKit is released under the [Apache License 2.0](LICENSE.md).
