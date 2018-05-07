@@ -47,4 +47,9 @@ public struct EIP155Signer {
             v: BInt(signiture[64]) + BInt(35) + BInt(chainID) + BInt(chainID)
         )
     }
+
+    public func calculateSignature(r: BInt, s: BInt, v: BInt) -> Data {
+        let sigHexStr = r.asString(withBase: 16) + s.asString(withBase: 16) + (v - BInt(35) - BInt(chainID) - BInt(chainID)).asString(withBase: 16)
+        return Data(hex: sigHexStr)
+    }
 }
