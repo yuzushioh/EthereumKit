@@ -29,6 +29,7 @@ extension CryptoTests {
             let signature = try Crypto.sign(hash, privateKey: privateKey)
             let otherSignature = try Crypto.sign(hash, privateKey: otherKey)
 
+            XCTAssertEqual(publicKey, Crypto.publicKey(signature: signature, of: hash, compressed: compressed), line: line)
             XCTAssertTrue(Crypto.isValid(signature: signature, of: hash, publicKey: publicKey, compressed: compressed), line: line)
             XCTAssertFalse(Crypto.isValid(signature: signature, of: hash, publicKey: otherPublicKey, compressed: compressed), line: line)
             XCTAssertFalse(Crypto.isValid(signature: otherSignature, of: hash, publicKey: publicKey, compressed: compressed), line: line)

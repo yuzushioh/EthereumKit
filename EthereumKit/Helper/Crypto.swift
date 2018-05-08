@@ -82,10 +82,22 @@ public final class Crypto {
     ///   - compressed: whether public key is compressed
     /// - Returns: True, if signature is valid for the hash and public key, false otherwise.
     public static func isValid(signature: Data, of hash: Data, publicKey: Data, compressed: Bool) -> Bool {
-        let encrypter = EllipticCurveEncrypterSecp256k1()
-        var signatureInInternalFormat = encrypter.import(signature: signature)
-        guard var publicKeyInInternalFormat = encrypter.publicKey(signature: &signatureInInternalFormat, hash: hash) else { return false }
-        let recoveredPublicKey = encrypter.export(publicKey: &publicKeyInInternalFormat, compressed: compressed)
+        guard let recoveredPublicKey = self.publicKey(signature: signature, of: hash, compressed: compressed) else { return false }
         return recoveredPublicKey == publicKey
     }
+
+    /// Calculates public key by a signature of a hash.
+    ///
+    /// - Parameters:
+    ///   - signature: hash's signature (65-byte)
+    ///   - hash: 32-byte (256-bit) hash of a message
+    ///   - compressed: whether public key is compressed
+    /// - Returns: 65-byte key if not compressed, otherwise 33-byte public key.
+    public static func publicKey(signature: Data, of hash: Data, compressed: Bool) -> Data? {
+        let encrypter = EllipticCurveEncrypterSecp256k1()
+        var signatureInInternalFormat = encrypter.import(signature: signature)
+        guard var publicKeyInInternalFormat = encrypter.publicKey(signature: &signatureInInternalFormat, hash: hash) else { return nil }
+        return encrypter.export(publicKey: &publicKeyInInternalFormat, compressed: compressed)
+    }
+
 }
