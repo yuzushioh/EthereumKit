@@ -84,7 +84,7 @@ public final class JSONRPC {
         
         public let from: String?
         public let to: String
-        public let gas: Int?
+        public let gasLimit: Int?
         public let gasPrice: Int?
         public let value: Int?
         public let data: String?
@@ -103,7 +103,7 @@ public final class JSONRPC {
             
             txParams["to"] = to
             
-            if let gas = gas {
+            if let gas = gasLimit {
                 txParams["gas"] = gas
             }
             
@@ -135,7 +135,7 @@ public final class JSONRPC {
         
         public let from: String?
         public let to: String
-        public let gas: Int?
+        public let gasLimit: Int?
         public let gasPrice: Int?
         public let value: Int?
         public let data: String?
@@ -153,7 +153,7 @@ public final class JSONRPC {
             
             txParams["to"] = to
             
-            if let gas = gas {
+            if let gas = gasLimit {
                 txParams["gas"] = gas
             }
             

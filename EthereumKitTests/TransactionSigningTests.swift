@@ -236,9 +236,6 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet() {
-        Gas.setGasPirce(.custom(GWei: 99))
-        Gas.setGasLimit(.custom(21000))
-        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten)
@@ -247,9 +244,10 @@ class TransactionSigningTests: XCTestCase {
         
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
-            address: "0x88b44BC83add758A3642130619D61682282850Df",
-            nonce: 2,
-            data: Data()
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
+            gasPrice: 99,
+            gasLimit: 21000,
+            nonce: 2
         )
         
         let tx = try! wallet.sign(rawTransaction: rawTransaction)
@@ -260,9 +258,6 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet1() {
-        Gas.setGasPirce(.custom(GWei: 1))
-        Gas.setGasLimit(.custom(21000))
-        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten)
@@ -271,9 +266,10 @@ class TransactionSigningTests: XCTestCase {
         
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
-            address: "0x88b44BC83add758A3642130619D61682282850Df",
-            nonce: 2,
-            data: Data()
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
+            gasPrice: 1,
+            gasLimit: 21000,
+            nonce: 2
         )
         
         let tx = try! wallet.sign(rawTransaction: rawTransaction)
@@ -284,9 +280,6 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet2() {
-        Gas.setGasPirce(.custom(GWei: 10))
-        Gas.setGasLimit(.custom(21000))
-        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten)
@@ -295,9 +288,10 @@ class TransactionSigningTests: XCTestCase {
         
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
-            address: "0x88b44BC83add758A3642130619D61682282850Df",
-            nonce: 2,
-            data: Data()
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
+            gasPrice: 10,
+            gasLimit: 21000,
+            nonce: 2
         )
         
         let tx = try! wallet.sign(rawTransaction: rawTransaction)
@@ -308,18 +302,16 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet3() {
-        Gas.setGasPirce(.normal)
-        Gas.setGasLimit(.normal)
-        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten)
         
         let rawTransaction = RawTransaction(
             wei: "100000000000000000",
-            address: "0x88b44BC83add758A3642130619D61682282850Df",
-            nonce: 2,
-            data: Data()
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
+            gasPrice: 41,
+            gasLimit: 21000,
+            nonce: 2
         )
         
         let tx = try! wallet.sign(rawTransaction: rawTransaction)
@@ -330,18 +322,16 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigningWithWallet4() {
-        Gas.setGasPirce(.normal)
-        Gas.setGasLimit(.normal)
-        
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten)
         
         let rawTransaction = RawTransaction(
             wei: "1000000000000000000",
-            address: "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6",
-            nonce: 2,
-            data: Data()
+            to: "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6",
+            gasPrice: 41,
+            gasLimit: 21000,
+            nonce: 2
         )
         
         let tx = try! wallet.sign(rawTransaction: rawTransaction)

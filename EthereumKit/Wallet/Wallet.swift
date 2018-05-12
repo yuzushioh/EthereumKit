@@ -33,12 +33,13 @@ public final class Wallet {
         return privateKey.raw.toHexString()
     }
     
+    /// Sign signs rlp encoding hash of specified raw transaction
+    ///
+    /// - Parameter rawTransaction: raw transaction to hash
+    /// - Returns: signiture in hex format
+    /// - Throws: EthereumKitError.failedToEncode when failed to encode
     public func sign(rawTransaction: RawTransaction) throws -> String {
-        let signTransaction = SignTransaction(
-            rawTransaction: rawTransaction,
-            gasPrice: Converter.toWei(GWei: Gas.price.value),
-            gasLimit: Gas.limit.value
-        )
+        let signTransaction = SignTransaction(rawTransaction: rawTransaction)
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(signTransaction, privateKey: privateKey)
         return rawData.toHexString().addHexPrefix()
