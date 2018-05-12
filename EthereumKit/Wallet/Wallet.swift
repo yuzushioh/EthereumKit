@@ -39,9 +39,8 @@ public final class Wallet {
     /// - Returns: signiture in hex format
     /// - Throws: EthereumKitError.failedToEncode when failed to encode
     public func sign(rawTransaction: RawTransaction) throws -> String {
-        let signTransaction = SignTransaction(rawTransaction: rawTransaction)
         let signer = EIP155Signer(chainID: network.chainID)
-        let rawData = try signer.sign(signTransaction, privateKey: privateKey)
+        let rawData = try signer.sign(rawTransaction, privateKey: privateKey)
         return rawData.toHexString().addHexPrefix()
     }
     
