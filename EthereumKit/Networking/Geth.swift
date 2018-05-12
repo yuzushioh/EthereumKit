@@ -26,7 +26,7 @@ public final class Geth {
     ///
     /// - Parameters:
     ///   - address: address you want to get the balance of
-    ///   - blockParameter: 
+    ///   - blockParameter:
     ///   - completionHandler:
     public func getBalance(of address: String, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<Balance>) -> Void) {
         httpClient.send(JSONRPC.GetBalance(address: address, blockParameter: blockParameter), completionHandler: completionHandler)
@@ -69,12 +69,12 @@ public final class Geth {
     ///   - data: data to include in tx
     ///   - blockParameter:
     ///   - completionHandler:
-    public func call(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<String>) -> Void) {
+    public func call(from: String? = nil, to: String, gasLimit: Int? = nil, gasPrice: Int? = nil, value: Int? = nil, data: String? = nil, blockParameter: BlockParameter = .latest, completionHandler: @escaping (Result<String>) -> Void) {
         let request = JSONRPC.Call(
             from: from,
             to: to,
-            gas: gasLimit.map { $0.value },
-            gasPrice: gasPrice.map { $0.value },
+            gasLimit: gasLimit,
+            gasPrice: gasPrice,
             value: value,
             data: data,
             blockParameter: blockParameter
@@ -93,12 +93,12 @@ public final class Geth {
     ///   - value: value in wei
     ///   - data: data to include in tx
     ///   - completionHandler:
-    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Gas.GasLimit? = nil, gasPrice: Gas.GasPrice? = nil, value: Int? = nil, data: String? = nil, completionHandler: @escaping (Result<Wei>) -> Void) {
+    public func getEstimateGas(from: String? = nil, to: String, gasLimit: Int? = nil, gasPrice: Int? = nil, value: Int? = nil, data: String? = nil, completionHandler: @escaping (Result<Wei>) -> Void) {
         let request = JSONRPC.GetEstimatGas(
             from: from,
             to: to,
-            gas: gasLimit.map { $0.value },
-            gasPrice: gasPrice.map { $0.value },
+            gasLimit: gasLimit,
+            gasPrice: gasPrice,
             value: value,
             data: data
         )
