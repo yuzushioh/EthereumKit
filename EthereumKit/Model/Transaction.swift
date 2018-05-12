@@ -9,6 +9,7 @@ public struct RawTransaction {
     
     /// Gas price for this transaction, unit is in Wei
     /// you need to convert it if it is specified in GWei
+    /// use Converter.toWei method to convert GWei value to Wei
     public let gasPrice: Int
     
     /// Gas limit for this transaction
