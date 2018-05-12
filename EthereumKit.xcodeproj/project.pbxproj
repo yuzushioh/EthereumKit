@@ -38,6 +38,7 @@
 		AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3342028B17B00344FB0 /* PublicKey.swift */; };
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
 		AE1F8C21208CDA0C0088A043 /* MessageSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F8C20208CDA0C0088A043 /* MessageSigningTests.swift */; };
+		AE22CA2320A7711A0033FECD /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22CA2220A7711A0033FECD /* RawTransaction.swift */; };
 		AE295DE720615AC500F774A6 /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DE620615AC500F774A6 /* SMP.swift */; };
 		AE295DEB20654D8B00F774A6 /* JSONRPCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */; };
 		AE295DED206554E500F774A6 /* BatchElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DEC206554E500F774A6 /* BatchElement.swift */; };
@@ -150,6 +151,7 @@
 		AE1BF3342028B17B00344FB0 /* PublicKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKey.swift; sourceTree = "<group>"; };
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		AE1F8C20208CDA0C0088A043 /* MessageSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSigningTests.swift; sourceTree = "<group>"; };
+		AE22CA2220A7711A0033FECD /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
 		AE295DE620615AC500F774A6 /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
 		AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCRequest.swift; sourceTree = "<group>"; };
 		AE295DEC206554E500F774A6 /* BatchElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchElement.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				AE0057192048F946007AA468 /* Address.swift */,
 				AE8387E52037F55E00FAC88F /* Balance.swift */,
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
+				AE22CA2220A7711A0033FECD /* RawTransaction.swift */,
 				AE838800203B236300FAC88F /* Transaction.swift */,
 			);
 			path = Model;
@@ -646,6 +649,7 @@
 				AE354224202D46E400007B80 /* Base58Encode.swift in Sources */,
 				AE82919F2018ADAF0047E0F0 /* Network.swift in Sources */,
 				AE61468320879AD500A9E77A /* Method.swift in Sources */,
+				AE22CA2320A7711A0033FECD /* RawTransaction.swift in Sources */,
 				AE614679208744E600A9E77A /* HTTPClientType.swift in Sources */,
 				AE00571E2049482A007AA468 /* EIP155Signer.swift in Sources */,
 				AE295DED206554E500F774A6 /* BatchElement.swift in Sources */,
