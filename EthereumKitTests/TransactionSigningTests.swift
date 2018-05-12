@@ -245,7 +245,7 @@ class TransactionSigningTests: XCTestCase {
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
             to: "0x88b44BC83add758A3642130619D61682282850Df",
-            gasPrice: 99,
+            gasPrice: Converter.toWei(GWei: 99),
             gasLimit: 21000,
             nonce: 2
         )
@@ -267,7 +267,7 @@ class TransactionSigningTests: XCTestCase {
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
             to: "0x88b44BC83add758A3642130619D61682282850Df",
-            gasPrice: 1,
+            gasPrice: Converter.toWei(GWei: 1),
             gasLimit: 21000,
             nonce: 2
         )
@@ -289,7 +289,7 @@ class TransactionSigningTests: XCTestCase {
         let rawTransaction = RawTransaction(
             wei: "1000000000000000",
             to: "0x88b44BC83add758A3642130619D61682282850Df",
-            gasPrice: 10,
+            gasPrice: Converter.toWei(GWei: 10),
             gasLimit: 21000,
             nonce: 2
         )
@@ -309,7 +309,7 @@ class TransactionSigningTests: XCTestCase {
         let rawTransaction = RawTransaction(
             wei: "100000000000000000",
             to: "0x88b44BC83add758A3642130619D61682282850Df",
-            gasPrice: 41,
+            gasPrice: Converter.toWei(GWei: 41),
             gasLimit: 21000,
             nonce: 2
         )
@@ -329,7 +329,7 @@ class TransactionSigningTests: XCTestCase {
         let rawTransaction = RawTransaction(
             wei: "1000000000000000000",
             to: "0x2F9eE3EdE488e3b7702Be866e2DC80A2a962f8a6",
-            gasPrice: 41,
+            gasPrice: Converter.toWei(GWei: 41),
             gasLimit: 21000,
             nonce: 2
         )
