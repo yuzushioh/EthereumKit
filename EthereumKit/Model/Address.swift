@@ -1,5 +1,10 @@
+/// Represents an address
 public struct Address {
+    
+    /// Address in data format
     public let data: Data
+    
+    /// Address in string format, EIP55 encoded
     public let string: String
     
     public init(data: Data) {

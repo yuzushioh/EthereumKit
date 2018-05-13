@@ -39,6 +39,7 @@
 		AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1BF3362028B5B000344FB0 /* Crypto.swift */; };
 		AE1F8C21208CDA0C0088A043 /* MessageSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F8C20208CDA0C0088A043 /* MessageSigningTests.swift */; };
 		AE22CA2320A7711A0033FECD /* RawTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22CA2220A7711A0033FECD /* RawTransaction.swift */; };
+		AE22CA2520A831620033FECD /* SentTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22CA2420A831620033FECD /* SentTransaction.swift */; };
 		AE295DE720615AC500F774A6 /* SMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DE620615AC500F774A6 /* SMP.swift */; };
 		AE295DEB20654D8B00F774A6 /* JSONRPCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */; };
 		AE295DED206554E500F774A6 /* BatchElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DEC206554E500F774A6 /* BatchElement.swift */; };
@@ -152,6 +153,7 @@
 		AE1BF3362028B5B000344FB0 /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		AE1F8C20208CDA0C0088A043 /* MessageSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSigningTests.swift; sourceTree = "<group>"; };
 		AE22CA2220A7711A0033FECD /* RawTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawTransaction.swift; sourceTree = "<group>"; };
+		AE22CA2420A831620033FECD /* SentTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentTransaction.swift; sourceTree = "<group>"; };
 		AE295DE620615AC500F774A6 /* SMP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMP.swift; sourceTree = "<group>"; };
 		AE295DEA20654D8A00F774A6 /* JSONRPCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCRequest.swift; sourceTree = "<group>"; };
 		AE295DEC206554E500F774A6 /* BatchElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchElement.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				AE8387EC2038041B00FAC88F /* BlockParameter.swift */,
 				AE22CA2220A7711A0033FECD /* RawTransaction.swift */,
 				AE838800203B236300FAC88F /* Transaction.swift */,
+				AE22CA2420A831620033FECD /* SentTransaction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */,
 				AE8387DC20374A5600FAC88F /* Geth.swift in Sources */,
 				AEA346CD209CD76F00E53536 /* JSONBodySerialization.swift in Sources */,
+				AE22CA2520A831620033FECD /* SentTransaction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

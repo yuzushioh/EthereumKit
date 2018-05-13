@@ -1,25 +1,58 @@
-public struct SentTransaction {
-    public let id: String
-}
-
+/// Represents transaction
 public struct Transaction {
+    
+    /// Blockhash of the block which includes this tx
     public let blockHash: String
+    
+    /// Block number of the block which includes this tx
     public let blockNumber: String
+    
+    /// Tx id
     public let hash: String
+    
+    /// Input value of this tx
     public let input: String
+    
+    /// Confirmations which this tx has
     public let confirmations: String
+    
+    /// Nonce of this tx
     public let nonce: String
+    
+    /// Timestamp of this tx
     public let timeStamp: String
+    
+    /// Contract address if exists
     public let contractAddress: String
+    
+    /// Sender of this tx
     public let from: String
+    
+    /// Receiver of this tx
     public let to: String
+    
+    /// Gas limit
     public let gas: String
+    
+    /// Gas price in wei
     public let gasPrice: String
+    
+    /// Gas actually used in tx
     public let gasUsed: String
+    
+    /// Remained gas
     public let cumulativeGasUsed: String
+    
+    /// Whether any error occured during broadcasting
     public let isError: String
+    
+    /// Index of this transaction
     public let transactionIndex: String
+    
+    ///
     public let txReceiptStatus: String
+    
+    /// Value of this tx, unit of wei
     public let value: String
     
     public var balance: Balance {
@@ -94,7 +127,10 @@ extension Transaction: Codable {
     }
 }
 
+/// Represents an array of transactions
 public struct Transactions {
+    
+    // Transactions
     public let elements: [Transaction]
 }
 

@@ -1,6 +1,13 @@
+/// Wallet handles all the logic necessary for storing keys
 public final class Wallet {
     
+    /// Network which this wallet is connecting to
+    /// Basiclly Mainnet or Ropsten
     private let network: Network
+    
+    /// Private key which this wallet mainly use.
+    /// This is either provided by user or generated from HD wallet.
+    /// for HD wallet, path is m/44'/coin_type'/0'/0
     private let privateKey: PrivateKey
     
     public init(seed: Data, network: Network) throws {
@@ -25,10 +32,17 @@ public final class Wallet {
     
     // MARK: - Public Methods
     
+    /// Generates address from main private key.
+    ///
+    /// - Returns: Address in string format
     public func generateAddress() -> String {
         return privateKey.publicKey.generateAddress()
     }
     
+    /// Reveal private key of this wallet in string format
+    /// Be careful when calling this method.
+    ///
+    /// - Returns: Private key in string format
     public func dumpPrivateKey() -> String {
         return privateKey.raw.toHexString()
     }
