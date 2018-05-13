@@ -18,7 +18,7 @@ do {
 }
 
 // Send some ether
-let rawTransaction = RawTransaction(ether: "0.15", address: wallet.generateAddress(), nonce: 0)
+let rawTransaction = RawTransaction(ether: "0.15", to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: 0)
 let tx = try wallet.signTransaction(rawTransaction)
 
 geth.sendRawTransaction(rawTransaction: tx) { result in 
