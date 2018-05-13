@@ -5,30 +5,29 @@ import CryptoSwift
 class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigning() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
-            nonce: 5,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 5
         )
         
         let signer = EIP155Signer(chainID: 3)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -38,30 +37,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning2() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("100000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
-            nonce: 5,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 5
         )
         
         let signer = EIP155Signer(chainID: 3)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -71,30 +69,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning3() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("500000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
-            nonce: 5,
             gasPrice: 99000000000,
             gasLimit: 200000,
-            data: Data()
+            nonce: 5
         )
         
         let signer = EIP155Signer(chainID: 3)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -104,30 +101,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning4() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
-            nonce: 0,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 0
         )
         
         let signer = EIP155Signer(chainID: 1)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -137,30 +133,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning5() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
             to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
-            nonce: 0,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 0
         )
         
         let signer = EIP155Signer(chainID: 1)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -170,30 +165,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning6() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("5000000000000000000")!,
             to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
-            nonce: 0,
             gasPrice: 99000000000,
             gasLimit: 200000,
-            data: Data()
+            nonce: 0
         )
         
         let signer = EIP155Signer(chainID: 1)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
@@ -203,30 +197,29 @@ class TransactionSigningTests: XCTestCase {
     }
     
     func testTransactionSigning7() {
-        let signTransaction = SignTransaction(
+        let rawTransaction = RawTransaction(
             value: Wei("1000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
-            nonce: 0,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 0
         )
         
         let signer = EIP155Signer(chainID: 3)
         let signiture = try! Crypto.sign(
-            try! signer.hash(signTransaction: signTransaction),
+            try! signer.hash(rawTransaction: rawTransaction),
             privateKey: Data(hex: "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
         )
         
         let (r, s, v) = signer.calculateRSV(signiture: signiture)
         
         let data = try! RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
         
