@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             print(result)
             switch result {
             case .success(let nonce):
-                let rawTransaction = RawTransaction(ether: "0.0001", to: address, gasPrice: 10, gasLimit: 21000, nonce: nonce)
+                let rawTransaction = RawTransaction(ether: "0.0001", to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: nonce)
                 let tx: String
                 do {
                     tx = try wallet.sign(rawTransaction: rawTransaction)
