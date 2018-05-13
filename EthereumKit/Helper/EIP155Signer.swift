@@ -8,34 +8,34 @@ public struct EIP155Signer {
         self.chainID = chainID
     }
     
-    public func sign(_ signTransaction: SignTransaction, privateKey: PrivateKey) throws -> Data {
-        let transactionHash = try hash(signTransaction: signTransaction)
+    public func sign(_ rawTransaction: RawTransaction, privateKey: PrivateKey) throws -> Data {
+        let transactionHash = try hash(rawTransaction: rawTransaction)
         let signiture = try privateKey.sign(hash: transactionHash)
         
         let (r, s, v) = calculateRSV(signiture: signiture)
         return try RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             v, r, s
         ])
     }
     
-    public func hash(signTransaction: SignTransaction) throws -> Data {
-        return Crypto.hashSHA3_256(try encode(signTransaction: signTransaction))
+    public func hash(rawTransaction: RawTransaction) throws -> Data {
+        return Crypto.hashSHA3_256(try encode(rawTransaction: rawTransaction))
     }
     
-    public func encode(signTransaction: SignTransaction) throws -> Data {
+    public func encode(rawTransaction: RawTransaction) throws -> Data {
         return try RLP.encode([
-            signTransaction.nonce,
-            signTransaction.gasPrice,
-            signTransaction.gasLimit,
-            signTransaction.to.data,
-            signTransaction.value,
-            signTransaction.data,
+            rawTransaction.nonce,
+            rawTransaction.gasPrice,
+            rawTransaction.gasLimit,
+            rawTransaction.to.data,
+            rawTransaction.value,
+            rawTransaction.data,
             chainID, 0, 0 // EIP155
         ])
     }

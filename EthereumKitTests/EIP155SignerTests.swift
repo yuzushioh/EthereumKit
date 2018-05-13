@@ -5,45 +5,42 @@ class EIP155SignerTests: XCTestCase {
     func testEIP155SigningOnTestnet() {
         let signer = EIP155Signer(chainID: 3)
         
-        let signTransaction1 = SignTransaction(
+        let rawTransaction1 = RawTransaction(
             value: Wei("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
-            nonce: 2,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 2
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction1).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction1).toHexString(),
             "84df8756f832aa25f79fdeac98ae9adf83b1da0119dd3555807f890f09c3e1a7"
         )
         
-        let signTransaction2 = SignTransaction(
+        let rawTransaction2 = RawTransaction(
             value: Wei("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
-            nonce: 4,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 4
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction2).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction2).toHexString(),
             "18f93470671a0db633e4346dfa5ecdc2568e2befdbf815ac205d9eef06a91350"
         )
         
-        let signTransaction3 = SignTransaction(
+        let rawTransaction3 = RawTransaction(
             value: Wei("10000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
-            nonce: 25,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 25
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction3).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction3).toHexString(),
             "0af0867d4acb71dd0bd590b86aef78d7ccfdcdcf16e881e9f426e432a1603eaf"
         )
     }
@@ -51,45 +48,42 @@ class EIP155SignerTests: XCTestCase {
     func testEIP155SigningOnMainnet() {
         let signer = EIP155Signer(chainID: 1)
         
-        let signTransaction1 = SignTransaction(
+        let rawTransaction1 = RawTransaction(
             value: Wei("10000000000000000")!,
             to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
-            nonce: 2,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 2
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction1).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction1).toHexString(),
             "de6ed032e8f09adb557f6a0ebc16ed52d6a75e0644a77a236aa1cfffa7746e9a"
         )
         
-        let signTransaction2 = SignTransaction(
+        let rawTransaction2 = RawTransaction(
             value: Wei("10000000000000000")!,
             to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
-            nonce: 4,
             gasPrice: 99000000000,
             gasLimit: 200000,
-            data: Data()
+            nonce: 4
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction2).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction2).toHexString(),
             "b148272b2a985365e08abb17a85ca5e171169978f3b55e6852a035f83b9f3aa5"
         )
         
-        let signTransaction3 = SignTransaction(
+        let rawTransaction3 = RawTransaction(
             value: Wei("20000000000000000")!,
             to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
-            nonce: 25,
             gasPrice: 99000000000,
             gasLimit: 21000,
-            data: Data()
+            nonce: 25
         )
         
         XCTAssertEqual(
-            try! signer.hash(signTransaction: signTransaction3).toHexString(),
+            try! signer.hash(rawTransaction: rawTransaction3).toHexString(),
             "280e29f030cfa256b4298a2b834a4add92b37f159b3cce1110e1ff9f7514f9fe"
         )
     }
