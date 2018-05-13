@@ -77,5 +77,7 @@ class ViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             }
         }
+        
+        geth.getTransactions(address: address) { print($0) }
     }
 }

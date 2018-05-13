@@ -1,6 +1,10 @@
+/// Represents a balance
 public struct Balance {
+    
+    /// User's balance in wei unit
     public let wei: Wei
     
+    /// User's balance in ether unit
     public var ether: Ether {
         return Converter.toEther(wei: wei)
     }
