@@ -10,8 +10,12 @@ public final class Wallet {
     /// for HD wallet, path is m/44'/coin_type'/0'/0
     private let privateKey: PrivateKey
     
-    public init(seed: Data, network: Network) throws {
+    /// Represents a flag whether to print a debug log.
+    private let debugPrints: Bool
+    
+    public init(seed: Data, network: Network, debugPrints: Bool = false) throws {
         self.network = network
+        self.debugPrints = debugPrints
         
         // m/44'/coin_type'/0'/external
         let externalPrivateKey = try HDPrivateKey(seed: seed, network: network)
@@ -23,11 +27,20 @@ public final class Wallet {
         privateKey = try externalPrivateKey
             .derived(at: 0)
             .privateKey()
+        
+        if debugPrints {
+            printDebugInformation()
+        }
     }
     
-    public init(network: Network, privateKey: String) {
+    public init(network: Network, privateKey: String, debugPrints: Bool = false) {
         self.network = network
         self.privateKey = PrivateKey(raw: Data(hex: privateKey))
+        self.debugPrints = debugPrints
+        
+        if debugPrints {
+            printDebugInformation()
+        }
     }
     
     // MARK: - Public Methods
@@ -55,7 +68,16 @@ public final class Wallet {
     public func sign(rawTransaction: RawTransaction) throws -> String {
         let signer = EIP155Signer(chainID: network.chainID)
         let rawData = try signer.sign(rawTransaction, privateKey: privateKey)
-        return rawData.toHexString().addHexPrefix()
+        let hash = rawData.toHexString().addHexPrefix()
+        if debugPrints {
+            print(
+                """
+                \nSigning \(rawTransaction)...
+                Raw tx hash is \(hash) \n
+                """
+            )
+        }
+        return hash
     }
     
     /// Sign calculates an Ethereum ECDSA signature for: keccack256("\x19Ethereum Signed Message:\n" + len(message) + message))
@@ -80,7 +102,16 @@ public final class Wallet {
         // where the V value will be 27 or 28 for legacy reasons.
         signiture[64] += 27
         
-        return signiture.toHexString().addHexPrefix()
+        let signedHash = signiture.toHexString().addHexPrefix()
+        if debugPrints {
+            print(
+                """
+                \nSigning \(hex)...
+                Message hash is \(signedHash) \n
+                """
+            )
+        }
+        return signedHash
     }
     
     /// Sign calculates an Ethereum ECDSA signature for: keccack256("\x19Ethereum Signed Message:\n" + len(message) + message))
@@ -91,5 +122,18 @@ public final class Wallet {
     /// - Throws: EthereumKitError.failedToEncode when failed to encode
     public func sign(message: String) throws -> String {
         return try sign(hex: message.toHexString())
+    }
+    
+    // MARK: - Private method
+    
+    private func printDebugInformation() {
+        print(
+            """
+            \nUsing \(network) network
+            PrivateKey is \(dumpPrivateKey())
+            PublicKey is \(privateKey.publicKey.raw.toHexString())
+            Address is \(generateAddress()) \n
+            """
+        )
     }
 }

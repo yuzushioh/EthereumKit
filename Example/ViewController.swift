@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         // for network, EthereumKit currently supports mainnet and ropsten.
         let wallet: Wallet
         do {
-            wallet = try Wallet(seed: seed, network: .ropsten)
+            wallet = try Wallet(seed: seed, network: .ropsten, debugPrints: true)
         } catch let error {
             fatalError("Error: \(error.localizedDescription)")
         }
@@ -77,7 +77,5 @@ class ViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             }
         }
-        
-        geth.getTransactions(address: address) { print($0) }
     }
 }
