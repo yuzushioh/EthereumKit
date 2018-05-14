@@ -4,7 +4,7 @@ import CryptoSwift
 
 final class MessageSigningTests: XCTestCase {
     
-    private let wallet = Wallet(network: .ropsten, privateKey: "d0d3ae306602070917c456b61d88bee9dc74edb5853bb87b1c13e5bfa2c3d0d9")
+    private let wallet = Wallet(network: .ropsten, privateKey: "d0d3ae306602070917c456b61d88bee9dc74edb5853bb87b1c13e5bfa2c3d0d9", debugPrints: false)
     
     func testMessageSigning() {
         XCTAssertEqual(

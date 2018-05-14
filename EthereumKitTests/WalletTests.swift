@@ -6,7 +6,7 @@ class WalletTests: XCTestCase {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         
-        let wallet = try! Wallet(seed: seed, network: .ropsten)
+        let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         let hdWallet = HDWallet(seed: seed, network: .ropsten)
         
         XCTAssertEqual(wallet.generateAddress(), try! hdWallet.generateAddress(at: 0))
@@ -17,7 +17,7 @@ class WalletTests: XCTestCase {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = Mnemonic.createSeed(mnemonic: mnemonic)
         
-        let wallet = try! Wallet(seed: seed, network: .main)
+        let wallet = try! Wallet(seed: seed, network: .main, debugPrints: false)
         let hdWallet = HDWallet(seed: seed, network: .main)
         
         XCTAssertEqual(wallet.generateAddress(), try! hdWallet.generateAddress(at: 0))
