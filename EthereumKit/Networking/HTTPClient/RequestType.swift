@@ -25,6 +25,21 @@ public protocol RequestType {
 }
 
 extension RequestType {
+    /// For debug use
+    public var description: String {
+        let paramsString: String
+        if let parameters = parameters {
+            paramsString = String(describing: parameters)
+        } else {
+            paramsString = "no parameters"
+        }
+        return """
+        Sending request to \(path) by \(method) method with \(paramsString)
+        """
+    }
+}
+
+extension RequestType {
     public var parameters: Any? {
         return nil
     }

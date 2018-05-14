@@ -33,31 +33,26 @@ class ViewController: UIViewController {
         
         // Generate an address, or private key by simply calling
         let address = wallet.generateAddress()
-        let privateKey = wallet.dumpPrivateKey()
-        print(address, privateKey)
         
         // Create an instance of `Geth` with `Configuration`.
         // In configuration, specify
         // - network: network to use
         // - nodeEndpoint: url for the node you want to connect
         // - etherscanAPIKey: api key of etherscan
-        
         let configuration = Configuration(
             network: .ropsten,
             nodeEndpoint: "https://ropsten.infura.io/z1sEfnzz0LLMsdYMX4PV",
-            etherscanAPIKey: "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7"
+            etherscanAPIKey: "XE7QVJNVMKJT75ATEPY1HPWTPYCVCKMMJ7",
+            debugPrints: true
         )
         
         let geth = Geth(configuration: configuration)
         
         // To get a balance of an address, call `getBalance`.
-        geth.getBalance(of: address) { result in
-            print(result)
-        }
+        geth.getBalance(of: address) { _ in }
         
         // You can get the current nonce by calling
         geth.getTransactionCount(of: address) { result in
-            print(result)
             switch result {
             case .success(let nonce):
                 let rawTransaction = RawTransaction(ether: "0.0001", to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: nonce)
@@ -69,9 +64,7 @@ class ViewController: UIViewController {
                 }
                 
                 // It returns the transaction ID.
-                geth.sendRawTransaction(rawTransaction: tx) { result in
-                    print(result)
-                }
+                geth.sendRawTransaction(rawTransaction: tx) { _ in }
                 
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")

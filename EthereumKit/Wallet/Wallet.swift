@@ -13,7 +13,7 @@ public final class Wallet {
     /// Represents a flag whether to print a debug log.
     private let debugPrints: Bool
     
-    public init(seed: Data, network: Network, debugPrints: Bool = false) throws {
+    public init(seed: Data, network: Network, debugPrints: Bool) throws {
         self.network = network
         self.debugPrints = debugPrints
         
@@ -33,7 +33,7 @@ public final class Wallet {
         }
     }
     
-    public init(network: Network, privateKey: String, debugPrints: Bool = false) {
+    public init(network: Network, privateKey: String, debugPrints: Bool) {
         self.network = network
         self.privateKey = PrivateKey(raw: Data(hex: privateKey))
         self.debugPrints = debugPrints
@@ -72,7 +72,7 @@ public final class Wallet {
         if debugPrints {
             print(
                 """
-                \nSigning \(rawTransaction)...
+                \nSigning \(rawTransaction)
                 Raw tx hash is \(hash) \n
                 """
             )
@@ -106,7 +106,7 @@ public final class Wallet {
         if debugPrints {
             print(
                 """
-                \nSigning \(hex)...
+                \nSigning \(hex)
                 Message hash is \(signedHash) \n
                 """
             )
