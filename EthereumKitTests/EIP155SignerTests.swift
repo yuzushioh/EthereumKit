@@ -123,4 +123,14 @@ class EIP155SignerTests: XCTestCase {
         let restoredSignature = signer.calculateSignature(r: r, s: s, v: v)
         XCTAssertEqual(signiture, restoredSignature)
     }
+
+    func testRstoringSignatureSignedWithOldScheme() {
+        let v = 27
+        let r = "75119860711638973245538703589762310947594328712729260330312782656531560398776"
+        let s = "51392727032514077370236468627319183981033698696331563950328005524752791633785"
+        let signer = EIP155Signer(chainID: 1)
+        let signature = signer.calculateSignature(r: BInt(r)!, s: BInt(s)!, v: BInt(v))
+        XCTAssertEqual(signature.toHexString(), "a614559de76862bb1dbf8a969d8979e5bf21b72c51c96b27b3d247b728ebffb8719f40b018940ffd0880285d2196cdd31a710bf7cdda60c77632743d687dff7900")
+    }
+
 }

@@ -44,12 +44,13 @@ public struct EIP155Signer {
         return (
             r: BInt(str: signiture[..<32].toHexString(), radix: 16)!,
             s: BInt(str: signiture[32..<64].toHexString(), radix: 16)!,
-            v: BInt(signiture[64]) + BInt(35) + BInt(chainID) + BInt(chainID)
+            v: BInt(signiture[64]) + 35 + 2 * chainID
         )
     }
 
     public func calculateSignature(r: BInt, s: BInt, v: BInt) -> Data {
-        let sigHexStr = r.asString(withBase: 16) + s.asString(withBase: 16) + (v - BInt(35) - BInt(chainID) - BInt(chainID)).asString(withBase: 16)
+        let suffix = [27, 28].contains(v) ? v - 27 : v - 35 - 2 * chainID
+        let sigHexStr = r.asString(withBase: 16) + s.asString(withBase: 16) + suffix.asString(withBase: 16)
         return Data(hex: sigHexStr)
     }
 }
