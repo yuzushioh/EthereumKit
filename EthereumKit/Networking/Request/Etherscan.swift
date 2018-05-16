@@ -22,14 +22,6 @@ public final class Etherscan {
         public let startBlock: Int64
         public let endBlock: Int64
         
-        public init(configuration: Configuration, address: String, sort: Sort = .asc, startBlock: Int64 = 0, endBlock: Int64 = 99999999) {
-            self.configuration = configuration
-            self.address = address
-            self.sort = sort
-            self.startBlock = startBlock
-            self.endBlock = endBlock
-        }
-        
         public var baseURL: URL {
             return configuration.baseURL
         }
