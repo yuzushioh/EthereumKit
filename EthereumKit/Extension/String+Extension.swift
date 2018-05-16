@@ -14,4 +14,12 @@ extension String {
     public func toHexString() -> String {
         return data(using: .utf8)!.map { String(format: "%02x", $0) }.joined()
     }
+    
+    func withLeadingZero(until count: Int) -> String {
+        var string = self
+        while string.count != count {
+            string = "0" + string
+        }
+        return string
+    }
 }

@@ -46,6 +46,8 @@
 		AE295DEF2065551C00F774A6 /* BatchFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE295DEE2065551C00F774A6 /* BatchFactory.swift */; };
 		AE354224202D46E400007B80 /* Base58Encode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE354223202D46E400007B80 /* Base58Encode.swift */; };
 		AE35422F20300E4900007B80 /* EIP55.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35422E20300E4900007B80 /* EIP55.swift */; };
+		AE3EB60320AC8D3600D61CE6 /* ERC20.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EB60220AC8D3600D61CE6 /* ERC20.swift */; };
+		AE3EB60520AC93BE00D61CE6 /* Decimal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EB60420AC93BE00D61CE6 /* Decimal+Extension.swift */; };
 		AE614679208744E600A9E77A /* HTTPClientType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE614678208744E600A9E77A /* HTTPClientType.swift */; };
 		AE61467B20874FBE00A9E77A /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61467A20874FBE00A9E77A /* HTTPClient.swift */; };
 		AE61467D20874FE700A9E77A /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE61467C20874FE700A9E77A /* Cancellable.swift */; };
@@ -160,6 +162,8 @@
 		AE295DEE2065551C00F774A6 /* BatchFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchFactory.swift; sourceTree = "<group>"; };
 		AE354223202D46E400007B80 /* Base58Encode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Encode.swift; sourceTree = "<group>"; };
 		AE35422E20300E4900007B80 /* EIP55.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP55.swift; sourceTree = "<group>"; };
+		AE3EB60220AC8D3600D61CE6 /* ERC20.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20.swift; sourceTree = "<group>"; };
+		AE3EB60420AC93BE00D61CE6 /* Decimal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Extension.swift"; sourceTree = "<group>"; };
 		AE614678208744E600A9E77A /* HTTPClientType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientType.swift; sourceTree = "<group>"; };
 		AE61467A20874FBE00A9E77A /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		AE61467C20874FE700A9E77A /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 			children = (
 				D77FB335203DE3D0003213DB /* SMP+Extensions.swift */,
 				1A371090204E8FC0003A40BB /* String+Extension.swift */,
+				AE3EB60420AC93BE00D61CE6 /* Decimal+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 				1A371097205050A6003A40BB /* Converter.swift */,
 				AE005729205390E1007AA468 /* EthereumKitError.swift */,
 				AE61467E2087501000A9E77A /* Result.swift */,
+				AE3EB60220AC8D3600D61CE6 /* ERC20.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -637,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3EB60320AC8D3600D61CE6 /* ERC20.swift in Sources */,
 				AE00573220539575007AA468 /* HDPublicKey.swift in Sources */,
 				AE00573420539993007AA468 /* HDWallet.swift in Sources */,
 				AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */,
@@ -677,6 +684,7 @@
 				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
 				AE14A6242070A98D003A63FF /* English.swift in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
+				AE3EB60520AC93BE00D61CE6 /* Decimal+Extension.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
 				AE1BF3372028B5B000344FB0 /* Crypto.swift in Sources */,
 				AE1BF3332028AEA400344FB0 /* PrivateKey.swift in Sources */,
