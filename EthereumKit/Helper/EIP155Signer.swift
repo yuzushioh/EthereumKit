@@ -51,7 +51,12 @@ public struct EIP155Signer {
     public func calculateSignature(r: BInt, s: BInt, v: BInt) -> Data {
         let isOldSignitureScheme = [27, 28].contains(v)
         let suffix = isOldSignitureScheme ? v - 27 : v - 35 - 2 * chainID
-        let sigHexStr = r.asString(withBase: 16) + s.asString(withBase: 16) + suffix.asString(withBase: 16)
+        let sigHexStr = hex64Str(r) + hex64Str(s) + suffix.asString(withBase: 16)
         return Data(hex: sigHexStr)
+    }
+
+    private func hex64Str(_ i: BInt) -> String {
+        let hex = i.asString(withBase: 16)
+        return String(repeating: "0", count: 64 - hex.count) + hex
     }
 }
