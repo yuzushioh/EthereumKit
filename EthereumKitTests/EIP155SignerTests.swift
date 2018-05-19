@@ -124,13 +124,22 @@ class EIP155SignerTests: XCTestCase {
         XCTAssertEqual(signiture, restoredSignature)
     }
 
-    func testRstoringSignatureSignedWithOldScheme() {
+    func testRestoringSignatureSignedWithOldScheme() {
         let v = 27
         let r = "75119860711638973245538703589762310947594328712729260330312782656531560398776"
         let s = "51392727032514077370236468627319183981033698696331563950328005524752791633785"
         let signer = EIP155Signer(chainID: 1)
         let signature = signer.calculateSignature(r: BInt(r)!, s: BInt(s)!, v: BInt(v))
         XCTAssertEqual(signature.toHexString(), "a614559de76862bb1dbf8a969d8979e5bf21b72c51c96b27b3d247b728ebffb8719f40b018940ffd0880285d2196cdd31a710bf7cdda60c77632743d687dff7900")
+    }
+
+    func testRestoringSignatureSignedWithOldScheme2() {
+        let v = 27
+        let r = "79425995431864040500581522255237765710685762616259654871112297909982135982384"
+        let s = "1777326029228985739367131500591267170048497362640342741198949880105318675913"
+        let signer = EIP155Signer(chainID: 1)
+        let signature = signer.calculateSignature(r: BInt(r)!, s: BInt(s)!, v: BInt(v))
+        XCTAssertEqual(signature.toHexString(), "af998533cdac5d64594f462871a8ba79fe41d59295e39db3f069434c9862193003edee4e64d899a2c57bd726e972bb6fdb354e3abcd5846e2315ecfec332f5c900")
     }
 
 }

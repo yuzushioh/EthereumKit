@@ -143,8 +143,6 @@
 		AE00573320539993007AA468 /* HDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDWallet.swift; sourceTree = "<group>"; };
 		AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyAndPublicKeyTests.swift; sourceTree = "<group>"; };
 		AE0057372053A5E4007AA468 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
-		AE14A608206F552D003A63FF /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
-		AE14A609206F552D003A63FF /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		AE14A60A206F552D003A63FF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		AE14A6232070A98D003A63FF /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		AE14A6252070A9AE003A63FF /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
@@ -247,9 +245,7 @@
 		AE14A607206F550F003A63FF /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
-				AE14A608206F552D003A63FF /* APIKit.framework */,
 				AE14A60A206F552D003A63FF /* CryptoSwift.framework */,
-				AE14A609206F552D003A63FF /* Result.framework */,
 			);
 			name = Dependency;
 			sourceTree = "<group>";
