@@ -315,7 +315,7 @@ public struct BInt: SignedNumeric, // Implies Numeric, Equatable, ExpressibleByI
 			
 		}
 		
-		self.init(total)
+		self.init(String(describing: total))
 	}
 
 	//	Requierd by protocol ExpressibleByFloatLiteral.
