@@ -42,7 +42,7 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 ## Requirements
 
 - Swift 4.0 or later
-- iOS 10.0 or later
+- iOS 8.0 or later
 
 ## Installation
 #### [Carthage](https://github.com/Carthage/Carthage)
