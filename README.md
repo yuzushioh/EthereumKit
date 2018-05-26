@@ -54,6 +54,10 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 
 - [CryptoEthereumSwift](https://github.com/yuzushioh/CryptoEthereumSwift): Ethereum cryptography implementations for iOS framework
 
+## Apps using EthereumKit
+
+- [gnosis/safe-ios](https://github.com/gnosis/safe-ios): Gnosis Safe is a multi signature (2FA) wallet for personal usage.
+
 ## Author
 
 Ryo Fukuda, [@yuzushioh](https://twitter.com/yuzushioh), yuzushioh@gmail.com
