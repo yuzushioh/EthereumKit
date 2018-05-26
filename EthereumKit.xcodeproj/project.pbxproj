@@ -76,6 +76,8 @@
 		AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AEDC134820B90D4100C3B9E8 /* CryptoEthereumSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */; };
+		AEDC134920B9133F00C3B9E8 /* CryptoEthereumSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */; };
+		AEDC134A20B9133F00C3B9E8 /* CryptoEthereumSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FB335203DE3D0003213DB /* SMP+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +112,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				AEDC134A20B9133F00C3B9E8 /* CryptoEthereumSwift.framework in Embed Frameworks */,
 				AE14A611206F5555003A63FF /* CryptoSwift.framework in Embed Frameworks */,
 				AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */,
 			);
@@ -214,6 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDC134920B9133F00C3B9E8 /* CryptoEthereumSwift.framework in Frameworks */,
 				AE14A610206F5555003A63FF /* CryptoSwift.framework in Frameworks */,
 				AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */,
 			);
