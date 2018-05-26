@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A0A89FC206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0A89FB206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift */; };
 		0AA12014206BFE800052AE8B /* CryptoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA12013206BFE800052AE8B /* CryptoTests.swift */; };
 		1A371091204E8FC0003A40BB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371090204E8FC0003A40BB /* String+Extension.swift */; };
 		1A371098205050A6003A40BB /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A371097205050A6003A40BB /* Converter.swift */; };
@@ -57,8 +56,6 @@
 		AE8291A02018ADAF0047E0F0 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8291982018ADAE0047E0F0 /* Wallet.swift */; };
 		AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */; };
 		AE8291A62018ADAF0047E0F0 /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE82919E2018ADAF0047E0F0 /* WordList.swift */; };
-		AE8387C020348C5500FAC88F /* Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = AED02DAC2019B83100B76CEC /* Internal.m */; };
-		AE8387C320349AD700FAC88F /* Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = AED02DB52019B90A00B76CEC /* Internal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		AE8387D720374A0400FAC88F /* HTTPJSONRPCRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */; };
 		AE8387DC20374A5600FAC88F /* Geth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DB20374A5600FAC88F /* Geth.swift */; };
 		AE8387DE20374C0000FAC88F /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8387DD20374C0000FAC88F /* JSONRPC.swift */; };
@@ -78,6 +75,7 @@
 		AEBA90FD1FFA2C6A003EA2BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEBA90FB1FFA2C6A003EA2BA /* LaunchScreen.storyboard */; };
 		AEBA91041FFA2C74003EA2BA /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEBA91051FFA2C74003EA2BA /* EthereumKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AEDC134820B90D4100C3B9E8 /* CryptoEthereumSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */; };
 		D77FB336203DE3D0003213DB /* SMP+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FB335203DE3D0003213DB /* SMP+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -121,7 +119,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0A0A89FB206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EllipticCurveEncrypterSecp256k1.swift; sourceTree = "<group>"; };
 		0AA12013206BFE800052AE8B /* CryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTests.swift; sourceTree = "<group>"; };
 		1A371090204E8FC0003A40BB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1A371097205050A6003A40BB /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
@@ -169,7 +166,6 @@
 		AE8291982018ADAE0047E0F0 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		AE82919C2018ADAF0047E0F0 /* Mnemonic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mnemonic.swift; sourceTree = "<group>"; };
 		AE82919E2018ADAF0047E0F0 /* WordList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordList.swift; sourceTree = "<group>"; };
-		AE8387C12034962C00FAC88F /* EthereumKit.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = EthereumKit.modulemap; sourceTree = "<group>"; };
 		AE8387D620374A0400FAC88F /* HTTPJSONRPCRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPJSONRPCRequest.swift; sourceTree = "<group>"; };
 		AE8387DB20374A5600FAC88F /* Geth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geth.swift; sourceTree = "<group>"; };
 		AE8387DD20374C0000FAC88F /* JSONRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
@@ -192,8 +188,7 @@
 		AEBA90F91FFA2C6A003EA2BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AEBA90FC1FFA2C6A003EA2BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AEBA90FE1FFA2C6A003EA2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AED02DAC2019B83100B76CEC /* Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Internal.m; sourceTree = "<group>"; };
-		AED02DB52019B90A00B76CEC /* Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Internal.h; sourceTree = "<group>"; };
+		AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoEthereumSwift.framework; path = Carthage/Build/iOS/CryptoEthereumSwift.framework; sourceTree = "<group>"; };
 		D77FB335203DE3D0003213DB /* SMP+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDC134820B90D4100C3B9E8 /* CryptoEthereumSwift.framework in Frameworks */,
 				AE14A60D206F552D003A63FF /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,6 +234,7 @@
 		AE14A607206F550F003A63FF /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				AEDC134720B90D4100C3B9E8 /* CryptoEthereumSwift.framework */,
 				AE14A60A206F552D003A63FF /* CryptoSwift.framework */,
 			);
 			name = Dependency;
@@ -310,7 +307,6 @@
 				AE295DE620615AC500F774A6 /* SMP.swift */,
 				AE8291972018ADAE0047E0F0 /* Network.swift */,
 				AE1BF3362028B5B000344FB0 /* Crypto.swift */,
-				0A0A89FB206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift */,
 				AE35422E20300E4900007B80 /* EIP55.swift */,
 				AE354223202D46E400007B80 /* Base58Encode.swift */,
 				AE0057172042E4CF007AA468 /* RLP.swift */,
@@ -412,9 +408,6 @@
 				AE8387E72037F5FF00FAC88F /* Model */,
 				AE838802203B271600FAC88F /* Helper */,
 				1A371092204E8FE0003A40BB /* Extension */,
-				AED02DB52019B90A00B76CEC /* Internal.h */,
-				AED02DAC2019B83100B76CEC /* Internal.m */,
-				AE8387C12034962C00FAC88F /* EthereumKit.modulemap */,
 				AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */,
 				AEBA90D91FFA21ED003EA2BA /* Info.plist */,
 			);
@@ -442,7 +435,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */,
-				AE8387C320349AD700FAC88F /* Internal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +465,6 @@
 			buildConfigurationList = AEBA90DD1FFA21ED003EA2BA /* Build configuration list for PBXNativeTarget "EthereumKit" */;
 			buildPhases = (
 				AE1A4B9020657C8800346BA2 /* Swiftlint */,
-				AE8387CD2035DCE100FAC88F /* Build Libraries */,
 				AEBA90D01FFA21ED003EA2BA /* Sources */,
 				AEBA90D11FFA21ED003EA2BA /* Frameworks */,
 				AEBA90D21FFA21ED003EA2BA /* Headers */,
@@ -595,20 +586,6 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    git ls-files -mo --exclude-standard | grep \\.swift$ | xargs -I{} swiftlint autocorrect --path {}\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-		AE8387CD2035DCE100FAC88F /* Build Libraries */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Build Libraries";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ ! -d \"$SRCROOT/Libraries/secp256k1/lib\" ] || [ ! -d \"$SRCROOT/Libraries/openssl/lib\" ]; then\n    env -i PATH=$PATH sh \"$SRCROOT/script/build_libraries.sh\"\nfi";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -661,7 +638,6 @@
 				AE00572A205390E1007AA468 /* EthereumKitError.swift in Sources */,
 				AE8291A42018ADAF0047E0F0 /* Mnemonic.swift in Sources */,
 				AE295DEF2065551C00F774A6 /* BatchFactory.swift in Sources */,
-				0A0A89FC206D0534004DFD31 /* EllipticCurveEncrypterSecp256k1.swift in Sources */,
 				AE8387F7203B131A00FAC88F /* Etherscan.swift in Sources */,
 				AEA346CB209CD59C00E53536 /* URLEncodedSerialization.swift in Sources */,
 				AE8387E62037F55E00FAC88F /* Balance.swift in Sources */,
@@ -670,7 +646,6 @@
 				AE8387ED2038041B00FAC88F /* BlockParameter.swift in Sources */,
 				AE14A6262070A9AE003A63FF /* Japanese.swift in Sources */,
 				AE1A4B8D20655A1F00346BA2 /* Batch.swift in Sources */,
-				AE8387C020348C5500FAC88F /* Internal.m in Sources */,
 				AE14A6242070A98D003A63FF /* English.swift in Sources */,
 				AE1BF3352028B17B00344FB0 /* PublicKey.swift in Sources */,
 				AE00571A2048F946007AA468 /* Address.swift in Sources */,
@@ -911,24 +886,18 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/Libraries/secp256k1/include",
-					"$(SRCROOT)/Libraries/openssl/include",
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EthereumKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/Libraries/secp256k1/lib",
-					"$(SRCROOT)/Libraries/openssl/lib",
-				);
-				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
+				LIBRARY_SEARCH_PATHS = "";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries $(SRCROOT)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -949,24 +918,18 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/Libraries/secp256k1/include",
-					"$(SRCROOT)/Libraries/openssl/include",
-				);
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/EthereumKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/Libraries/secp256k1/lib",
-					"$(SRCROOT)/Libraries/openssl/lib",
-				);
-				MODULEMAP_FILE = "$(SRCROOT)/EthereumKit/EthereumKit.modulemap";
+				LIBRARY_SEARCH_PATHS = "";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = yuzushioh.EthereumKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Libraries $(SRCROOT)";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
