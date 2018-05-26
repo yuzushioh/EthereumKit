@@ -1,1 +1,1 @@
-github "yuzushioh/CryptoEthereumSwift" "master"
+github "yuzushioh/CryptoEthereumSwift" ~> 1.0.0
