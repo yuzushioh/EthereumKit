@@ -1,6 +1,0 @@
-module secp256k1 {
-    private header "include/secp256k1.h"
-    private header "include/secp256k1_recovery.h"
-    private header "include/secp256k1_ecdh.h"
-    link "secp256k1"
-}
