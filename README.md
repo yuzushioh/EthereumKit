@@ -50,6 +50,10 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 - Insert `github "yuzushioh/EthereumKit"` to your Cartfile.
 - Run `carthage update --platform ios`.
 
+## Dependency
+
+- [CryptoEthereumSwift](https://github.com/yuzushioh/CryptoEthereumSwift): Ethereum cryptography implementations for iOS framework
+
 ## Author
 
 Ryo Fukuda, [@yuzushioh](https://twitter.com/yuzushioh), yuzushioh@gmail.com
