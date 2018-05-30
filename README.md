@@ -48,7 +48,7 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 ## Requirements
 
 - Swift 4.0 or later
-- iOS 8.0 or later
+- iOS 9.0 or later
 
 ## Installation
 #### [Carthage](https://github.com/Carthage/Carthage)
@@ -63,7 +63,7 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 ## Apps using EthereumKit
 
 - [gnosis/safe-ios](https://github.com/gnosis/safe-ios): Gnosis Safe is a multi signature (2FA) wallet for personal usage.
-
+- [popshootjapan/WeiWallet-iOS](https://github.com/popshootjapan/WeiWallet-iOS): Wei Wallet for iOS
 ## Author
 
 Ryo Fukuda, [@yuzushioh](https://twitter.com/yuzushioh), yuzushioh@gmail.com
