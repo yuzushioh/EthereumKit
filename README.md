@@ -28,6 +28,10 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 }
 ```
 
+## Set up
+
+- Run `make bootstrap`
+
 ## Features
 - Mnemonic recovery phrease in [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
 - [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)/[BIP44](https://github.com/bitcoin/bips/blob/master/bip-0044.mediawiki) HD wallet
