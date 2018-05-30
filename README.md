@@ -1,5 +1,7 @@
 # EthereumKit
 
+[![image.png](https://s33.postimg.cc/fzlnx0cvz/image.png)](https://postimg.cc/image/exbhegu2j/)
+
 EthereumKit is a Swift framework that enables you to create Ethereum wallet and use it in your app.
 
 ```swift
