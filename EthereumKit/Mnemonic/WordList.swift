@@ -2,7 +2,7 @@ public enum WordList {
     case english
     case japanese
     
-    var words: [String] {
+    public var words: [String] {
         switch self {
         case .english:
             return englishWords
