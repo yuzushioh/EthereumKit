@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         
         // Then generate seed data from the mnemonic sentence.
         // You can set password for more secure seed data.
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         
         // Create wallet by passing seed data and which network you want to connect.
         // for network, EthereumKit currently supports mainnet and ropsten.

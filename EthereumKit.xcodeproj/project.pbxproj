@@ -67,6 +67,7 @@
 		AE90A07A1FFA698D005ED7AF /* EthereumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */; };
 		AEA346CB209CD59C00E53536 /* URLEncodedSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA346CA209CD59C00E53536 /* URLEncodedSerialization.swift */; };
 		AEA346CD209CD76F00E53536 /* JSONBodySerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA346CC209CD76F00E53536 /* JSONBodySerialization.swift */; };
+		AEB4C5DF20C03D62001D96BF /* MnemonicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4C5DE20C03D62001D96BF /* MnemonicTests.swift */; };
 		AEBA90DA1FFA21ED003EA2BA /* EthereumKit.h in Headers */ = {isa = PBXBuildFile; fileRef = AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEBA90F31FFA2C6A003EA2BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA90F21FFA2C6A003EA2BA /* AppDelegate.swift */; };
 		AEBA90F51FFA2C6A003EA2BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEBA90F41FFA2C6A003EA2BA /* ViewController.swift */; };
@@ -181,6 +182,7 @@
 		AE90A0791FFA698D005ED7AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEA346CA209CD59C00E53536 /* URLEncodedSerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLEncodedSerialization.swift; sourceTree = "<group>"; };
 		AEA346CC209CD76F00E53536 /* JSONBodySerialization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONBodySerialization.swift; sourceTree = "<group>"; };
+		AEB4C5DE20C03D62001D96BF /* MnemonicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MnemonicTests.swift; sourceTree = "<group>"; };
 		AEBA90D51FFA21ED003EA2BA /* EthereumKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EthereumKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBA90D81FFA21ED003EA2BA /* EthereumKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EthereumKit.h; sourceTree = "<group>"; };
 		AEBA90D91FFA21ED003EA2BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				AE005725204EE61D007AA468 /* TransactionSigningTests.swift */,
 				AE1F8C20208CDA0C0088A043 /* MessageSigningTests.swift */,
 				1A371099205052C1003A40BB /* ConverterTests.swift */,
+				AEB4C5DE20C03D62001D96BF /* MnemonicTests.swift */,
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
 			path = EthereumKitTests;
@@ -599,6 +602,7 @@
 			files = (
 				AE005726204EE61D007AA468 /* TransactionSigningTests.swift in Sources */,
 				AE0057382053A5E4007AA468 /* WalletTests.swift in Sources */,
+				AEB4C5DF20C03D62001D96BF /* MnemonicTests.swift in Sources */,
 				AE005720204D7D59007AA468 /* RLPTests.swift in Sources */,
 				AE0057362053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift in Sources */,
 				0AA12014206BFE800052AE8B /* CryptoTests.swift in Sources */,
