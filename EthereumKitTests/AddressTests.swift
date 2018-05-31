@@ -12,7 +12,7 @@ class AddressTests: XCTestCase {
     func testAddressGeneration() {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = HDWallet(seed: seed, network: .main)
         
         let firstAddress = try! wallet.generateAddress(at: 0)

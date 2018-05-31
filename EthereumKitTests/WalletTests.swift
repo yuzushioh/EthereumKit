@@ -4,7 +4,7 @@ import XCTest
 class WalletTests: XCTestCase {
     func testWalletAddressGeneration() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         let hdWallet = HDWallet(seed: seed, network: .ropsten)
@@ -15,7 +15,7 @@ class WalletTests: XCTestCase {
     
     func testWalletAddressGeneration2() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         
         let wallet = try! Wallet(seed: seed, network: .main, debugPrints: false)
         let hdWallet = HDWallet(seed: seed, network: .main)

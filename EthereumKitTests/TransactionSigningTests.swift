@@ -230,7 +230,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigningWithWallet() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
@@ -252,7 +252,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigningWithWallet1() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
@@ -274,7 +274,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigningWithWallet2() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         
         // PrivateKey: - 0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c
@@ -296,7 +296,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigningWithWallet3() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         
         let rawTransaction = RawTransaction(
@@ -316,7 +316,7 @@ class TransactionSigningTests: XCTestCase {
     
     func testTransactionSigningWithWallet4() {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
-        let seed = Mnemonic.createSeed(mnemonic: mnemonic)
+        let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = try! Wallet(seed: seed, network: .ropsten, debugPrints: false)
         
         let rawTransaction = RawTransaction(
