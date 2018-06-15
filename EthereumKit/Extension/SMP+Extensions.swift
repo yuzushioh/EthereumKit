@@ -36,20 +36,3 @@ extension BInt: Codable {
         try container.encode(asString(withBase: 10), forKey: .bigInt)
     }
 }
-
-extension BDouble: Codable {
-    private enum CodingKeys: String, CodingKey {
-        case bigDouble
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let string = try container.decode(String.self, forKey: .bigDouble)
-        self = BDouble(string)!
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(decimalDescription, forKey: .bigDouble)
-    }
-}

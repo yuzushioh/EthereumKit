@@ -1,8 +1,9 @@
 extension String {
     public func stripHexPrefix() -> String {
         var hex = self
-        while hex.first == "0" || hex.first == "x" {
-            hex = String(hex.dropFirst())
+        let prefix = "0x"
+        if hex.hasPrefix(prefix) {
+            hex = String(hex.dropFirst(prefix.count))
         }
         return hex
     }

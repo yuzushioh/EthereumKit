@@ -1,3 +1,5 @@
+import CryptoEthereumSwift
+
 public struct HDPrivateKey {
     public let raw: Data
     public let chainCode: Data

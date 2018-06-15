@@ -11,7 +11,7 @@ class CryptoTests: XCTestCase {
 extension CryptoTests {
     private func privateKey() -> HDPrivateKey {
         let words = Mnemonic.create()
-        let seed = Mnemonic.createSeed(mnemonic: words)
+        let seed = try! Mnemonic.createSeed(mnemonic: words)
         return HDPrivateKey(seed: seed, network: .main)
     }
 

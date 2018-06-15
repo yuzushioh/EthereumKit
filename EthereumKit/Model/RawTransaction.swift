@@ -43,7 +43,7 @@ extension RawTransaction {
     }
     
     public init(ether: String, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
-        self.init(wei: Converter.toWei(ether: Ether(ether)!).description, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce, data: data)
+        self.init(wei: Converter.toWei(ether: Ether(string: ether)!).description, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce, data: data)
     }
 }
 

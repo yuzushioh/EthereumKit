@@ -1,5 +1,5 @@
 // Online Converter: https://etherconverter.online
-public typealias Ether = BDouble
+public typealias Ether = Decimal
 public typealias Wei = BInt
 
 extension Wei {
@@ -9,14 +9,20 @@ extension Wei {
 }
 
 public final class Converter {
-    private static let etherInWei = Wei(number: "1000000000000000000", withBase: 10)!
+    private static let etherInWei = Decimal(1000000000000000000)
     
     public static func toEther(wei: Wei) -> Ether {
-        return Ether(wei, over: etherInWei)
+        guard let decimalWei = Decimal(string: wei.description)else {
+            fatalError("Failed to convert Wei to Ether")
+        }
+        return decimalWei / etherInWei
     }
     
     public static func toWei(ether: Ether) -> Wei {
-        return (ether * Ether(etherInWei.description)!).rounded()
+        guard let wei = Wei((ether * etherInWei).description) else {
+            fatalError("Faied to convert Ether to Wei")
+        }
+        return wei
     }
     
     // Only used for calcurating gas price and gas limit.

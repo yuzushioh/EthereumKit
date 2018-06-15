@@ -1,5 +1,3 @@
-import EthereumKit.Private
-
 /// Represents a private key
 public struct PrivateKey {
     

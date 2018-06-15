@@ -33,7 +33,11 @@ public final class Mnemonic {
         return mnemonic
     }
     
-    public static func createSeed(mnemonic: [String], withPassphrase passphrase: String = "") -> Data {
+    public static func createSeed(mnemonic: [String], withPassphrase passphrase: String = "") throws -> Data {
+        let words = WordList.english.words + WordList.japanese.words
+        guard !mnemonic.map({ words.contains($0) }).contains(false) else {
+            throw EthereumKitError.cryptoError(.invalidMnemonic)
+        }
         let password = mnemonic.joined(separator: " ").toData()
         let salt = ("mnemonic" + passphrase).toData()
         return Crypto.PBKDF2SHA512(password, salt: salt)
