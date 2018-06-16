@@ -39,12 +39,12 @@ public struct ERC20 {
     /// Generate transaction data for ERC20 token
     ///
     /// - Parameter:
-    ///    - to: address you are transfering to
+    ///    - toAddress: address you are transfering to
     ///    - amount: amount to send
     /// - Returns: transaction data
-    public func generateDataParameter(with to: String, amount: String) throws -> Data {
+    public func generateDataParameter(toAddress: String, amount: String) throws -> Data {
         let method = transferSigniture.toHexString()
-        let address = pad(string: to.stripHexPrefix())
+        let address = pad(string: toAddress.stripHexPrefix())
         
         let poweredAmount = try power(amount: amount)
         let amount = pad(string: poweredAmount.serialize().toHexString())
