@@ -20,7 +20,13 @@ public enum EthereumKitError: Error {
         case invalidMnemonic
     }
     
+    public enum ContractError: Error {
+        case containsInvalidCharactor(Any)
+        case invalidDecimalValue(Any)
+    }
+    
     case requestError(RequestError)
     case responseError(ResponseError)
     case cryptoError(CryptoError)
+    case contractError(ContractError)
 }
