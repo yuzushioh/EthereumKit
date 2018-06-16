@@ -40,6 +40,7 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 - [EIP55](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-55.md) format address encoding
 - [EIP155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md) replay attack protection
 - Sign transaction
+- ERC20 token transfer
 
 ## Documentations
 
