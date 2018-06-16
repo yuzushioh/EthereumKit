@@ -12,17 +12,19 @@ let seed = Mnemonic.createSeed(mnemonic: mnemonic)
 
 // BIP32: Key derivation and address generation
 
-let wallet: Wallet
-do {
-    wallet = try Wallet(seed: seed, network: .main)
-} catch let error {
-    fatalError("Error: \(error.localizedDescription)")
-}
+let wallet = try! Wallet(seed: seed, network: .main)
 
 // Send some ether
-let rawTransaction = RawTransaction(ether: "0.15", to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: 0)
-let tx = try wallet.signTransaction(rawTransaction)
 
+let rawTransaction = RawTransaction(
+    ether: try! Converter.toWei(ether: "0.00001"), 
+    to: address, 
+    gasPrice: Converter.toWei(GWei: 10), 
+    gasLimit: 21000, 
+    nonce: 0
+)
+
+let tx = try! wallet.signTransaction(rawTransaction)
 geth.sendRawTransaction(rawTransaction: tx) { result in 
     // Do something...
 }

@@ -24,9 +24,9 @@ public struct RawTransaction {
 }
 
 extension RawTransaction {
-    public init(value: Wei, to: Address, gasPrice: Int, gasLimit: Int, nonce: Int) {
+    public init(value: Wei, to: String, gasPrice: Int, gasLimit: Int, nonce: Int) {
         self.value = value
-        self.to = to
+        self.to = Address(string: to)
         self.gasPrice = gasPrice
         self.gasLimit = gasLimit
         self.nonce = nonce
@@ -40,10 +40,6 @@ extension RawTransaction {
         self.gasLimit = gasLimit
         self.nonce = nonce
         self.data = data
-    }
-    
-    public init(ether: String, to: String, gasPrice: Int, gasLimit: Int, nonce: Int, data: Data = Data()) {
-        self.init(wei: Converter.toWei(ether: Ether(string: ether)!).description, to: to, gasPrice: gasPrice, gasLimit: gasLimit, nonce: nonce, data: data)
     }
 }
 

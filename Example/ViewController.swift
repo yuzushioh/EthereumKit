@@ -55,7 +55,14 @@ class ViewController: UIViewController {
         geth.getTransactionCount(of: address) { result in
             switch result {
             case .success(let nonce):
-                let rawTransaction = RawTransaction(ether: "0.0001", to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: nonce)
+                let wei: BInt
+                do {
+                    wei = try Converter.toWei(ether: "0.00001")
+                } catch let error {
+                    fatalError("Error: \(error.localizedDescription)")
+                }
+                
+                let rawTransaction = RawTransaction(value: wei, to: address, gasPrice: Converter.toWei(GWei: 10), gasLimit: 21000, nonce: nonce)
                 let tx: String
                 do {
                     tx = try wallet.sign(rawTransaction: rawTransaction)

@@ -7,7 +7,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning() {
         let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
-            to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            to: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 5
@@ -39,7 +39,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning2() {
         let rawTransaction = RawTransaction(
             value: Wei("100000000000000000")!,
-            to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
+            to: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 5
@@ -71,7 +71,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning3() {
         let rawTransaction = RawTransaction(
             value: Wei("500000000000000000")!,
-            to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
+            to: "0xfc9d3987f7fcd9181393084a94814385b28cEf81",
             gasPrice: 99000000000,
             gasLimit: 200000,
             nonce: 5
@@ -103,7 +103,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning4() {
         let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
-            to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            to: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 0
@@ -135,7 +135,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning5() {
         let rawTransaction = RawTransaction(
             value: Wei("1000000000000000000")!,
-            to: Address(string: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA"),
+            to: "0x3B958949EfCc8362Dd05179cCE8eB5e16BefeBdA",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 0
@@ -167,7 +167,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning6() {
         let rawTransaction = RawTransaction(
             value: Wei("5000000000000000000")!,
-            to: Address(string: "0xfc9d3987f7fcd9181393084a94814385b28cEf81"),
+            to: "0xfc9d3987f7fcd9181393084a94814385b28cEf81",
             gasPrice: 99000000000,
             gasLimit: 200000,
             nonce: 0
@@ -199,7 +199,7 @@ class TransactionSigningTests: XCTestCase {
     func testTransactionSigning7() {
         let rawTransaction = RawTransaction(
             value: Wei("1000000000000000")!,
-            to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 0

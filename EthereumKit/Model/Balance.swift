@@ -5,8 +5,8 @@ public struct Balance {
     public let wei: Wei
     
     /// User's balance in ether unit
-    public var ether: Ether {
-        return Converter.toEther(wei: wei)
+    func ether() throws -> Ether {
+        return try Converter.toEther(wei: wei)
     }
 }
 

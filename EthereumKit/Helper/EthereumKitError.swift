@@ -25,8 +25,13 @@ public enum EthereumKitError: Error {
         case invalidDecimalValue(Any)
     }
     
+    public enum ConvertError: Error {
+        case failedToConvert(Any)
+    }
+    
     case requestError(RequestError)
     case responseError(ResponseError)
     case cryptoError(CryptoError)
     case contractError(ContractError)
+    case convertError(ConvertError)
 }

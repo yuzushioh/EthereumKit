@@ -7,7 +7,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction1 = RawTransaction(
             value: Wei("10000000000000000")!,
-            to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            to: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 2
@@ -20,7 +20,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction2 = RawTransaction(
             value: Wei("10000000000000000")!,
-            to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 4
@@ -33,7 +33,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction3 = RawTransaction(
             value: Wei("10000000000000000")!,
-            to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
+            to: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 25
@@ -50,7 +50,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction1 = RawTransaction(
             value: Wei("10000000000000000")!,
-            to: Address(string: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F"),
+            to: "0x91c79f31De5208fadCbF83f0a7B0A9b6d8aBA90F",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 2
@@ -63,7 +63,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction2 = RawTransaction(
             value: Wei("10000000000000000")!,
-            to: Address(string: "0x88b44BC83add758A3642130619D61682282850Df"),
+            to: "0x88b44BC83add758A3642130619D61682282850Df",
             gasPrice: 99000000000,
             gasLimit: 200000,
             nonce: 4
@@ -76,7 +76,7 @@ class EIP155SignerTests: XCTestCase {
         
         let rawTransaction3 = RawTransaction(
             value: Wei("20000000000000000")!,
-            to: Address(string: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1"),
+            to: "0x72AAb5461F9bE958E1c375285CC2aA7De89D02A1",
             gasPrice: 99000000000,
             gasLimit: 21000,
             nonce: 25
