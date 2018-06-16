@@ -42,6 +42,7 @@ geth.sendRawTransaction(rawTransaction: tx) { result in
 ## Documentations
 
 - [Getting Started](Documentation/GettingStarted.md)
+- [ERC20 Token](Documentation/ERC20.md)
 - [JSONRPC API](Documentation/JSONRPC.md)
 - [Etherscan API](Documentation/Etherscan.md)
 
