@@ -69,15 +69,15 @@ class EthereumKitTests: XCTestCase {
     }
     
     func testBalance() {
-        let firstBalanceHex = "0x0000000000000000000000000000000000000000000000000DE0B6B3A7640000" // 1ether = 1000000000000000000wei
+        let firstBalanceHex = "0x0000000000000000000000000000000000000000000000000DE0B6B3A7640000" // 1ether = 1000000000000000000 wei
         let firstBalanceWei = Wei(str: firstBalanceHex.lowercased().stripHexPrefix(), radix: 16)!
         let firstBalance = Balance(wei: firstBalanceWei)
         XCTAssertEqual(firstBalance.wei, Wei(number: "1000000000000000000", withBase: 10))
-        XCTAssertEqual(firstBalance.ether, Ether(1))
-        let secondBalanceHex = "0x0000000000000000000000000000000000000000000000056BC75E2D63100000" // 100ether = 100000000000000000000wei
+        XCTAssertEqual(try! firstBalance.ether(), Ether(1))
+        let secondBalanceHex = "0x0000000000000000000000000000000000000000000000056BC75E2D63100000" // 100ether = 100000000000000000000 wei
         let secondBalanceWei = Wei(str: secondBalanceHex.lowercased().stripHexPrefix(), radix: 16)!
         let secondBalance = Balance(wei: secondBalanceWei)
         XCTAssertEqual(secondBalance.wei, Wei(number: "100000000000000000000", withBase: 10))
-        XCTAssertEqual(secondBalance.ether, Ether(100))
+        XCTAssertEqual(try! secondBalance.ether(), Ether(100))
     }
 }

@@ -7,7 +7,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Wei {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
+            guard let response = resultObject as? String, let wei = Wei(response.lowercased().stripHexPrefix(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return wei
@@ -29,7 +29,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Balance {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
+            guard let response = resultObject as? String, let wei = Wei(response.lowercased().stripHexPrefix(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return Balance(wei: wei)
@@ -173,7 +173,7 @@ public final class JSONRPC {
         }
         
         public func response(from resultObject: Any) throws -> Wei {
-            guard let response = resultObject as? String, let wei = Wei(hex: response.lowercased().stripHexPrefix()) else {
+            guard let response = resultObject as? String, let wei = Wei(response.lowercased().stripHexPrefix(), radix: 16) else {
                 throw JSONRPCError.unexpectedTypeObject(resultObject)
             }
             return wei

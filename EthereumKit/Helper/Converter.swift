@@ -2,27 +2,31 @@
 public typealias Ether = Decimal
 public typealias Wei = BInt
 
-extension Wei {
-    public init?(hex: String) {
-        self.init(hex, radix: 16)
-    }
-}
-
 public final class Converter {
     private static let etherInWei = Decimal(1000000000000000000)
     
-    public static func toEther(wei: Wei) -> Ether {
-        guard let decimalWei = Decimal(string: wei.description)else {
-            fatalError("Failed to convert Wei to Ether")
+    /// Convert Wei(BInt) unit to Ether(Decimal) unit
+    public static func toEther(wei: Wei) throws -> Ether {
+        guard let decimalWei = Decimal(string: wei.description) else {
+            throw EthereumKitError.convertError(.failedToConvert(wei.description))
         }
         return decimalWei / etherInWei
     }
     
-    public static func toWei(ether: Ether) -> Wei {
+    /// Convert Ether(Decimal) unit to Wei(BInt) unit
+    public static func toWei(ether: Ether) throws -> Wei {
         guard let wei = Wei((ether * etherInWei).description) else {
-            fatalError("Faied to convert Ether to Wei")
+            throw EthereumKitError.convertError(.failedToConvert(ether * etherInWei))
         }
         return wei
+    }
+    
+    /// Convert Ether(String) unit to Wei(BInt) unit
+    public static func toWei(ether: String) throws -> Wei {
+        guard let decimalEther = Decimal(string: ether) else {
+            throw EthereumKitError.convertError(.failedToConvert(ether))
+        }
+        return try toWei(ether: decimalEther)
     }
     
     // Only used for calcurating gas price and gas limit.
