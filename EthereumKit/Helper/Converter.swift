@@ -3,7 +3,9 @@ public typealias Ether = Decimal
 public typealias Wei = BInt
 
 public final class Converter {
-    private static let etherInWei = Decimal(1000000000000000000)
+    
+    // NOTE: calculate wei by 10^18
+    private static let etherInWei = pow(Decimal(10), 18)
     
     /// Convert Wei(BInt) unit to Ether(Decimal) unit
     public static func toEther(wei: Wei) throws -> Ether {
