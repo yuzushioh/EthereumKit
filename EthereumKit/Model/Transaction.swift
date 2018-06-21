@@ -158,6 +158,10 @@ public struct Transactions {
     
     // Transactions
     public let elements: [Transaction]
+    
+    public init(elements: [Transaction]) {
+        self.elements = elements
+    }
 }
 
 extension Transactions: Codable {
