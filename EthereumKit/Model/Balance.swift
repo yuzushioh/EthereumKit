@@ -8,6 +8,10 @@ public struct Balance {
     public func ether() throws -> Ether {
         return try Converter.toEther(wei: wei)
     }
+    
+    public init(wei: Wei) {
+        self.wei = wei
+    }
 }
 
 extension Balance: Codable {

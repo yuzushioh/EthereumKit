@@ -55,6 +55,32 @@ public struct Transaction {
     /// Value of this tx, unit of wei
     public let value: String
     
+    public init(
+        blockHash: String, blockNumber: String, hash: String, input: String, confirmations: String,
+        nonce: String, timeStamp: String, contractAddress: String, from: String, to: String, gas: String,
+        gasPrice: String, gasUsed: String, cumulativeGasUsed: String, isError: String, transactionIndex: String,
+        txReceiptStatus: String, value: String) {
+        
+        self.blockHash = blockHash
+        self.blockNumber = blockNumber
+        self.hash = hash
+        self.input = input
+        self.confirmations = confirmations
+        self.nonce = nonce
+        self.timeStamp = timeStamp
+        self.contractAddress = contractAddress
+        self.from = from
+        self.to = to
+        self.gas = gas
+        self.gasPrice = gasPrice
+        self.gasUsed = gasUsed
+        self.cumulativeGasUsed = cumulativeGasUsed
+        self.isError = isError
+        self.transactionIndex = transactionIndex
+        self.txReceiptStatus = txReceiptStatus
+        self.value = value
+    }
+    
     public var balance: Balance {
         return Balance(wei: BInt(number: value, withBase: 10)!)
     }
