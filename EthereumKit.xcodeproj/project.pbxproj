@@ -25,6 +25,7 @@
 		AE00573420539993007AA468 /* HDWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE00573320539993007AA468 /* HDWallet.swift */; };
 		AE0057362053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */; };
 		AE0057382053A5E4007AA468 /* WalletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0057372053A5E4007AA468 /* WalletTests.swift */; };
+		AE1270E920E8B1CA00487956 /* HDPublicKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1270E820E8B1CA00487956 /* HDPublicKeyTests.swift */; };
 		AE14A60D206F552D003A63FF /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A60A206F552D003A63FF /* CryptoSwift.framework */; };
 		AE14A610206F5555003A63FF /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A60A206F552D003A63FF /* CryptoSwift.framework */; };
 		AE14A611206F5555003A63FF /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE14A60A206F552D003A63FF /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -149,6 +150,7 @@
 		AE00573320539993007AA468 /* HDWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDWallet.swift; sourceTree = "<group>"; };
 		AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeyAndPublicKeyTests.swift; sourceTree = "<group>"; };
 		AE0057372053A5E4007AA468 /* WalletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTests.swift; sourceTree = "<group>"; };
+		AE1270E820E8B1CA00487956 /* HDPublicKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDPublicKeyTests.swift; sourceTree = "<group>"; };
 		AE14A60A206F552D003A63FF /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		AE14A6232070A98D003A63FF /* English.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = English.swift; sourceTree = "<group>"; };
 		AE14A6252070A9AE003A63FF /* Japanese.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Japanese.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				0AA12013206BFE800052AE8B /* CryptoTests.swift */,
 				AE0057372053A5E4007AA468 /* WalletTests.swift */,
 				AE0057352053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift */,
+				AE1270E820E8B1CA00487956 /* HDPublicKeyTests.swift */,
 				AE00571F204D7D59007AA468 /* RLPTests.swift */,
 				AE005721204D82A1007AA468 /* EIP155SignerTests.swift */,
 				AE005723204D852E007AA468 /* AddressTests.swift */,
@@ -635,6 +638,7 @@
 				AE53C96C20D4CF1C00714EF4 /* NetworkTests.swift in Sources */,
 				AE5EE9C120DB8615007F9D72 /* RawTransactionTests.swift in Sources */,
 				AE1F8C21208CDA0C0088A043 /* MessageSigningTests.swift in Sources */,
+				AE1270E920E8B1CA00487956 /* HDPublicKeyTests.swift in Sources */,
 				AE5EE9BF20DB84C2007F9D72 /* BlockParameterTests.swift in Sources */,
 				AE5EE9BD20DB8425007F9D72 /* BalanceTests.swift in Sources */,
 				AE3EB60720AC941A00D61CE6 /* ERC20Tests.swift in Sources */,
