@@ -7,6 +7,13 @@ public struct Address {
     /// Address in string format, EIP55 encoded
     public let string: String
     
+    public init(data: Data, string: String) {
+        self.data = data
+        self.string = string
+    }
+}
+
+extension Address {
     public init(data: Data) {
         self.data = data
         self.string = "0x" + EIP55.encode(data)

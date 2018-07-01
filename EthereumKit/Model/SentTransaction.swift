@@ -3,4 +3,8 @@ public struct SentTransaction {
     
     /// Transaction ID published when broadcasting raw tx
     public let id: String
+    
+    public init(id: String) {
+        self.id = id
+    }
 }
