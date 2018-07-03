@@ -1,0 +1,9 @@
+language: 
+	swift
+osx_image: 
+	xcode9.3
+before_install:
+	carthage update --platform ios
+script:
+  	set -o pipefail &&
+ 	 xcodebuild -xcodeproj EthereumKit.xcodeproj -scheme "EthereumKit" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 8" test | xcpretty
