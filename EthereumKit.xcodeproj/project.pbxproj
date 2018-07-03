@@ -48,6 +48,7 @@
 		AE35422F20300E4900007B80 /* EIP55.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35422E20300E4900007B80 /* EIP55.swift */; };
 		AE3EB60320AC8D3600D61CE6 /* ERC20.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EB60220AC8D3600D61CE6 /* ERC20.swift */; };
 		AE3EB60720AC941A00D61CE6 /* ERC20Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3EB60620AC941A00D61CE6 /* ERC20Tests.swift */; };
+		AE4B2E8720EB5DF60080F3EA /* BIP32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B2E8620EB5DF60080F3EA /* BIP32Tests.swift */; };
 		AE53C96C20D4CF1C00714EF4 /* NetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE53C96B20D4CF1C00714EF4 /* NetworkTests.swift */; };
 		AE5EE9BD20DB8425007F9D72 /* BalanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5EE9BC20DB8425007F9D72 /* BalanceTests.swift */; };
 		AE5EE9BF20DB84C2007F9D72 /* BlockParameterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5EE9BE20DB84C2007F9D72 /* BlockParameterTests.swift */; };
@@ -171,6 +172,7 @@
 		AE35422E20300E4900007B80 /* EIP55.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EIP55.swift; sourceTree = "<group>"; };
 		AE3EB60220AC8D3600D61CE6 /* ERC20.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20.swift; sourceTree = "<group>"; };
 		AE3EB60620AC941A00D61CE6 /* ERC20Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20Tests.swift; sourceTree = "<group>"; };
+		AE4B2E8620EB5DF60080F3EA /* BIP32Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIP32Tests.swift; sourceTree = "<group>"; };
 		AE53C96B20D4CF1C00714EF4 /* NetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTests.swift; sourceTree = "<group>"; };
 		AE5EE9BC20DB8425007F9D72 /* BalanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceTests.swift; sourceTree = "<group>"; };
 		AE5EE9BE20DB84C2007F9D72 /* BlockParameterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockParameterTests.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				AE5EE9BE20DB84C2007F9D72 /* BlockParameterTests.swift */,
 				AE5EE9C020DB8615007F9D72 /* RawTransactionTests.swift */,
 				AE5EE9C220DB86E7007F9D72 /* TransactionTests.swift */,
+				AE4B2E8620EB5DF60080F3EA /* BIP32Tests.swift */,
 				AE5EE9C420DB882F007F9D72 /* SentTransactionTests.swift */,
 				AE90A0791FFA698D005ED7AF /* Info.plist */,
 			);
@@ -633,6 +636,7 @@
 				AE5EE9C320DB86E7007F9D72 /* TransactionTests.swift in Sources */,
 				AE005720204D7D59007AA468 /* RLPTests.swift in Sources */,
 				AE0057362053A510007AA468 /* PrivateKeyAndPublicKeyTests.swift in Sources */,
+				AE4B2E8720EB5DF60080F3EA /* BIP32Tests.swift in Sources */,
 				AE5EE9C520DB882F007F9D72 /* SentTransactionTests.swift in Sources */,
 				0AA12014206BFE800052AE8B /* CryptoTests.swift in Sources */,
 				AE53C96C20D4CF1C00714EF4 /* NetworkTests.swift in Sources */,
