@@ -4,6 +4,21 @@ public enum Network {
     case kovan
     case `private`(chainID: Int, testUse: Bool)
     
+    public init?(name: String, chainID: Int = 0, testUse: Bool = false) {
+        switch name {
+        case "main":
+            self = .main
+        case "ropsten":
+            self = .ropsten
+        case "kovan":
+            self = .kovan
+        case "private":
+            self = .private(chainID: chainID, testUse: testUse)
+        default:
+            return nil
+        }
+    }
+    
     // https://github.com/satoshilabs/slips/blob/master/slip-0044.md
     public var coinType: UInt32 {
         let mainnetCoinType = UInt32(60)
@@ -57,6 +72,19 @@ public enum Network {
             return 42
         case .private(let chainID, _):
             return chainID
+        }
+    }
+}
+
+extension Network: Equatable {
+    public static func == (lhs: Network, rhs: Network) -> Bool {
+        switch (lhs, rhs) {
+        case (.main, .main), (.ropsten, .ropsten), (.kovan, .kovan):
+            return true
+        case (.private(let firstChainID, let firstTestUse), .private(let secondChainID, let secondTestUse)):
+            return firstChainID == secondChainID && firstTestUse == secondTestUse
+        default:
+            return false
         }
     }
 }
