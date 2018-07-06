@@ -4,6 +4,21 @@ public enum Network {
     case kovan
     case `private`(chainID: Int, testUse: Bool)
     
+    public init?(name: String, chainID: Int = 0, testUse: Bool = false) {
+        switch name {
+        case "main":
+            self = .main
+        case "ropsten":
+            self = .ropsten
+        case "kovan":
+            self = .kovan
+        case "private":
+            self = .private(chainID: chainID, testUse: testUse)
+        default:
+            return nil
+        }
+    }
+    
     // https://github.com/satoshilabs/slips/blob/master/slip-0044.md
     public var coinType: UInt32 {
         let mainnetCoinType = UInt32(60)
