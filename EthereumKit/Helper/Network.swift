@@ -75,3 +75,16 @@ public enum Network {
         }
     }
 }
+
+extension Network: Equatable {
+    public static func == (lhs: Network, rhs: Network) -> Bool {
+        switch (lhs, rhs) {
+        case (.main, .main), (.ropsten, .ropsten), (.kovan, .kovan):
+            return true
+        case (.private(let firstChainID, let firstTestUse), .private(let secondChainID, let secondTestUse)):
+            return firstChainID == secondChainID && firstTestUse == secondTestUse
+        default:
+            return false
+        }
+    }
+}
