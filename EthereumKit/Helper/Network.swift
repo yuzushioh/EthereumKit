@@ -62,6 +62,19 @@ public enum Network {
         }
     }
     
+    public var name: String {
+        switch self {
+        case .mainnet:
+            return "Mainnet"
+        case .ropsten:
+            return "Ropsten"
+        case .kovan:
+            return "Kovan"
+        case .private(_, _):
+            return "Privatenet"
+        }
+    }
+    
     public var chainID: Int {
         switch self {
         case .mainnet:
