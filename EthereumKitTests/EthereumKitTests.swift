@@ -40,7 +40,7 @@ class EthereumKitTests: XCTestCase {
         let entropy = Data(hex: "000102030405060708090a0b0c0d0e0f")
         let mnemonic = Mnemonic.create(entropy: entropy)
         let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
-        let privateKey = HDPrivateKey(seed: seed, network: .main)
+        let privateKey = HDPrivateKey(seed: seed, network: .mainnet)
         
         // BIP44 key derivation
         // m/44'
