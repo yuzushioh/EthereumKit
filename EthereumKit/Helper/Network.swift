@@ -1,5 +1,5 @@
 public enum Network {
-    case main
+    case mainnet
     case ropsten
     case kovan
     case `private`(chainID: Int, testUse: Bool)
@@ -7,7 +7,7 @@ public enum Network {
     public init?(name: String, chainID: Int = 0, testUse: Bool = false) {
         switch name {
         case "main":
-            self = .main
+            self = .mainnet
         case "ropsten":
             self = .ropsten
         case "kovan":
@@ -25,7 +25,7 @@ public enum Network {
         let testnetCoinType = UInt32(1)
         
         switch self {
-        case .main:
+        case .mainnet:
             return mainnetCoinType
         case .ropsten, .kovan:
             return testnetCoinType
@@ -39,7 +39,7 @@ public enum Network {
         let testnetPrefix: UInt32 = 0x04358394
         
         switch self {
-        case .main:
+        case .mainnet:
             return mainnetPrefix
         case .ropsten, .kovan:
             return testnetPrefix
@@ -53,7 +53,7 @@ public enum Network {
         let testnetPrefix: UInt32 = 0x043587cf
         
         switch self {
-        case .main:
+        case .mainnet:
             return mainnetPrefix
         case .ropsten, .kovan:
             return testnetPrefix
@@ -62,9 +62,22 @@ public enum Network {
         }
     }
     
+    public var name: String {
+        switch self {
+        case .mainnet:
+            return "Mainnet"
+        case .ropsten:
+            return "Ropsten"
+        case .kovan:
+            return "Kovan"
+        case .private(_, _):
+            return "Privatenet"
+        }
+    }
+    
     public var chainID: Int {
         switch self {
-        case .main:
+        case .mainnet:
             return 1
         case .ropsten:
             return 3
@@ -79,7 +92,7 @@ public enum Network {
 extension Network: Equatable {
     public static func == (lhs: Network, rhs: Network) -> Bool {
         switch (lhs, rhs) {
-        case (.main, .main), (.ropsten, .ropsten), (.kovan, .kovan):
+        case (.mainnet, .mainnet), (.ropsten, .ropsten), (.kovan, .kovan):
             return true
         case (.private(let firstChainID, let firstTestUse), .private(let secondChainID, let secondTestUse)):
             return firstChainID == secondChainID && firstTestUse == secondTestUse

@@ -4,7 +4,7 @@ import XCTest
 final class NetworkTests: XCTestCase {
     
     func testMainnet() {
-        let network = Network.main
+        let network = Network.mainnet
         XCTAssert(network.chainID == 1)
         XCTAssert(network.coinType == 60)
         XCTAssert(network.privateKeyPrefix == 0x0488ade4)
@@ -46,7 +46,7 @@ final class NetworkTests: XCTestCase {
     func testNetworkInitializer() {
         let mainNetwork = Network(name: "main")
         XCTAssertNotNil(mainNetwork)
-        XCTAssertEqual(mainNetwork, Network.main)
+        XCTAssertEqual(mainNetwork, Network.mainnet)
         
         let ropstenNetwork = Network(name: "ropsten")
         XCTAssertNotNil(ropstenNetwork)

@@ -12,7 +12,7 @@ extension CryptoTests {
     private func privateKey() -> HDPrivateKey {
         let words = Mnemonic.create()
         let seed = try! Mnemonic.createSeed(mnemonic: words)
-        return HDPrivateKey(seed: seed, network: .main)
+        return HDPrivateKey(seed: seed, network: .mainnet)
     }
 
     private func assertValidatesSignature(compressed: Bool, line: UInt = #line) {

@@ -12,7 +12,7 @@ final class HDPublicKeyTests: XCTestCase {
     private var mainnetMasterPrivateKey: HDPrivateKey = {
         let mnemonic = Mnemonic.create(entropy: Data(hex: "000102030405060708090a0b0c0d0e0f"))
         let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
-        return HDPrivateKey(seed: seed, network: .main)
+        return HDPrivateKey(seed: seed, network: .mainnet)
     }()
     
     // BIP32 path m/44'/1'/0'/0
