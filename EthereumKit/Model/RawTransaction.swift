@@ -67,6 +67,8 @@ extension RawTransaction: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(value, forKey: .value)
         try container.encode(to, forKey: .to)
+        try container.encode(gasPrice, forKey: .gasPrice)
+        try container.encode(gasLimit, forKey: .gasLimit)
         try container.encode(nonce, forKey: .nonce)
         try container.encode(data, forKey: .data)
     }
