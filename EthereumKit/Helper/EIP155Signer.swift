@@ -12,7 +12,7 @@ public struct EIP155Signer {
         let transactionHash = try hash(rawTransaction: rawTransaction)
         let signiture = try privateKey.sign(hash: transactionHash)
         
-        let (r, s, v) = calculateRSV(signiture: signiture)
+        let (r, s, v) = calculateRSV(signature: signiture)
         return try RLP.encode([
             rawTransaction.nonce,
             rawTransaction.gasPrice,
@@ -29,22 +29,29 @@ public struct EIP155Signer {
     }
     
     public func encode(rawTransaction: RawTransaction) throws -> Data {
-        return try RLP.encode([
+        var toEncode: [Any] = [
             rawTransaction.nonce,
             rawTransaction.gasPrice,
             rawTransaction.gasLimit,
             rawTransaction.to.data,
             rawTransaction.value,
-            rawTransaction.data,
-            chainID, 0, 0 // EIP155
-        ])
+            rawTransaction.data]
+        if chainID != 0 {
+            toEncode.append(contentsOf: [chainID, 0, 0 ]) // EIP155
+        }
+        return try RLP.encode(toEncode)
     }
-    
+
+    @available(*, deprecated, renamed: "calculateRSV(signature:)")
     public func calculateRSV(signiture: Data) -> (r: BInt, s: BInt, v: BInt) {
+        return calculateRSV(signature: signiture)
+    }
+
+    public func calculateRSV(signature: Data) -> (r: BInt, s: BInt, v: BInt) {
         return (
-            r: BInt(str: signiture[..<32].toHexString(), radix: 16)!,
-            s: BInt(str: signiture[32..<64].toHexString(), radix: 16)!,
-            v: BInt(signiture[64]) + 35 + 2 * chainID
+            r: BInt(str: signature[..<32].toHexString(), radix: 16)!,
+            s: BInt(str: signature[32..<64].toHexString(), radix: 16)!,
+            v: BInt(signature[64]) + (chainID == 0 ? 27 : (35 + 2 * chainID))
         )
     }
 

@@ -19,7 +19,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -51,7 +51,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -83,7 +83,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -115,7 +115,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -147,7 +147,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -179,7 +179,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "db173e58671248b48d2494b63a99008be473268581ca1eb78ed0b92e03b13bbc")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
@@ -211,7 +211,7 @@ class TransactionSigningTests: XCTestCase {
             privateKey: Data(hex: "0ac03c260512582a94295185cfa899e0cb8067a89a61b7b5435ec524c088203c")
         )
         
-        let (r, s, v) = signer.calculateRSV(signiture: signiture)
+        let (r, s, v) = signer.calculateRSV(signature: signiture)
         
         let data = try! RLP.encode([
             rawTransaction.nonce,
