@@ -20,7 +20,7 @@ public struct PublicKey {
     /// generates address from its public key
     ///
     /// - Returns: address in string format
-    public func generateAddress() -> String {
+    public func address() -> String {
         return Address(data: addressData).string
     }
     
