@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         }
         
         // Generate an address, or private key by simply calling
-        let address = wallet.generateAddress()
+        let address = wallet.address()
         
         // Create an instance of `Geth` with `Configuration`.
         // In configuration, specify

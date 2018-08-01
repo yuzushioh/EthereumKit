@@ -15,16 +15,16 @@ class AddressTests: XCTestCase {
         let seed = try! Mnemonic.createSeed(mnemonic: mnemonic)
         let wallet = HDWallet(seed: seed, network: .mainnet)
         
-        let firstAddress = try! wallet.generateAddress(at: 0)
+        let firstAddress = try! wallet.address(at: 0)
         XCTAssertEqual(firstAddress, "0x83f1caAdaBeEC2945b73087F803d404F054Cc2B7")
         
-        let secondAddress = try! wallet.generateAddress(at: 1)
+        let secondAddress = try! wallet.address(at: 1)
         XCTAssertEqual(secondAddress, "0xb3c3D923CFc4d551b38Db8A86BbA42B623D063cE")
         
-        let thirdAddress = try! wallet.generateAddress(at: 2)
+        let thirdAddress = try! wallet.address(at: 2)
         XCTAssertEqual(thirdAddress, "0x82e35B34CfBEB9704E51Eb17f8263d919786E66a")
         
-        let forthAddress = try! wallet.generateAddress(at: 3)
+        let forthAddress = try! wallet.address(at: 3)
         XCTAssertEqual(forthAddress, "0xCF1D652DAb65ea4f10990FD2D2E59Cd7cbEb315a")
     }
 }
