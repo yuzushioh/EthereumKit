@@ -117,7 +117,31 @@ extension Wallet {
     }
 }
 
-// MARK :- Sign personal message
+// MARK :- Sign message
+
+extension Wallet {
+    
+    /// Sign a provided hex
+    ///
+    /// - Parameter hex: hex value to sign (hex format)
+    /// - Returns: signature in string format
+    /// - Throws: EthereumKitError.failedToEncode when failed to encode
+    public func sign(hex: String) throws -> String {
+        let hash = Crypto.hashSHA3_256(Data(hex: hex.stripHexPrefix()))
+        return try key.sign(hash: hash).toHexString()
+    }
+    
+    /// Sign a provided message
+    ///
+    /// - Parameter message: message to sign (string format)
+    /// - Returns: signature in string format
+    /// - Throws: EthereumKitError.failedToEncode when failed to encode
+    public func sign(message: String) throws -> String {
+        return try sign(hex: message.toHexString())
+    }
+}
+
+// MARK :- Personal-sign message
 
 extension Wallet {
     
@@ -127,7 +151,7 @@ extension Wallet {
     /// - Parameter hex: message in hex format to sign
     /// - Returns: signiture in hex format
     /// - Throws: EthereumKitError.failedToEncode when failed to encode
-    public func sign(hex: String) throws -> String {
+    public func personalSign(hex: String) throws -> String {
         let hash = generatePersonalMessageHash(hex: hex)
         var signiture = try key.sign(hash: hash)
         
@@ -153,8 +177,8 @@ extension Wallet {
     /// - Parameter hex: message to sign
     /// - Returns: signiture in hex format
     /// - Throws: EthereumKitError.failedToEncode when failed to encode
-    public func sign(message: String) throws -> String {
-        return try sign(hex: message.toHexString())
+    public func personalSign(message: String) throws -> String {
+        return try personalSign(hex: message.toHexString())
     }
 }
 
@@ -166,10 +190,10 @@ extension Wallet {
     ///
     /// - Parameters:
     ///   - signature: signature in string format, must be signed with eth_personal_sign
-    ///   - originalMessage: original message you signed
+    ///   - message: message you signed
     ///   - compressed: whether a public key is compressed
     /// - Returns: whether a signature is valid or not
-    public func verifySignature(personalSigned signature: String, originalMessage: String, compressed: Bool = false) -> Bool {
+    public func verify(personalSigned signature: String, message: String, compressed: Bool = false) -> Bool {
         var sig = Data(hex: signature)
         
         if sig[64] != 27 && sig[64] != 28 {
@@ -177,18 +201,24 @@ extension Wallet {
         }
         
         sig[64] = sig[64] - 27
-        return verifySignature(signature: sig, originalMessage: originalMessage, compressed: compressed)
+        
+        let hash = generatePersonalMessageHash(hex: message.toHexString())
+        return verifySignature(signature: sig, hash: hash, compressed: compressed)
     }
     
     /// Verify a signature
     ///
     /// - Parameters:
     ///   - signature: signature in data format
-    ///   - originalMessage: original message you signed
+    ///   - hash: hash of an message you signed
     ///   - compressed: whether a public key is compressed
     /// - Returns: whether a signature is valid or not
-    public func verifySignature(signature: Data, originalMessage: String, compressed: Bool) -> Bool {
-        let hash = generatePersonalMessageHash(hex: originalMessage.toHexString())
+    public func verify(normalSigned signature: String, message: String, compressed: Bool = false) -> Bool {
+        let hash = Crypto.hashSHA3_256(Data(hex: message.toHexString().stripHexPrefix()))
+        return verifySignature(signature: Data(hex: signature), hash: hash, compressed: compressed)
+    }
+    
+    private func verifySignature(signature: Data, hash: Data, compressed: Bool) -> Bool {
         return Crypto.isValid(signature: signature, of: hash, publicKey: publicKey(), compressed: compressed)
     }
 }
