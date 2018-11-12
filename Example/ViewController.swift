@@ -77,5 +77,16 @@ class ViewController: UIViewController {
                 print("Error: \(error.localizedDescription)")
             }
         }
+        
+        let contract = ERC20(contractAddress: "0xd99b8A7fA48E25Cce83B81812220A3E03Bf64e5f", decimal: 18, symbol: "SKM")
+        geth.getTokenBalance(contract: contract, address: address) { result in
+            switch result {
+                
+            case .success(let balance):
+                print("Token balance: \(balance)")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
 }
