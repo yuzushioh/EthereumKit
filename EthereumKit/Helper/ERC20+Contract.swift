@@ -1,25 +1,32 @@
 extension ERC20 {
     enum ContractFunctions {
         case balanceOf(address: String)
+        case transfer(address: String, amount: BInt)
         
-        var methodSignature: String {
-            // We could get the signature by doing this:
-//                Digest.sha3("balanceOf(address)".bytes, variant: .keccak256).toHexString().addHexPrefix()
-//                let index = methodSignature.index(methodSignature.startIndex, offsetBy: 10)
-//                methodSignature = String(methodSignature[..<index])
-            
+        var methodSignature: Data {
             switch self {
             case .balanceOf:
-                return "0x70a08231"
+                return generateSignature(method: "balanceOf(address)")
+            case .transfer:
+                return generateSignature(method: "transfer(address,uint256)")
             }
         }
         
-        func data() -> String {
+        private func generateSignature(method: String) -> Data {
+            return method.data(using: .ascii)!.sha3(.keccak256)[0...3]
+        }
+        
+        var data: Data {
             switch self {
+                
             case .balanceOf(let address):
-                let noHexAddress = address.stripHexPrefix()
-                let padding = String(Array(repeating: "0", count: 64 - noHexAddress.count)) // Padding the 20 bytes token address to 32 bytes with 0
-                return self.methodSignature + padding + noHexAddress
+                let noHexAddress = ERC20.pad(string: address.stripHexPrefix())
+                return Data(hex: methodSignature.toHexString() + noHexAddress)
+                
+            case .transfer(let toAddress, let poweredAmount):
+                let address = ERC20.pad(string: toAddress.stripHexPrefix())
+                let amount = ERC20.pad(string: poweredAmount.serialize().toHexString())
+                return Data(hex: methodSignature.toHexString() + address + amount)
             }
         }
     }

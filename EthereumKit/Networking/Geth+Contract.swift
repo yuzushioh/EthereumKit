@@ -10,9 +10,9 @@ extension Geth {
     ///   - completionHandler:
     public func getTokenBalance(contract: ERC20, address: String, completionHandler: @escaping (Result<Balance>) -> Void) {
         
-        let data = ERC20.ContractFunctions.balanceOf(address: address).data()
+        let data = ERC20.ContractFunctions.balanceOf(address: address).data
 
-        self.call(to: contract.contractAddress, data: data) { result in
+        self.call(to: contract.contractAddress, data: data.toHexString().addHexPrefix()) { result in
             
             switch result {
             case .success(let hexBalance):

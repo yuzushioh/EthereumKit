@@ -24,15 +24,8 @@ public struct ERC20 {
         self.symbol = symbol
     }
     
-    /// Transfer method signiture
-    /// function transfer(address _to, uint256 _value) returns (bool success)
-    private var transferSigniture: Data {
-        let method = "transfer(address,uint256)"
-        return method.data(using: .ascii)!.sha3(.keccak256)[0...3]
-    }
-    
     /// Length of 256 bits
-    private var lengthOf256bits: Int {
+    private static var lengthOf256bits: Int {
         return 256 / 4
     }
     
@@ -43,13 +36,8 @@ public struct ERC20 {
     ///    - amount: amount to send
     /// - Returns: transaction data
     public func generateDataParameter(toAddress: String, amount: String) throws -> Data {
-        let method = transferSigniture.toHexString()
-        let address = pad(string: toAddress.stripHexPrefix())
-        
         let poweredAmount = try power(amount: amount)
-        let amount = pad(string: poweredAmount.serialize().toHexString())
-        
-        return Data(hex: method + address + amount)
+        return ERC20.ContractFunctions.transfer(address: toAddress, amount: poweredAmount).data
     }
     
     /// Power the amount by the decimal
@@ -91,7 +79,7 @@ public struct ERC20 {
     }
     
     /// Pad left spaces out of 256bits with 0
-    private func pad(string: String) -> String {
+    internal static func pad(string: String) -> String {
         var string = string
         while string.count != lengthOf256bits {
             string = "0" + string
