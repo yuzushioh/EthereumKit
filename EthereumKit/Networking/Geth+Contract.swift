@@ -16,16 +16,15 @@ extension Geth {
             
             switch result {
             case .success(let hexBalance):
-                guard let wei = Wei(hexBalance.lowercased().stripHexPrefix(), radix: 16) else {
+                
+                if let wei = Wei(hexBalance.lowercased().stripHexPrefix(), radix: 16) {
+                    let balance = Balance(wei: wei)
+                    completionHandler(.success(balance))
+                } else {
                     completionHandler(.failure(EthereumKitError.convertError(.failedToConvert(hexBalance))))
-                    return
                 }
-                let balance = Balance(wei: wei)
-                completionHandler(.success(balance))
-                break
             case .failure(let error):
                 completionHandler(.failure(error))
-                break
             }
         }
     }
