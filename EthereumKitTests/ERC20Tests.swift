@@ -37,4 +37,13 @@ final class ERC20Tests: XCTestCase {
             "0xa9059cbb00000000000000000000000088b44bc83add758a3642130619d61682282850df0000000000000000000000000000000000000000000001e7e4171bf4d3a00000"
         )
     }
+    
+    func testContractFunctionsData() {
+        let address = "0x88b44BC83add758A3642130619D61682282850Df"
+        let data = ERC20.ContractFunctions.balanceOf(address: address).data
+        XCTAssertEqual(
+            data.toHexString().addHexPrefix(),
+            "0x70a0823100000000000000000000000088b44bc83add758a3642130619d61682282850df"
+        )
+    }
 }
