@@ -18,7 +18,7 @@ public struct HTTPJSONRPCRequest<Batch: JSONRPCBatchType>: RequestType {
     }
     
     public var path: String {
-        return "/"
+        return ""
     }
     
     public var parameters: Any? {
