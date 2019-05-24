@@ -51,7 +51,7 @@ do {
 ```
 
 ## Geth
-`Geth` is responsible for interacting with Ethereum network. Geth interacts with network via JSONRPC. You can see the list of JSONRPC requests [here](Documentation/JSONRPC.md).
+`Geth` is responsible for interacting with Ethereum network. Geth interacts with network via JSONRPC. You can see the list of JSONRPC requests [here](/JSONRPC.md).
 To create `Configuration` struct for `Geth`, you need 
 - url for Ethereum node. you can get one at [infura.io](https://infura.io)
 - Etherscan API key. you can get one at [Etherscan](https://etherscan.io)
