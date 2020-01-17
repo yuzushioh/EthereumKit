@@ -2,6 +2,7 @@ public enum Network {
     case mainnet
     case ropsten
     case kovan
+    case rinkeby
     case `private`(chainID: Int, testUse: Bool)
     
     public init?(name: String, chainID: Int = 0, testUse: Bool = false) {
@@ -12,6 +13,8 @@ public enum Network {
             self = .ropsten
         case "kovan":
             self = .kovan
+        case "rinkeby":
+            self = .rinkeby
         case "private":
             self = .private(chainID: chainID, testUse: testUse)
         default:
@@ -27,7 +30,7 @@ public enum Network {
         switch self {
         case .mainnet:
             return mainnetCoinType
-        case .ropsten, .kovan:
+        case .ropsten, .kovan, .rinkeby:
             return testnetCoinType
         case .private(_, let testUse):
             return testUse ? testnetCoinType : mainnetCoinType
@@ -41,7 +44,7 @@ public enum Network {
         switch self {
         case .mainnet:
             return mainnetPrefix
-        case .ropsten, .kovan:
+        case .ropsten, .kovan, .rinkeby:
             return testnetPrefix
         case .private(_, let testUse):
             return testUse ? testnetPrefix : mainnetPrefix
@@ -55,7 +58,7 @@ public enum Network {
         switch self {
         case .mainnet:
             return mainnetPrefix
-        case .ropsten, .kovan:
+        case .ropsten, .kovan, .rinkeby:
             return testnetPrefix
         case .private(_, let testUse):
             return testUse ? testnetPrefix : mainnetPrefix
@@ -70,7 +73,9 @@ public enum Network {
             return "Ropsten"
         case .kovan:
             return "Kovan"
-        case .private(_, _):
+        case .rinkeby:
+            return "Rinkeby"
+        case .private:
             return "Privatenet"
         }
     }
@@ -83,6 +88,8 @@ public enum Network {
             return 3
         case .kovan:
             return 42
+        case .rinkeby:
+            return 4
         case .private(let chainID, _):
             return chainID
         }
@@ -92,7 +99,7 @@ public enum Network {
 extension Network: Equatable {
     public static func == (lhs: Network, rhs: Network) -> Bool {
         switch (lhs, rhs) {
-        case (.mainnet, .mainnet), (.ropsten, .ropsten), (.kovan, .kovan):
+        case (.mainnet, .mainnet), (.ropsten, .ropsten), (.kovan, .kovan), (.rinkeby, .rinkeby):
             return true
         case (.private(let firstChainID, let firstTestUse), .private(let secondChainID, let secondTestUse)):
             return firstChainID == secondChainID && firstTestUse == secondTestUse
