@@ -4,7 +4,7 @@ import Foundation
 public final class Mnemonic {
     public enum Strength: Int {
         case normal = 128
-        case hight = 256
+        case high = 256
     }
     
     public static func create(strength: Strength = .normal, language: WordList = .english) -> [String] {
