@@ -27,6 +27,14 @@ final class NetworkTests: XCTestCase {
         XCTAssert(network.publicKeyPrefix == 0x043587cf)
     }
     
+    func testRinkeby() {
+        let network = Network.rinkeby
+        XCTAssert(network.chainID == 4)
+        XCTAssert(network.coinType == 1)
+        XCTAssert(network.privateKeyPrefix == 0x04358394)
+        XCTAssert(network.publicKeyPrefix == 0x043587cf)
+    }
+    
     func testPrivateNetTestUse() {
         let network = Network.private(chainID: 100, testUse: true)
         XCTAssert(network.chainID == 100)
@@ -55,6 +63,10 @@ final class NetworkTests: XCTestCase {
         let kovanNetwork = Network(name: "kovan")
         XCTAssertNotNil(kovanNetwork)
         XCTAssertEqual(kovanNetwork, Network.kovan)
+        
+        let rinkebyNetwork = Network(name: "rinkeby")
+        XCTAssertNotNil(rinkebyNetwork)
+        XCTAssertEqual(rinkebyNetwork, Network.rinkeby)
         
         let privateNetwork = Network(name: "private", chainID: 1, testUse: false)
         XCTAssertNotNil(privateNetwork)
